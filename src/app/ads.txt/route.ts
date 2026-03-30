@@ -1,16 +1,10 @@
 import { NextResponse } from "next/server";
+import { getAdSensePublisherId } from "@/lib/adsense";
 
 const GOOGLE_SELLER_ACCOUNT_ID = "f08c47fec0942fa0";
 
-function normalizePublisherId(value?: string): string | null {
-  const trimmed = value?.trim();
-  if (!trimmed) return null;
-
-  return trimmed.startsWith("pub-") ? trimmed : `pub-${trimmed}`;
-}
-
 export function GET() {
-  const publisherId = normalizePublisherId(process.env.ADSENSE_PUBLISHER_ID);
+  const publisherId = getAdSensePublisherId();
   if (!publisherId) {
     return new NextResponse("ads.txt is not configured.\n", {
       status: 404,

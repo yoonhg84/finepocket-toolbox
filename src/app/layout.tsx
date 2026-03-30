@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { getAdSenseClientId } from "@/lib/adsense";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { getRequestLocale } from "@/i18n/server";
-import { SITE_NAME } from "@/lib/seo";
+import { ORGANIZATION_NAME, SITE_NAME, SITE_TAGLINE } from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -21,10 +22,26 @@ export const metadata: Metadata = {
     default: SITE_NAME,
     template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Free online developer, text, finance, and calculator tools. Fast browser-based utilities with privacy-first defaults and no sign-up required.",
+  description: SITE_TAGLINE,
   metadataBase: new URL("https://toolbox.finepocket.app"),
   applicationName: SITE_NAME,
+  creator: ORGANIZATION_NAME,
+  publisher: ORGANIZATION_NAME,
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/apple-icon.png" }],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#111827" },
+  ],
 };
 
 export default function RootLayout({
@@ -33,10 +50,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const locale = getRequestLocale();
+  const adsenseClientId = getAdSenseClientId();
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        {adsenseClientId ? (
+          <>
+            <meta name="google-adsense-account" content={adsenseClientId} />
+            <script
+              async
+              crossOrigin="anonymous"
+              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`}
+            />
+          </>
+        ) : null}
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}})()`,

@@ -1,6 +1,8 @@
+import { AdSlot } from "@/components/ads/AdSlot";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { localizePath } from "@/i18n";
 import { getRequestLocale, getServerTranslator } from "@/i18n/server";
+import { getAdSenseClientId, getAdSenseToolSlot } from "@/lib/adsense";
 import { getLocalizedToolText } from "@/i18n/tools";
 import {
   getCategoryHref,
@@ -25,6 +27,12 @@ export function ToolPageLayout({ tool, content, children }: ToolPageLayoutProps)
   const localizedTool = getLocalizedToolText(tool, t);
   const categoryLabel = t(getCategoryLabelKey(tool.category));
   const categoryHref = getCategoryHref(tool.category, locale);
+  const adsenseClientId = getAdSenseClientId();
+  const adsenseToolSlot = getAdSenseToolSlot();
+  const showAdSlot =
+    tool.slug !== "bmi-calculator" &&
+    Boolean(adsenseClientId) &&
+    Boolean(adsenseToolSlot);
   const breadcrumbItems = [
     { label: t("common.home"), href: localizePath("/", locale) },
     { label: categoryLabel, href: categoryHref },
@@ -53,10 +61,39 @@ export function ToolPageLayout({ tool, content, children }: ToolPageLayoutProps)
         <span className="text-gray-400 dark:text-gray-500">{t("toolPage.browserBased")}</span>
       </p>
 
+      {tool.category === "finance" && (
+        <section className="mb-6 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-700 dark:bg-amber-900/25 dark:text-amber-100">
+          <h2 className="font-semibold">
+            {t("toolPage.financeNoticeTitle", undefined, "Reference-only finance estimates")}
+          </h2>
+          <p className="mt-1 text-amber-800 dark:text-amber-200">
+            {t(
+              "toolPage.financeNoticeBody",
+              undefined,
+              "Rates, fees, taxes, and provider-specific rules can change the real result. Use these tools for planning and comparison, then confirm terms with the relevant institution."
+            )}
+          </p>
+        </section>
+      )}
+
       <div className="mb-8">{children}</div>
 
-      {/* AdSense placeholder */}
-      <div className="my-8" aria-hidden="true" />
+      {showAdSlot && adsenseClientId && adsenseToolSlot ? (
+        <section className="my-8">
+          <p className="mb-2 text-xs text-gray-500 dark:text-gray-400">
+            {t(
+              "toolPage.adDisclosure",
+              undefined,
+              "Advertising may support this site. Primary controls stay separate from ad placements."
+            )}
+          </p>
+          <AdSlot
+            clientId={adsenseClientId}
+            slot={adsenseToolSlot}
+            className="min-h-[120px]"
+          />
+        </section>
+      ) : null}
 
       <SeoSection title={t("seo.whatIs", { toolName: localizedTool.name })} content={content.whatIs} />
       <SeoSection title={t("seo.howToUse")} content={content.howToUse} />
