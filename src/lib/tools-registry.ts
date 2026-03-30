@@ -1,6 +1,6 @@
 import { localizePath, type Locale } from "@/i18n";
 
-export type ToolCategory = "developer" | "text" | "finance";
+export type ToolCategory = "developer" | "text" | "finance" | "calculators";
 
 export interface ToolMeta {
   slug: string;
@@ -29,6 +29,10 @@ export const CATEGORY_META: Record<
   finance: {
     href: "/finance",
     labelKey: "nav.financeTools",
+  },
+  calculators: {
+    href: "/calculators",
+    labelKey: "nav.calculatorTools",
   },
 };
 
@@ -156,68 +160,68 @@ export const ALL_TOOLS: ToolMeta[] = [
   // Finance & Calculator tools
   {
     slug: "percentage-calculator",
-    category: "finance",
+    category: "calculators",
     name: "Percentage Calculator",
     shortDescription: "Calculate percentages, discounts, and percentage changes instantly",
-    href: "/finance/percentage-calculator",
+    href: "/calculators/percentage-calculator",
     keywords: ["percentage calculator", "percent calculator", "percentage change", "discount calculator"],
     icon: "%",
-    hubOrder: 4,
-    relatedSlugs: ["loan-calculator", "currency-converter", "tip-calculator"],
+    hubOrder: 1,
+    relatedSlugs: ["tip-calculator", "loan-calculator", "currency-converter"],
   },
   {
     slug: "tip-calculator",
-    category: "finance",
+    category: "calculators",
     name: "Tip Calculator",
     shortDescription: "Calculate tips and split bills among friends easily",
-    href: "/finance/tip-calculator",
+    href: "/calculators/tip-calculator",
     keywords: ["tip calculator", "gratuity calculator", "bill splitter", "tip calculator for restaurant"],
     icon: "💰",
-    hubOrder: 7,
-    relatedSlugs: ["percentage-calculator", "currency-converter", "date-calculator"],
+    hubOrder: 4,
+    relatedSlugs: ["percentage-calculator", "date-calculator", "currency-converter"],
   },
   {
     slug: "age-calculator",
-    category: "finance",
+    category: "calculators",
     name: "Age Calculator",
     shortDescription: "Calculate your exact age in years, months, days, and more",
-    href: "/finance/age-calculator",
+    href: "/calculators/age-calculator",
     keywords: ["age calculator", "how old am I", "birthday calculator", "age in days"],
     icon: "🎂",
-    hubOrder: 10,
+    hubOrder: 5,
     relatedSlugs: ["date-calculator", "bmi-calculator", "unit-converter"],
   },
   {
     slug: "data-converter",
-    category: "finance",
+    category: "calculators",
     name: "Data Storage Converter",
     shortDescription: "Convert between bytes, KB, MB, GB, TB and other data units",
-    href: "/finance/data-converter",
+    href: "/calculators/data-converter",
     keywords: ["byte converter", "MB to GB", "data unit converter", "storage converter"],
     icon: "💾",
-    hubOrder: 12,
+    hubOrder: 7,
     relatedSlugs: ["unit-converter", "json-formatter", "base64"],
   },
   {
     slug: "unit-converter",
-    category: "finance",
+    category: "calculators",
     name: "Unit Converter",
     shortDescription: "Convert length, weight, temperature, volume, and more",
-    href: "/finance/unit-converter",
+    href: "/calculators/unit-converter",
     keywords: ["unit converter", "cm to inches", "kg to lbs", "metric converter"],
     icon: "📏",
-    hubOrder: 9,
-    relatedSlugs: ["currency-converter", "data-converter", "date-calculator"],
+    hubOrder: 3,
+    relatedSlugs: ["date-calculator", "data-converter", "bmi-calculator"],
   },
   {
     slug: "bmi-calculator",
-    category: "finance",
+    category: "calculators",
     name: "BMI Calculator",
     shortDescription: "Calculate your Body Mass Index and check your weight status",
-    href: "/finance/bmi-calculator",
+    href: "/calculators/bmi-calculator",
     keywords: ["BMI calculator", "body mass index", "BMI chart", "weight calculator"],
     icon: "⚖️",
-    hubOrder: 11,
+    hubOrder: 6,
     relatedSlugs: ["age-calculator", "unit-converter", "date-calculator"],
   },
   {
@@ -229,7 +233,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     keywords: ["loan calculator", "mortgage calculator", "EMI calculator", "loan payment calculator"],
     icon: "🏦",
     hubOrder: 1,
-    relatedSlugs: ["compound-interest", "percentage-calculator", "currency-converter"],
+    relatedSlugs: ["compound-interest", "currency-converter", "percentage-calculator"],
   },
   {
     slug: "compound-interest",
@@ -240,18 +244,18 @@ export const ALL_TOOLS: ToolMeta[] = [
     keywords: ["compound interest calculator", "investment calculator", "savings calculator"],
     icon: "📈",
     hubOrder: 2,
-    relatedSlugs: ["loan-calculator", "percentage-calculator", "currency-converter"],
+    relatedSlugs: ["loan-calculator", "currency-converter", "percentage-calculator"],
   },
   {
     slug: "date-calculator",
-    category: "finance",
+    category: "calculators",
     name: "Date Calculator",
     shortDescription: "Calculate days between dates or add/subtract days from a date",
-    href: "/finance/date-calculator",
+    href: "/calculators/date-calculator",
     keywords: ["date calculator", "days between dates", "date difference", "add days to date"],
     icon: "📅",
-    hubOrder: 8,
-    relatedSlugs: ["age-calculator", "loan-calculator", "tip-calculator"],
+    hubOrder: 2,
+    relatedSlugs: ["age-calculator", "unit-converter", "tip-calculator"],
   },
   {
     slug: "currency-converter",
@@ -262,7 +266,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     keywords: ["currency converter", "exchange rate", "USD to KRW", "currency calculator"],
     icon: "💱",
     hubOrder: 3,
-    relatedSlugs: ["percentage-calculator", "loan-calculator", "compound-interest"],
+    relatedSlugs: ["loan-calculator", "compound-interest", "percentage-calculator"],
   },
 ];
 

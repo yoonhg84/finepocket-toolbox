@@ -11,10 +11,12 @@ import {
 import { buildPageMetadata } from "@/lib/seo";
 
 export function generateMetadata() {
+  const locale = getRequestLocale();
+  const t = getServerTranslator(locale);
+
   return buildPageMetadata({
-    title: "Free Online Developer, Text & Finance Tools",
-    description:
-      "Free online tools for developers and everyone. Explore browser-based utilities for development, writing, and everyday finance calculations.",
+    title: t("home.subtitle"),
+    description: t("home.heroDescription"),
     path: "/",
   });
 }
@@ -22,6 +24,7 @@ export function generateMetadata() {
 const devTools = getToolsByCategory("developer");
 const textTools = getToolsByCategory("text");
 const financeTools = getToolsByCategory("finance");
+const calculatorTools = getToolsByCategory("calculators");
 
 function ToolGrid({
   tools,
@@ -97,6 +100,16 @@ export default function Home() {
           {t("nav.financeTools")}
         </Link>
         <ToolGrid tools={financeTools} t={t} locale={locale} />
+      </section>
+
+      <section className="mb-12">
+        <Link
+          href={getCategoryHref("calculators", locale)}
+          className="mb-6 inline-block text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
+        >
+          {t("nav.calculatorTools")}
+        </Link>
+        <ToolGrid tools={calculatorTools} t={t} locale={locale} />
       </section>
 
       <section className="mb-12">

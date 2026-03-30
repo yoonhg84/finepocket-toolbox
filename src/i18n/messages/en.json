@@ -25,15 +25,16 @@
   "nav": {
     "developerTools": "Developer Tools",
     "textTools": "Text Tools",
-    "financeTools": "Finance & Calculators",
+    "financeTools": "Finance Tools",
+    "calculatorTools": "Calculator Tools",
     "toggleMenu": "Toggle menu",
     "browseCategory": "Browse {category}",
     "openCategoryMenu": "Open {category} menu"
   },
   "home": {
     "title": "FinePocket Toolbox",
-    "subtitle": "Free Online Developer, Text & Finance Tools",
-    "heroDescription": "Free online tools for developers and everyone. All tools run entirely in your browser.",
+    "subtitle": "Free Online Developer, Text, Finance & Calculator Tools",
+    "heroDescription": "Free online tools for developers and everyone. Explore browser-based utilities for development, writing, finance planning, and everyday calculations.",
     "heroStats": "{count} powerful tools that run entirely in your browser. No data is sent to any server. No sign-up required.",
     "privacyTitle": "Your Privacy Matters",
     "privacyDescription": "All tools process data entirely in your browser. Nothing is uploaded to any server. Your data stays on your device."

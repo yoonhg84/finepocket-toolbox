@@ -25,13 +25,14 @@
   "nav": {
     "developerTools": "Outils développeur",
     "textTools": "Outils de texte",
-    "financeTools": "Finance et calculatrices",
+    "financeTools": "Outils financiers",
+    "calculatorTools": "Calculatrices et convertisseurs",
     "toggleMenu": "Basculer le menu"
   },
   "home": {
     "title": "FinePocket Toolbox",
-    "subtitle": "Outils en ligne gratuits pour le développement, le texte et la finance",
-    "heroDescription": "Des outils en ligne gratuits pour les développeurs et pour tous. Tous les outils fonctionnent entièrement dans votre navigateur.",
+    "subtitle": "Outils en ligne gratuits pour le développement, le texte, la finance et les calculs",
+    "heroDescription": "Des outils en ligne gratuits dans le navigateur pour le développement, l'écriture, la planification financière et les calculs du quotidien.",
     "heroStats": "{count} outils puissants fonctionnent entièrement dans votre navigateur. Aucune donnée n'est envoyée à un serveur. Aucune inscription requise.",
     "privacyTitle": "Votre confidentialité compte",
     "privacyDescription": "Tous les outils traitent les données entièrement dans votre navigateur. Rien n'est téléversé vers un serveur. Vos données restent sur votre appareil."

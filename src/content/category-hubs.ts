@@ -117,35 +117,34 @@ export const CATEGORY_HUBS: Record<ToolCategory, CategoryHubContent> = {
   },
   finance: {
     category: "finance",
-    title: "Finance & Calculators",
+    title: "Finance Tools",
     description:
-      "Reference calculators for planning payments, comparing rates, modeling growth, and answering high-intent money questions with clear assumptions.",
+      "Reference tools for borrowing, savings, exchange rates, and other high-intent money questions where clear assumptions and trust matter.",
     intro: [
-      "The finance category is where higher-intent planning tools live: loan calculations, compound interest, percentages, currency conversion, and related utility calculators. These pages are designed to answer a question quickly while still giving enough context to understand the result.",
-      "Supporting calculators such as date, unit, and tip tools still live here, but the strongest pages are the ones tied directly to borrowing, savings, rates, and payment planning.",
+      "The finance category is reserved for pages with stronger commercial or planning intent: loan calculations, savings growth, and currency conversion. These pages are designed to answer a money question quickly while still giving enough context to understand the result.",
       "Because finance-related pages carry higher trust expectations, the content emphasizes formulas, assumptions, and reference-only disclaimers instead of presenting outputs as professional advice.",
     ],
     tasksTitle: "Common tasks in this category",
     tasks: [
       "Estimate loan payments before comparing lenders or repayment methods",
       "Model savings growth or recurring investment contributions",
-      "Check percentages, discounts, or date differences during planning",
-      "Convert currencies or units while researching costs across countries",
+      "Convert currencies while researching costs across countries",
+      "Compare rate-driven scenarios before contacting a lender or provider",
     ],
     valueTitle: "Why these pages are useful",
     valuePoints: [
       "High-intent pages built around practical planning questions",
       "Plain-language explanations of formulas and repayment logic",
       "Reference disclaimers that set expectations for financial decisions",
-      "Related calculators grouped together for deeper comparison workflows",
+      "Tighter topic clustering for stronger finance relevance",
     ],
-    toolsTitle: "Browse all finance and calculator tools",
+    toolsTitle: "Browse all finance tools",
     toolsDescription:
-      "These tools focus on budgeting, planning, conversions, and quick reference calculations. They are useful for exploration and comparison, not a substitute for professional advice.",
-    faqTitle: "Finance and calculator FAQ",
+      "These tools focus on borrowing, savings, and exchange-rate planning. They are useful for exploration and comparison, not a substitute for professional advice.",
+    faqTitle: "Finance FAQ",
     faq: [
       {
-        q: "Are these calculators financial advice?",
+        q: "Are these finance tools financial advice?",
         a: "No. They are reference tools for estimation and planning. Actual rates, fees, taxes, and lending decisions depend on providers and personal circumstances.",
       },
       {
@@ -162,6 +161,54 @@ export const CATEGORY_HUBS: Record<ToolCategory, CategoryHubContent> = {
       "Mortgage, APR, refinance, and credit card payoff calculators",
       "Country-specific finance explainers that add context to the tools",
       "Comparison guides that explain when to use one calculator versus another",
+    ],
+  },
+  calculators: {
+    category: "calculators",
+    title: "Calculator & Converter Tools",
+    description:
+      "Everyday calculators and converters for percentages, dates, units, tips, health checks, and practical reference tasks.",
+    intro: [
+      "This category groups together broader utility tools that are useful in day-to-day work and life but do not need to sit inside the finance hub. The focus is fast answers, clear interfaces, and practical browser-based workflows.",
+      "These pages are still explanation-first, but their search intent is usually broader than borrowing or investing. Keeping them separate helps both users and search engines understand the site structure more clearly.",
+    ],
+    tasksTitle: "Common tasks in this category",
+    tasks: [
+      "Calculate percentages, discounts, and quick changes",
+      "Work out date differences, deadlines, and future dates",
+      "Convert units, storage sizes, and everyday measurements",
+      "Estimate tips, age, or basic BMI reference values",
+    ],
+    valueTitle: "Why these pages are useful",
+    valuePoints: [
+      "Broad utility intent grouped outside the finance cluster",
+      "Fast answers for everyday calculations and conversions",
+      "Clear copy-and-use results across desktop and mobile",
+      "Good internal-link support for practical utility workflows",
+    ],
+    toolsTitle: "Browse all calculator and converter tools",
+    toolsDescription:
+      "These tools cover practical calculations, date math, unit conversions, and lightweight health or everyday reference checks.",
+    faqTitle: "Calculator and converter FAQ",
+    faq: [
+      {
+        q: "Why are these tools separate from finance?",
+        a: "Their search intent is usually broader and less commercial than loan, savings, or exchange-rate queries. Separating them keeps the finance section more focused.",
+      },
+      {
+        q: "Are these tools still browser-based?",
+        a: "Yes. Like the rest of the site, these pages are designed to work quickly in the browser, with local processing whenever possible.",
+      },
+      {
+        q: "Which pages are most broadly useful?",
+        a: "Percentage Calculator, Date Calculator, Unit Converter, and Tip Calculator usually cover the widest range of everyday use cases.",
+      },
+    ],
+    guideTitle: "Good next expansions for this category",
+    guidePoints: [
+      "Time zone, duration, and schedule-planning calculators",
+      "Additional health or wellness reference calculators with careful disclaimers",
+      "Practical guides that explain common conversion and date-calculation mistakes",
     ],
   },
 };
@@ -265,36 +312,35 @@ const KO_CATEGORY_HUBS: Record<ToolCategory, CategoryHubContent> = {
   },
   finance: {
     category: "finance",
-    title: "금융 및 계산기",
+    title: "금융 도구",
     description:
-      "상환 계획, 금리 비교, 자산 성장 추정처럼 돈과 직접 연결된 질문에 답하는 고의도 참고용 계산기 모음입니다.",
+      "대출, 저축, 환율처럼 돈과 직접 연결된 고의도 질문에 답하는 참고용 금융 도구 모음입니다.",
     intro: [
-      "금융 카테고리에는 대출 계산, 복리 계산, 퍼센트 계산, 환율 변환처럼 의도가 분명한 계획형 도구를 우선 배치했습니다. 질문에 빠르게 답하면서도 결과를 이해할 수 있는 설명을 함께 제공하는 데 초점을 맞춥니다.",
-      "날짜, 단위, 팁 같은 보조 계산기도 함께 제공하지만, 핵심은 차입, 저축, 환산, 비용 비교처럼 돈과 직접 연결되는 상황을 돕는 것입니다.",
+      "금융 카테고리에는 대출 계산, 복리 계산, 환율 변환처럼 상업적 의도나 계획 의도가 더 분명한 도구만 남겼습니다. 질문에 빠르게 답하면서도 결과를 이해할 수 있는 설명을 함께 제공하는 데 초점을 맞춥니다.",
       "금융 관련 페이지는 신뢰 기대치가 높기 때문에, 결과를 전문가 조언처럼 제시하기보다 공식, 가정, 참고용 한계를 명확히 설명하는 방향으로 구성했습니다.",
     ],
     tasksTitle: "이 카테고리에서 자주 하는 작업",
     tasks: [
       "대출 조건과 상환 방식을 비교해 월 부담액 추정하기",
       "저축 또는 투자 성장과 정기 납입 효과 시뮬레이션하기",
-      "할인율, 날짜 차이, 단위 변환을 계획 과정에서 빠르게 계산하기",
-      "국가별 비용 비교 중 환율과 단위를 함께 확인하기",
+      "국가별 비용 비교 중 환율을 확인하기",
+      "기관이나 서비스 비교 전에 금리 기반 시나리오를 검토하기",
     ],
     valueTitle: "이 페이지들이 유용한 이유",
     valuePoints: [
       "실제 계획 질문에 바로 연결되는 고의도 페이지 구성",
       "공식과 상환 구조를 쉽게 설명하는 평이한 문구",
       "금융 판단에 대한 기대치를 조정해 주는 참고용 안내",
-      "비교 검토를 이어 가기 쉬운 관련 계산기 묶음",
+      "더 선명한 금융 주제 묶음으로 문맥 강화",
     ],
-    toolsTitle: "전체 금융 및 계산기 도구 보기",
+    toolsTitle: "전체 금융 도구 보기",
     toolsDescription:
-      "이 도구들은 예산, 계획, 변환, 빠른 참고 계산에 적합합니다. 전문적인 금융 조언을 대체하지는 않습니다.",
-    faqTitle: "금융 및 계산기 FAQ",
+      "이 도구들은 대출, 저축, 환율 기반 계획과 비교에 적합합니다. 전문적인 금융 조언을 대체하지는 않습니다.",
+    faqTitle: "금융 도구 FAQ",
     faq: [
       {
-        q: "이 계산 결과가 금융 조언인가요?",
-        a: "아니요. 이 도구들은 추정과 계획을 돕기 위한 참고용 계산기입니다. 실제 금리, 수수료, 세금, 승인 조건은 기관과 개인 상황에 따라 달라집니다.",
+        q: "이 금융 도구의 결과가 금융 조언인가요?",
+        a: "아니요. 이 도구들은 추정과 계획을 돕기 위한 참고용 도구입니다. 실제 금리, 수수료, 세금, 승인 조건은 기관과 개인 상황에 따라 달라집니다.",
       },
       {
         q: "왜 금융 페이지는 신뢰 설명이 중요한가요?",
@@ -310,6 +356,54 @@ const KO_CATEGORY_HUBS: Record<ToolCategory, CategoryHubContent> = {
       "모기지, APR, 리파이낸스, 신용카드 상환 계산기",
       "국가별 금융 상황을 설명하는 보조 가이드",
       "어떤 계산기를 언제 써야 하는지 비교하는 안내 글",
+    ],
+  },
+  calculators: {
+    category: "calculators",
+    title: "계산기 및 변환 도구",
+    description:
+      "퍼센트, 날짜, 단위, 팁, 건강 지표처럼 일상에서 자주 쓰는 계산과 변환을 빠르게 처리하는 도구 모음입니다.",
+    intro: [
+      "이 카테고리는 금융 허브에 둘 필요가 없는 범용 계산기와 변환기를 모아 둔 섹션입니다. 빠른 답이 필요하지만 별도 앱을 열고 싶지 않은 상황에 맞춰 구성했습니다.",
+      "검색 의도가 더 넓은 도구들을 별도로 분리하면 사용자도 더 쉽게 찾을 수 있고, 검색엔진도 금융 도구와 일반 계산기를 명확히 구분할 수 있습니다.",
+    ],
+    tasksTitle: "이 카테고리에서 자주 하는 작업",
+    tasks: [
+      "퍼센트, 할인, 증감률 빠르게 계산하기",
+      "두 날짜 사이 차이와 미래 날짜 계산하기",
+      "길이, 무게, 저장 용량 같은 단위 변환하기",
+      "팁, 나이, BMI 같은 일상 계산 확인하기",
+    ],
+    valueTitle: "이 페이지들이 유용한 이유",
+    valuePoints: [
+      "금융과 분리된 범용 계산 의도 묶음",
+      "일상 계산과 변환에 빠르게 답하는 구조",
+      "데스크톱과 모바일에서 모두 쓰기 쉬운 결과 표현",
+      "실용적인 계산 흐름을 연결하는 내부 링크",
+    ],
+    toolsTitle: "전체 계산기 및 변환 도구 보기",
+    toolsDescription:
+      "이 도구들은 실용 계산, 날짜 연산, 단위 변환, 간단한 건강 참고값 확인에 적합합니다.",
+    faqTitle: "계산기 및 변환 도구 FAQ",
+    faq: [
+      {
+        q: "왜 금융 카테고리와 분리했나요?",
+        a: "이 도구들은 대출이나 저축처럼 상업성이 높은 금융 검색보다 더 넓고 일반적인 검색 의도를 가지는 경우가 많기 때문입니다. 분리하면 구조가 더 명확해집니다.",
+      },
+      {
+        q: "이 도구들도 브라우저에서 동작하나요?",
+        a: "네. 사이트의 다른 도구들과 마찬가지로 가능한 한 브라우저 안에서 빠르게 동작하도록 설계했습니다.",
+      },
+      {
+        q: "가장 범용적으로 유용한 도구는 무엇인가요?",
+        a: "Percentage Calculator, Date Calculator, Unit Converter, Tip Calculator가 가장 넓은 일상 활용 범위를 갖습니다.",
+      },
+    ],
+    guideTitle: "이 카테고리의 다음 확장 아이디어",
+    guidePoints: [
+      "시간대, 기간, 일정 계획 계산기",
+      "주의 깊은 고지와 함께 제공하는 추가 건강 참고 계산기",
+      "변환과 날짜 계산에서 자주 헷갈리는 포인트를 설명하는 실전 가이드",
     ],
   },
 };

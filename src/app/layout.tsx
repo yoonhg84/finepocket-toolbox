@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Free online developer, text, and finance tools. Fast browser-based utilities with privacy-first defaults and no sign-up required.",
+    "Free online developer, text, finance, and calculator tools. Fast browser-based utilities with privacy-first defaults and no sign-up required.",
   metadataBase: new URL("https://toolbox.finepocket.app"),
   applicationName: SITE_NAME,
 };

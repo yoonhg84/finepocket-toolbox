@@ -25,13 +25,14 @@
   "nav": {
     "developerTools": "開発ツール",
     "textTools": "テキストツール",
-    "financeTools": "金融・計算ツール",
+    "financeTools": "金融ツール",
+    "calculatorTools": "計算・変換ツール",
     "toggleMenu": "メニューを切り替える"
   },
   "home": {
     "title": "FinePocket Toolbox",
-    "subtitle": "無料のオンライン開発・テキスト・金融ツール",
-    "heroDescription": "開発者やすべての人のための無料オンラインツールです。すべてのツールはブラウザ内で動作します。",
+    "subtitle": "無料のオンライン開発・テキスト・金融・計算ツール",
+    "heroDescription": "開発、文章作成、金融計画、日常計算に役立つブラウザベースの無料オンラインツールです。",
     "heroStats": "{count} 個の高機能ツールがすべてブラウザ内で動作します。データはどのサーバーにも送信されません。登録不要です。",
     "privacyTitle": "プライバシーを大切に",
     "privacyDescription": "すべてのツールはブラウザ内でデータを処理します。どのサーバーにもアップロードされません。データはお使いの端末に保持されます。"

@@ -25,13 +25,14 @@
   "nav": {
     "developerTools": "개발 도구",
     "textTools": "텍스트 도구",
-    "financeTools": "금융 및 계산기",
+    "financeTools": "금융 도구",
+    "calculatorTools": "계산기 및 변환 도구",
     "toggleMenu": "메뉴 토글"
   },
   "home": {
     "title": "FinePocket Toolbox",
-    "subtitle": "무료 온라인 개발, 텍스트, 금융 도구",
-    "heroDescription": "개발자와 모든 사용자를 위한 무료 온라인 도구입니다. 모든 도구는 브라우저에서 완전히 실행됩니다.",
+    "subtitle": "무료 온라인 개발, 텍스트, 금융, 계산기 도구",
+    "heroDescription": "개발자와 모든 사용자를 위한 무료 온라인 도구입니다. 개발, 글쓰기, 금융 계획, 일상 계산에 필요한 도구를 브라우저에서 바로 사용할 수 있습니다.",
     "heroStats": "{count}개의 강력한 도구가 브라우저에서 완전히 실행됩니다. 어떤 서버로도 데이터가 전송되지 않습니다. 가입도 필요 없습니다.",
     "privacyTitle": "개인정보를 중요하게 생각합니다",
     "privacyDescription": "모든 도구는 브라우저 안에서 데이터를 처리합니다. 어떤 서버로도 업로드되지 않으며, 데이터는 사용자의 기기에 그대로 남습니다."

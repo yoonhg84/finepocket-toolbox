@@ -7,6 +7,7 @@ import { getLocalizedToolText } from "@/i18n/tools";
 import {
   ALL_TOOLS,
   getCategoryHref,
+  getToolsByCategory,
   getToolHref,
   type ToolCategory,
 } from "@/lib/tools-registry";
@@ -14,9 +15,10 @@ import { useI18n } from "./LocaleProvider";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
 
-const devTools = ALL_TOOLS.filter((t) => t.category === "developer");
-const textTools = ALL_TOOLS.filter((t) => t.category === "text");
-const financeTools = ALL_TOOLS.filter((t) => t.category === "finance");
+const devTools = getToolsByCategory("developer");
+const textTools = getToolsByCategory("text");
+const financeTools = getToolsByCategory("finance");
+const calculatorTools = getToolsByCategory("calculators");
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -44,6 +46,12 @@ export function Header() {
       label: t("nav.financeTools"),
       href: getCategoryHref("finance", locale),
       tools: financeTools,
+    },
+    {
+      category: "calculators",
+      label: t("nav.calculatorTools"),
+      href: getCategoryHref("calculators", locale),
+      tools: calculatorTools,
     },
   ];
 
