@@ -16,14 +16,27 @@ export function useTheme() {
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
+  const [userChosen, setUserChosen] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem("theme") as Theme | null;
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const initial = stored ?? (prefersDark ? "dark" : "light");
     setTheme(initial);
+    setUserChosen(!!stored);
     setMounted(true);
   }, []);
+
+  // Listen for system preference changes when user hasn't explicitly chosen
+  useEffect(() => {
+    if (!mounted || userChosen) return;
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const handler = (e: MediaQueryListEvent) => {
+      setTheme(e.matches ? "dark" : "light");
+    };
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, [mounted, userChosen]);
 
   useEffect(() => {
     if (!mounted) return;
@@ -33,10 +46,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } else {
       root.classList.remove("dark");
     }
-    localStorage.setItem("theme", theme);
-  }, [theme, mounted]);
+    if (userChosen) {
+      localStorage.setItem("theme", theme);
+    }
+  }, [theme, mounted, userChosen]);
 
-  const toggle = () => setTheme((t) => (t === "light" ? "dark" : "light"));
+  const toggle = () => {
+    setUserChosen(true);
+    setTheme((t) => (t === "light" ? "dark" : "light"));
+  };
 
   return (
     <ThemeContext.Provider value={{ theme, toggle }}>
