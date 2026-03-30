@@ -9,6 +9,7 @@ export function Footer() {
             <Link href="/about" className="hover:text-gray-700">About</Link>
             <Link href="/privacy" className="hover:text-gray-700">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-gray-700">Terms of Service</Link>
+            <Link href="/contact" className="hover:text-gray-700">Contact</Link>
           </div>
           <p>&copy; {new Date().getFullYear()} FinePocket Toolbox. All rights reserved.</p>
         </div>
