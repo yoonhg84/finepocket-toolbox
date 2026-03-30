@@ -27,7 +27,7 @@ export function Footer() {
           </div>
           <p>{t("footer.copyright", { year: new Date().getFullYear() })}</p>
         </div>
-        <p className="text-center text-xs text-gray-400 dark:text-gray-500 mt-4">
+        <p className="text-center text-xs text-gray-500 dark:text-gray-400 mt-4">
           {t("footer.browserOnly")}
         </p>
       </div>
