@@ -124,7 +124,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     shortDescription: "Count words, characters, sentences, and reading time",
     href: "/text/word-counter",
     keywords: ["word counter", "character counter", "word count online"],
-    icon: "Aa",
+    icon: "Wc",
     relatedSlugs: ["case-converter", "markdown-preview", "lorem-ipsum"],
   },
   {
@@ -144,7 +144,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     shortDescription: "Generate placeholder text for your designs",
     href: "/text/lorem-ipsum",
     keywords: ["lorem ipsum generator", "placeholder text", "dummy text generator"],
-    icon: "Li",
+    icon: "¶",
     relatedSlugs: ["markdown-preview", "word-counter", "case-converter"],
   },
   {
@@ -154,7 +154,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     shortDescription: "Write Markdown and preview rendered HTML in real-time",
     href: "/text/markdown-preview",
     keywords: ["markdown preview", "markdown editor online", "markdown to html"],
-    icon: "MD",
+    icon: "M↓",
     relatedSlugs: ["word-counter", "case-converter", "lorem-ipsum"],
   },
   // Finance & Calculator tools
