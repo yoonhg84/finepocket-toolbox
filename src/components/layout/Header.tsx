@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import { localizePath } from "@/i18n";
 import { getLocalizedToolText } from "@/i18n/tools";
@@ -141,12 +141,61 @@ function NavDropdown({
 }) {
   const [open, setOpen] = useState(false);
   const { locale, t } = useI18n();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (!open) {
+        if (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          setOpen(true);
+          setTimeout(() => {
+            const first = menuRef.current?.querySelector("a") as HTMLElement;
+            first?.focus();
+          }, 0);
+        }
+        return;
+      }
+
+      const items = Array.from(
+        menuRef.current?.querySelectorAll("a") ?? []
+      ) as HTMLElement[];
+      const idx = items.indexOf(document.activeElement as HTMLElement);
+
+      switch (e.key) {
+        case "ArrowDown":
+          e.preventDefault();
+          items[(idx + 1) % items.length]?.focus();
+          break;
+        case "ArrowUp":
+          e.preventDefault();
+          items[(idx - 1 + items.length) % items.length]?.focus();
+          break;
+        case "Escape":
+          e.preventDefault();
+          setOpen(false);
+          triggerRef.current?.focus();
+          break;
+        case "Home":
+          e.preventDefault();
+          items[0]?.focus();
+          break;
+        case "End":
+          e.preventDefault();
+          items[items.length - 1]?.focus();
+          break;
+      }
+    },
+    [open]
+  );
 
   return (
     <div
       className="relative"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
+      onKeyDown={handleKeyDown}
     >
       <div className="flex items-center gap-1">
         <Link
@@ -156,6 +205,7 @@ function NavDropdown({
           {label}
         </Link>
         <button
+          ref={triggerRef}
           type="button"
           className="rounded p-1 text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
           onClick={() => setOpen(!open)}
@@ -170,9 +220,14 @@ function NavDropdown({
       </div>
       {open && (
         <div className="absolute top-full left-0 pt-1">
-          <div className="min-w-[240px] rounded-lg border border-gray-200 bg-white py-2 shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:shadow-gray-900/50">
+          <div
+            ref={menuRef}
+            role="menu"
+            className="min-w-[240px] rounded-lg border border-gray-200 bg-white py-2 shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:shadow-gray-900/50"
+          >
             <Link
               href={hubHref}
+              role="menuitem"
               className="block px-4 py-2 text-sm font-medium text-blue-600 hover:bg-gray-50 dark:text-blue-400 dark:hover:bg-gray-700"
               onClick={() => setOpen(false)}
             >
@@ -186,6 +241,7 @@ function NavDropdown({
                 <Link
                   key={tool.slug}
                   href={getToolHref(tool, locale)}
+                  role="menuitem"
                   className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400"
                   onClick={() => setOpen(false)}
                 >
