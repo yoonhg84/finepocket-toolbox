@@ -11,12 +11,17 @@ function normalizePublisherId(value?: string): string | null {
 
 export function GET() {
   const publisherId = normalizePublisherId(process.env.ADSENSE_PUBLISHER_ID);
-  const body = publisherId
-    ? `google.com, ${publisherId}, DIRECT, ${GOOGLE_SELLER_ACCOUNT_ID}\n`
-    : [
-        "# FinePocket Toolbox ads.txt",
-        "# Set ADSENSE_PUBLISHER_ID to your AdSense publisher ID to publish the authorized seller record.",
-      ].join("\n") + "\n";
+  if (!publisherId) {
+    return new NextResponse("ads.txt is not configured.\n", {
+      status: 404,
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "public, max-age=300",
+      },
+    });
+  }
+
+  const body = `google.com, ${publisherId}, DIRECT, ${GOOGLE_SELLER_ACCOUNT_ID}\n`;
 
   return new NextResponse(body, {
     headers: {

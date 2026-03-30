@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
-import { LOCALES, localizePath } from "@/i18n";
+import { INDEXABLE_LOCALES, localizePath } from "@/i18n";
 import { ALL_TOOLS } from "@/lib/tools-registry";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://toolbox.finepocket.app";
-  const lastModified = new Date();
+  const lastModified = new Date("2026-03-30T00:00:00.000Z");
   const staticPages = [
     { path: "/", changeFrequency: "weekly" as const, priority: 1.0 },
     { path: "/developer", changeFrequency: "weekly" as const, priority: 0.7 },
@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/contact", changeFrequency: "yearly" as const, priority: 0.3 },
   ];
 
-  const localizedStaticPages = LOCALES.flatMap((locale) =>
+  const localizedStaticPages = INDEXABLE_LOCALES.flatMap((locale) =>
     staticPages.map((page) => ({
       url: `${baseUrl}${localizePath(page.path, locale)}`,
       lastModified,
@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  const localizedToolPages = LOCALES.flatMap((locale) =>
+  const localizedToolPages = INDEXABLE_LOCALES.flatMap((locale) =>
     ALL_TOOLS.map((tool) => ({
       url: `${baseUrl}${localizePath(tool.href, locale)}`,
       lastModified,

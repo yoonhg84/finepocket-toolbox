@@ -1,4 +1,11 @@
-export { LOCALES, DEFAULT_LOCALE, LOCALE_COOKIE_NAME, LOCALE_LABELS } from "./config";
+export {
+  LOCALES,
+  DEFAULT_LOCALE,
+  INDEXABLE_LOCALES,
+  LOCALE_COOKIE_NAME,
+  LOCALE_LABELS,
+  isIndexableLocale,
+} from "./config";
 export type { Locale } from "./config";
 export {
   detectLocaleFromAcceptLanguage,

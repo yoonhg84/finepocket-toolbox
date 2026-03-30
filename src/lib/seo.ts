@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { LOCALES, localizePath, type Locale } from "@/i18n";
+import {
+  DEFAULT_LOCALE,
+  INDEXABLE_LOCALES,
+  isIndexableLocale,
+  localizePath,
+  type Locale,
+} from "@/i18n";
 import { getRequestLocale } from "@/i18n/server";
 import type { ToolMeta } from "./tools-registry";
 
@@ -45,7 +51,7 @@ export function buildPageMetadata({
   const locale = getRequestLocale();
   const url = buildLocalizedAbsoluteUrl(path, locale);
   const languageAlternates = Object.fromEntries(
-    LOCALES.map((alternateLocale) => [
+    INDEXABLE_LOCALES.map((alternateLocale) => [
       alternateLocale,
       buildLocalizedAbsoluteUrl(path, alternateLocale),
     ])
@@ -57,8 +63,17 @@ export function buildPageMetadata({
     ...(keywords ? { keywords } : {}),
     alternates: {
       canonical: url,
-      languages: languageAlternates,
+      languages: {
+        ...languageAlternates,
+        "x-default": buildLocalizedAbsoluteUrl(path, DEFAULT_LOCALE),
+      },
     },
+    robots: isIndexableLocale(locale)
+      ? undefined
+      : {
+          index: false,
+          follow: true,
+        },
     openGraph: {
       title,
       description,
@@ -134,6 +149,19 @@ export function buildFaqJsonLd(faq: Array<{ q: string; a: string }>) {
         "@type": "Answer",
         text: item.a,
       },
+    })),
+  };
+}
+
+export function buildItemListJsonLd(items: Array<{ name: string; href: string }>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: buildAbsoluteUrl(item.href),
     })),
   };
 }
