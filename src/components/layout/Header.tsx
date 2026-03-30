@@ -6,6 +6,7 @@ import { ALL_TOOLS } from "@/lib/tools-registry";
 
 const devTools = ALL_TOOLS.filter((t) => t.category === "developer");
 const textTools = ALL_TOOLS.filter((t) => t.category === "text");
+const financeTools = ALL_TOOLS.filter((t) => t.category === "finance");
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -20,6 +21,7 @@ export function Header() {
         <nav className="hidden md:flex items-center gap-6">
           <NavDropdown label="Developer Tools" tools={devTools} />
           <NavDropdown label="Text Tools" tools={textTools} />
+          <NavDropdown label="Finance & Calculators" tools={financeTools} />
         </nav>
 
         <button
@@ -61,6 +63,17 @@ export function Header() {
               {t.name}
             </Link>
           ))}
+          <p className="text-xs font-semibold text-gray-400 uppercase mt-3 mb-2">Finance & Calculators</p>
+          {financeTools.map((t) => (
+            <Link
+              key={t.slug}
+              href={t.href}
+              className="block py-1.5 text-sm text-gray-700 hover:text-blue-600"
+              onClick={() => setMobileOpen(false)}
+            >
+              {t.name}
+            </Link>
+          ))}
         </div>
       )}
     </header>
@@ -68,25 +81,37 @@ export function Header() {
 }
 
 function NavDropdown({ label, tools }: { label: string; tools: typeof ALL_TOOLS }) {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div className="relative group">
-      <button className="text-sm text-gray-600 hover:text-gray-900 font-medium py-2">
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        className="text-sm text-gray-600 hover:text-gray-900 font-medium py-2"
+        onClick={() => setOpen(!open)}
+      >
         {label}
       </button>
-      <div className="absolute top-full left-0 pt-1 hidden group-hover:block">
-        <div className="bg-white border border-gray-200 rounded-lg shadow-lg py-2 min-w-[220px]">
-          {tools.map((t) => (
-            <Link
-              key={t.slug}
-              href={t.href}
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600"
-            >
-              <span className="mr-2 font-mono text-xs">{t.icon}</span>
-              {t.name}
-            </Link>
-          ))}
+      {open && (
+        <div className="absolute top-full left-0 pt-1">
+          <div className="bg-white border border-gray-200 rounded-lg shadow-lg py-2 min-w-[220px]">
+            {tools.map((t) => (
+              <Link
+                key={t.slug}
+                href={t.href}
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+                onClick={() => setOpen(false)}
+              >
+                <span className="mr-2 font-mono text-xs">{t.icon}</span>
+                {t.name}
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

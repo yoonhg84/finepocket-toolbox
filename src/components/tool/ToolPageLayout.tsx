@@ -14,6 +14,7 @@ interface ToolPageLayoutProps {
 const categoryLabels: Record<string, string> = {
   developer: "Developer Tools",
   text: "Text Tools",
+  finance: "Finance & Calculators",
 };
 
 export function ToolPageLayout({ tool, content, children }: ToolPageLayoutProps) {

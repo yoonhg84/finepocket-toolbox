@@ -1,6 +1,6 @@
 export interface ToolMeta {
   slug: string;
-  category: "developer" | "text";
+  category: "developer" | "text" | "finance";
   name: string;
   shortDescription: string;
   href: string;
@@ -116,6 +116,97 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/text/markdown-preview",
     keywords: ["markdown preview", "markdown editor online", "markdown to html"],
     icon: "MD",
+  },
+  // Finance & Calculator tools
+  {
+    slug: "percentage-calculator",
+    category: "finance",
+    name: "Percentage Calculator",
+    shortDescription: "Calculate percentages, discounts, and percentage changes instantly",
+    href: "/finance/percentage-calculator",
+    keywords: ["percentage calculator", "percent calculator", "percentage change", "discount calculator"],
+    icon: "%",
+  },
+  {
+    slug: "tip-calculator",
+    category: "finance",
+    name: "Tip Calculator",
+    shortDescription: "Calculate tips and split bills among friends easily",
+    href: "/finance/tip-calculator",
+    keywords: ["tip calculator", "gratuity calculator", "bill splitter", "tip calculator for restaurant"],
+    icon: "💰",
+  },
+  {
+    slug: "age-calculator",
+    category: "finance",
+    name: "Age Calculator",
+    shortDescription: "Calculate your exact age in years, months, days, and more",
+    href: "/finance/age-calculator",
+    keywords: ["age calculator", "how old am I", "birthday calculator", "age in days"],
+    icon: "🎂",
+  },
+  {
+    slug: "data-converter",
+    category: "finance",
+    name: "Data Storage Converter",
+    shortDescription: "Convert between bytes, KB, MB, GB, TB and other data units",
+    href: "/finance/data-converter",
+    keywords: ["byte converter", "MB to GB", "data unit converter", "storage converter"],
+    icon: "💾",
+  },
+  {
+    slug: "unit-converter",
+    category: "finance",
+    name: "Unit Converter",
+    shortDescription: "Convert length, weight, temperature, volume, and more",
+    href: "/finance/unit-converter",
+    keywords: ["unit converter", "cm to inches", "kg to lbs", "metric converter"],
+    icon: "📏",
+  },
+  {
+    slug: "bmi-calculator",
+    category: "finance",
+    name: "BMI Calculator",
+    shortDescription: "Calculate your Body Mass Index and check your weight status",
+    href: "/finance/bmi-calculator",
+    keywords: ["BMI calculator", "body mass index", "BMI chart", "weight calculator"],
+    icon: "⚖️",
+  },
+  {
+    slug: "loan-calculator",
+    category: "finance",
+    name: "Loan Calculator",
+    shortDescription: "Calculate monthly payments, total interest, and amortization schedule",
+    href: "/finance/loan-calculator",
+    keywords: ["loan calculator", "mortgage calculator", "EMI calculator", "loan payment calculator"],
+    icon: "🏦",
+  },
+  {
+    slug: "compound-interest",
+    category: "finance",
+    name: "Compound Interest Calculator",
+    shortDescription: "Calculate compound interest growth with regular contributions",
+    href: "/finance/compound-interest",
+    keywords: ["compound interest calculator", "investment calculator", "savings calculator"],
+    icon: "📈",
+  },
+  {
+    slug: "date-calculator",
+    category: "finance",
+    name: "Date Calculator",
+    shortDescription: "Calculate days between dates or add/subtract days from a date",
+    href: "/finance/date-calculator",
+    keywords: ["date calculator", "days between dates", "date difference", "add days to date"],
+    icon: "📅",
+  },
+  {
+    slug: "currency-converter",
+    category: "finance",
+    name: "Currency Converter",
+    shortDescription: "Convert between 30+ world currencies with live exchange rates",
+    href: "/finance/currency-converter",
+    keywords: ["currency converter", "exchange rate", "USD to KRW", "currency calculator"],
+    icon: "💱",
   },
 ];
 

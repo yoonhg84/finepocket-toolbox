@@ -3,13 +3,38 @@ import { ALL_TOOLS, getToolsByCategory } from "@/lib/tools-registry";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "FinePocket Toolbox - Free Online Developer & Text Tools",
+  title: "FinePocket Toolbox - Free Online Developer, Text & Finance Tools",
   description:
-    "Free online tools for developers and writers. JSON formatter, Base64 encoder, hash generator, word counter, and more. All tools run entirely in your browser.",
+    "Free online tools for developers and everyone. JSON formatter, Base64 encoder, loan calculator, unit converter, and more. All tools run entirely in your browser.",
 };
 
 const devTools = getToolsByCategory("developer");
 const textTools = getToolsByCategory("text");
+const financeTools = getToolsByCategory("finance");
+
+function ToolGrid({ tools }: { tools: typeof ALL_TOOLS }) {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {tools.map((tool) => (
+        <Link
+          key={tool.slug}
+          href={tool.href}
+          className="block p-5 border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-md transition-all group"
+        >
+          <div className="flex items-center gap-3 mb-2">
+            <span className="text-lg font-mono bg-gray-100 px-2 py-1 rounded group-hover:bg-blue-50">
+              {tool.icon}
+            </span>
+            <h3 className="font-semibold text-gray-900 group-hover:text-blue-600">
+              {tool.name}
+            </h3>
+          </div>
+          <p className="text-sm text-gray-500">{tool.shortDescription}</p>
+        </Link>
+      ))}
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -23,14 +48,14 @@ export default function Home() {
             name: "FinePocket Toolbox",
             url: "https://toolbox.finepocket.app",
             description:
-              "Free online developer and text tools. All processing happens in your browser.",
+              "Free online developer, text, and finance tools. All processing happens in your browser.",
           }),
         }}
       />
 
       <section className="text-center mb-12">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Free Online Developer & Text Tools
+          Free Online Developer, Text & Finance Tools
         </h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           {ALL_TOOLS.length} powerful tools that run entirely in your browser.
@@ -39,49 +64,18 @@ export default function Home() {
       </section>
 
       <section className="mb-12">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">Finance & Calculators</h2>
+        <ToolGrid tools={financeTools} />
+      </section>
+
+      <section className="mb-12">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Developer Tools</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {devTools.map((tool) => (
-            <Link
-              key={tool.slug}
-              href={tool.href}
-              className="block p-5 border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-md transition-all group"
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-lg font-mono bg-gray-100 px-2 py-1 rounded group-hover:bg-blue-50">
-                  {tool.icon}
-                </span>
-                <h3 className="font-semibold text-gray-900 group-hover:text-blue-600">
-                  {tool.name}
-                </h3>
-              </div>
-              <p className="text-sm text-gray-500">{tool.shortDescription}</p>
-            </Link>
-          ))}
-        </div>
+        <ToolGrid tools={devTools} />
       </section>
 
       <section className="mb-12">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Text Tools</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {textTools.map((tool) => (
-            <Link
-              key={tool.slug}
-              href={tool.href}
-              className="block p-5 border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-md transition-all group"
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-lg font-mono bg-gray-100 px-2 py-1 rounded group-hover:bg-blue-50">
-                  {tool.icon}
-                </span>
-                <h3 className="font-semibold text-gray-900 group-hover:text-blue-600">
-                  {tool.name}
-                </h3>
-              </div>
-              <p className="text-sm text-gray-500">{tool.shortDescription}</p>
-            </Link>
-          ))}
-        </div>
+        <ToolGrid tools={textTools} />
       </section>
 
       <section className="text-center py-8 bg-gray-50 rounded-xl">
