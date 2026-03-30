@@ -114,7 +114,7 @@ export function CategoryHubPage({ content }: CategoryHubPageProps) {
               <Link
                 key={tool.slug}
                 href={getToolHref(tool, locale)}
-                className="block rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-blue-300 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-blue-600"
+                className="block rounded-xl border border-gray-200 bg-white p-5 transition-all duration-200 hover:border-blue-300 hover:shadow-md hover:-translate-y-0.5 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-blue-600"
               >
                 <div className="flex items-center gap-3 mb-2">
                   <span className="rounded bg-gray-100 px-2 py-1 font-mono text-sm text-gray-700 dark:bg-gray-700 dark:text-gray-200">
