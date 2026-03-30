@@ -37,7 +37,7 @@ function ToolGrid({
   locale: ReturnType<typeof getRequestLocale>;
 }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
       {tools.map((tool) => {
         const localized = getLocalizedToolText(tool, t);
 
@@ -111,8 +111,8 @@ export default function Home() {
       </section>
 
       <section className="mb-12">
-        <CategoryHeading href={getCategoryHref("calculators", locale)} label={t("nav.calculatorTools")} />
-        <ToolGrid tools={calculatorTools} t={t} locale={locale} />
+        <CategoryHeading href={getCategoryHref("text", locale)} label={t("nav.textTools")} />
+        <ToolGrid tools={textTools} t={t} locale={locale} />
       </section>
 
       <section className="mb-12">
@@ -121,8 +121,8 @@ export default function Home() {
       </section>
 
       <section className="mb-12">
-        <CategoryHeading href={getCategoryHref("text", locale)} label={t("nav.textTools")} />
-        <ToolGrid tools={textTools} t={t} locale={locale} />
+        <CategoryHeading href={getCategoryHref("calculators", locale)} label={t("nav.calculatorTools")} />
+        <ToolGrid tools={calculatorTools} t={t} locale={locale} />
       </section>
     </div>
   );

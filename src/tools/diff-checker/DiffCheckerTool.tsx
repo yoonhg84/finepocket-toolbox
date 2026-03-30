@@ -99,8 +99,8 @@ export function DiffCheckerTool() {
         </div>
       </div>
 
-      {/* Action buttons */}
-      <div className="flex items-center gap-3">
+      {/* Action buttons and view mode */}
+      <div className="flex items-center gap-3 flex-wrap">
         <button
           onClick={handleCompare}
           className="px-5 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
@@ -113,6 +113,13 @@ export function DiffCheckerTool() {
         >
           {ui("Clear")}
         </button>
+        <div className="ml-auto">
+          <TabGroup
+            tabs={VIEW_TABS.map((tab) => ({ ...tab, label: ui(tab.label) }))}
+            activeTab={viewMode}
+            onChange={handleViewChange}
+          />
+        </div>
       </div>
 
       {/* Results area */}
@@ -138,13 +145,6 @@ export function DiffCheckerTool() {
               </span>
             </div>
           )}
-
-          {/* View mode toggle */}
-          <TabGroup
-                tabs={VIEW_TABS.map((tab) => ({ ...tab, label: ui(tab.label) }))}
-                activeTab={viewMode}
-                onChange={handleViewChange}
-              />
 
           {/* Diff output */}
           {viewMode === "inline" ? (

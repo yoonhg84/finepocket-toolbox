@@ -114,7 +114,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     shortDescription: "Pick colors and convert between HEX, RGB, HSL formats",
     href: "/developer/color-picker",
     keywords: ["color picker", "hex to rgb", "color converter"],
-    icon: "🎨",
+    icon: "◑",
     relatedSlugs: ["markdown-preview", "base64", "json-formatter"],
   },
   {

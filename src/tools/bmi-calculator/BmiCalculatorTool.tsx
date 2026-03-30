@@ -24,11 +24,11 @@ export function BmiCalculatorTool() {
   const { locale } = useI18n();
   const ui = getToolUiText(locale);
   const [unit, setUnit] = useState<UnitSystem>("metric");
-  const [heightCm, setHeightCm] = useState("");
-  const [feet, setFeet] = useState("");
-  const [inches, setInches] = useState("");
-  const [weightKg, setWeightKg] = useState("");
-  const [weightLbs, setWeightLbs] = useState("");
+  const [heightCm, setHeightCm] = useState("170");
+  const [feet, setFeet] = useState("5");
+  const [inches, setInches] = useState("7");
+  const [weightKg, setWeightKg] = useState("70");
+  const [weightLbs, setWeightLbs] = useState("154");
 
   let result: BmiResult | null = null;
 

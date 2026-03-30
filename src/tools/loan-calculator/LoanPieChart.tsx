@@ -34,10 +34,13 @@ export default function LoanPieChart({ principal, interest }: LoanPieChartProps)
 
   const options = {
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "bottom" as const,
+        labels: {
+          color: typeof window !== "undefined" && document.documentElement.classList.contains("dark") ? "#d1d5db" : "#374151",
+        },
       },
       tooltip: {
         callbacks: {
@@ -52,5 +55,9 @@ export default function LoanPieChart({ principal, interest }: LoanPieChartProps)
     },
   };
 
-  return <Pie data={data} options={options} />;
+  return (
+    <div className="h-64">
+      <Pie data={data} options={options} />
+    </div>
+  );
 }

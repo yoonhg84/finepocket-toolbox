@@ -51,12 +51,17 @@ export default function LoanLineChart({ schedule }: LoanLineChartProps) {
     ],
   };
 
+  const isDark = typeof window !== "undefined" && document.documentElement.classList.contains("dark");
+  const textColor = isDark ? "#d1d5db" : "#374151";
+  const gridColor = isDark ? "rgba(75, 85, 99, 0.4)" : "rgba(209, 213, 219, 0.8)";
+
   const options = {
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "bottom" as const,
+        labels: { color: textColor },
       },
       tooltip: {
         callbacks: {
@@ -69,14 +74,22 @@ export default function LoanLineChart({ schedule }: LoanLineChartProps) {
     },
     scales: {
       x: {
-        title: { display: true, text: ui("Month") },
+        title: { display: true, text: ui("Month"), color: textColor },
+        ticks: { color: textColor },
+        grid: { color: gridColor },
       },
       y: {
-        title: { display: true, text: ui("Balance") },
+        title: { display: true, text: ui("Balance"), color: textColor },
+        ticks: { color: textColor },
+        grid: { color: gridColor },
         beginAtZero: true,
       },
     },
   };
 
-  return <Line data={data} options={options} />;
+  return (
+    <div className="h-64">
+      <Line data={data} options={options} />
+    </div>
+  );
 }

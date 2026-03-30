@@ -9,7 +9,7 @@ import { renderMarkdown, SAMPLE_MARKDOWN } from "./logic";
 export function MarkdownPreviewTool() {
   const { locale } = useI18n();
   const ui = getToolUiText(locale);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(SAMPLE_MARKDOWN);
   const [cheatsheetOpen, setCheatsheetOpen] = useState(false);
 
   const html = useMemo(() => renderMarkdown(input), [input]);

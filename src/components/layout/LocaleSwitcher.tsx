@@ -45,7 +45,7 @@ export function LocaleSwitcher() {
           </option>
         ))}
       </select>
-      <span className="pointer-events-none absolute inset-y-0 right-2 flex items-center text-gray-400 dark:text-gray-500">
+      <span className="pointer-events-none absolute inset-y-0 right-2 flex items-center text-gray-400 dark:text-gray-500" aria-hidden="true">
         ▾
       </span>
     </label>
