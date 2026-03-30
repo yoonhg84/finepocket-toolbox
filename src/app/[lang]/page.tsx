@@ -45,7 +45,7 @@ function ToolGrid({
           <Link
             key={tool.slug}
             href={getToolHref(tool, locale)}
-            className="block p-5 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
+            className="block p-5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
           >
             <div className="flex items-center gap-3 mb-2">
               <span className="text-lg font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30">
@@ -63,12 +63,31 @@ function ToolGrid({
   );
 }
 
+function CategoryHeading({ href, label }: { href: string; label: string }) {
+  return (
+    <Link
+      href={href}
+      className="mb-6 inline-flex items-center gap-2 text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400 group"
+    >
+      {label}
+      <svg
+        className="h-5 w-5 text-gray-400 group-hover:text-blue-500 dark:text-gray-500 dark:group-hover:text-blue-400 transition-transform group-hover:translate-x-0.5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+      </svg>
+    </Link>
+  );
+}
+
 export default function Home() {
   const locale = getRequestLocale();
   const t = getServerTranslator(locale);
 
   return (
-    <div className="max-w-[960px] mx-auto px-4 py-12">
+    <div className="max-w-[1080px] mx-auto px-4 py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -87,50 +106,23 @@ export default function Home() {
       </section>
 
       <section className="mb-12">
-        <Link
-          href={getCategoryHref("finance", locale)}
-          className="mb-6 inline-block text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
-        >
-          {t("nav.financeTools")}
-        </Link>
-        <ToolGrid tools={financeTools} t={t} locale={locale} />
-      </section>
-
-      <section className="mb-12">
-        <Link
-          href={getCategoryHref("calculators", locale)}
-          className="mb-6 inline-block text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
-        >
-          {t("nav.calculatorTools")}
-        </Link>
-        <ToolGrid tools={calculatorTools} t={t} locale={locale} />
-      </section>
-
-      <section className="mb-12">
-        <Link
-          href={getCategoryHref("developer", locale)}
-          className="mb-6 inline-block text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
-        >
-          {t("nav.developerTools")}
-        </Link>
+        <CategoryHeading href={getCategoryHref("developer", locale)} label={t("nav.developerTools")} />
         <ToolGrid tools={devTools} t={t} locale={locale} />
       </section>
 
       <section className="mb-12">
-        <Link
-          href={getCategoryHref("text", locale)}
-          className="mb-6 inline-block text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
-        >
-          {t("nav.textTools")}
-        </Link>
-        <ToolGrid tools={textTools} t={t} locale={locale} />
+        <CategoryHeading href={getCategoryHref("calculators", locale)} label={t("nav.calculatorTools")} />
+        <ToolGrid tools={calculatorTools} t={t} locale={locale} />
       </section>
 
-      <section className="text-center py-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
-          {t("home.privacyTitle")}
-        </h2>
-        <p className="text-gray-600 dark:text-gray-400">{t("home.privacyDescription")}</p>
+      <section className="mb-12">
+        <CategoryHeading href={getCategoryHref("finance", locale)} label={t("nav.financeTools")} />
+        <ToolGrid tools={financeTools} t={t} locale={locale} />
+      </section>
+
+      <section className="mb-12">
+        <CategoryHeading href={getCategoryHref("text", locale)} label={t("nav.textTools")} />
+        <ToolGrid tools={textTools} t={t} locale={locale} />
       </section>
     </div>
   );

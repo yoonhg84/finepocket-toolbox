@@ -40,7 +40,7 @@ export function ToolPageLayout({ tool, content, children }: ToolPageLayoutProps)
   ];
 
   return (
-    <div className="max-w-[960px] mx-auto px-4 py-6">
+    <div className="max-w-[1080px] mx-auto px-4 py-6">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

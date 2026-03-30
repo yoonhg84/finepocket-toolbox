@@ -21,7 +21,7 @@ export function ContentPage({ content, path, children }: ContentPageProps) {
   ];
 
   return (
-    <div className="max-w-[960px] mx-auto px-4 py-12">
+    <div className="max-w-[1080px] mx-auto px-4 py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

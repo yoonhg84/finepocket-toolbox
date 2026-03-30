@@ -57,7 +57,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
-      <div className="max-w-[960px] mx-auto px-4 h-14 flex items-center justify-between">
+      <div className="max-w-[1080px] mx-auto px-4 h-14 flex items-center justify-between">
         <Link
           href={localizePath("/", locale)}
           className="font-bold text-lg text-gray-900 dark:text-gray-100"
