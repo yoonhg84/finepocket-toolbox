@@ -35,9 +35,17 @@
     "title": "FinePocket Toolbox",
     "subtitle": "Free Online Developer, Text, Finance & Calculator Tools",
     "heroDescription": "Free online tools for developers and everyone. Explore browser-based utilities for development, writing, finance planning, and everyday calculations.",
-    "heroStats": "{count} powerful tools that run entirely in your browser. No data is sent to any server. No sign-up required.",
+    "heroStats": "{count} fast browser-based tools with clear explanations, visible policies, and no sign-up required.",
+    "trustTitle": "Built for clarity, privacy, and trust",
+    "trustDescription": "FinePocket Toolbox keeps policy pages visible, separates higher-trust topics from general utilities, and avoids making stronger privacy claims than the code can support.",
+    "trustPoint1": "Most tools process input locally in the browser.",
+    "trustPoint2": "Pages that rely on external reference data say so clearly.",
+    "trustPoint3": "Finance and health outputs are framed as reference-only guidance.",
+    "trustPoint4": "Policy, privacy, and contact pages stay one click away.",
+    "reviewTitle": "Review the site standards",
+    "reviewDescription": "See how the site handles privacy, advertising, contact requests, and reference-only content.",
     "privacyTitle": "Your Privacy Matters",
-    "privacyDescription": "All tools process data entirely in your browser. Nothing is uploaded to any server. Your data stays on your device."
+    "privacyDescription": "Most tools process data locally in your browser. If a page relies on external reference data, it explains that clearly."
   },
   "footer": {
     "about": "About",
@@ -45,7 +53,7 @@
     "terms": "Terms of Service",
     "contact": "Contact",
     "copyright": "© {year} FinePocket. All rights reserved.",
-    "browserOnly": "All tools run entirely in your browser. No data is sent to any server."
+    "browserOnly": "Most tools run in your browser. Pages that use external data explain that clearly."
   },
   "seo": {
     "whatIs": "What is {toolName}?",
@@ -56,7 +64,10 @@
     "relatedTools": "Related Tools"
   },
   "toolPage": {
-    "browserBased": "Free, browser-based, no sign-up required."
+    "browserBased": "Free, browser-based, no sign-up required.",
+    "financeNoticeTitle": "Reference-only finance estimates",
+    "financeNoticeBody": "Rates, fees, taxes, and provider-specific rules can change the real result. Use these tools for planning and comparison, then confirm terms with the relevant institution.",
+    "adDisclosure": "Advertising may support this site. Primary controls stay separate from ad placements."
   },
   "tools": {
     "json-formatter": {

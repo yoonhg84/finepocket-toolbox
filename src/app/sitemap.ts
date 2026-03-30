@@ -4,7 +4,9 @@ import { ALL_TOOLS } from "@/lib/tools-registry";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://toolbox.finepocket.app";
-  const lastModified = new Date("2026-03-30T00:00:00.000Z");
+  const lastModified = new Date(
+    process.env.SITE_UPDATED_AT ?? "2026-03-30T00:00:00.000Z"
+  );
   const staticPages = [
     { path: "/", changeFrequency: "weekly" as const, priority: 1.0 },
     { path: "/developer", changeFrequency: "weekly" as const, priority: 0.7 },

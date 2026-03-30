@@ -22,7 +22,9 @@ export interface ToolContent {
 export const SITE_NAME = "FinePocket Toolbox";
 export const ORGANIZATION_NAME = "FinePocket";
 export const SITE_URL = "https://toolbox.finepocket.app";
-export const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/apple-icon.png`;
+export const SITE_TAGLINE =
+  "Free online developer, text, finance, and calculator tools with privacy-first defaults and no sign-up required.";
+export const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/opengraph-image`;
 
 interface PageMetadataInput {
   title: string;
@@ -84,14 +86,14 @@ export function buildPageMetadata({
       images: [
         {
           url: DEFAULT_SOCIAL_IMAGE,
-          width: 180,
-          height: 180,
+          width: 1200,
+          height: 630,
           alt: SITE_NAME,
         },
       ],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title,
       description,
       images: [DEFAULT_SOCIAL_IMAGE],
@@ -186,5 +188,53 @@ export function buildOrganizationJsonLd() {
     name: ORGANIZATION_NAME,
     url: SITE_URL,
     email: "support@finepocket.app",
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: "support@finepocket.app",
+      url: `${SITE_URL}/en/contact`,
+      availableLanguage: ["English", "Korean"],
+    },
+  };
+}
+
+export function buildWebsiteJsonLd(description: string) {
+  const locale = getRequestLocale();
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: buildLocalizedAbsoluteUrl("/", locale),
+    inLanguage: locale,
+    description,
+    publisher: {
+      "@type": "Organization",
+      name: ORGANIZATION_NAME,
+      url: SITE_URL,
+    },
+  };
+}
+
+export function buildContactPageJsonLd(input: {
+  title: string;
+  description: string;
+  email?: string;
+}) {
+  const locale = getRequestLocale();
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: input.title,
+    description: input.description,
+    url: buildLocalizedAbsoluteUrl("/contact", locale),
+    inLanguage: locale,
+    mainEntity: {
+      "@type": "Organization",
+      name: ORGANIZATION_NAME,
+      url: SITE_URL,
+      ...(input.email ? { email: input.email } : {}),
+    },
   };
 }

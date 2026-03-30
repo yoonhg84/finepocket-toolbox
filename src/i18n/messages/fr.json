@@ -33,9 +33,9 @@
     "title": "FinePocket Toolbox",
     "subtitle": "Outils en ligne gratuits pour le développement, le texte, la finance et les calculs",
     "heroDescription": "Des outils en ligne gratuits dans le navigateur pour le développement, l'écriture, la planification financière et les calculs du quotidien.",
-    "heroStats": "{count} outils puissants fonctionnent entièrement dans votre navigateur. Aucune donnée n'est envoyée à un serveur. Aucune inscription requise.",
+    "heroStats": "{count} outils rapides dans le navigateur avec des explications claires, des règles visibles et sans inscription.",
     "privacyTitle": "Votre confidentialité compte",
-    "privacyDescription": "Tous les outils traitent les données entièrement dans votre navigateur. Rien n'est téléversé vers un serveur. Vos données restent sur votre appareil."
+    "privacyDescription": "La plupart des outils traitent les données localement dans votre navigateur. Si une page utilise des données de référence externes, elle l'indique clairement."
   },
   "footer": {
     "about": "À propos",
@@ -43,7 +43,7 @@
     "terms": "Conditions d'utilisation",
     "contact": "Contact",
     "copyright": "© {year} FinePocket. Tous droits réservés.",
-    "browserOnly": "Tous les outils fonctionnent entièrement dans votre navigateur. Aucune donnée n'est envoyée à un serveur."
+    "browserOnly": "La plupart des outils fonctionnent dans votre navigateur. Les pages qui utilisent des données externes l'indiquent clairement."
   },
   "seo": {
     "whatIs": "Qu'est-ce que {toolName} ?",

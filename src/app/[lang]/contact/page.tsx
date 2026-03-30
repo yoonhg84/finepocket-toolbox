@@ -1,7 +1,7 @@
 import { ContentPage } from "@/components/site/ContentPage";
 import { getSitePageContent } from "@/content/site-pages";
 import { getRequestLocale } from "@/i18n/server";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildContactPageJsonLd, buildPageMetadata } from "@/lib/seo";
 
 export function generateMetadata() {
   const content = getSitePageContent("contact", getRequestLocale());
@@ -14,5 +14,23 @@ export function generateMetadata() {
 }
 
 export default function ContactPage() {
-  return <ContentPage content={getSitePageContent("contact", getRequestLocale())} />;
+  const content = getSitePageContent("contact", getRequestLocale());
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildContactPageJsonLd({
+              title: content.title,
+              description: content.description,
+              email: content.email,
+            })
+          ),
+        }}
+      />
+      <ContentPage content={content} />
+    </>
+  );
 }
