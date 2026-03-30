@@ -1,1 +1,148 @@
-{}
+{
+  "common": {
+    "copy": "Copier",
+    "copied": "Copié",
+    "download": "Télécharger",
+    "clear": "Effacer",
+    "paste": "Coller",
+    "loadSample": "Charger un exemple",
+    "reset": "Réinitialiser",
+    "calculate": "Calculer",
+    "convert": "Convertir",
+    "error": "Erreur",
+    "result": "Résultat",
+    "input": "Entrée",
+    "output": "Sortie",
+    "dragDropFile": "Glissez-déposez un fichier ici ou cliquez pour parcourir",
+    "darkMode": "Mode sombre",
+    "lightMode": "Mode clair",
+    "switchToDarkMode": "Passer au mode sombre",
+    "switchToLightMode": "Passer au mode clair",
+    "language": "Langue",
+    "selectLanguage": "Choisir la langue",
+    "home": "Accueil"
+  },
+  "nav": {
+    "developerTools": "Outils développeur",
+    "textTools": "Outils de texte",
+    "financeTools": "Finance et calculatrices",
+    "toggleMenu": "Basculer le menu"
+  },
+  "home": {
+    "title": "FinePocket Toolbox",
+    "subtitle": "Outils en ligne gratuits pour le développement, le texte et la finance",
+    "heroDescription": "Des outils en ligne gratuits pour les développeurs et pour tous. Tous les outils fonctionnent entièrement dans votre navigateur.",
+    "heroStats": "{count} outils puissants fonctionnent entièrement dans votre navigateur. Aucune donnée n'est envoyée à un serveur. Aucune inscription requise.",
+    "privacyTitle": "Votre confidentialité compte",
+    "privacyDescription": "Tous les outils traitent les données entièrement dans votre navigateur. Rien n'est téléversé vers un serveur. Vos données restent sur votre appareil."
+  },
+  "footer": {
+    "about": "À propos",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "contact": "Contact",
+    "copyright": "© {year} FinePocket Toolbox. Tous droits réservés.",
+    "browserOnly": "Tous les outils fonctionnent entièrement dans votre navigateur. Aucune donnée n'est envoyée à un serveur."
+  },
+  "seo": {
+    "whatIs": "Qu'est-ce que {toolName} ?",
+    "howToUse": "Comment l'utiliser",
+    "howItWorks": "Comment ça fonctionne",
+    "useCases": "Cas d'usage fréquents",
+    "faq": "Questions fréquentes",
+    "relatedTools": "Outils associés"
+  },
+  "toolPage": {
+    "browserBased": "Gratuit, dans le navigateur, sans inscription."
+  },
+  "tools": {
+    "json-formatter": {
+      "name": "Formateur / Validateur JSON",
+      "shortDescription": "Formatez, validez et embellissez les données JSON instantanément"
+    },
+    "base64": {
+      "name": "Encodeur / Décodeur Base64",
+      "shortDescription": "Encodez et décodez des chaînes, fichiers et images Base64"
+    },
+    "jwt-decoder": {
+      "name": "Décodeur JWT",
+      "shortDescription": "Décodez et inspectez des JSON Web Tokens instantanément"
+    },
+    "url-encoder": {
+      "name": "Encodeur / Décodeur d'URL",
+      "shortDescription": "Encodez et décodez des URL avec l'encodage en pourcentage"
+    },
+    "regex-tester": {
+      "name": "Testeur de regex",
+      "shortDescription": "Testez des expressions régulières avec correspondance en temps réel"
+    },
+    "hash-generator": {
+      "name": "Générateur de hash",
+      "shortDescription": "Générez des hash MD5, SHA-1, SHA-256 et autres"
+    },
+    "diff-checker": {
+      "name": "Comparateur de différences de texte",
+      "shortDescription": "Comparez deux textes et trouvez les différences"
+    },
+    "color-picker": {
+      "name": "Sélecteur / Convertisseur de couleur",
+      "shortDescription": "Choisissez des couleurs et convertissez entre HEX, RGB et HSL"
+    },
+    "word-counter": {
+      "name": "Compteur de mots / caractères",
+      "shortDescription": "Comptez les mots, caractères, phrases et le temps de lecture"
+    },
+    "case-converter": {
+      "name": "Convertisseur de casse",
+      "shortDescription": "Convertissez du texte en MAJUSCULES, minuscules, Titre, camelCase et plus"
+    },
+    "lorem-ipsum": {
+      "name": "Générateur Lorem Ipsum",
+      "shortDescription": "Générez du faux texte pour vos maquettes"
+    },
+    "markdown-preview": {
+      "name": "Aperçu Markdown",
+      "shortDescription": "Écrivez en Markdown et prévisualisez le HTML rendu en temps réel"
+    },
+    "percentage-calculator": {
+      "name": "Calculatrice de pourcentages",
+      "shortDescription": "Calculez instantanément pourcentages, remises et variations"
+    },
+    "tip-calculator": {
+      "name": "Calculatrice de pourboire",
+      "shortDescription": "Calculez les pourboires et partagez l'addition facilement"
+    },
+    "age-calculator": {
+      "name": "Calculatrice d'âge",
+      "shortDescription": "Calculez votre âge exact en années, mois, jours et plus"
+    },
+    "data-converter": {
+      "name": "Convertisseur de stockage de données",
+      "shortDescription": "Convertissez entre octets, Ko, Mo, Go, To et d'autres unités"
+    },
+    "unit-converter": {
+      "name": "Convertisseur d'unités",
+      "shortDescription": "Convertissez longueur, poids, température, volume et plus"
+    },
+    "bmi-calculator": {
+      "name": "Calculatrice d'IMC",
+      "shortDescription": "Calculez votre indice de masse corporelle et votre catégorie de poids"
+    },
+    "loan-calculator": {
+      "name": "Calculatrice de prêt",
+      "shortDescription": "Calculez mensualités, intérêts totaux et échéancier d'amortissement"
+    },
+    "compound-interest": {
+      "name": "Calculatrice d'intérêt composé",
+      "shortDescription": "Calculez la croissance des intérêts composés avec versements réguliers"
+    },
+    "date-calculator": {
+      "name": "Calculatrice de dates",
+      "shortDescription": "Calculez les jours entre des dates ou ajoutez/enlevez des jours"
+    },
+    "currency-converter": {
+      "name": "Convertisseur de devises",
+      "shortDescription": "Convertissez plus de 30 devises avec des taux de change en direct"
+    }
+  }
+}

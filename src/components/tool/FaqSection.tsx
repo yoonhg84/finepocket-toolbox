@@ -1,13 +1,14 @@
 interface FaqSectionProps {
   items: Array<{ q: string; a: string }>;
+  title?: string;
 }
 
-export function FaqSection({ items }: FaqSectionProps) {
+export function FaqSection({ items, title = "FAQ" }: FaqSectionProps) {
   if (items.length === 0) return null;
 
   return (
     <section className="mb-8">
-      <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">FAQ</h2>
+      <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">{title}</h2>
       <div className="space-y-3">
         {items.map((item, i) => (
           <details key={i} className="group border border-gray-200 dark:border-gray-700 rounded-lg">

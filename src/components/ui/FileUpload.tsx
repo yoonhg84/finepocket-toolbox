@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useState, useRef } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
 
 interface FileUploadProps {
   accept?: string;
@@ -13,10 +14,12 @@ export function FileUpload({
   accept = "*",
   onFileRead,
   readAs = "text",
-  label = "Drop a file here or click to browse",
+  label,
 }: FileUploadProps) {
   const [isDragging, setIsDragging] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { t } = useI18n();
+  const resolvedLabel = label ?? t("common.dragDropFile");
 
   const handleFile = useCallback(
     (file: File) => {
@@ -61,7 +64,7 @@ export function FileUpload({
           : "border-gray-300 text-gray-500 hover:border-gray-400 dark:border-gray-600 dark:text-gray-400 dark:hover:border-gray-500"
       }`}
     >
-      <p>{label}</p>
+      <p>{resolvedLabel}</p>
       <input
         ref={inputRef}
         type="file"

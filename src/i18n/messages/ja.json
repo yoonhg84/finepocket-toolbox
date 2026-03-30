@@ -1,1 +1,148 @@
-{}
+{
+  "common": {
+    "copy": "コピー",
+    "copied": "コピーしました",
+    "download": "ダウンロード",
+    "clear": "クリア",
+    "paste": "貼り付け",
+    "loadSample": "サンプルを読み込む",
+    "reset": "リセット",
+    "calculate": "計算",
+    "convert": "変換",
+    "error": "エラー",
+    "result": "結果",
+    "input": "入力",
+    "output": "出力",
+    "dragDropFile": "ここにファイルをドラッグするか、クリックして参照してください",
+    "darkMode": "ダークモード",
+    "lightMode": "ライトモード",
+    "switchToDarkMode": "ダークモードに切り替える",
+    "switchToLightMode": "ライトモードに切り替える",
+    "language": "言語",
+    "selectLanguage": "言語を選択",
+    "home": "ホーム"
+  },
+  "nav": {
+    "developerTools": "開発ツール",
+    "textTools": "テキストツール",
+    "financeTools": "金融・計算ツール",
+    "toggleMenu": "メニューを切り替える"
+  },
+  "home": {
+    "title": "FinePocket Toolbox",
+    "subtitle": "無料のオンライン開発・テキスト・金融ツール",
+    "heroDescription": "開発者やすべての人のための無料オンラインツールです。すべてのツールはブラウザ内で動作します。",
+    "heroStats": "{count} 個の高機能ツールがすべてブラウザ内で動作します。データはどのサーバーにも送信されません。登録不要です。",
+    "privacyTitle": "プライバシーを大切に",
+    "privacyDescription": "すべてのツールはブラウザ内でデータを処理します。どのサーバーにもアップロードされません。データはお使いの端末に保持されます。"
+  },
+  "footer": {
+    "about": "概要",
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約",
+    "contact": "お問い合わせ",
+    "copyright": "© {year} FinePocket Toolbox. 無断転載を禁じます。",
+    "browserOnly": "すべてのツールはブラウザ内で動作します。データはどのサーバーにも送信されません。"
+  },
+  "seo": {
+    "whatIs": "{toolName} とは？",
+    "howToUse": "使い方",
+    "howItWorks": "仕組み",
+    "useCases": "よくある使用例",
+    "faq": "よくある質問",
+    "relatedTools": "関連ツール"
+  },
+  "toolPage": {
+    "browserBased": "無料、ブラウザ完結、登録不要。"
+  },
+  "tools": {
+    "json-formatter": {
+      "name": "JSONフォーマッター / バリデーター",
+      "shortDescription": "JSONデータをすばやく整形、検証、見やすく表示"
+    },
+    "base64": {
+      "name": "Base64エンコーダー / デコーダー",
+      "shortDescription": "Base64文字列、ファイル、画像をエンコード・デコード"
+    },
+    "jwt-decoder": {
+      "name": "JWTデコーダー",
+      "shortDescription": "JSON Web Token をすばやくデコードして確認"
+    },
+    "url-encoder": {
+      "name": "URLエンコーダー / デコーダー",
+      "shortDescription": "パーセントエンコーディングでURLをエンコード・デコード"
+    },
+    "regex-tester": {
+      "name": "正規表現テスター",
+      "shortDescription": "リアルタイム一致で正規表現をテスト"
+    },
+    "hash-generator": {
+      "name": "ハッシュジェネレーター",
+      "shortDescription": "MD5、SHA-1、SHA-256 などのハッシュを生成"
+    },
+    "diff-checker": {
+      "name": "テキスト差分チェッカー",
+      "shortDescription": "2つのテキストを比較して差分を確認"
+    },
+    "color-picker": {
+      "name": "カラーピッカー / コンバーター",
+      "shortDescription": "色を選択し、HEX・RGB・HSL 間で変換"
+    },
+    "word-counter": {
+      "name": "単語 / 文字カウンター",
+      "shortDescription": "単語数、文字数、文数、読了時間をカウント"
+    },
+    "case-converter": {
+      "name": "ケース変換",
+      "shortDescription": "テキストを UPPER、lower、Title、camelCase などに変換"
+    },
+    "lorem-ipsum": {
+      "name": "Lorem Ipsum ジェネレーター",
+      "shortDescription": "デザイン用のダミーテキストを生成"
+    },
+    "markdown-preview": {
+      "name": "Markdown プレビュー",
+      "shortDescription": "Markdown を書いてレンダリングされた HTML をリアルタイム表示"
+    },
+    "percentage-calculator": {
+      "name": "パーセンテージ計算機",
+      "shortDescription": "割合、割引、増減率をすばやく計算"
+    },
+    "tip-calculator": {
+      "name": "チップ計算機",
+      "shortDescription": "チップを計算し、割り勘を簡単に算出"
+    },
+    "age-calculator": {
+      "name": "年齢計算機",
+      "shortDescription": "年、月、日などで正確な年齢を計算"
+    },
+    "data-converter": {
+      "name": "データ容量変換",
+      "shortDescription": "Byte、KB、MB、GB、TB などを相互変換"
+    },
+    "unit-converter": {
+      "name": "単位変換",
+      "shortDescription": "長さ、重さ、温度、体積などを変換"
+    },
+    "bmi-calculator": {
+      "name": "BMI計算機",
+      "shortDescription": "BMI を計算して体重状態を確認"
+    },
+    "loan-calculator": {
+      "name": "ローン計算機",
+      "shortDescription": "毎月の支払額、総利息、返済スケジュールを計算"
+    },
+    "compound-interest": {
+      "name": "複利計算機",
+      "shortDescription": "定期積立を含む複利成長を計算"
+    },
+    "date-calculator": {
+      "name": "日付計算機",
+      "shortDescription": "日付間の日数や日付への加算・減算を計算"
+    },
+    "currency-converter": {
+      "name": "通貨換算",
+      "shortDescription": "30種類以上の通貨をライブ為替レートで変換"
+    }
+  }
+}

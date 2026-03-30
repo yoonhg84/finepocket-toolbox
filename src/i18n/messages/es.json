@@ -1,1 +1,148 @@
-{}
+{
+  "common": {
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "download": "Descargar",
+    "clear": "Limpiar",
+    "paste": "Pegar",
+    "loadSample": "Cargar ejemplo",
+    "reset": "Restablecer",
+    "calculate": "Calcular",
+    "convert": "Convertir",
+    "error": "Error",
+    "result": "Resultado",
+    "input": "Entrada",
+    "output": "Salida",
+    "dragDropFile": "Arrastra un archivo aquí o haz clic para buscarlo",
+    "darkMode": "Modo oscuro",
+    "lightMode": "Modo claro",
+    "switchToDarkMode": "Cambiar al modo oscuro",
+    "switchToLightMode": "Cambiar al modo claro",
+    "language": "Idioma",
+    "selectLanguage": "Seleccionar idioma",
+    "home": "Inicio"
+  },
+  "nav": {
+    "developerTools": "Herramientas para desarrolladores",
+    "textTools": "Herramientas de texto",
+    "financeTools": "Finanzas y calculadoras",
+    "toggleMenu": "Alternar menú"
+  },
+  "home": {
+    "title": "FinePocket Toolbox",
+    "subtitle": "Herramientas online gratuitas para desarrollo, texto y finanzas",
+    "heroDescription": "Herramientas online gratuitas para desarrolladores y para todos. Todas funcionan completamente en tu navegador.",
+    "heroStats": "{count} potentes herramientas funcionan completamente en tu navegador. No se envían datos a ningún servidor. No requiere registro.",
+    "privacyTitle": "Tu privacidad importa",
+    "privacyDescription": "Todas las herramientas procesan los datos completamente en tu navegador. No se sube nada a ningún servidor. Tus datos permanecen en tu dispositivo."
+  },
+  "footer": {
+    "about": "Acerca de",
+    "privacy": "Política de privacidad",
+    "terms": "Términos del servicio",
+    "contact": "Contacto",
+    "copyright": "© {year} FinePocket Toolbox. Todos los derechos reservados.",
+    "browserOnly": "Todas las herramientas funcionan completamente en tu navegador. No se envían datos a ningún servidor."
+  },
+  "seo": {
+    "whatIs": "¿Qué es {toolName}?",
+    "howToUse": "Cómo usarlo",
+    "howItWorks": "Cómo funciona",
+    "useCases": "Casos de uso comunes",
+    "faq": "Preguntas frecuentes",
+    "relatedTools": "Herramientas relacionadas"
+  },
+  "toolPage": {
+    "browserBased": "Gratis, basado en navegador y sin registro."
+  },
+  "tools": {
+    "json-formatter": {
+      "name": "Formateador / Validador JSON",
+      "shortDescription": "Formatea, valida y embellece datos JSON al instante"
+    },
+    "base64": {
+      "name": "Codificador / Decodificador Base64",
+      "shortDescription": "Codifica y decodifica cadenas, archivos e imágenes en Base64"
+    },
+    "jwt-decoder": {
+      "name": "Decodificador JWT",
+      "shortDescription": "Decodifica e inspecciona JSON Web Tokens al instante"
+    },
+    "url-encoder": {
+      "name": "Codificador / Decodificador URL",
+      "shortDescription": "Codifica y decodifica URL con percent-encoding"
+    },
+    "regex-tester": {
+      "name": "Probador de expresiones regulares",
+      "shortDescription": "Prueba expresiones regulares con coincidencias en tiempo real"
+    },
+    "hash-generator": {
+      "name": "Generador de hashes",
+      "shortDescription": "Genera hashes MD5, SHA-1, SHA-256 y otros"
+    },
+    "diff-checker": {
+      "name": "Comparador de diferencias de texto",
+      "shortDescription": "Compara dos textos y encuentra las diferencias"
+    },
+    "color-picker": {
+      "name": "Selector / Convertidor de color",
+      "shortDescription": "Elige colores y convierte entre HEX, RGB y HSL"
+    },
+    "word-counter": {
+      "name": "Contador de palabras / caracteres",
+      "shortDescription": "Cuenta palabras, caracteres, oraciones y tiempo de lectura"
+    },
+    "case-converter": {
+      "name": "Convertidor de mayúsculas y minúsculas",
+      "shortDescription": "Convierte texto a MAYÚSCULAS, minúsculas, Título, camelCase y más"
+    },
+    "lorem-ipsum": {
+      "name": "Generador Lorem Ipsum",
+      "shortDescription": "Genera texto de relleno para tus diseños"
+    },
+    "markdown-preview": {
+      "name": "Vista previa de Markdown",
+      "shortDescription": "Escribe Markdown y previsualiza HTML renderizado en tiempo real"
+    },
+    "percentage-calculator": {
+      "name": "Calculadora de porcentajes",
+      "shortDescription": "Calcula porcentajes, descuentos y variaciones porcentuales al instante"
+    },
+    "tip-calculator": {
+      "name": "Calculadora de propinas",
+      "shortDescription": "Calcula propinas y divide cuentas fácilmente"
+    },
+    "age-calculator": {
+      "name": "Calculadora de edad",
+      "shortDescription": "Calcula tu edad exacta en años, meses, días y más"
+    },
+    "data-converter": {
+      "name": "Convertidor de almacenamiento de datos",
+      "shortDescription": "Convierte entre bytes, KB, MB, GB, TB y otras unidades"
+    },
+    "unit-converter": {
+      "name": "Convertidor de unidades",
+      "shortDescription": "Convierte longitud, peso, temperatura, volumen y más"
+    },
+    "bmi-calculator": {
+      "name": "Calculadora de IMC",
+      "shortDescription": "Calcula tu índice de masa corporal y revisa tu estado de peso"
+    },
+    "loan-calculator": {
+      "name": "Calculadora de préstamos",
+      "shortDescription": "Calcula pagos mensuales, interés total y tabla de amortización"
+    },
+    "compound-interest": {
+      "name": "Calculadora de interés compuesto",
+      "shortDescription": "Calcula el crecimiento del interés compuesto con aportes periódicos"
+    },
+    "date-calculator": {
+      "name": "Calculadora de fechas",
+      "shortDescription": "Calcula días entre fechas o suma y resta días a una fecha"
+    },
+    "currency-converter": {
+      "name": "Convertidor de divisas",
+      "shortDescription": "Convierte entre más de 30 divisas con tipos de cambio en vivo"
+    }
+  }
+}

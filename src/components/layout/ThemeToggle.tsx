@@ -1,15 +1,21 @@
 "use client";
 
+import { useI18n } from "./LocaleProvider";
 import { useTheme } from "./ThemeProvider";
 
 export function ThemeToggle() {
   const { theme, toggle } = useTheme();
+  const { t } = useI18n();
 
   return (
     <button
       onClick={toggle}
       className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
-      aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label={
+        theme === "dark"
+          ? t("common.switchToLightMode")
+          : t("common.switchToDarkMode")
+      }
     >
       {theme === "dark" ? (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

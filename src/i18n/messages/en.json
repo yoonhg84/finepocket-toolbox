@@ -15,32 +15,134 @@
     "output": "Output",
     "dragDropFile": "Drag and drop a file here, or click to browse",
     "darkMode": "Dark mode",
-    "lightMode": "Light mode"
+    "lightMode": "Light mode",
+    "switchToDarkMode": "Switch to dark mode",
+    "switchToLightMode": "Switch to light mode",
+    "language": "Language",
+    "selectLanguage": "Select language",
+    "home": "Home"
   },
   "nav": {
     "developerTools": "Developer Tools",
     "textTools": "Text Tools",
-    "financeTools": "Finance & Calculators"
+    "financeTools": "Finance & Calculators",
+    "toggleMenu": "Toggle menu"
   },
   "home": {
     "title": "FinePocket Toolbox",
     "subtitle": "Free Online Developer, Text & Finance Tools",
-    "heroDescription": "Free online tools for developers and everyone. All tools run entirely in your browser."
+    "heroDescription": "Free online tools for developers and everyone. All tools run entirely in your browser.",
+    "heroStats": "{count} powerful tools that run entirely in your browser. No data is sent to any server. No sign-up required.",
+    "privacyTitle": "Your Privacy Matters",
+    "privacyDescription": "All tools process data entirely in your browser. Nothing is uploaded to any server. Your data stays on your device."
   },
   "footer": {
     "about": "About",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "contact": "Contact",
-    "copyright": "© {year} FinePocket. All rights reserved."
+    "copyright": "© {year} FinePocket Toolbox. All rights reserved.",
+    "browserOnly": "All tools run entirely in your browser. No data is sent to any server."
   },
   "seo": {
     "whatIs": "What is {toolName}?",
     "howToUse": "How to Use",
     "howItWorks": "How It Works",
-    "useCases": "Use Cases",
+    "useCases": "Common Use Cases",
     "faq": "Frequently Asked Questions",
     "relatedTools": "Related Tools"
   },
-  "tools": {}
+  "toolPage": {
+    "browserBased": "Free, browser-based, no sign-up required."
+  },
+  "tools": {
+    "json-formatter": {
+      "name": "JSON Formatter / Validator",
+      "shortDescription": "Format, validate, and beautify JSON data instantly"
+    },
+    "base64": {
+      "name": "Base64 Encoder / Decoder",
+      "shortDescription": "Encode and decode Base64 strings, files, and images"
+    },
+    "jwt-decoder": {
+      "name": "JWT Decoder",
+      "shortDescription": "Decode and inspect JSON Web Tokens instantly"
+    },
+    "url-encoder": {
+      "name": "URL Encoder / Decoder",
+      "shortDescription": "Encode and decode URLs with percent-encoding"
+    },
+    "regex-tester": {
+      "name": "Regex Tester",
+      "shortDescription": "Test regular expressions with real-time matching"
+    },
+    "hash-generator": {
+      "name": "Hash Generator",
+      "shortDescription": "Generate MD5, SHA-1, SHA-256, and other hashes"
+    },
+    "diff-checker": {
+      "name": "Text Diff Checker",
+      "shortDescription": "Compare two texts and find differences"
+    },
+    "color-picker": {
+      "name": "Color Picker / Converter",
+      "shortDescription": "Pick colors and convert between HEX, RGB, HSL formats"
+    },
+    "word-counter": {
+      "name": "Word / Character Counter",
+      "shortDescription": "Count words, characters, sentences, and reading time"
+    },
+    "case-converter": {
+      "name": "Case Converter",
+      "shortDescription": "Convert text to UPPER, lower, Title, camelCase, and more"
+    },
+    "lorem-ipsum": {
+      "name": "Lorem Ipsum Generator",
+      "shortDescription": "Generate placeholder text for your designs"
+    },
+    "markdown-preview": {
+      "name": "Markdown Previewer",
+      "shortDescription": "Write Markdown and preview rendered HTML in real-time"
+    },
+    "percentage-calculator": {
+      "name": "Percentage Calculator",
+      "shortDescription": "Calculate percentages, discounts, and percentage changes instantly"
+    },
+    "tip-calculator": {
+      "name": "Tip Calculator",
+      "shortDescription": "Calculate tips and split bills among friends easily"
+    },
+    "age-calculator": {
+      "name": "Age Calculator",
+      "shortDescription": "Calculate your exact age in years, months, days, and more"
+    },
+    "data-converter": {
+      "name": "Data Storage Converter",
+      "shortDescription": "Convert between bytes, KB, MB, GB, TB and other data units"
+    },
+    "unit-converter": {
+      "name": "Unit Converter",
+      "shortDescription": "Convert length, weight, temperature, volume, and more"
+    },
+    "bmi-calculator": {
+      "name": "BMI Calculator",
+      "shortDescription": "Calculate your Body Mass Index and check your weight status"
+    },
+    "loan-calculator": {
+      "name": "Loan Calculator",
+      "shortDescription": "Calculate monthly payments, total interest, and amortization schedule"
+    },
+    "compound-interest": {
+      "name": "Compound Interest Calculator",
+      "shortDescription": "Calculate compound interest growth with regular contributions"
+    },
+    "date-calculator": {
+      "name": "Date Calculator",
+      "shortDescription": "Calculate days between dates or add/subtract days from a date"
+    },
+    "currency-converter": {
+      "name": "Currency Converter",
+      "shortDescription": "Convert between 30+ world currencies with live exchange rates"
+    }
+  }
 }

@@ -1,1 +1,148 @@
-{}
+{
+  "common": {
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "download": "Herunterladen",
+    "clear": "Leeren",
+    "paste": "Einfügen",
+    "loadSample": "Beispiel laden",
+    "reset": "Zurücksetzen",
+    "calculate": "Berechnen",
+    "convert": "Umwandeln",
+    "error": "Fehler",
+    "result": "Ergebnis",
+    "input": "Eingabe",
+    "output": "Ausgabe",
+    "dragDropFile": "Datei hierher ziehen oder klicken, um sie auszuwählen",
+    "darkMode": "Dunkler Modus",
+    "lightMode": "Heller Modus",
+    "switchToDarkMode": "Zum dunklen Modus wechseln",
+    "switchToLightMode": "Zum hellen Modus wechseln",
+    "language": "Sprache",
+    "selectLanguage": "Sprache auswählen",
+    "home": "Startseite"
+  },
+  "nav": {
+    "developerTools": "Entwicklertools",
+    "textTools": "Textwerkzeuge",
+    "financeTools": "Finanzen & Rechner",
+    "toggleMenu": "Menü umschalten"
+  },
+  "home": {
+    "title": "FinePocket Toolbox",
+    "subtitle": "Kostenlose Online-Tools für Entwickler, Text und Finanzen",
+    "heroDescription": "Kostenlose Online-Tools für Entwickler und alle anderen. Alle Tools laufen vollständig in Ihrem Browser.",
+    "heroStats": "{count} leistungsstarke Tools laufen vollständig in Ihrem Browser. Es werden keine Daten an einen Server gesendet. Keine Registrierung erforderlich.",
+    "privacyTitle": "Ihre Privatsphäre zählt",
+    "privacyDescription": "Alle Tools verarbeiten Daten vollständig in Ihrem Browser. Nichts wird an einen Server hochgeladen. Ihre Daten bleiben auf Ihrem Gerät."
+  },
+  "footer": {
+    "about": "Über uns",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "contact": "Kontakt",
+    "copyright": "© {year} FinePocket Toolbox. Alle Rechte vorbehalten.",
+    "browserOnly": "Alle Tools laufen vollständig in Ihrem Browser. Es werden keine Daten an einen Server gesendet."
+  },
+  "seo": {
+    "whatIs": "Was ist {toolName}?",
+    "howToUse": "So verwenden Sie es",
+    "howItWorks": "So funktioniert es",
+    "useCases": "Häufige Anwendungsfälle",
+    "faq": "Häufig gestellte Fragen",
+    "relatedTools": "Ähnliche Tools"
+  },
+  "toolPage": {
+    "browserBased": "Kostenlos, browserbasiert, ohne Registrierung."
+  },
+  "tools": {
+    "json-formatter": {
+      "name": "JSON-Formatter / Validator",
+      "shortDescription": "JSON-Daten sofort formatieren, validieren und verschönern"
+    },
+    "base64": {
+      "name": "Base64-Encoder / -Decoder",
+      "shortDescription": "Base64-Strings, Dateien und Bilder codieren und decodieren"
+    },
+    "jwt-decoder": {
+      "name": "JWT-Decoder",
+      "shortDescription": "JSON Web Tokens sofort decodieren und prüfen"
+    },
+    "url-encoder": {
+      "name": "URL-Encoder / -Decoder",
+      "shortDescription": "URLs mit Prozentkodierung codieren und decodieren"
+    },
+    "regex-tester": {
+      "name": "Regex-Tester",
+      "shortDescription": "Reguläre Ausdrücke mit Echtzeit-Treffern testen"
+    },
+    "hash-generator": {
+      "name": "Hash-Generator",
+      "shortDescription": "MD5-, SHA-1-, SHA-256- und weitere Hashes erzeugen"
+    },
+    "diff-checker": {
+      "name": "Text-Diff-Checker",
+      "shortDescription": "Zwei Texte vergleichen und Unterschiede finden"
+    },
+    "color-picker": {
+      "name": "Farbwähler / Konverter",
+      "shortDescription": "Farben auswählen und zwischen HEX, RGB und HSL umwandeln"
+    },
+    "word-counter": {
+      "name": "Wort- / Zeichenzähler",
+      "shortDescription": "Wörter, Zeichen, Sätze und Lesezeit zählen"
+    },
+    "case-converter": {
+      "name": "Groß-/Kleinschreibungs-Konverter",
+      "shortDescription": "Text in GROSS, klein, Titel, camelCase und mehr umwandeln"
+    },
+    "lorem-ipsum": {
+      "name": "Lorem-Ipsum-Generator",
+      "shortDescription": "Platzhaltertext für Ihre Designs erzeugen"
+    },
+    "markdown-preview": {
+      "name": "Markdown-Vorschau",
+      "shortDescription": "Markdown schreiben und gerendertes HTML in Echtzeit anzeigen"
+    },
+    "percentage-calculator": {
+      "name": "Prozentrechner",
+      "shortDescription": "Prozente, Rabatte und prozentuale Änderungen sofort berechnen"
+    },
+    "tip-calculator": {
+      "name": "Trinkgeldrechner",
+      "shortDescription": "Trinkgeld berechnen und Rechnungen einfach aufteilen"
+    },
+    "age-calculator": {
+      "name": "Altersrechner",
+      "shortDescription": "Ihr genaues Alter in Jahren, Monaten, Tagen und mehr berechnen"
+    },
+    "data-converter": {
+      "name": "Datenspeicher-Konverter",
+      "shortDescription": "Zwischen Byte, KB, MB, GB, TB und anderen Einheiten umrechnen"
+    },
+    "unit-converter": {
+      "name": "Einheitenumrechner",
+      "shortDescription": "Länge, Gewicht, Temperatur, Volumen und mehr umrechnen"
+    },
+    "bmi-calculator": {
+      "name": "BMI-Rechner",
+      "shortDescription": "Body-Mass-Index berechnen und Gewichtsklasse prüfen"
+    },
+    "loan-calculator": {
+      "name": "Kreditrechner",
+      "shortDescription": "Monatsraten, Gesamtzinsen und Tilgungsplan berechnen"
+    },
+    "compound-interest": {
+      "name": "Zinseszinsrechner",
+      "shortDescription": "Zinseszinswachstum mit regelmäßigen Einzahlungen berechnen"
+    },
+    "date-calculator": {
+      "name": "Datumsrechner",
+      "shortDescription": "Tage zwischen Daten berechnen oder Tage addieren bzw. abziehen"
+    },
+    "currency-converter": {
+      "name": "Währungsrechner",
+      "shortDescription": "Zwischen über 30 Währungen mit Live-Wechselkursen umrechnen"
+    }
+  }
+}
