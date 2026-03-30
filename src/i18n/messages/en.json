@@ -1,0 +1,46 @@
+{
+  "common": {
+    "copy": "Copy",
+    "copied": "Copied!",
+    "download": "Download",
+    "clear": "Clear",
+    "paste": "Paste",
+    "loadSample": "Load Sample",
+    "reset": "Reset",
+    "calculate": "Calculate",
+    "convert": "Convert",
+    "error": "Error",
+    "result": "Result",
+    "input": "Input",
+    "output": "Output",
+    "dragDropFile": "Drag and drop a file here, or click to browse",
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode"
+  },
+  "nav": {
+    "developerTools": "Developer Tools",
+    "textTools": "Text Tools",
+    "financeTools": "Finance & Calculators"
+  },
+  "home": {
+    "title": "FinePocket Toolbox",
+    "subtitle": "Free Online Developer, Text & Finance Tools",
+    "heroDescription": "Free online tools for developers and everyone. All tools run entirely in your browser."
+  },
+  "footer": {
+    "about": "About",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact",
+    "copyright": "© {year} FinePocket. All rights reserved."
+  },
+  "seo": {
+    "whatIs": "What is {toolName}?",
+    "howToUse": "How to Use",
+    "howItWorks": "How It Works",
+    "useCases": "Use Cases",
+    "faq": "Frequently Asked Questions",
+    "relatedTools": "Related Tools"
+  },
+  "tools": {}
+}
