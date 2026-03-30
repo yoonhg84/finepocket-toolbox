@@ -10,6 +10,7 @@ import {
   getToolsByCategory,
 } from "@/lib/tools-registry";
 import { buildPageMetadata, buildWebsiteJsonLd } from "@/lib/seo";
+import { ToolSearch } from "@/components/ui/ToolSearch";
 
 export function generateMetadata() {
   const locale = getRequestLocale();
@@ -80,9 +81,10 @@ export default function Home() {
         <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
           {t("home.subtitle")}
         </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-6">
           {t("home.heroStats", { count: ALL_TOOLS.length })}
         </p>
+        <ToolSearch />
       </section>
 
       <section className="mb-12 rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-6 dark:border-gray-700 dark:from-gray-900 dark:to-gray-800">
