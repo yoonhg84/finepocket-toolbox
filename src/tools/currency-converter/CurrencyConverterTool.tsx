@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect, useMemo, useRef, useCallback } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
+import { getToolUiText } from "@/tools/ui-text";
 import {
   CURRENCIES,
   POPULAR_PAIRS,
@@ -28,6 +30,8 @@ function CurrencyDropdown({
   value: string;
   onChange: (code: string) => void;
 }) {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
@@ -57,7 +61,7 @@ function CurrencyDropdown({
     }
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
-  }, []);
+  }, [locale]);
 
   const handleSelect = useCallback(
     (code: string) => {
@@ -104,14 +108,14 @@ function CurrencyDropdown({
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search currency..."
+              placeholder={ui("Search currency...")}
               className="w-full px-2 py-1.5 text-sm border border-gray-200 dark:border-gray-700 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-100"
             />
           </div>
           <div className="overflow-y-auto max-h-48">
             {filtered.length === 0 ? (
               <div className="px-3 py-2 text-sm text-gray-400 dark:text-gray-500">
-                No currencies found
+                {ui("No currencies found")}
               </div>
             ) : (
               filtered.map((c) => (
@@ -139,6 +143,8 @@ function CurrencyDropdown({
 // ---------- Main Component ----------
 
 export function CurrencyConverterTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [amount, setAmount] = useState(1000);
   const [fromCurrency, setFromCurrency] = useState("USD");
   const [toCurrency, setToCurrency] = useState("KRW");
@@ -163,7 +169,9 @@ export function CurrencyConverterTool() {
       } catch {
         if (!cancelled) {
           setError(
-            "Unable to load exchange rates. Please check your connection and try again."
+            locale === "ko"
+              ? "환율 데이터를 불러오지 못했습니다. 연결 상태를 확인한 뒤 다시 시도하세요."
+              : "Unable to load exchange rates. Please check your connection and try again."
           );
         }
       } finally {
@@ -175,7 +183,7 @@ export function CurrencyConverterTool() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [locale]);
 
   // Conversion result
   const result = useMemo(() => {
@@ -205,14 +213,14 @@ export function CurrencyConverterTool() {
     return (
       <div className="bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-700 rounded-lg p-6 text-center">
         <p className="text-red-700 dark:text-red-300 font-medium mb-2">
-          Could not load exchange rates
+          {ui("Could not load exchange rates")}
         </p>
         <p className="text-red-600 dark:text-red-400 text-sm mb-4">{error}</p>
         <button
           onClick={() => window.location.reload()}
           className="px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition-colors"
         >
-          Retry
+          {ui("Retry")}
         </button>
       </div>
     );
@@ -229,7 +237,7 @@ export function CurrencyConverterTool() {
           htmlFor="amount"
           className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
         >
-          Amount
+          {ui("Amount")}
         </label>
         <input
           id="amount"
@@ -246,7 +254,7 @@ export function CurrencyConverterTool() {
       <div className="grid grid-cols-[1fr_auto_1fr] gap-2 items-end">
         <CurrencyDropdown
           id="from-currency"
-          label="From"
+          label={ui("From")}
           value={fromCurrency}
           onChange={setFromCurrency}
         />
@@ -255,8 +263,8 @@ export function CurrencyConverterTool() {
           type="button"
           onClick={handleSwap}
           className="mb-0.5 p-2 text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-full transition-colors"
-          title="Swap currencies"
-          aria-label="Swap currencies"
+          title={ui("Swap currencies")}
+          aria-label={ui("Swap currencies")}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -275,7 +283,7 @@ export function CurrencyConverterTool() {
 
         <CurrencyDropdown
           id="to-currency"
-          label="To"
+          label={ui("To")}
           value={toCurrency}
           onChange={setToCurrency}
         />
@@ -302,7 +310,7 @@ export function CurrencyConverterTool() {
           </div>
           {ratesData?.lastUpdated && (
             <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
-              Last updated: {ratesData.lastUpdated}
+              {ui("Last updated")}: {ratesData.lastUpdated}
             </p>
           )}
         </div>
@@ -311,8 +319,9 @@ export function CurrencyConverterTool() {
       {/* YMYL Disclaimer */}
       <div className="bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700 rounded-lg px-4 py-3">
         <p className="text-xs text-amber-800 dark:text-amber-200">
-          Exchange rates shown are for reference only. Actual transaction rates
-          may differ. Please confirm with your financial institution.
+          {locale === "ko"
+            ? "표시된 환율은 참고용입니다. 실제 거래 환율은 다를 수 있으므로 금융기관의 안내를 다시 확인하세요."
+            : "Exchange rates shown are for reference only. Actual transaction rates may differ. Please confirm with your financial institution."}
         </p>
       </div>
 
@@ -320,20 +329,20 @@ export function CurrencyConverterTool() {
       {ratesData && (
         <div>
           <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-3">
-            Popular Exchange Rates
+            {ui("Popular Exchange Rates")}
           </h3>
           <div className="overflow-x-auto border border-gray-200 dark:border-gray-700 rounded-lg">
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
                   <th className="text-left px-4 py-2 font-medium text-gray-600 dark:text-gray-400">
-                    Pair
+                    {ui("Pair")}
                   </th>
                   <th className="text-right px-4 py-2 font-medium text-gray-600 dark:text-gray-400">
-                    Rate
+                    {ui("Rate")}
                   </th>
                   <th className="text-right px-4 py-2 font-medium text-gray-600 dark:text-gray-400">
-                    Reverse
+                    {ui("Reverse")}
                   </th>
                 </tr>
               </thead>

@@ -1,15 +1,19 @@
 import { CategoryHubPage } from "@/components/category/CategoryHubPage";
-import { CATEGORY_HUBS } from "@/content/category-hubs";
+import { getCategoryHubContent } from "@/content/category-hubs";
+import { getRequestLocale } from "@/i18n/server";
 import { buildPageMetadata } from "@/lib/seo";
 
-const content = CATEGORY_HUBS.developer;
+export function generateMetadata() {
+  const content = getCategoryHubContent("developer", getRequestLocale());
 
-export const metadata = buildPageMetadata({
-  title: content.title,
-  description: content.description,
-  path: "/developer",
-});
+  return buildPageMetadata({
+    title: content.title,
+    description: content.description,
+    path: "/developer",
+  });
+}
 
 export default function DeveloperToolsPage() {
+  const content = getCategoryHubContent("developer", getRequestLocale());
   return <CategoryHubPage content={content} />;
 }

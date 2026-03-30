@@ -1,14 +1,18 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
 import { CopyButton } from "@/components/ui/CopyButton";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
+import { getToolUiText } from "@/tools/ui-text";
 import { urlEncode, urlDecode } from "./logic";
 
 type Direction = "encode" | "decode";
 type EncodeMode = "component" | "uri";
 
 export function UrlEncoderTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [direction, setDirection] = useState<Direction>("encode");
   const [mode, setMode] = useState<EncodeMode>("component");
   const [input, setInput] = useState("");
@@ -52,7 +56,7 @@ export function UrlEncoderTool() {
               : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600"
           }`}
         >
-          Encode
+          {ui("Encode")}
         </button>
         <button
           onClick={() => setDirection("decode")}
@@ -62,14 +66,14 @@ export function UrlEncoderTool() {
               : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600"
           }`}
         >
-          Decode
+          {ui("Decode")}
         </button>
       </div>
 
       {/* Mode Selector (only for encoding) */}
       {direction === "encode" && (
         <div className="flex items-center gap-3">
-          <span className="text-sm text-gray-600 dark:text-gray-400">Mode:</span>
+          <span className="text-sm text-gray-600 dark:text-gray-400">{ui("Mode:")}</span>
           <label className="flex items-center gap-1.5 text-sm cursor-pointer select-none">
             <input
               type="radio"
@@ -79,7 +83,7 @@ export function UrlEncoderTool() {
               className="text-blue-600 focus:ring-blue-500"
             />
             <span className="text-gray-700 dark:text-gray-300">encodeURIComponent</span>
-            <span className="text-gray-400 dark:text-gray-500">(recommended)</span>
+            <span className="text-gray-400 dark:text-gray-500">{ui("(recommended)")}</span>
           </label>
           <label className="flex items-center gap-1.5 text-sm cursor-pointer select-none">
             <input
@@ -97,7 +101,7 @@ export function UrlEncoderTool() {
       {/* Input */}
       <div>
         <label htmlFor="url-input" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          {direction === "encode" ? "Text to Encode" : "URL to Decode"}
+          {direction === "encode" ? ui("Text to Encode") : ui("URL to Decode")}
         </label>
         <textarea
           id="url-input"
@@ -106,7 +110,7 @@ export function UrlEncoderTool() {
           onChange={(e) => setInput(e.target.value)}
           placeholder={
             direction === "encode"
-              ? "Enter text to encode… e.g. Hello World! こんにちは"
+              ? `${ui("Enter text to encode…")} e.g. Hello World! こんにちは`
               : "Enter URL-encoded text… e.g. Hello%20World%21"
           }
           className="w-full rounded-lg border border-gray-300 dark:border-gray-600 p-3 font-mono text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-100"
@@ -119,16 +123,18 @@ export function UrlEncoderTool() {
       <div>
         <div className="flex items-center justify-between mb-1">
           <label htmlFor="url-output" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-            {direction === "encode" ? "Encoded Output" : "Decoded Output"}
+            {direction === "encode"
+              ? ui("Encoded Output")
+              : ui("Decoded Output")}
           </label>
-          <CopyButton getText={() => output} label="Copy" />
+          <CopyButton getText={() => output} label={ui("Copy")} />
         </div>
         <textarea
           id="url-output"
           rows={5}
           value={output}
           readOnly
-          placeholder="Output will appear here…"
+          placeholder={ui("Output will appear here…")}
           className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 p-3 font-mono text-sm dark:text-gray-100"
         />
       </div>

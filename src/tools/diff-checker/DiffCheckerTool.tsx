@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
 import { TabGroup } from "@/components/ui/TabGroup";
+import { getToolUiText } from "@/tools/ui-text";
 import { computeLineDiff, computeWordDiff, type Change, type DiffStats } from "./logic";
 
 type ViewMode = "inline" | "side-by-side";
@@ -12,6 +14,8 @@ const VIEW_TABS = [
 ];
 
 export function DiffCheckerTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [original, setOriginal] = useState("");
   const [modified, setModified] = useState("");
   const [changes, setChanges] = useState<Change[] | null>(null);
@@ -64,13 +68,13 @@ export function DiffCheckerTool() {
             htmlFor="diff-original"
             className="text-sm font-medium text-gray-700 dark:text-gray-300"
           >
-            Original
+            {ui("Original")}
           </label>
           <textarea
             id="diff-original"
             value={original}
             onChange={(e) => setOriginal(e.target.value)}
-            placeholder="Paste original text here..."
+            placeholder={ui("Paste original text here...")}
             className="w-full h-64 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
             spellCheck={false}
           />
@@ -82,13 +86,13 @@ export function DiffCheckerTool() {
             htmlFor="diff-modified"
             className="text-sm font-medium text-gray-700 dark:text-gray-300"
           >
-            Modified
+            {ui("Modified")}
           </label>
           <textarea
             id="diff-modified"
             value={modified}
             onChange={(e) => setModified(e.target.value)}
-            placeholder="Paste modified text here..."
+            placeholder={ui("Paste modified text here...")}
             className="w-full h-64 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
             spellCheck={false}
           />
@@ -101,13 +105,13 @@ export function DiffCheckerTool() {
           onClick={handleCompare}
           className="px-5 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
         >
-          Compare
+          {ui("Compare")}
         </button>
         <button
           onClick={handleClear}
           className="px-5 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
         >
-          Clear
+          {ui("Clear")}
         </button>
       </div>
 
@@ -118,23 +122,29 @@ export function DiffCheckerTool() {
           {stats && (
             <div className="flex items-center gap-4 px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm">
               <span className="text-green-700 dark:text-green-300 font-medium">
-                +{stats.additions} addition{stats.additions !== 1 ? "s" : ""}
+                {locale === "ko"
+                  ? `+${stats.additions} 추가`
+                  : `+${stats.additions} addition${stats.additions !== 1 ? "s" : ""}`}
               </span>
               <span className="text-red-700 dark:text-red-300 font-medium">
-                -{stats.deletions} deletion{stats.deletions !== 1 ? "s" : ""}
+                {locale === "ko"
+                  ? `-${stats.deletions} 삭제`
+                  : `-${stats.deletions} deletion${stats.deletions !== 1 ? "s" : ""}`}
               </span>
               <span className="text-gray-500 dark:text-gray-400">
-                {stats.changes} total change{stats.changes !== 1 ? "s" : ""}
+                {locale === "ko"
+                  ? `총 ${stats.changes}건 변경`
+                  : `${stats.changes} total change${stats.changes !== 1 ? "s" : ""}`}
               </span>
             </div>
           )}
 
           {/* View mode toggle */}
           <TabGroup
-            tabs={VIEW_TABS}
-            activeTab={viewMode}
-            onChange={handleViewChange}
-          />
+                tabs={VIEW_TABS.map((tab) => ({ ...tab, label: ui(tab.label) }))}
+                activeTab={viewMode}
+                onChange={handleViewChange}
+              />
 
           {/* Diff output */}
           {viewMode === "inline" ? (

@@ -2,6 +2,8 @@
 
 import { useState, useMemo } from "react";
 import dynamic from "next/dynamic";
+import { useI18n } from "@/components/layout/LocaleProvider";
+import { getToolUiText } from "@/tools/ui-text";
 import {
   calculateCompoundInterest,
   formatNumber,
@@ -27,6 +29,8 @@ const FREQUENCY_OPTIONS: { value: CompoundFrequency; label: string }[] = [
 ];
 
 export function CompoundInterestTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [principal, setPrincipal] = useState("10000");
   const [rate, setRate] = useState("7");
   const [years, setYears] = useState("20");
@@ -48,7 +52,7 @@ export function CompoundInterestTool() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            Initial Investment
+            {ui("Initial Investment")}
           </label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500">
@@ -68,7 +72,7 @@ export function CompoundInterestTool() {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            Annual Interest Rate: {rate}%
+            {locale === "ko" ? `연 이자율: ${rate}%` : `Annual Interest Rate: ${rate}%`}
           </label>
           <div className="flex gap-2 items-center">
             <input
@@ -95,7 +99,7 @@ export function CompoundInterestTool() {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            Investment Period: {years} years
+            {locale === "ko" ? `투자 기간: ${years}년` : `Investment Period: ${years} years`}
           </label>
           <div className="flex gap-2 items-center">
             <input
@@ -115,13 +119,13 @@ export function CompoundInterestTool() {
               max="100"
               className="w-20 px-2 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-center focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
             />
-            <span className="text-sm text-gray-500 dark:text-gray-400">yr</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">{locale === "ko" ? "년" : "yr"}</span>
           </div>
         </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            Compounding Frequency
+            {ui("Compounding Frequency")}
           </label>
           <select
             value={frequency}
@@ -132,7 +136,7 @@ export function CompoundInterestTool() {
           >
             {FREQUENCY_OPTIONS.map((opt) => (
               <option key={opt.value} value={opt.value}>
-                {opt.label}
+                {ui(opt.label)}
               </option>
             ))}
           </select>
@@ -140,7 +144,7 @@ export function CompoundInterestTool() {
 
         <div className="sm:col-span-2">
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            Monthly Contribution (optional)
+            {ui("Monthly Contribution (optional)")}
           </label>
           <div className="relative max-w-xs">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500">
@@ -165,19 +169,19 @@ export function CompoundInterestTool() {
           {/* Summary Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div className="bg-green-50 dark:bg-green-900/30 p-4 rounded-lg text-center">
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Final Amount</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">{ui("Final Amount")}</p>
               <p className="text-2xl font-bold text-green-700 dark:text-green-300">
                 ${formatNumber(result.finalAmount)}
               </p>
             </div>
             <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg text-center">
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Total Invested</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">{ui("Total Invested")}</p>
               <p className="text-2xl font-bold text-blue-700 dark:text-blue-300">
                 ${formatNumber(result.totalInvested)}
               </p>
             </div>
             <div className="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg text-center">
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Interest Earned</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">{ui("Interest Earned")}</p>
               <p className="text-2xl font-bold text-purple-700 dark:text-purple-300">
                 ${formatNumber(result.totalInterest)}
               </p>
@@ -187,7 +191,7 @@ export function CompoundInterestTool() {
           {/* Chart */}
           <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
             <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
-              Growth Over Time
+              {ui("Growth Over Time")}
             </h3>
             <CompoundAreaChart yearByYear={result.yearByYear} />
           </div>
@@ -198,16 +202,16 @@ export function CompoundInterestTool() {
               <thead className="bg-gray-50 dark:bg-gray-800 sticky top-0">
                 <tr>
                   <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400">
-                    Year
+                    {ui("Year")}
                   </th>
                   <th className="px-3 py-2 text-right text-xs font-medium text-gray-500 dark:text-gray-400">
-                    Total Invested
+                    {ui("Total Invested")}
                   </th>
                   <th className="px-3 py-2 text-right text-xs font-medium text-gray-500 dark:text-gray-400">
-                    Interest Earned
+                    {ui("Interest Earned")}
                   </th>
                   <th className="px-3 py-2 text-right text-xs font-medium text-gray-500 dark:text-gray-400">
-                    Balance
+                    {ui("Balance")}
                   </th>
                 </tr>
               </thead>
@@ -232,11 +236,10 @@ export function CompoundInterestTool() {
 
           {/* YMYL Disclaimer */}
           <div className="bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700 rounded-lg p-4 text-sm text-amber-800 dark:text-amber-200">
-            <strong>Disclaimer:</strong> This calculator provides estimates for
-            educational and informational purposes only. Actual investment
-            returns vary and are not guaranteed. Past performance does not
-            predict future results. Consult a financial professional before
-            making investment decisions.
+            <strong>{ui("Disclaimer:")}</strong>{" "}
+            {locale === "ko"
+              ? "이 계산기는 학습 및 참고용 추정 결과만 제공합니다. 실제 투자 수익률은 달라질 수 있으며 보장되지 않습니다. 과거 성과는 미래 결과를 보장하지 않습니다. 투자 결정 전에는 금융 전문가와 상담하세요."
+              : "This calculator provides estimates for educational and informational purposes only. Actual investment returns vary and are not guaranteed. Past performance does not predict future results. Consult a financial professional before making investment decisions."}
           </div>
         </div>
       )}

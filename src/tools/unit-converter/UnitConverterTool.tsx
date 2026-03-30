@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useMemo, useCallback } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
 import { TabGroup } from "@/components/ui/TabGroup";
 import { CopyButton } from "@/components/ui/CopyButton";
+import { getToolUiText } from "@/tools/ui-text";
 import {
   CATEGORIES,
   convert,
@@ -11,16 +13,18 @@ import {
   type CategoryId,
 } from "./logic";
 
-const CATEGORY_TABS = CATEGORIES.map((c) => ({
-  id: c.id,
-  label: c.label,
-}));
-
 export function UnitConverterTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [categoryId, setCategoryId] = useState<CategoryId>("length");
   const [inputValue, setInputValue] = useState("1");
   const [fromUnitId, setFromUnitId] = useState("m");
   const [toUnitId, setToUnitId] = useState("ft");
+
+  const categoryTabs = CATEGORIES.map((c) => ({
+    id: c.id,
+    label: ui(c.label),
+  }));
 
   const category = useMemo(
     () => CATEGORIES.find((c) => c.id === categoryId)!,
@@ -79,7 +83,7 @@ export function UnitConverterTool() {
       {/* Category Tabs */}
       <div className="overflow-x-auto -mx-1 px-1">
         <TabGroup
-          tabs={CATEGORY_TABS}
+          tabs={categoryTabs}
           activeTab={categoryId}
           onChange={handleCategoryChange}
         />
@@ -94,14 +98,14 @@ export function UnitConverterTool() {
               htmlFor="unit-from-value"
               className="block text-sm font-medium text-gray-700 dark:text-gray-300"
             >
-              Value
+              {ui("Value")}
             </label>
             <input
               id="unit-from-value"
               type="number"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Enter a value"
+              placeholder={ui("Enter a value")}
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100"
               step="any"
             />
@@ -112,7 +116,7 @@ export function UnitConverterTool() {
               htmlFor="unit-from"
               className="block text-sm font-medium text-gray-700 dark:text-gray-300"
             >
-              From
+              {ui("From")}
             </label>
             <select
               id="unit-from"
@@ -120,11 +124,11 @@ export function UnitConverterTool() {
               onChange={(e) => setFromUnitId(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:text-gray-100"
             >
-              {category.units.map((u) => (
-                <option key={u.id} value={u.id}>
-                  {u.label} ({u.symbol})
-                </option>
-              ))}
+                  {category.units.map((u) => (
+                    <option key={u.id} value={u.id}>
+                  {ui(u.label)} ({u.symbol})
+                    </option>
+                  ))}
             </select>
           </div>
 
@@ -132,8 +136,8 @@ export function UnitConverterTool() {
           <button
             onClick={handleSwap}
             className="self-center sm:self-end px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-800 dark:hover:text-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
-            title="Swap units"
-            aria-label="Swap units"
+            title={ui("Swap units")}
+            aria-label={ui("Swap units")}
           >
             <span className="text-lg leading-none">⇅</span>
           </button>
@@ -141,7 +145,7 @@ export function UnitConverterTool() {
           {/* To */}
           <div className="flex-1 space-y-1">
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              Result
+              {ui("Result")}
             </label>
             <div className="w-full px-3 py-2 border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 rounded-lg text-sm font-mono text-gray-900 dark:text-gray-100 min-h-[38px] flex items-center">
               {formatValue(mainResult)}
@@ -153,7 +157,7 @@ export function UnitConverterTool() {
               htmlFor="unit-to"
               className="block text-sm font-medium text-gray-700 dark:text-gray-300"
             >
-              To
+              {ui("To")}
             </label>
             <select
               id="unit-to"
@@ -161,11 +165,11 @@ export function UnitConverterTool() {
               onChange={(e) => setToUnitId(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:text-gray-100"
             >
-              {category.units.map((u) => (
-                <option key={u.id} value={u.id}>
-                  {u.label} ({u.symbol})
-                </option>
-              ))}
+                  {category.units.map((u) => (
+                    <option key={u.id} value={u.id}>
+                  {ui(u.label)} ({u.symbol})
+                    </option>
+                  ))}
             </select>
           </div>
         </div>
@@ -181,9 +185,11 @@ export function UnitConverterTool() {
       <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
         <div className="flex items-center justify-between px-4 py-3 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
           <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            All {category.label} Conversions
+            {locale === "ko"
+              ? `${ui(category.label)} 전체 변환`
+              : `All ${category.label} Conversions`}
           </h3>
-          <CopyButton text={copyText} label="Copy All" />
+          <CopyButton text={copyText} label={ui("Copy All")} />
         </div>
         <div className="divide-y divide-gray-100 dark:divide-gray-800">
           {allResults.map((row) => (
@@ -196,7 +202,7 @@ export function UnitConverterTool() {
               }`}
             >
               <span className="text-sm text-gray-600 dark:text-gray-400">
-                {row.unit.label}{" "}
+                {ui(row.unit.label)}{" "}
                 <span className="text-gray-400 dark:text-gray-500">({row.unit.symbol})</span>
               </span>
               <span className="text-sm font-mono font-medium text-gray-900 dark:text-gray-100">

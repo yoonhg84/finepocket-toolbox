@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
 import { CopyButton } from "@/components/ui/CopyButton";
+import { getToolUiText } from "@/tools/ui-text";
 import {
   toUpperCase,
   toLowerCase,
@@ -35,6 +37,8 @@ const CASE_OPTIONS: CaseOption[] = [
 ];
 
 export function CaseConverterTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [activeCase, setActiveCase] = useState<string | null>(null);
@@ -49,14 +53,14 @@ export function CaseConverterTool() {
       {/* Input */}
       <div>
         <label htmlFor="case-input" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          Input
+          {ui("Input")}
         </label>
         <textarea
           id="case-input"
           rows={5}
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Type or paste your text here…"
+          placeholder={ui("Type or paste your text here…")}
           className="w-full rounded-lg border border-gray-300 dark:border-gray-600 p-3 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-100"
         />
       </div>
@@ -83,17 +87,17 @@ export function CaseConverterTool() {
       <div>
         <div className="flex items-center justify-between mb-1">
           <label htmlFor="case-output" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-            Output
+            {ui("Output")}
             {activeCase && <span className="text-gray-400 dark:text-gray-500 ml-1">({activeCase})</span>}
           </label>
-          <CopyButton getText={() => output} label="Copy" />
+          <CopyButton getText={() => output} label={ui("Copy")} />
         </div>
         <textarea
           id="case-output"
           rows={5}
           value={output}
           readOnly
-          placeholder="Converted text will appear here…"
+          placeholder={ui("Converted text will appear here…")}
           className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 p-3 text-sm dark:text-gray-100"
         />
       </div>

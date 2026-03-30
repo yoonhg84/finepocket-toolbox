@@ -1,13 +1,17 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
 import { CopyButton } from "@/components/ui/CopyButton";
 import { DownloadButton } from "@/components/ui/DownloadButton";
+import { getToolUiText } from "@/tools/ui-text";
 import { generateWords, generateSentences, generateParagraphs } from "./logic";
 
 type Unit = "words" | "sentences" | "paragraphs";
 
 export function LoremIpsumTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [unit, setUnit] = useState<Unit>("paragraphs");
   const [quantity, setQuantity] = useState(3);
   const [startWithLorem, setStartWithLorem] = useState(true);
@@ -40,7 +44,7 @@ export function LoremIpsumTool() {
             htmlFor="unit"
             className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1"
           >
-            Unit
+            {ui("Unit")}
           </label>
           <select
             id="unit"
@@ -48,9 +52,9 @@ export function LoremIpsumTool() {
             onChange={(e) => setUnit(e.target.value as Unit)}
             className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 dark:text-gray-100"
           >
-            <option value="words">Words</option>
-            <option value="sentences">Sentences</option>
-            <option value="paragraphs">Paragraphs</option>
+            <option value="words">{ui("Words")}</option>
+            <option value="sentences">{ui("Sentences")}</option>
+            <option value="paragraphs">{ui("Paragraphs")}</option>
           </select>
         </div>
 
@@ -60,7 +64,7 @@ export function LoremIpsumTool() {
             htmlFor="quantity"
             className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1"
           >
-            Quantity
+            {ui("Quantity")}
           </label>
           <input
             id="quantity"
@@ -86,7 +90,7 @@ export function LoremIpsumTool() {
               onChange={(e) => setStartWithLorem(e.target.checked)}
               className="rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500"
             />
-            Start with &quot;Lorem ipsum&quot;
+            {ui('Start with "Lorem ipsum"')}
           </label>
           {unit === "paragraphs" && (
             <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
@@ -96,7 +100,7 @@ export function LoremIpsumTool() {
                 onChange={(e) => setWrapHtml(e.target.checked)}
                 className="rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500"
               />
-              Wrap in HTML &lt;p&gt; tags
+              {ui("Wrap in HTML <p> tags")}
             </label>
           )}
         </div>
@@ -106,27 +110,27 @@ export function LoremIpsumTool() {
           onClick={handleGenerate}
           className="px-5 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
-          Generate
+          {ui("Generate")}
         </button>
       </div>
 
       {/* Output */}
       <div className="space-y-2">
-        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Output</label>
+        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">{ui("Output")}</label>
         <textarea
           value={output}
           readOnly
-          placeholder="Click Generate to create Lorem Ipsum text..."
+          placeholder={ui("Click Generate to create Lorem Ipsum text...")}
           className="w-full h-64 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y bg-gray-50 dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
           spellCheck={false}
         />
         <div className="flex gap-2">
-          <CopyButton text={output} label="Copy" />
+          <CopyButton text={output} label={ui("Copy")} />
           <DownloadButton
             content={output}
             filename="lorem-ipsum.txt"
             mimeType="text/plain"
-            label="Download"
+            label={ui("Download")}
           />
         </div>
       </div>

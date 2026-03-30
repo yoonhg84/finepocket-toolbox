@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
 import { FileUpload } from "@/components/ui/FileUpload";
 import { CopyButton } from "@/components/ui/CopyButton";
+import { getToolUiText } from "@/tools/ui-text";
 import { generateHashes, generateHashesFromBuffer } from "./logic";
 
 const ALGORITHMS = [
@@ -16,6 +18,8 @@ const ALGORITHMS = [
 type Hashes = Record<string, string>;
 
 export function HashGeneratorTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [input, setInput] = useState("");
   const [hashes, setHashes] = useState<Hashes>({});
   const [uppercase, setUppercase] = useState(false);
@@ -77,33 +81,33 @@ export function HashGeneratorTool() {
       {/* Input Section */}
       <div>
         <label htmlFor="hash-input" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          Text Input
+          {ui("Text Input")}
         </label>
         <textarea
           id="hash-input"
           rows={5}
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter text to hash…"
+          placeholder={ui("Text to hash…")}
           className="w-full rounded-lg border border-gray-300 dark:border-gray-600 p-3 font-mono text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-100"
         />
       </div>
 
       <div className="relative flex items-center">
         <div className="flex-grow border-t border-gray-200 dark:border-gray-700" />
-        <span className="mx-4 text-sm text-gray-400 dark:text-gray-500">or</span>
+        <span className="mx-4 text-sm text-gray-400 dark:text-gray-500">{ui("or")}</span>
         <div className="flex-grow border-t border-gray-200 dark:border-gray-700" />
       </div>
 
       <FileUpload
         onFileRead={handleFileRead}
         readAs="dataURL"
-        label="Drop a file here or click to browse"
+        label={ui("Drop a file here or click to browse")}
       />
 
       {fileName && (
         <p className="text-sm text-gray-500 dark:text-gray-400">
-          Hashing file: <span className="font-medium text-gray-700 dark:text-gray-300">{fileName}</span>
+          {ui("Hashing file:")} <span className="font-medium text-gray-700 dark:text-gray-300">{fileName}</span>
         </p>
       )}
 
@@ -116,7 +120,7 @@ export function HashGeneratorTool() {
             onChange={(e) => setUppercase(e.target.checked)}
             className="rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500"
           />
-          Uppercase output
+          {ui("Uppercase output")}
         </label>
       </div>
 
@@ -127,7 +131,7 @@ export function HashGeneratorTool() {
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
           </svg>
-          Computing hashes…
+          {ui("Computing hashes…")}
         </div>
       )}
 
@@ -137,8 +141,8 @@ export function HashGeneratorTool() {
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-                <th className="text-left px-4 py-2.5 font-medium text-gray-700 dark:text-gray-300 w-28">Algorithm</th>
-                <th className="text-left px-4 py-2.5 font-medium text-gray-700 dark:text-gray-300">Hash Value</th>
+                <th className="text-left px-4 py-2.5 font-medium text-gray-700 dark:text-gray-300 w-28">{ui("Algorithm")}</th>
+                <th className="text-left px-4 py-2.5 font-medium text-gray-700 dark:text-gray-300">{ui("Hash Value")}</th>
                 <th className="px-4 py-2.5 w-20" />
               </tr>
             </thead>
@@ -158,7 +162,7 @@ export function HashGeneratorTool() {
                       </code>
                     </td>
                     <td className="px-4 py-3 text-right">
-                      <CopyButton getText={() => formatHash(hash)} label="Copy" />
+                      <CopyButton getText={() => formatHash(hash)} label={ui("Copy")} />
                     </td>
                   </tr>
                 );

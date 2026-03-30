@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
 import { CopyButton } from "@/components/ui/CopyButton";
+import { getToolUiText } from "@/tools/ui-text";
 import {
   DATA_UNITS,
   convertDataUnit,
@@ -9,6 +11,8 @@ import {
 } from "./logic";
 
 export function DataConverterTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [inputValue, setInputValue] = useState("1");
   const [fromUnit, setFromUnit] = useState<DataUnit>("GB");
 
@@ -36,14 +40,14 @@ export function DataConverterTool() {
               htmlFor="data-value"
               className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
             >
-              Value
+              {ui("Value")}
             </label>
             <input
               id="data-value"
               type="number"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Enter a value"
+              placeholder={ui("Enter a value")}
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100"
               min="0"
               step="any"
@@ -54,7 +58,7 @@ export function DataConverterTool() {
               htmlFor="data-unit"
               className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
             >
-              Unit
+              {ui("Unit")}
             </label>
             <select
               id="data-unit"
@@ -64,7 +68,7 @@ export function DataConverterTool() {
             >
               {DATA_UNITS.map((u) => (
                 <option key={u.id} value={u.id}>
-                  {u.label}
+                  {ui(u.label)}
                 </option>
               ))}
             </select>
@@ -76,9 +80,9 @@ export function DataConverterTool() {
       <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
         <div className="flex items-center justify-between px-4 py-3 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
           <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            Conversion Results
+            {ui("Conversion Results")}
           </h3>
-          <CopyButton text={copyText} label="Copy All" />
+          <CopyButton text={copyText} label={ui("Copy All")} />
         </div>
 
         <div className="divide-y divide-gray-100 dark:divide-gray-800">
@@ -91,7 +95,7 @@ export function DataConverterTool() {
                   : "hover:bg-gray-50 dark:hover:bg-gray-700"
               }`}
             >
-              <span className="text-sm text-gray-600 dark:text-gray-400">{row.unit.label}</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">{ui(row.unit.label)}</span>
               <span className="text-sm font-mono font-medium text-gray-900 dark:text-gray-100">
                 {row.value}
               </span>
@@ -103,7 +107,7 @@ export function DataConverterTool() {
       {/* Info Box */}
       <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-4">
         <p className="text-sm text-blue-800 dark:text-blue-300">
-          <strong>Note:</strong> All units use binary (×1024) conversion.
+          <strong>{ui("Note:")}</strong> {ui("All units use binary (×1024) conversion.")}
           1 KB = 1,024 Bytes, 1 MB = 1,024 KB, 1 GB = 1,024 MB, and so on.
         </p>
       </div>

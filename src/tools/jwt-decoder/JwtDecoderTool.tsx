@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
 import { CopyButton } from "@/components/ui/CopyButton";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
+import { getToolUiText } from "@/tools/ui-text";
 import {
   decodeJwt,
   isExpired,
@@ -88,6 +90,8 @@ function JsonPanel({
 }
 
 export function JwtDecoderTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [token, setToken] = useState("");
 
   const decoded = useMemo(() => decodeJwt(token), [token]);
@@ -121,20 +125,20 @@ export function JwtDecoderTool() {
             htmlFor="jwt-input"
             className="text-sm font-medium text-gray-700 dark:text-gray-300"
           >
-            JWT Token
+            {ui("JWT Token")}
           </label>
           <button
             onClick={loadSample}
             className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors"
           >
-            Load Sample
+            {ui("Load Sample")}
           </button>
         </div>
         <textarea
           id="jwt-input"
           value={token}
           onChange={(e) => setToken(e.target.value)}
-          placeholder="Paste your JWT here (eyJhbGciOiJIUz...)"
+          placeholder={ui("Paste your JWT here (eyJhbGciOiJIUz...)")}
           className="w-full h-28 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100 break-all"
           spellCheck={false}
         />
@@ -152,11 +156,11 @@ export function JwtDecoderTool() {
                 : "bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 border border-green-200"
             }`}
           >
-            {expired ? "Expired" : "Valid"}
+            {expired ? ui("Expired") : ui("Valid")}
           </span>
           {typeof decoded.payload.exp === "number" && (
             <span className="text-xs text-gray-500 dark:text-gray-400">
-              {expired ? "Token expired" : "Token expires"}{" "}
+              {expired ? ui("Token expired") : ui("Token expires")}{" "}
               {relativeTime(decoded.payload.exp as number)}
             </span>
           )}
@@ -167,14 +171,14 @@ export function JwtDecoderTool() {
       {token.trim() && !decoded.error && (
         <div className="space-y-4">
           {/* Header */}
-          <JsonPanel title="Header" data={decoded.header} />
+          <JsonPanel title={ui("Header")} data={decoded.header} />
 
           {/* Payload */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300">Payload</h3>
+              <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300">{ui("Payload")}</h3>
               {payloadJson && (
-                <CopyButton text={payloadJson} label="Copy Payload" />
+                <CopyButton text={payloadJson} label={ui("Copy Payload")} />
               )}
             </div>
             <div className="p-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-x-auto">
@@ -221,7 +225,7 @@ export function JwtDecoderTool() {
           {/* Signature */}
           <div>
             <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-              Signature
+              {ui("Signature")}
             </h3>
             <div className="p-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg">
               <code className="text-sm font-mono text-gray-600 dark:text-gray-400 break-all">

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
+import { getToolUiText } from "@/tools/ui-text";
 import {
   calcBasicPercentage,
   calcReversePercentage,
@@ -91,6 +93,8 @@ function ResultDisplay({
 }
 
 export function PercentageCalculatorTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   // Basic mode
   const [basicX, setBasicX] = useState("");
   const [basicY, setBasicY] = useState("");
@@ -140,17 +144,17 @@ export function PercentageCalculatorTool() {
     <div className="space-y-6">
       {/* Basic Percentage */}
       <SectionCard
-        title="What is Y% of X?"
-        description="Find a percentage of any number"
+        title={ui("What is Y% of X?")}
+        description={ui("Find a percentage of any number")}
       >
         <div className="flex items-end gap-3 flex-wrap">
           <NumberInput
-            label="Number (X)"
+            label={ui("Number (X)")}
             value={basicX}
             onChange={setBasicX}
           />
           <NumberInput
-            label="Percentage (Y)"
+            label={ui("Percentage (Y)")}
             value={basicY}
             onChange={setBasicY}
             suffix="%"
@@ -159,7 +163,11 @@ export function PercentageCalculatorTool() {
         {basicResult !== null && (
           <div className="mt-4">
             <ResultDisplay
-              label={`${basicY}% of ${basicX}`}
+              label={
+                locale === "ko"
+                  ? `${basicX}의 ${basicY}%`
+                  : `${basicY}% of ${basicX}`
+              }
               value={formatNumber(basicResult.result)}
               accent="blue"
             />
@@ -169,17 +177,17 @@ export function PercentageCalculatorTool() {
 
       {/* Reverse Percentage */}
       <SectionCard
-        title="X is what % of Y?"
-        description="Find what percentage one number is of another"
+        title={ui("X is what % of Y?")}
+        description={ui("Find what percentage one number is of another")}
       >
         <div className="flex items-end gap-3 flex-wrap">
           <NumberInput
-            label="Part (X)"
+            label={ui("Part (X)")}
             value={revX}
             onChange={setRevX}
           />
           <NumberInput
-            label="Whole (Y)"
+            label={ui("Whole (Y)")}
             value={revY}
             onChange={setRevY}
           />
@@ -187,7 +195,11 @@ export function PercentageCalculatorTool() {
         {reverseResult !== null && (
           <div className="mt-4">
             <ResultDisplay
-              label={`${revX} is what % of ${revY}`}
+              label={
+                locale === "ko"
+                  ? `${revX}는 ${revY}의 몇 %인가요`
+                  : `${revX} is what % of ${revY}`
+              }
               value={`${formatNumber(reverseResult.percentage)}%`}
               accent="blue"
             />
@@ -197,17 +209,17 @@ export function PercentageCalculatorTool() {
 
       {/* Percentage Change */}
       <SectionCard
-        title="Percentage Change"
-        description="Calculate the % increase or decrease between two values"
+        title={ui("Percentage Change")}
+        description={ui("Calculate the % increase or decrease between two values")}
       >
         <div className="flex items-end gap-3 flex-wrap">
           <NumberInput
-            label="From (original)"
+            label={ui("From (original)")}
             value={changeFrom}
             onChange={setChangeFrom}
           />
           <NumberInput
-            label="To (new)"
+            label={ui("To (new)")}
             value={changeTo}
             onChange={setChangeTo}
           />
@@ -215,7 +227,11 @@ export function PercentageCalculatorTool() {
         {changeResult !== null && (
           <div className="mt-4">
             <ResultDisplay
-              label={`Change from ${changeFrom} to ${changeTo}`}
+              label={
+                locale === "ko"
+                  ? `${changeFrom}에서 ${changeTo}(으)로 변화`
+                  : `Change from ${changeFrom} to ${changeTo}`
+              }
               value={`${changeResult.isIncrease ? "+" : ""}${formatNumber(changeResult.change)}%`}
               accent={changeResult.isIncrease ? "green" : "red"}
             />
@@ -225,24 +241,24 @@ export function PercentageCalculatorTool() {
 
       {/* Discount / Markup */}
       <SectionCard
-        title="Apply Percentage (Discount / Markup)"
-        description="Add or subtract a percentage from a number"
+        title={ui("Apply Percentage (Discount / Markup)")}
+        description={ui("Add or subtract a percentage from a number")}
       >
         <div className="flex items-end gap-3 flex-wrap">
           <NumberInput
-            label="Original value"
+            label={ui("Original value")}
             value={applyX}
             onChange={setApplyX}
           />
           <NumberInput
-            label="Percentage"
+            label={ui("Percentage")}
             value={applyY}
             onChange={setApplyY}
             suffix="%"
           />
           <div className="flex-shrink-0">
             <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
-              Mode
+              {ui("Mode")}
             </label>
             <div className="flex rounded-md overflow-hidden border border-gray-300 dark:border-gray-600">
               <button
@@ -253,7 +269,7 @@ export function PercentageCalculatorTool() {
                     : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
                 }`}
               >
-                Discount
+                {ui("Discount")}
               </button>
               <button
                 onClick={() => setApplyMode("add")}
@@ -263,7 +279,7 @@ export function PercentageCalculatorTool() {
                     : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
                 }`}
               >
-                Markup
+                {ui("Markup")}
               </button>
             </div>
           </div>
@@ -271,12 +287,12 @@ export function PercentageCalculatorTool() {
         {applyResult !== null && (
           <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
             <ResultDisplay
-              label={`${applyMode === "subtract" ? "After discount" : "After markup"}`}
+              label={ui(applyMode === "subtract" ? "After discount" : "After markup")}
               value={formatNumber(applyResult.result)}
               accent="blue"
             />
             <ResultDisplay
-              label={`${applyMode === "subtract" ? "You save" : "Added"}`}
+              label={ui(applyMode === "subtract" ? "You save" : "Added")}
               value={formatNumber(applyResult.difference)}
               accent={applyMode === "subtract" ? "green" : "red"}
             />

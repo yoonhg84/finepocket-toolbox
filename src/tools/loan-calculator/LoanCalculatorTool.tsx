@@ -2,6 +2,8 @@
 
 import { useState, useMemo } from "react";
 import dynamic from "next/dynamic";
+import { useI18n } from "@/components/layout/LocaleProvider";
+import { getToolUiText } from "@/tools/ui-text";
 import {
   calculateLoan,
   formatCurrency,
@@ -29,6 +31,8 @@ const METHOD_OPTIONS: { value: RepaymentMethod; label: string; labelKr: string }
 ];
 
 export function LoanCalculatorTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [amount, setAmount] = useState("100000000");
   const [currency, setCurrency] = useState<Currency>("KRW");
   const [rate, setRate] = useState("5");
@@ -58,7 +62,7 @@ export function LoanCalculatorTool() {
         {/* Loan Amount */}
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            Loan Amount
+            {ui("Loan Amount")}
           </label>
           <div className="flex gap-2">
             <input
@@ -82,7 +86,7 @@ export function LoanCalculatorTool() {
         {/* Interest Rate */}
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            Annual Interest Rate: {rate}%
+            {locale === "ko" ? `연 이자율: ${rate}%` : `Annual Interest Rate: ${rate}%`}
           </label>
           <div className="flex gap-2 items-center">
             <input
@@ -110,7 +114,9 @@ export function LoanCalculatorTool() {
         {/* Loan Term */}
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            Loan Term: {termValue} {termUnit}
+            {locale === "ko"
+              ? `대출 기간: ${termValue} ${termUnit === "years" ? "년" : "개월"}`
+              : `Loan Term: ${termValue} ${termUnit}`}
           </label>
           <div className="flex gap-2 items-center">
             <input
@@ -144,8 +150,8 @@ export function LoanCalculatorTool() {
               }}
               className="px-2 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
             >
-              <option value="years">Years</option>
-              <option value="months">Months</option>
+              <option value="years">{ui("Years")}</option>
+              <option value="months">{ui("Months")}</option>
             </select>
           </div>
         </div>
@@ -153,7 +159,7 @@ export function LoanCalculatorTool() {
         {/* Repayment Method */}
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            Repayment Method
+            {ui("Repayment Method")}
           </label>
           <div className="flex gap-1">
             {METHOD_OPTIONS.map((opt) => (
@@ -166,10 +172,14 @@ export function LoanCalculatorTool() {
                     : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
                 }`}
               >
-                <span className="block">{opt.label}</span>
-                <span className="block text-[10px] opacity-75">
-                  {opt.labelKr}
+                <span className="block">
+                  {locale === "ko" ? ui(opt.label) : opt.label}
                 </span>
+                {locale !== "ko" && (
+                  <span className="block text-[10px] opacity-75">
+                    {opt.labelKr}
+                  </span>
+                )}
               </button>
             ))}
           </div>
@@ -184,21 +194,21 @@ export function LoanCalculatorTool() {
             <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg text-center">
               <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">
                 {method === "equal-principal"
-                  ? "First Monthly Payment"
-                  : "Monthly Payment"}
+                  ? ui("First Monthly Payment")
+                  : ui("Monthly Payment")}
               </p>
               <p className="text-2xl font-bold text-blue-700 dark:text-blue-300">
                 {fmt(result.monthlyPayment)}
               </p>
             </div>
             <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg text-center">
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Total Payment</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">{ui("Total Payment")}</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                 {fmt(result.totalPayment)}
               </p>
             </div>
             <div className="bg-red-50 dark:bg-red-900/30 p-4 rounded-lg text-center">
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Total Interest</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">{ui("Total Interest")}</p>
               <p className="text-2xl font-bold text-red-600 dark:text-red-400">
                 {fmt(result.totalInterest)}
               </p>
@@ -209,7 +219,7 @@ export function LoanCalculatorTool() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
               <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
-                Principal vs Interest
+                {ui("Principal vs Interest")}
               </h3>
               <LoanPieChart
                 principal={result.totalPayment - result.totalInterest}
@@ -218,7 +228,7 @@ export function LoanCalculatorTool() {
             </div>
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
               <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
-                Balance Over Time
+                {ui("Balance Over Time")}
               </h3>
               <LoanLineChart schedule={result.schedule} />
             </div>
@@ -230,8 +240,8 @@ export function LoanCalculatorTool() {
               onClick={() => setShowSchedule(!showSchedule)}
               className="w-full py-2 px-4 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors"
             >
-              {showSchedule ? "Hide" : "Show"} Amortization Schedule (
-              {result.schedule.length} months)
+              {showSchedule ? ui("Hide") : ui("Show")} {ui("Amortization Schedule")} (
+              {result.schedule.length} {locale === "ko" ? "개월" : "months"})
             </button>
             {showSchedule && (
               <div className="mt-3 max-h-96 overflow-auto border border-gray-200 dark:border-gray-700 rounded-lg">
@@ -239,19 +249,19 @@ export function LoanCalculatorTool() {
                   <thead className="bg-gray-50 dark:bg-gray-800 sticky top-0">
                     <tr>
                       <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400">
-                        Month
+                        {ui("Month")}
                       </th>
                       <th className="px-3 py-2 text-right text-xs font-medium text-gray-500 dark:text-gray-400">
-                        Payment
+                        {ui("Payment")}
                       </th>
                       <th className="px-3 py-2 text-right text-xs font-medium text-gray-500 dark:text-gray-400">
-                        Principal
+                        {ui("Principal")}
                       </th>
                       <th className="px-3 py-2 text-right text-xs font-medium text-gray-500 dark:text-gray-400">
-                        Interest
+                        {ui("Interest")}
                       </th>
                       <th className="px-3 py-2 text-right text-xs font-medium text-gray-500 dark:text-gray-400">
-                        Balance
+                        {ui("Balance")}
                       </th>
                     </tr>
                   </thead>
@@ -283,10 +293,10 @@ export function LoanCalculatorTool() {
 
           {/* YMYL Disclaimer */}
           <div className="bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700 rounded-lg p-4 text-sm text-amber-800 dark:text-amber-200">
-            <strong>Disclaimer:</strong> This calculator provides estimates for
-            informational purposes only. Actual loan terms, payments, and
-            interest may vary. Consult a financial professional before making
-            borrowing decisions.
+            <strong>{ui("Disclaimer:")}</strong>{" "}
+            {locale === "ko"
+              ? "이 계산기는 참고용 추정 결과만 제공합니다. 실제 대출 조건, 납입금, 이자는 달라질 수 있습니다. 대출 의사결정 전에는 금융 전문가와 상담하세요."
+              : "This calculator provides estimates for informational purposes only. Actual loan terms, payments, and interest may vary. Consult a financial professional before making borrowing decisions."}
           </div>
         </div>
       )}

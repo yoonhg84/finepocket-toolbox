@@ -1,15 +1,19 @@
 import { CategoryHubPage } from "@/components/category/CategoryHubPage";
-import { CATEGORY_HUBS } from "@/content/category-hubs";
+import { getCategoryHubContent } from "@/content/category-hubs";
+import { getRequestLocale } from "@/i18n/server";
 import { buildPageMetadata } from "@/lib/seo";
 
-const content = CATEGORY_HUBS.finance;
+export function generateMetadata() {
+  const content = getCategoryHubContent("finance", getRequestLocale());
 
-export const metadata = buildPageMetadata({
-  title: content.title,
-  description: content.description,
-  path: "/finance",
-});
+  return buildPageMetadata({
+    title: content.title,
+    description: content.description,
+    path: "/finance",
+  });
+}
 
 export default function FinanceToolsPage() {
+  const content = getCategoryHubContent("finance", getRequestLocale());
   return <CategoryHubPage content={content} />;
 }

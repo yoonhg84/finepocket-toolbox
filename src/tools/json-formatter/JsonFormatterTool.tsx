@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
 import { TabGroup } from "@/components/ui/TabGroup";
 import { CopyButton } from "@/components/ui/CopyButton";
 import { DownloadButton } from "@/components/ui/DownloadButton";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
 import { FileUpload } from "@/components/ui/FileUpload";
+import { getToolUiText } from "@/tools/ui-text";
 import { formatJson, minifyJson, validateJson, sortJsonKeys } from "./logic";
 
 type Mode = "format" | "minify" | "validate" | "sort";
@@ -58,6 +60,8 @@ const SAMPLE_JSON = JSON.stringify(
 );
 
 export function JsonFormatterTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -87,7 +91,7 @@ export function JsonFormatterTool() {
       }
       case "validate": {
         const { valid, error: err } = validateJson(input);
-        setOutput(valid ? "Valid JSON" : "Invalid JSON");
+        setOutput(valid ? ui("Valid JSON") : ui("Invalid JSON"));
         setError(err);
         break;
       }
@@ -107,7 +111,7 @@ export function JsonFormatterTool() {
         break;
       }
     }
-  }, [input, mode, indent]);
+  }, [input, mode, indent, ui]);
 
   useEffect(() => {
     process();
@@ -124,7 +128,7 @@ export function JsonFormatterTool() {
   return (
     <div className="space-y-4">
       <TabGroup
-        tabs={TABS}
+        tabs={TABS.map((tab) => ({ ...tab, label: ui(tab.label) }))}
         activeTab={mode}
         onChange={(id) => setMode(id as Mode)}
       />
@@ -132,7 +136,7 @@ export function JsonFormatterTool() {
       {/* Indent selector — only in format and sort modes */}
       {(mode === "format" || mode === "sort") && (
         <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-600 dark:text-gray-400">Indent:</span>
+          <span className="text-sm text-gray-600 dark:text-gray-400">{ui("Indent:")}</span>
           <div className="flex gap-1">
             {INDENT_OPTIONS.map((opt) => (
               <button
@@ -144,7 +148,7 @@ export function JsonFormatterTool() {
                     : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700"
                 }`}
               >
-                {opt.label}
+                {ui(opt.label)}
               </button>
             ))}
           </div>
@@ -160,34 +164,34 @@ export function JsonFormatterTool() {
               htmlFor="json-input"
               className="text-sm font-medium text-gray-700 dark:text-gray-300"
             >
-              Input
+              {ui("Input")}
             </label>
             <button
               onClick={loadSample}
               className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors"
             >
-              Load Sample
+              {ui("Load Sample")}
             </button>
           </div>
           <textarea
             id="json-input"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder='Paste JSON here, e.g. {"key": "value"}'
+            placeholder={ui('Paste JSON here, e.g. {"key": "value"}')}
             className="w-full h-80 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
             spellCheck={false}
           />
           <FileUpload
             accept=".json,application/json"
             onFileRead={handleFileRead}
-            label="Drop a .json file here or click to browse"
+            label={ui("Drop a .json file here or click to browse")}
           />
         </div>
 
         {/* Output */}
         <div className="space-y-2">
           <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            Output
+            {ui("Output")}
           </label>
           <pre
             className={`w-full h-80 p-3 font-mono text-sm border rounded-lg overflow-auto ${
@@ -204,13 +208,13 @@ export function JsonFormatterTool() {
           <div className="flex gap-2">
             <CopyButton
               text={output}
-              label="Copy"
+              label={ui("Copy")}
             />
             <DownloadButton
               content={output}
               filename="formatted.json"
               mimeType="application/json"
-              label="Download"
+              label={ui("Download")}
             />
           </div>
         </div>

@@ -1,10 +1,14 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
 import { CopyButton } from "@/components/ui/CopyButton";
+import { getToolUiText } from "@/tools/ui-text";
 import { renderMarkdown, SAMPLE_MARKDOWN } from "./logic";
 
 export function MarkdownPreviewTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [input, setInput] = useState("");
   const [cheatsheetOpen, setCheatsheetOpen] = useState(false);
 
@@ -22,9 +26,9 @@ export function MarkdownPreviewTool() {
           onClick={loadSample}
           className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors"
         >
-          Load Sample
+          {ui("Load Sample")}
         </button>
-        <CopyButton getText={() => html} label="Copy HTML" />
+        <CopyButton getText={() => html} label={ui("Copy HTML")} />
       </div>
 
       {/* Editor + Preview panels */}
@@ -41,7 +45,7 @@ export function MarkdownPreviewTool() {
             id="md-editor"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Type or paste Markdown here..."
+            placeholder={ui("Type or paste Markdown here...")}
             className="w-full h-[32rem] p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
             spellCheck={false}
           />
@@ -49,7 +53,7 @@ export function MarkdownPreviewTool() {
 
         {/* Preview */}
         <div className="space-y-2">
-          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Preview</label>
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">{ui("Preview")}</label>
           <div
             className="markdown-preview w-full h-[32rem] p-4 border border-gray-300 dark:border-gray-600 rounded-lg overflow-auto bg-white dark:bg-gray-800 dark:text-gray-100"
             dangerouslySetInnerHTML={{ __html: html }}
@@ -63,7 +67,7 @@ export function MarkdownPreviewTool() {
           onClick={() => setCheatsheetOpen(!cheatsheetOpen)}
           className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
         >
-          <span>Markdown Cheatsheet</span>
+          <span>{ui("Markdown Cheatsheet")}</span>
           <svg
             className={`w-4 h-4 text-gray-500 dark:text-gray-400 transition-transform ${cheatsheetOpen ? "rotate-180" : ""}`}
             fill="none"
@@ -79,26 +83,26 @@ export function MarkdownPreviewTool() {
             <table className="w-full text-sm mt-3">
               <thead>
                 <tr className="border-b border-gray-200 dark:border-gray-700">
-                  <th className="text-left py-2 pr-4 font-medium text-gray-600 dark:text-gray-400">Element</th>
-                  <th className="text-left py-2 font-medium text-gray-600 dark:text-gray-400">Syntax</th>
+                  <th className="text-left py-2 pr-4 font-medium text-gray-600 dark:text-gray-400">{ui("Element")}</th>
+                  <th className="text-left py-2 font-medium text-gray-600 dark:text-gray-400">{ui("Syntax")}</th>
                 </tr>
               </thead>
               <tbody className="font-mono text-xs">
-                <CheatRow element="Heading 1" syntax="# Heading" />
-                <CheatRow element="Heading 2" syntax="## Heading" />
-                <CheatRow element="Heading 3" syntax="### Heading" />
-                <CheatRow element="Bold" syntax="**bold text**" />
-                <CheatRow element="Italic" syntax="*italic text*" />
-                <CheatRow element="Strikethrough" syntax="~~deleted~~" />
-                <CheatRow element="Link" syntax="[title](https://url)" />
-                <CheatRow element="Image" syntax="![alt](https://url)" />
-                <CheatRow element="Inline Code" syntax="`code`" />
-                <CheatRow element="Code Block" syntax="```language\ncode\n```" />
-                <CheatRow element="Blockquote" syntax="> quote" />
-                <CheatRow element="Unordered List" syntax="- item" />
-                <CheatRow element="Ordered List" syntax="1. item" />
-                <CheatRow element="Horizontal Rule" syntax="---" />
-                <CheatRow element="Table" syntax="| H1 | H2 |\n|---|---|\n| A | B |" />
+                <CheatRow element={ui("Heading 1")} syntax="# Heading" />
+                <CheatRow element={ui("Heading 2")} syntax="## Heading" />
+                <CheatRow element={ui("Heading 3")} syntax="### Heading" />
+                <CheatRow element={ui("Bold")} syntax="**bold text**" />
+                <CheatRow element={ui("Italic")} syntax="*italic text*" />
+                <CheatRow element={ui("Strikethrough")} syntax="~~deleted~~" />
+                <CheatRow element={ui("Link")} syntax="[title](https://url)" />
+                <CheatRow element={ui("Image")} syntax="![alt](https://url)" />
+                <CheatRow element={ui("Inline Code")} syntax="`code`" />
+                <CheatRow element={ui("Code Block")} syntax="```language\ncode\n```" />
+                <CheatRow element={ui("Blockquote")} syntax="> quote" />
+                <CheatRow element={ui("Unordered List")} syntax="- item" />
+                <CheatRow element={ui("Ordered List")} syntax="1. item" />
+                <CheatRow element={ui("Horizontal Rule")} syntax="---" />
+                <CheatRow element={ui("Table")} syntax="| H1 | H2 |\n|---|---|\n| A | B |" />
               </tbody>
             </table>
           </div>

@@ -2,7 +2,9 @@ import dynamic from "next/dynamic";
 import { ToolPageLayout } from "@/components/tool/ToolPageLayout";
 import { ALL_TOOLS } from "@/lib/tools-registry";
 import { buildToolMetadata, buildToolJsonLd, buildFaqJsonLd } from "@/lib/seo";
-import { content } from "@/tools/url-encoder/content";
+import { getLocalizedToolPageContent } from "@/content/tool-page-content";
+import { getRequestLocale } from "@/i18n/server";
+import { content as baseContent } from "@/tools/url-encoder/content";
 
 const UrlEncoderTool = dynamic(
   () => import("@/tools/url-encoder/UrlEncoderTool").then((m) => ({ default: m.UrlEncoderTool })),
@@ -10,9 +12,19 @@ const UrlEncoderTool = dynamic(
 );
 
 const tool = ALL_TOOLS.find((t) => t.slug === "url-encoder")!;
-export const metadata = buildToolMetadata(tool, content);
+export function generateMetadata() {
+  return buildToolMetadata(
+    tool,
+    getLocalizedToolPageContent(tool.slug, getRequestLocale(), baseContent)
+  );
+}
 
 export default function Page() {
+  const content = getLocalizedToolPageContent(
+    tool.slug,
+    getRequestLocale(),
+    baseContent
+  );
   return (
     <>
       <script

@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
 import { TabGroup } from "@/components/ui/TabGroup";
+import { getToolUiText } from "@/tools/ui-text";
 import {
   addSubtractDate,
   dateDifference,
@@ -27,6 +29,8 @@ const UNIT_OPTIONS: { value: TimeUnit; label: string }[] = [
 ];
 
 export function DateCalculatorTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [mode, setMode] = useState<Mode>("add-subtract");
 
   // Add/Subtract state
@@ -63,7 +67,7 @@ export function DateCalculatorTool() {
   return (
     <div className="space-y-4">
       <TabGroup
-        tabs={TABS}
+        tabs={TABS.map((tab) => ({ ...tab, label: locale === "ko" ? (tab.id === "add-subtract" ? "더하기 / 빼기" : "날짜 사이") : tab.label }))}
         activeTab={mode}
         onChange={(id) => setMode(id as Mode)}
       />
@@ -77,7 +81,7 @@ export function DateCalculatorTool() {
                 htmlFor="base-date"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
               >
-                Base Date
+                {ui("Base Date")}
               </label>
               <input
                 id="base-date"
@@ -93,7 +97,7 @@ export function DateCalculatorTool() {
                 htmlFor="amount"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
               >
-                Amount
+                {ui("Amount")}
               </label>
               <input
                 id="amount"
@@ -111,7 +115,7 @@ export function DateCalculatorTool() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                Unit
+                {ui("Unit")}
               </label>
               <div className="flex gap-1">
                 {UNIT_OPTIONS.map((opt) => (
@@ -124,7 +128,7 @@ export function DateCalculatorTool() {
                         : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700"
                     }`}
                   >
-                    {opt.label}
+                    {ui(opt.label)}
                   </button>
                 ))}
               </div>
@@ -132,7 +136,7 @@ export function DateCalculatorTool() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                Operation
+                {ui("Operation")}
               </label>
               <div className="flex gap-1">
                 {(["add", "subtract"] as const).map((op) => (
@@ -145,7 +149,7 @@ export function DateCalculatorTool() {
                         : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700"
                     }`}
                   >
-                    {op === "add" ? "+ Add" : "- Subtract"}
+                    {op === "add" ? ui("+ Add") : ui("- Subtract")}
                   </button>
                 ))}
               </div>
@@ -161,14 +165,14 @@ export function DateCalculatorTool() {
                 onChange={(e) => setBusinessOnly(e.target.checked)}
                 className="rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500"
               />
-              Business days only (exclude Sat &amp; Sun)
+              {ui("Business days only (exclude Sat & Sun)")}
             </label>
           )}
 
           {/* Result */}
           {addSubResult && (
             <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-5">
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Result Date</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{ui("Result Date")}</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                 {addSubResult.formattedDate}
               </p>
@@ -176,9 +180,9 @@ export function DateCalculatorTool() {
                 {addSubResult.dayOfWeek}
               </p>
               <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
-                {amount} {unit}
-                {businessOnly ? " (business days)" : ""}{" "}
-                {operation === "add" ? "after" : "before"}{" "}
+                {locale === "ko"
+                  ? `${amount}${unit === "days" ? "일" : unit === "weeks" ? "주" : unit === "months" ? "개월" : "년"}${businessOnly ? " (영업일 기준)" : ""} ${operation === "add" ? "후" : "전"}`
+                  : `${amount} ${unit}${businessOnly ? " (business days)" : ""} ${operation === "add" ? "after" : "before"}`}{" "}
                 {(() => {
                   const d = parseInputDate(baseDate);
                   return d ? formatDate(d) : baseDate;
@@ -198,7 +202,7 @@ export function DateCalculatorTool() {
                 htmlFor="start-date"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
               >
-                Start Date
+                {ui("Start Date")}
               </label>
               <input
                 id="start-date"
@@ -214,7 +218,7 @@ export function DateCalculatorTool() {
                 htmlFor="end-date"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
               >
-                End Date
+                {ui("End Date")}
               </label>
               <input
                 id="end-date"
@@ -233,7 +237,7 @@ export function DateCalculatorTool() {
               onChange={(e) => setIncludeEndDate(e.target.checked)}
               className="rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500"
             />
-            Include end date in count
+            {ui("Include end date in count")}
           </label>
 
           {/* Result */}
@@ -241,13 +245,14 @@ export function DateCalculatorTool() {
             <div className="space-y-4">
               {/* Total days highlight */}
               <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-5 text-center">
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Days</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{ui("Total Days")}</p>
                 <p className="text-4xl font-bold text-gray-900 dark:text-gray-100">
                   {diffResult.totalDays.toLocaleString()}
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                  {diffResult.weeks.toLocaleString()} weeks and{" "}
-                  {diffResult.remainingDays} days
+                  {locale === "ko"
+                    ? `${diffResult.weeks.toLocaleString()}주 ${diffResult.remainingDays}일`
+                    : `${diffResult.weeks.toLocaleString()} weeks and ${diffResult.remainingDays} days`}
                 </p>
               </div>
 
@@ -257,32 +262,26 @@ export function DateCalculatorTool() {
                   <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                     {diffResult.years}
                   </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                    {diffResult.years === 1 ? "Year" : "Years"}
-                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{diffResult.years === 1 ? ui("Year") : ui("Years")}</p>
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-center">
                   <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                     {diffResult.months}
                   </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                    {diffResult.months === 1 ? "Month" : "Months"}
-                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{diffResult.months === 1 ? ui("Month") : ui("Months")}</p>
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-center">
                   <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                     {diffResult.days}
                   </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                    {diffResult.days === 1 ? "Day" : "Days"}
-                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{diffResult.days === 1 ? ui("Day") : ui("Days")}</p>
                 </div>
               </div>
 
               {/* Date info */}
               <div className="grid grid-cols-2 gap-3 text-sm">
                 <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-3">
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Start</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{ui("Start")}</p>
                   <p className="font-medium text-gray-800 dark:text-gray-200">
                     {(() => {
                       const d = parseInputDate(startDate);
@@ -293,7 +292,7 @@ export function DateCalculatorTool() {
                   </p>
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-3">
-                  <p className="text-xs text-gray-500 dark:text-gray-400">End</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{ui("End")}</p>
                   <p className="font-medium text-gray-800 dark:text-gray-200">
                     {(() => {
                       const d = parseInputDate(endDate);

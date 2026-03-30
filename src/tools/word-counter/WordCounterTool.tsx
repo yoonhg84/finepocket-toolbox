@@ -1,11 +1,15 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
 import { CopyButton } from "@/components/ui/CopyButton";
 import { DownloadButton } from "@/components/ui/DownloadButton";
+import { getToolUiText } from "@/tools/ui-text";
 import { analyzeText, getKeywordDensity, fleschReadingEase } from "./logic";
 
 export function WordCounterTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [text, setText] = useState("");
 
   const stats = useMemo(() => analyzeText(text), [text]);
@@ -13,13 +17,19 @@ export function WordCounterTool() {
   const readability = useMemo(() => fleschReadingEase(text), [text]);
 
   const statItems = [
-    { label: "Characters", value: stats.characters },
-    { label: "No Spaces", value: stats.charactersNoSpaces },
-    { label: "Words", value: stats.words },
-    { label: "Sentences", value: stats.sentences },
-    { label: "Paragraphs", value: stats.paragraphs },
-    { label: "Reading Time", value: `${stats.readingTimeMin} min` },
-    { label: "Speaking Time", value: `${stats.speakingTimeMin} min` },
+    { label: locale === "ko" ? "글자 수" : "Characters", value: stats.characters },
+    { label: ui("No Spaces"), value: stats.charactersNoSpaces },
+    { label: ui("Words"), value: stats.words },
+    { label: ui("Sentences"), value: stats.sentences },
+    { label: ui("Paragraphs"), value: stats.paragraphs },
+    {
+      label: ui("Reading Time"),
+      value: locale === "ko" ? `${stats.readingTimeMin}분` : `${stats.readingTimeMin} min`,
+    },
+    {
+      label: ui("Speaking Time"),
+      value: locale === "ko" ? `${stats.speakingTimeMin}분` : `${stats.speakingTimeMin} min`,
+    },
   ];
 
   const reportText = [
@@ -45,19 +55,19 @@ export function WordCounterTool() {
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
-          placeholder="Type or paste your text here..."
+          placeholder={ui("Type or paste your text here...")}
           className="w-full min-h-[300px] p-4 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-mono resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
           spellCheck={false}
         />
         <div className="flex gap-2 mt-2">
-          <CopyButton getText={() => text} label="Copy Text" />
-          <DownloadButton content={reportText} filename="word-count-report.txt" label="Download Report" />
+          <CopyButton getText={() => text} label={ui("Copy Text")} />
+          <DownloadButton content={reportText} filename="word-count-report.txt" label={ui("Download Report")} />
           {text.length > 0 && (
             <button
               onClick={() => setText("")}
               className="px-3 py-1.5 text-sm font-medium rounded-md bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-700 hover:bg-red-100 dark:hover:bg-red-900/40 transition-colors"
             >
-              Clear
+              {ui("Clear")}
             </button>
           )}
         </div>
@@ -79,7 +89,7 @@ export function WordCounterTool() {
       {/* Readability Score */}
       <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
         <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
-          Flesch Reading Ease
+          {ui("Flesch Reading Ease")}
         </h3>
         <div className="flex items-center gap-4">
           <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">
@@ -122,7 +132,7 @@ export function WordCounterTool() {
       {/* Keyword Density Table */}
       <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
         <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
-          Keyword Density (Top 10)
+          {ui("Keyword Density (Top 10)")}
         </h3>
         {keywords.length > 0 ? (
           <div className="overflow-x-auto">
@@ -133,13 +143,13 @@ export function WordCounterTool() {
                     #
                   </th>
                   <th className="text-left py-2 pr-4 font-medium text-gray-500 dark:text-gray-400">
-                    Keyword
+                    {ui("Keyword")}
                   </th>
                   <th className="text-right py-2 pr-4 font-medium text-gray-500 dark:text-gray-400">
-                    Count
+                    {ui("Count")}
                   </th>
                   <th className="text-right py-2 font-medium text-gray-500 dark:text-gray-400">
-                    Density
+                    {ui("Density")}
                   </th>
                 </tr>
               </thead>
@@ -157,7 +167,7 @@ export function WordCounterTool() {
           </div>
         ) : (
           <p className="text-gray-400 dark:text-gray-500 text-sm">
-            Start typing to see keyword density analysis.
+            {ui("Start typing to see keyword density analysis.")}
           </p>
         )}
       </div>

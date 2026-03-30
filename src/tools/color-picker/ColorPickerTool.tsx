@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
 import { CopyButton } from "@/components/ui/CopyButton";
+import { getToolUiText } from "@/tools/ui-text";
 import {
   hexToRgb,
   rgbToHex,
@@ -19,6 +21,8 @@ import {
 type PaletteType = "complementary" | "analogous" | "triadic";
 
 export function ColorPickerTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [rgb, setRgb] = useState<RGB>({ r: 59, g: 130, b: 246 });
   const [opacity, setOpacity] = useState(100);
   const [fgHex, setFgHex] = useState("#000000");
@@ -127,7 +131,7 @@ export function ColorPickerTool() {
               value={hex}
               onChange={handleColorPicker}
               className="w-16 h-16 rounded-lg border border-gray-300 dark:border-gray-600 cursor-pointer p-0"
-              aria-label="Color picker"
+              aria-label={ui("Color picker")}
             />
             <div
               className="flex-1 h-16 rounded-lg border border-gray-300 dark:border-gray-600"
@@ -137,7 +141,7 @@ export function ColorPickerTool() {
                     ? `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`
                     : hex,
               }}
-              aria-label="Color preview"
+              aria-label={ui("Color preview")}
             />
           </div>
 
@@ -184,7 +188,7 @@ export function ColorPickerTool() {
           {/* Opacity slider */}
           <div>
             <label className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">
-              Opacity: {opacity}%
+              {ui("Opacity")}: {opacity}%
             </label>
             <input
               type="range"
@@ -200,7 +204,7 @@ export function ColorPickerTool() {
         {/* Right: format values */}
         <div className="space-y-2">
           <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Color Values
+            {ui("Color Values")}
           </h3>
           <FormatRow label="HEX" value={hexStr} />
           <FormatRow label="RGB" value={rgbStr} />
@@ -215,12 +219,12 @@ export function ColorPickerTool() {
       {/* Contrast Checker */}
       <section className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 space-y-3">
         <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-          Contrast Checker (WCAG)
+          {ui("Contrast Checker (WCAG)")}
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">
-              Foreground
+              {ui("Foreground")}
             </label>
             <div className="flex gap-2">
               <input
@@ -239,7 +243,7 @@ export function ColorPickerTool() {
           </div>
           <div>
             <label className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">
-              Background
+              {ui("Background")}
             </label>
             <div className="flex gap-2">
               <input
@@ -265,7 +269,7 @@ export function ColorPickerTool() {
               className="flex-1 rounded-md p-3 text-center text-sm font-medium"
               style={{ backgroundColor: bgHex, color: fgHex }}
             >
-              Sample Text — Aa Bb Cc 123
+              {ui("Sample Text — Aa Bb Cc 123")}
             </div>
             <div className="text-center">
               <div className="text-lg font-bold text-gray-900 dark:text-gray-100">
@@ -290,7 +294,7 @@ export function ColorPickerTool() {
       {/* Palette Generator */}
       <section className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 space-y-3">
         <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-          Palette Generator
+          {ui("Palette Generator")}
         </h3>
         <div className="flex gap-2">
           {(["complementary", "analogous", "triadic"] as PaletteType[]).map(
@@ -304,7 +308,7 @@ export function ColorPickerTool() {
                     : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700"
                 }`}
               >
-                {type}
+                {ui(type)}
               </button>
             )
           )}
@@ -319,7 +323,7 @@ export function ColorPickerTool() {
               <span className="text-xs font-mono text-gray-600 dark:text-gray-400">
                 {color}
               </span>
-              <CopyButton text={color} label="Copy" className="text-[10px] px-1.5 py-0.5" />
+              <CopyButton text={color} label={ui("Copy")} className="text-[10px] px-1.5 py-0.5" />
             </div>
           ))}
         </div>

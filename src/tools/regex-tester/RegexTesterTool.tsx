@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
 import { CopyButton } from "@/components/ui/CopyButton";
+import { getToolUiText } from "@/tools/ui-text";
 import {
   testRegex,
   replaceWithRegex,
@@ -21,6 +23,8 @@ const ALL_FLAGS: { key: FlagKey; label: string; title: string }[] = [
 ];
 
 export function RegexTesterTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [pattern, setPattern] = useState("");
   const [flags, setFlags] = useState<Record<FlagKey, boolean>>({
     g: true,
@@ -89,7 +93,7 @@ export function RegexTesterTool() {
           htmlFor="regex-pattern"
           className="text-sm font-medium text-gray-700 dark:text-gray-300"
         >
-          Pattern
+          {ui("Pattern")}
         </label>
         <div className="flex items-center gap-2 flex-wrap">
           <div className="flex-1 min-w-0 flex items-center border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent">
@@ -101,7 +105,7 @@ export function RegexTesterTool() {
               type="text"
               value={pattern}
               onChange={(e) => setPattern(e.target.value)}
-              placeholder="Enter regex pattern..."
+              placeholder={ui("Enter regex pattern...")}
               className="flex-1 min-w-0 py-2 px-1 font-mono text-sm bg-transparent focus:outline-none dark:text-gray-100"
               spellCheck={false}
             />
@@ -136,7 +140,7 @@ export function RegexTesterTool() {
           onClick={() => setShowPresets(!showPresets)}
           className="px-3 py-1.5 text-sm font-medium rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
         >
-          Presets {showPresets ? "▲" : "▼"}
+          {ui("Presets")} {showPresets ? "▲" : "▼"}
         </button>
         {showPresets && (
           <div className="absolute z-10 mt-1 w-full max-w-md bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2 grid grid-cols-2 sm:grid-cols-3 gap-1">
@@ -162,13 +166,13 @@ export function RegexTesterTool() {
           htmlFor="test-string"
           className="text-sm font-medium text-gray-700 dark:text-gray-300"
         >
-          Test String
+          {ui("Test String")}
         </label>
         <textarea
           id="test-string"
           value={testStr}
           onChange={(e) => setTestStr(e.target.value)}
-          placeholder="Enter text to test against the regex..."
+          placeholder={ui("Enter text to test against the regex...")}
           className="w-full h-32 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
           spellCheck={false}
         />
@@ -179,10 +183,12 @@ export function RegexTesterTool() {
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              Match Highlighting
+              {ui("Match Highlighting")}
             </span>
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              {matches.length} match{matches.length !== 1 ? "es" : ""} found
+              {locale === "ko"
+                ? `${matches.length}개 일치`
+                : `${matches.length} match${matches.length !== 1 ? "es" : ""} found`}
             </span>
           </div>
           <div
@@ -196,7 +202,7 @@ export function RegexTesterTool() {
       {matches.length > 0 && (
         <div className="space-y-2">
           <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            Match Details
+            {ui("Match Details")}
           </span>
           <div className="overflow-x-auto border border-gray-200 dark:border-gray-700 rounded-lg">
             <table className="w-full text-sm">
@@ -206,13 +212,13 @@ export function RegexTesterTool() {
                     #
                   </th>
                   <th className="px-3 py-2 font-medium text-gray-600 dark:text-gray-400 w-20">
-                    Index
+                    {ui("Index")}
                   </th>
                   <th className="px-3 py-2 font-medium text-gray-600 dark:text-gray-400">
-                    Full Match
+                    {ui("Full Match")}
                   </th>
                   <th className="px-3 py-2 font-medium text-gray-600 dark:text-gray-400">
-                    Groups
+                    {ui("Groups")}
                   </th>
                 </tr>
               </thead>
@@ -255,14 +261,14 @@ export function RegexTesterTool() {
           htmlFor="replacement"
           className="text-sm font-medium text-gray-700 dark:text-gray-300"
         >
-          Replacement (optional)
+          {ui("Replacement (optional)")}
         </label>
         <input
           id="replacement"
           type="text"
           value={replacement}
           onChange={(e) => setReplacement(e.target.value)}
-          placeholder="Enter replacement string (use $1, $2 for groups)..."
+          placeholder={ui("Enter replacement string (use $1, $2 for groups)...")}
           className="w-full p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
           spellCheck={false}
         />
@@ -270,9 +276,9 @@ export function RegexTesterTool() {
           <div className="space-y-1">
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                Replace Result
+                {ui("Replace Result")}
               </span>
-              <CopyButton text={replaceResult} label="Copy Result" />
+              <CopyButton text={replaceResult} label={ui("Copy Result")} />
             </div>
             <pre className="w-full min-h-[3rem] p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-100 whitespace-pre-wrap break-all">
               {replaceResult}

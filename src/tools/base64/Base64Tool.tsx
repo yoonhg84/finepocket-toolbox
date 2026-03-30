@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
 import { TabGroup } from "@/components/ui/TabGroup";
 import { FileUpload } from "@/components/ui/FileUpload";
 import { CopyButton } from "@/components/ui/CopyButton";
 import { DownloadButton } from "@/components/ui/DownloadButton";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
+import { getToolUiText } from "@/tools/ui-text";
 import { encodeBase64, decodeBase64 } from "./logic";
 
 const TABS = [
@@ -15,6 +17,8 @@ const TABS = [
 ];
 
 export function Base64Tool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [activeTab, setActiveTab] = useState("text");
 
   // Text mode state
@@ -61,21 +65,29 @@ export function Base64Tool() {
 
   return (
     <div className="space-y-4">
-      <TabGroup tabs={TABS} activeTab={activeTab} onChange={setActiveTab} />
+      <TabGroup
+        tabs={TABS.map((tab) => ({ ...tab, label: ui(tab.label) }))}
+        activeTab={activeTab}
+        onChange={setActiveTab}
+      />
 
       {/* ── Text Mode ── */}
       {activeTab === "text" && (
         <div className="space-y-4">
           <div>
             <label htmlFor="text-input" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Input
+              {ui("Input")}
             </label>
             <textarea
               id="text-input"
               rows={6}
               value={textInput}
               onChange={(e) => setTextInput(e.target.value)}
-              placeholder={isEncoding ? "Enter text to encode…" : "Enter Base64 to decode…"}
+              placeholder={
+                isEncoding
+                  ? ui("Enter text to encode…")
+                  : ui("Enter Base64 to decode…")
+              }
               className="w-full rounded-lg border border-gray-300 dark:border-gray-600 p-3 font-mono text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-100"
             />
           </div>
@@ -92,7 +104,7 @@ export function Base64Tool() {
                   : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600"
               }`}
             >
-              Encode
+              {ui("Encode")}
             </button>
             <button
               onClick={() => {
@@ -105,13 +117,13 @@ export function Base64Tool() {
                   : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600"
               }`}
             >
-              Decode
+              {ui("Decode")}
             </button>
             <button
               onClick={handleTextProcess}
               className="px-4 py-2 text-sm font-medium rounded-md bg-green-600 text-white hover:bg-green-700 transition-colors"
             >
-              Convert
+              {ui("Convert")}
             </button>
           </div>
 
@@ -120,10 +132,10 @@ export function Base64Tool() {
           <div>
             <div className="flex items-center justify-between mb-1">
               <label htmlFor="text-output" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                Output
+                {ui("Output")}
               </label>
               <div className="flex gap-2">
-                <CopyButton getText={() => textOutput} label="Copy" />
+                <CopyButton getText={() => textOutput} label={ui("Copy")} />
                 {textOutput && (
                   <DownloadButton
                     content={textOutput}
@@ -137,7 +149,7 @@ export function Base64Tool() {
               rows={6}
               value={textOutput}
               readOnly
-              placeholder="Output will appear here…"
+              placeholder={ui("Output will appear here…")}
               className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 p-3 font-mono text-sm dark:text-gray-100"
             />
           </div>
@@ -150,17 +162,18 @@ export function Base64Tool() {
           <FileUpload
             onFileRead={handleFileRead}
             readAs="dataURL"
-            label="Drop any file here or click to browse"
+            label={ui("Drop any file here or click to browse")}
           />
 
           {fileOutput && (
             <div>
               <div className="flex items-center justify-between mb-1">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Base64 Output{fileName && <span className="text-gray-400 dark:text-gray-500 ml-1">({fileName})</span>}
+                  {ui("Base64 Output")}
+                  {fileName && <span className="text-gray-400 dark:text-gray-500 ml-1">({fileName})</span>}
                 </label>
                 <div className="flex gap-2">
-                  <CopyButton getText={() => fileOutput} label="Copy" />
+                  <CopyButton getText={() => fileOutput} label={ui("Copy")} />
                   <DownloadButton content={fileOutput} filename={`${fileName || "file"}.b64.txt`} />
                 </div>
               </div>
@@ -182,7 +195,7 @@ export function Base64Tool() {
             accept="image/*"
             onFileRead={handleImageRead}
             readAs="dataURL"
-            label="Drop an image here or click to browse"
+            label={ui("Drop an image here or click to browse")}
           />
 
           {imageDataUri && (
@@ -191,7 +204,7 @@ export function Base64Tool() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={imageDataUri}
-                  alt={imageName || "Preview"}
+                  alt={imageName || ui("Preview")}
                   className="max-h-64 max-w-full object-contain rounded"
                 />
               </div>
@@ -199,10 +212,11 @@ export function Base64Tool() {
               <div>
                 <div className="flex items-center justify-between mb-1">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Data URI{imageName && <span className="text-gray-400 dark:text-gray-500 ml-1">({imageName})</span>}
+                    {ui("Data URI")}
+                    {imageName && <span className="text-gray-400 dark:text-gray-500 ml-1">({imageName})</span>}
                   </label>
                   <div className="flex gap-2">
-                    <CopyButton getText={() => imageDataUri} label="Copy" />
+                    <CopyButton getText={() => imageDataUri} label={ui("Copy")} />
                     <DownloadButton
                       content={imageDataUri}
                       filename={`${imageName || "image"}.datauri.txt`}

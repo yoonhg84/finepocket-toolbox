@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
+import { getToolUiText } from "@/tools/ui-text";
 import { calculateAge, calculateDateInterval, formatDate } from "./logic";
 
 function StatCard({
@@ -31,6 +33,8 @@ function InfoRow({ label, value }: { label: string; value: string }) {
 }
 
 export function AgeCalculatorTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [birthDate, setBirthDate] = useState("");
   const [intervalStart, setIntervalStart] = useState("");
   const [intervalEnd, setIntervalEnd] = useState("");
@@ -57,7 +61,7 @@ export function AgeCalculatorTool() {
       {/* Date of Birth Input */}
       <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5">
         <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-          Date of Birth
+          {ui("Date of Birth")}
         </label>
         <input
           type="date"
@@ -73,80 +77,88 @@ export function AgeCalculatorTool() {
           {/* Exact Age */}
           <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-5">
             <h3 className="text-sm font-semibold text-blue-700 dark:text-blue-300 mb-3">
-              Your Age
+              {ui("Your Age")}
             </h3>
             <div className="flex items-baseline gap-2 flex-wrap">
               <span className="text-4xl font-bold text-blue-700 dark:text-blue-300">
                 {ageResult.years}
               </span>
-              <span className="text-lg text-blue-600 dark:text-blue-400">years</span>
+              <span className="text-lg text-blue-600 dark:text-blue-400">{ui("years")}</span>
               <span className="text-4xl font-bold text-blue-700 dark:text-blue-300">
                 {ageResult.months}
               </span>
-              <span className="text-lg text-blue-600 dark:text-blue-400">months</span>
+              <span className="text-lg text-blue-600 dark:text-blue-400">{ui("months")}</span>
               <span className="text-4xl font-bold text-blue-700 dark:text-blue-300">
                 {ageResult.days}
               </span>
-              <span className="text-lg text-blue-600 dark:text-blue-400">days</span>
+              <span className="text-lg text-blue-600 dark:text-blue-400">{ui("days")}</span>
             </div>
           </div>
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             <StatCard
-              label="Total Days"
+              label={ui("Total Days")}
               value={ageResult.totalDays.toLocaleString()}
             />
             <StatCard
-              label="Total Hours"
+              label={ui("Total Hours")}
               value={ageResult.totalHours.toLocaleString()}
             />
             <StatCard
-              label="Total Minutes"
+              label={ui("Total Minutes")}
               value={ageResult.totalMinutes.toLocaleString()}
             />
             <StatCard
-              label="Next Birthday"
+              label={ui("Next Birthday")}
               value={
                 ageResult.nextBirthdayDays === 0
-                  ? "Today!"
+                  ? ui("Today!")
                   : `${ageResult.nextBirthdayDays}`
               }
               sub={
                 ageResult.nextBirthdayDays === 0
                   ? undefined
-                  : `day${ageResult.nextBirthdayDays === 1 ? "" : "s"} away`
+                  : locale === "ko"
+                    ? `${ageResult.nextBirthdayDays}일 남음`
+                    : `day${ageResult.nextBirthdayDays === 1 ? "" : "s"} away`
               }
             />
-            <StatCard label="Born On" value={ageResult.dayOfWeek} />
+            <StatCard label={ui("Born On")} value={ageResult.dayOfWeek} />
             <StatCard
-              label="Zodiac"
+              label={ui("Zodiac")}
               value={ageResult.zodiacSign}
-              sub={`${ageResult.chineseZodiac} (Chinese)`}
+              sub={
+                locale === "ko"
+                  ? `${ageResult.chineseZodiac} (띠)`
+                  : `${ageResult.chineseZodiac} (Chinese)`
+              }
             />
           </div>
 
           {/* Additional Info */}
           <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5">
             <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
-              Details
+              {ui("Details")}
             </h3>
             <InfoRow
-              label="Date of Birth"
+              label={ui("Date of Birth")}
               value={formatDate(new Date(birthDate + "T00:00:00"))}
             />
-            <InfoRow label="Day of Week" value={ageResult.dayOfWeek} />
-            <InfoRow label="Western Zodiac" value={ageResult.zodiacSign} />
+            <InfoRow label={ui("Day of Week")} value={ageResult.dayOfWeek} />
+            <InfoRow label={ui("Western Zodiac")} value={ageResult.zodiacSign} />
             <InfoRow
-              label="Chinese Zodiac"
+              label={ui("Chinese Zodiac")}
               value={ageResult.chineseZodiac}
             />
             <InfoRow
-              label="Next Birthday In"
+              label={ui("Next Birthday In")}
               value={
                 ageResult.nextBirthdayDays === 0
-                  ? "Today!"
-                  : `${ageResult.nextBirthdayDays} day${ageResult.nextBirthdayDays === 1 ? "" : "s"}`
+                  ? ui("Today!")
+                  : locale === "ko"
+                    ? `${ageResult.nextBirthdayDays}일`
+                    : `${ageResult.nextBirthdayDays} day${ageResult.nextBirthdayDays === 1 ? "" : "s"}`
               }
             />
           </div>
@@ -156,15 +168,15 @@ export function AgeCalculatorTool() {
       {/* Date Interval Calculator */}
       <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5">
         <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100 mb-1">
-          Date Interval Calculator
+          {ui("Date Interval Calculator")}
         </h3>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-          Calculate the time between any two dates
+          {ui("Calculate the time between any two dates")}
         </p>
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="flex-1">
             <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
-              Start Date
+              {ui("Start Date")}
             </label>
             <input
               type="date"
@@ -175,7 +187,7 @@ export function AgeCalculatorTool() {
           </div>
           <div className="flex-1">
             <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
-              End Date
+              {ui("End Date")}
             </label>
             <input
               type="date"
@@ -189,19 +201,19 @@ export function AgeCalculatorTool() {
         {intervalResult && (
           <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
             <StatCard
-              label="Years"
+              label={ui("Years")}
               value={intervalResult.years.toString()}
             />
             <StatCard
-              label="Months"
+              label={ui("Months")}
               value={intervalResult.months.toString()}
             />
             <StatCard
-              label="Days"
+              label={ui("Days")}
               value={intervalResult.days.toString()}
             />
             <StatCard
-              label="Total Days"
+              label={ui("Total Days")}
               value={intervalResult.totalDays.toLocaleString()}
             />
           </div>

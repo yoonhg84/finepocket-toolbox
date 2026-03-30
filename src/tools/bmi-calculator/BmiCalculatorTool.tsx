@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useI18n } from "@/components/layout/LocaleProvider";
+import { getToolUiText } from "@/tools/ui-text";
 import {
   calculateBmi,
   imperialToCm,
@@ -19,6 +21,8 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 export function BmiCalculatorTool() {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const [unit, setUnit] = useState<UnitSystem>("metric");
   const [heightCm, setHeightCm] = useState("");
   const [feet, setFeet] = useState("");
@@ -61,7 +65,7 @@ export function BmiCalculatorTool() {
                 : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
             }`}
           >
-            {u === "metric" ? "Metric (cm / kg)" : "Imperial (ft-in / lbs)"}
+            {u === "metric" ? ui("Metric (cm / kg)") : ui("Imperial (ft-in / lbs)")}
           </button>
         ))}
       </div>
@@ -71,7 +75,7 @@ export function BmiCalculatorTool() {
         {unit === "metric" ? (
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Height (cm)
+              {ui("Height (cm)")}
             </label>
             <input
               type="number"
@@ -85,7 +89,7 @@ export function BmiCalculatorTool() {
         ) : (
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Height
+              {ui("Height")}
             </label>
             <div className="flex gap-2">
               <div className="flex-1">
@@ -117,7 +121,7 @@ export function BmiCalculatorTool() {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            Weight ({unit === "metric" ? "kg" : "lbs"})
+            {ui("Weight")} ({unit === "metric" ? "kg" : "lbs"})
           </label>
           <input
             type="number"
@@ -139,12 +143,12 @@ export function BmiCalculatorTool() {
         <div className="space-y-5 pt-2">
           {/* BMI Score */}
           <div className="text-center">
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Your BMI</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{ui("Your BMI")}</p>
             <p className="text-5xl font-bold text-gray-900 dark:text-gray-100">{result.bmi}</p>
             <p
               className={`text-lg font-semibold mt-1 ${CATEGORY_COLORS[result.category]}`}
             >
-              {result.category}
+              {ui(result.category)}
             </p>
           </div>
 
@@ -166,24 +170,24 @@ export function BmiCalculatorTool() {
               </div>
             </div>
             <div className="flex justify-between text-[10px] text-gray-500 dark:text-gray-400 mt-3 px-0.5">
-              <span>Underweight</span>
-              <span>Normal</span>
-              <span>Overweight</span>
-              <span>Obese</span>
+              <span>{ui("Underweight")}</span>
+              <span>{ui("Normal")}</span>
+              <span>{ui("Overweight")}</span>
+              <span>{ui("Obese")}</span>
             </div>
           </div>
 
           {/* Details */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-0.5">BMI Prime</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-0.5">{ui("BMI Prime")}</p>
               <p className="text-xl font-semibold text-gray-900 dark:text-gray-100">
                 {result.bmiPrime}
               </p>
             </div>
             <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
               <p className="text-xs text-gray-500 dark:text-gray-400 mb-0.5">
-                Healthy Weight Range
+                {ui("Healthy Weight Range")}
               </p>
               <p className="text-xl font-semibold text-gray-900 dark:text-gray-100">
                 {unit === "metric"
@@ -195,10 +199,10 @@ export function BmiCalculatorTool() {
 
           {/* YMYL Disclaimer */}
           <div className="bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700 rounded-lg p-4 text-sm text-amber-800 dark:text-amber-200">
-            <strong>Disclaimer:</strong> BMI is a reference indicator only.
-            Consult a healthcare professional for accurate health assessment. May
-            not be accurate for muscular individuals, pregnant women, elderly, or
-            growing children.
+            <strong>{ui("Disclaimer:")}</strong>{" "}
+            {locale === "ko"
+              ? "BMI는 참고용 지표입니다. 정확한 건강 평가는 의료 전문가와 상담하세요. 근육량이 많은 사람, 임신부, 고령자, 성장기 아동에게는 정확하지 않을 수 있습니다."
+              : "BMI is a reference indicator only. Consult a healthcare professional for accurate health assessment. May not be accurate for muscular individuals, pregnant women, elderly, or growing children."}
           </div>
         </div>
       )}
