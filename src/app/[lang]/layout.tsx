@@ -1,4 +1,8 @@
 import type { ReactNode } from "react";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { LocaleProvider } from "@/components/layout/LocaleProvider";
+import { getMessages, type Locale } from "@/i18n";
 import { notFound } from "next/navigation";
 import { LOCALES, isLocale } from "@/i18n";
 
@@ -17,5 +21,14 @@ export default function LocaleLayout({
     notFound();
   }
 
-  return children;
+  const locale = params.lang as Locale;
+  const messages = getMessages(locale);
+
+  return (
+    <LocaleProvider locale={locale} messages={messages}>
+      <Header />
+      <main className="min-h-screen">{children}</main>
+      <Footer />
+    </LocaleProvider>
+  );
 }

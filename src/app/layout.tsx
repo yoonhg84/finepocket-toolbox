@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
-import { LocaleProvider } from "@/components/layout/LocaleProvider";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { getMessages } from "@/i18n";
 import { getRequestLocale } from "@/i18n/server";
 import { SITE_NAME } from "@/lib/seo";
 import "./globals.css";
@@ -37,7 +33,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const locale = getRequestLocale();
-  const messages = getMessages(locale);
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -51,13 +46,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors`}
       >
-        <LocaleProvider locale={locale} messages={messages}>
-          <ThemeProvider>
-            <Header />
-            <main className="min-h-screen">{children}</main>
-            <Footer />
-          </ThemeProvider>
-        </LocaleProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
