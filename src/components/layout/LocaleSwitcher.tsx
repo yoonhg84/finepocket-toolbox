@@ -1,12 +1,19 @@
 "use client";
 
 import { useTransition } from "react";
-import { useRouter } from "next/navigation";
-import { LOCALE_COOKIE_NAME, LOCALE_LABELS, type Locale } from "@/i18n";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import {
+  LOCALE_COOKIE_NAME,
+  LOCALE_LABELS,
+  localizePath,
+  type Locale,
+} from "@/i18n";
 import { useI18n } from "./LocaleProvider";
 
 export function LocaleSwitcher() {
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const { locale, t } = useI18n();
   const [isPending, startTransition] = useTransition();
 
@@ -14,7 +21,11 @@ export function LocaleSwitcher() {
     document.cookie = `${LOCALE_COOKIE_NAME}=${nextLocale}; path=/; max-age=31536000; samesite=lax`;
     document.documentElement.lang = nextLocale;
     startTransition(() => {
-      router.refresh();
+      const search = searchParams.toString();
+      const nextPath = `${localizePath(pathname, nextLocale)}${
+        search ? `?${search}` : ""
+      }`;
+      router.replace(nextPath);
     });
   };
 

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { LOCALES, localizePath, type Locale } from "@/i18n";
+import { getRequestLocale } from "@/i18n/server";
 import type { ToolMeta } from "./tools-registry";
 
 export interface ToolContent {
@@ -29,6 +31,10 @@ function buildAbsoluteUrl(path = ""): string {
   return `${SITE_URL}${path}`;
 }
 
+function buildLocalizedAbsoluteUrl(path: string | undefined, locale: Locale): string {
+  return buildAbsoluteUrl(localizePath(path ?? "/", locale));
+}
+
 export function buildPageMetadata({
   title,
   description,
@@ -36,7 +42,14 @@ export function buildPageMetadata({
   keywords,
   type = "website",
 }: PageMetadataInput): Metadata {
-  const url = buildAbsoluteUrl(path);
+  const locale = getRequestLocale();
+  const url = buildLocalizedAbsoluteUrl(path, locale);
+  const languageAlternates = Object.fromEntries(
+    LOCALES.map((alternateLocale) => [
+      alternateLocale,
+      buildLocalizedAbsoluteUrl(path, alternateLocale),
+    ])
+  );
 
   return {
     title,
@@ -44,6 +57,7 @@ export function buildPageMetadata({
     ...(keywords ? { keywords } : {}),
     alternates: {
       canonical: url,
+      languages: languageAlternates,
     },
     openGraph: {
       title,
@@ -51,6 +65,7 @@ export function buildPageMetadata({
       url,
       siteName: SITE_NAME,
       type,
+      locale,
       images: [
         {
           url: DEFAULT_SOCIAL_IMAGE,
@@ -81,6 +96,7 @@ export function buildToolMetadata(tool: ToolMeta, content: ToolContent): Metadat
 }
 
 export function buildToolJsonLd(tool: ToolMeta, content: ToolContent) {
+  const locale = getRequestLocale();
   const applicationCategory =
     tool.category === "developer"
       ? "DeveloperApplication"
@@ -93,7 +109,8 @@ export function buildToolJsonLd(tool: ToolMeta, content: ToolContent) {
     "@type": "WebApplication",
     name: content.title,
     description: content.description,
-    url: buildAbsoluteUrl(tool.href),
+    url: buildLocalizedAbsoluteUrl(tool.href, locale),
+    inLanguage: locale,
     applicationCategory,
     operatingSystem: "Any",
     isAccessibleForFree: true,

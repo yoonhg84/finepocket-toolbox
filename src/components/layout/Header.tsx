@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { localizePath } from "@/i18n";
 import { getLocalizedToolText } from "@/i18n/tools";
 import {
   ALL_TOOLS,
   getCategoryHref,
+  getToolHref,
   type ToolCategory,
 } from "@/lib/tools-registry";
 import { useI18n } from "./LocaleProvider";
@@ -18,7 +20,7 @@ const financeTools = ALL_TOOLS.filter((t) => t.category === "finance");
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { t } = useI18n();
+  const { locale, t } = useI18n();
   const categories: Array<{
     category: ToolCategory;
     label: string;
@@ -28,19 +30,19 @@ export function Header() {
     {
       category: "developer",
       label: t("nav.developerTools"),
-      href: getCategoryHref("developer"),
+      href: getCategoryHref("developer", locale),
       tools: devTools,
     },
     {
       category: "text",
       label: t("nav.textTools"),
-      href: getCategoryHref("text"),
+      href: getCategoryHref("text", locale),
       tools: textTools,
     },
     {
       category: "finance",
       label: t("nav.financeTools"),
-      href: getCategoryHref("finance"),
+      href: getCategoryHref("finance", locale),
       tools: financeTools,
     },
   ];
@@ -48,7 +50,10 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
       <div className="max-w-[960px] mx-auto px-4 h-14 flex items-center justify-between">
-        <Link href="/" className="font-bold text-lg text-gray-900 dark:text-gray-100">
+        <Link
+          href={localizePath("/", locale)}
+          className="font-bold text-lg text-gray-900 dark:text-gray-100"
+        >
           FinePocket <span className="text-blue-600 dark:text-blue-400">Toolbox</span>
         </Link>
 
@@ -100,7 +105,7 @@ export function Header() {
                   return (
                     <Link
                       key={tool.slug}
-                      href={tool.href}
+                      href={getToolHref(tool, locale)}
                       className="block py-1.5 text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
                       onClick={() => setMobileOpen(false)}
                     >
@@ -127,7 +132,7 @@ function NavDropdown({
   tools: typeof ALL_TOOLS;
 }) {
   const [open, setOpen] = useState(false);
-  const { t } = useI18n();
+  const { locale, t } = useI18n();
 
   return (
     <div
@@ -172,7 +177,7 @@ function NavDropdown({
               return (
                 <Link
                   key={tool.slug}
-                  href={tool.href}
+                  href={getToolHref(tool, locale)}
                   className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400"
                   onClick={() => setOpen(false)}
                 >

@@ -1,20 +1,22 @@
 import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import type { CategoryHubContent } from "@/content/category-hubs";
-import { getServerTranslator } from "@/i18n/server";
+import { localizePath } from "@/i18n";
+import { getRequestLocale, getServerTranslator } from "@/i18n/server";
 import { getLocalizedToolText } from "@/i18n/tools";
 import { buildBreadcrumbJsonLd } from "@/lib/seo";
-import { getToolsByCategory } from "@/lib/tools-registry";
+import { getToolHref, getToolsByCategory } from "@/lib/tools-registry";
 
 interface CategoryHubPageProps {
   content: CategoryHubContent;
 }
 
 export function CategoryHubPage({ content }: CategoryHubPageProps) {
-  const t = getServerTranslator();
+  const locale = getRequestLocale();
+  const t = getServerTranslator(locale);
   const tools = getToolsByCategory(content.category);
   const breadcrumbItems = [
-    { label: t("common.home"), href: "/" },
+    { label: t("common.home"), href: localizePath("/", locale) },
     { label: content.title },
   ];
 
@@ -25,7 +27,7 @@ export function CategoryHubPage({ content }: CategoryHubPageProps) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             buildBreadcrumbJsonLd([
-              { name: t("common.home"), href: "/" },
+              { name: t("common.home"), href: localizePath("/", locale) },
               { name: content.title },
             ])
           ),
@@ -92,7 +94,7 @@ export function CategoryHubPage({ content }: CategoryHubPageProps) {
             return (
               <Link
                 key={tool.slug}
-                href={tool.href}
+                href={getToolHref(tool, locale)}
                 className="block rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-blue-300 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-blue-600"
               >
                 <div className="flex items-center gap-3 mb-2">

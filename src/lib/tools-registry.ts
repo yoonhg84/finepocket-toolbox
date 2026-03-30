@@ -1,3 +1,5 @@
+import { localizePath, type Locale } from "@/i18n";
+
 export type ToolCategory = "developer" | "text" | "finance";
 
 export interface ToolMeta {
@@ -252,10 +254,15 @@ export function getToolBySlug(slug: string): ToolMeta | undefined {
   return ALL_TOOLS.find((t) => t.slug === slug);
 }
 
-export function getCategoryHref(category: ToolCategory): string {
-  return CATEGORY_META[category].href;
+export function getCategoryHref(category: ToolCategory, locale?: Locale): string {
+  const href = CATEGORY_META[category].href;
+  return locale ? localizePath(href, locale) : href;
 }
 
 export function getCategoryLabelKey(category: ToolCategory): string {
   return CATEGORY_META[category].labelKey;
+}
+
+export function getToolHref(tool: ToolMeta, locale?: Locale): string {
+  return locale ? localizePath(tool.href, locale) : tool.href;
 }

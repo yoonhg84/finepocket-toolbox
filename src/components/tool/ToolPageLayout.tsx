@@ -1,5 +1,6 @@
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
-import { getServerTranslator } from "@/i18n/server";
+import { localizePath } from "@/i18n";
+import { getRequestLocale, getServerTranslator } from "@/i18n/server";
 import { getLocalizedToolText } from "@/i18n/tools";
 import {
   getCategoryHref,
@@ -19,12 +20,13 @@ interface ToolPageLayoutProps {
 }
 
 export function ToolPageLayout({ tool, content, children }: ToolPageLayoutProps) {
-  const t = getServerTranslator();
+  const locale = getRequestLocale();
+  const t = getServerTranslator(locale);
   const localizedTool = getLocalizedToolText(tool, t);
   const categoryLabel = t(getCategoryLabelKey(tool.category));
-  const categoryHref = getCategoryHref(tool.category);
+  const categoryHref = getCategoryHref(tool.category, locale);
   const breadcrumbItems = [
-    { label: t("common.home"), href: "/" },
+    { label: t("common.home"), href: localizePath("/", locale) },
     { label: categoryLabel, href: categoryHref },
     { label: localizedTool.name },
   ];
@@ -36,7 +38,7 @@ export function ToolPageLayout({ tool, content, children }: ToolPageLayoutProps)
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             buildBreadcrumbJsonLd([
-              { name: t("common.home"), href: "/" },
+              { name: t("common.home"), href: localizePath("/", locale) },
               { name: categoryLabel, href: categoryHref },
               { name: localizedTool.name },
             ])

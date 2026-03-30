@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { getServerTranslator } from "@/i18n/server";
+import { getRequestLocale, getServerTranslator } from "@/i18n/server";
 import { getLocalizedToolText } from "@/i18n/tools";
-import { getRelatedTools } from "@/lib/tools-registry";
+import { getRelatedTools, getToolHref } from "@/lib/tools-registry";
 
 interface RelatedToolsProps {
   currentSlug: string;
@@ -9,7 +9,8 @@ interface RelatedToolsProps {
 
 export function RelatedTools({ currentSlug }: RelatedToolsProps) {
   const related = getRelatedTools(currentSlug, 4);
-  const t = getServerTranslator();
+  const locale = getRequestLocale();
+  const t = getServerTranslator(locale);
 
   return (
     <section className="mb-8">
@@ -21,7 +22,7 @@ export function RelatedTools({ currentSlug }: RelatedToolsProps) {
           return (
             <Link
               key={tool.slug}
-              href={tool.href}
+              href={getToolHref(tool, locale)}
               className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-300 hover:bg-blue-50 dark:hover:border-blue-600 dark:hover:bg-blue-900/30 transition-colors"
             >
               <span className="font-mono text-sm mr-2">{tool.icon}</span>
