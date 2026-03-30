@@ -57,8 +57,8 @@ export function FileUpload({
       onClick={() => inputRef.current?.click()}
       className={`border-2 border-dashed rounded-lg p-4 text-center cursor-pointer transition-colors text-sm ${
         isDragging
-          ? "border-blue-400 bg-blue-50 text-blue-600"
-          : "border-gray-300 text-gray-500 hover:border-gray-400"
+          ? "border-blue-400 bg-blue-50 text-blue-600 dark:border-blue-500 dark:bg-blue-900/30 dark:text-blue-400"
+          : "border-gray-300 text-gray-500 hover:border-gray-400 dark:border-gray-600 dark:text-gray-400 dark:hover:border-gray-500"
       }`}
     >
       <p>{label}</p>

@@ -29,8 +29,8 @@ function JsonPanel({
   if (entries.length === 0) {
     return (
       <div>
-        <h3 className="text-sm font-semibold text-gray-700 mb-2">{title}</h3>
-        <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-400 font-mono">
+        <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">{title}</h3>
+        <div className="p-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm text-gray-400 dark:text-gray-500 font-mono">
           {"{ }"}
         </div>
       </div>
@@ -39,8 +39,8 @@ function JsonPanel({
 
   return (
     <div>
-      <h3 className="text-sm font-semibold text-gray-700 mb-2">{title}</h3>
-      <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg overflow-x-auto">
+      <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">{title}</h3>
+      <div className="p-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-x-auto">
         <div className="space-y-1.5">
           {entries.map(([key, value]) => {
             const isTimestamp =
@@ -51,11 +51,11 @@ function JsonPanel({
             return (
               <div key={key} className="group">
                 <div className="flex items-start gap-2 font-mono text-sm">
-                  <span className="text-purple-600 font-medium shrink-0">
+                  <span className="text-purple-600 dark:text-purple-400 font-medium shrink-0">
                     &quot;{key}&quot;
                   </span>
-                  <span className="text-gray-400">:</span>
-                  <span className="text-blue-700 break-all">
+                  <span className="text-gray-400 dark:text-gray-500">:</span>
+                  <span className="text-blue-700 dark:text-blue-300 break-all">
                     {typeof value === "string"
                       ? `"${value}"`
                       : JSON.stringify(value)}
@@ -64,9 +64,9 @@ function JsonPanel({
 
                 {/* Timestamp display */}
                 {isTimestamp && (
-                  <div className="ml-4 mt-0.5 text-xs text-gray-500">
+                  <div className="ml-4 mt-0.5 text-xs text-gray-500 dark:text-gray-400">
                     {formatTimestamp(value as number)}{" "}
-                    <span className="text-gray-400">
+                    <span className="text-gray-400 dark:text-gray-500">
                       ({relativeTime(value as number)})
                     </span>
                   </div>
@@ -74,7 +74,7 @@ function JsonPanel({
 
                 {/* Claim description */}
                 {showClaimDescriptions && CLAIM_DESCRIPTIONS[key] && (
-                  <div className="ml-4 mt-0.5 text-xs text-gray-400">
+                  <div className="ml-4 mt-0.5 text-xs text-gray-400 dark:text-gray-500">
                     {CLAIM_DESCRIPTIONS[key]}
                   </div>
                 )}
@@ -119,13 +119,13 @@ export function JwtDecoderTool() {
         <div className="flex items-center justify-between">
           <label
             htmlFor="jwt-input"
-            className="text-sm font-medium text-gray-700"
+            className="text-sm font-medium text-gray-700 dark:text-gray-300"
           >
             JWT Token
           </label>
           <button
             onClick={loadSample}
-            className="text-xs text-blue-600 hover:text-blue-800 transition-colors"
+            className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors"
           >
             Load Sample
           </button>
@@ -135,7 +135,7 @@ export function JwtDecoderTool() {
           value={token}
           onChange={(e) => setToken(e.target.value)}
           placeholder="Paste your JWT here (eyJhbGciOiJIUz...)"
-          className="w-full h-28 p-3 font-mono text-sm border border-gray-300 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white break-all"
+          className="w-full h-28 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100 break-all"
           spellCheck={false}
         />
       </div>
@@ -148,14 +148,14 @@ export function JwtDecoderTool() {
           <span
             className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold ${
               expired
-                ? "bg-red-100 text-red-700 border border-red-200"
-                : "bg-green-100 text-green-700 border border-green-200"
+                ? "bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-700"
+                : "bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 border border-green-200"
             }`}
           >
             {expired ? "Expired" : "Valid"}
           </span>
           {typeof decoded.payload.exp === "number" && (
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-gray-500 dark:text-gray-400">
               {expired ? "Token expired" : "Token expires"}{" "}
               {relativeTime(decoded.payload.exp as number)}
             </span>
@@ -172,12 +172,12 @@ export function JwtDecoderTool() {
           {/* Payload */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <h3 className="text-sm font-semibold text-gray-700">Payload</h3>
+              <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300">Payload</h3>
               {payloadJson && (
                 <CopyButton text={payloadJson} label="Copy Payload" />
               )}
             </div>
-            <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg overflow-x-auto">
+            <div className="p-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-x-auto">
               <div className="space-y-1.5">
                 {Object.entries(decoded.payload).map(([key, value]) => {
                   const isTimestamp =
@@ -186,11 +186,11 @@ export function JwtDecoderTool() {
                   return (
                     <div key={key}>
                       <div className="flex items-start gap-2 font-mono text-sm">
-                        <span className="text-purple-600 font-medium shrink-0">
+                        <span className="text-purple-600 dark:text-purple-400 font-medium shrink-0">
                           &quot;{key}&quot;
                         </span>
-                        <span className="text-gray-400">:</span>
-                        <span className="text-blue-700 break-all">
+                        <span className="text-gray-400 dark:text-gray-500">:</span>
+                        <span className="text-blue-700 dark:text-blue-300 break-all">
                           {typeof value === "string"
                             ? `"${value}"`
                             : JSON.stringify(value)}
@@ -198,16 +198,16 @@ export function JwtDecoderTool() {
                       </div>
 
                       {isTimestamp && (
-                        <div className="ml-4 mt-0.5 text-xs text-gray-500">
+                        <div className="ml-4 mt-0.5 text-xs text-gray-500 dark:text-gray-400">
                           {formatTimestamp(value as number)}{" "}
-                          <span className="text-gray-400">
+                          <span className="text-gray-400 dark:text-gray-500">
                             ({relativeTime(value as number)})
                           </span>
                         </div>
                       )}
 
                       {CLAIM_DESCRIPTIONS[key] && (
-                        <div className="ml-4 mt-0.5 text-xs text-gray-400">
+                        <div className="ml-4 mt-0.5 text-xs text-gray-400 dark:text-gray-500">
                           {CLAIM_DESCRIPTIONS[key]}
                         </div>
                       )}
@@ -220,15 +220,15 @@ export function JwtDecoderTool() {
 
           {/* Signature */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-700 mb-2">
+            <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
               Signature
             </h3>
-            <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg">
-              <code className="text-sm font-mono text-gray-600 break-all">
+            <div className="p-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg">
+              <code className="text-sm font-mono text-gray-600 dark:text-gray-400 break-all">
                 {decoded.signature || "—"}
               </code>
             </div>
-            <p className="mt-1 text-xs text-gray-400">
+            <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
               Signature verification requires the signing secret or public key
               and is not performed client-side.
             </p>

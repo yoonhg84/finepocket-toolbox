@@ -75,7 +75,7 @@ export function DateCalculatorTool() {
             <div>
               <label
                 htmlFor="base-date"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
               >
                 Base Date
               </label>
@@ -84,14 +84,14 @@ export function DateCalculatorTool() {
                 type="date"
                 value={baseDate}
                 onChange={(e) => setBaseDate(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100"
               />
             </div>
 
             <div>
               <label
                 htmlFor="amount"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
               >
                 Amount
               </label>
@@ -103,14 +103,14 @@ export function DateCalculatorTool() {
                 onChange={(e) =>
                   setAmount(Math.max(0, parseInt(e.target.value) || 0))
                 }
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Unit
               </label>
               <div className="flex gap-1">
@@ -120,8 +120,8 @@ export function DateCalculatorTool() {
                     onClick={() => setUnit(opt.value)}
                     className={`flex-1 px-3 py-2 text-xs font-medium rounded-md border transition-colors ${
                       unit === opt.value
-                        ? "bg-blue-50 text-blue-700 border-blue-300"
-                        : "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
+                        ? "bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-300 dark:border-blue-600"
+                        : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700"
                     }`}
                   >
                     {opt.label}
@@ -131,7 +131,7 @@ export function DateCalculatorTool() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Operation
               </label>
               <div className="flex gap-1">
@@ -141,8 +141,8 @@ export function DateCalculatorTool() {
                     onClick={() => setOperation(op)}
                     className={`flex-1 px-3 py-2 text-sm font-medium rounded-md border transition-colors ${
                       operation === op
-                        ? "bg-blue-50 text-blue-700 border-blue-300"
-                        : "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
+                        ? "bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-300 dark:border-blue-600"
+                        : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700"
                     }`}
                   >
                     {op === "add" ? "+ Add" : "- Subtract"}
@@ -154,12 +154,12 @@ export function DateCalculatorTool() {
 
           {/* Business days toggle — only for days and weeks */}
           {(unit === "days" || unit === "weeks") && (
-            <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+            <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
               <input
                 type="checkbox"
                 checked={businessOnly}
                 onChange={(e) => setBusinessOnly(e.target.checked)}
-                className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                className="rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500"
               />
               Business days only (exclude Sat &amp; Sun)
             </label>
@@ -167,15 +167,15 @@ export function DateCalculatorTool() {
 
           {/* Result */}
           {addSubResult && (
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-5">
-              <p className="text-sm text-gray-600 mb-1">Result Date</p>
-              <p className="text-2xl font-bold text-gray-900">
+            <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-5">
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Result Date</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                 {addSubResult.formattedDate}
               </p>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                 {addSubResult.dayOfWeek}
               </p>
-              <p className="text-xs text-gray-400 mt-2">
+              <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
                 {amount} {unit}
                 {businessOnly ? " (business days)" : ""}{" "}
                 {operation === "add" ? "after" : "before"}{" "}
@@ -196,7 +196,7 @@ export function DateCalculatorTool() {
             <div>
               <label
                 htmlFor="start-date"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
               >
                 Start Date
               </label>
@@ -205,14 +205,14 @@ export function DateCalculatorTool() {
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100"
               />
             </div>
 
             <div>
               <label
                 htmlFor="end-date"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
               >
                 End Date
               </label>
@@ -221,17 +221,17 @@ export function DateCalculatorTool() {
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100"
               />
             </div>
           </div>
 
-          <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+          <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
             <input
               type="checkbox"
               checked={includeEndDate}
               onChange={(e) => setIncludeEndDate(e.target.checked)}
-              className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              className="rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500"
             />
             Include end date in count
           </label>
@@ -240,12 +240,12 @@ export function DateCalculatorTool() {
           {diffResult && (
             <div className="space-y-4">
               {/* Total days highlight */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-5 text-center">
-                <p className="text-sm text-gray-600 mb-1">Total Days</p>
-                <p className="text-4xl font-bold text-gray-900">
+              <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-5 text-center">
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Days</p>
+                <p className="text-4xl font-bold text-gray-900 dark:text-gray-100">
                   {diffResult.totalDays.toLocaleString()}
                 </p>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                   {diffResult.weeks.toLocaleString()} weeks and{" "}
                   {diffResult.remainingDays} days
                 </p>
@@ -253,27 +253,27 @@ export function DateCalculatorTool() {
 
               {/* Breakdown */}
               <div className="grid grid-cols-3 gap-3">
-                <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center">
-                  <p className="text-2xl font-bold text-gray-900">
+                <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-center">
+                  <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                     {diffResult.years}
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                     {diffResult.years === 1 ? "Year" : "Years"}
                   </p>
                 </div>
-                <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center">
-                  <p className="text-2xl font-bold text-gray-900">
+                <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-center">
+                  <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                     {diffResult.months}
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                     {diffResult.months === 1 ? "Month" : "Months"}
                   </p>
                 </div>
-                <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center">
-                  <p className="text-2xl font-bold text-gray-900">
+                <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-center">
+                  <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                     {diffResult.days}
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                     {diffResult.days === 1 ? "Day" : "Days"}
                   </p>
                 </div>
@@ -281,9 +281,9 @@ export function DateCalculatorTool() {
 
               {/* Date info */}
               <div className="grid grid-cols-2 gap-3 text-sm">
-                <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
-                  <p className="text-xs text-gray-500">Start</p>
-                  <p className="font-medium text-gray-800">
+                <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-3">
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Start</p>
+                  <p className="font-medium text-gray-800 dark:text-gray-200">
                     {(() => {
                       const d = parseInputDate(startDate);
                       return d
@@ -292,9 +292,9 @@ export function DateCalculatorTool() {
                     })()}
                   </p>
                 </div>
-                <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
-                  <p className="text-xs text-gray-500">End</p>
-                  <p className="font-medium text-gray-800">
+                <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-3">
+                  <p className="text-xs text-gray-500 dark:text-gray-400">End</p>
+                  <p className="font-medium text-gray-800 dark:text-gray-200">
                     {(() => {
                       const d = parseInputDate(endDate);
                       return d

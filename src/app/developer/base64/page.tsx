@@ -6,7 +6,7 @@ import { content } from "@/tools/base64/content";
 
 const Base64Tool = dynamic(
   () => import("@/tools/base64/Base64Tool").then((m) => ({ default: m.Base64Tool })),
-  { ssr: false, loading: () => <div className="h-96 animate-pulse bg-gray-100 rounded-lg" /> }
+  { ssr: false, loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-700 rounded-lg" /> }
 );
 
 const tool = ALL_TOOLS.find((t) => t.slug === "base64")!;

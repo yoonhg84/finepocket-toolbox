@@ -9,7 +9,7 @@ const CaseConverterTool = dynamic(
     import("@/tools/case-converter/CaseConverterTool").then((m) => ({
       default: m.CaseConverterTool,
     })),
-  { ssr: false, loading: () => <div className="h-96 animate-pulse bg-gray-100 rounded-lg" /> }
+  { ssr: false, loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-700 rounded-lg" /> }
 );
 
 const tool = ALL_TOOLS.find((t) => t.slug === "case-converter")!;

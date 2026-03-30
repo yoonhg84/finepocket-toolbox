@@ -67,7 +67,7 @@ export function Base64Tool() {
       {activeTab === "text" && (
         <div className="space-y-4">
           <div>
-            <label htmlFor="text-input" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="text-input" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Input
             </label>
             <textarea
@@ -76,7 +76,7 @@ export function Base64Tool() {
               value={textInput}
               onChange={(e) => setTextInput(e.target.value)}
               placeholder={isEncoding ? "Enter text to encode…" : "Enter Base64 to decode…"}
-              className="w-full rounded-lg border border-gray-300 p-3 font-mono text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 p-3 font-mono text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-100"
             />
           </div>
 
@@ -89,7 +89,7 @@ export function Base64Tool() {
               className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
                 isEncoding
                   ? "bg-blue-600 text-white"
-                  : "bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200"
+                  : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600"
               }`}
             >
               Encode
@@ -102,7 +102,7 @@ export function Base64Tool() {
               className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
                 !isEncoding
                   ? "bg-blue-600 text-white"
-                  : "bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200"
+                  : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600"
               }`}
             >
               Decode
@@ -119,7 +119,7 @@ export function Base64Tool() {
 
           <div>
             <div className="flex items-center justify-between mb-1">
-              <label htmlFor="text-output" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="text-output" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Output
               </label>
               <div className="flex gap-2">
@@ -138,7 +138,7 @@ export function Base64Tool() {
               value={textOutput}
               readOnly
               placeholder="Output will appear here…"
-              className="w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm"
+              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 p-3 font-mono text-sm dark:text-gray-100"
             />
           </div>
         </div>
@@ -156,8 +156,8 @@ export function Base64Tool() {
           {fileOutput && (
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="block text-sm font-medium text-gray-700">
-                  Base64 Output{fileName && <span className="text-gray-400 ml-1">({fileName})</span>}
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Base64 Output{fileName && <span className="text-gray-400 dark:text-gray-500 ml-1">({fileName})</span>}
                 </label>
                 <div className="flex gap-2">
                   <CopyButton getText={() => fileOutput} label="Copy" />
@@ -168,7 +168,7 @@ export function Base64Tool() {
                 rows={8}
                 value={fileOutput}
                 readOnly
-                className="w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm break-all"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 p-3 font-mono text-sm break-all dark:text-gray-100"
               />
             </div>
           )}
@@ -187,7 +187,7 @@ export function Base64Tool() {
 
           {imageDataUri && (
             <>
-              <div className="flex justify-center rounded-lg border border-gray-200 bg-gray-50 p-4">
+              <div className="flex justify-center rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={imageDataUri}
@@ -198,8 +198,8 @@ export function Base64Tool() {
 
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Data URI{imageName && <span className="text-gray-400 ml-1">({imageName})</span>}
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Data URI{imageName && <span className="text-gray-400 dark:text-gray-500 ml-1">({imageName})</span>}
                   </label>
                   <div className="flex gap-2">
                     <CopyButton getText={() => imageDataUri} label="Copy" />
@@ -213,7 +213,7 @@ export function Base64Tool() {
                   rows={6}
                   value={imageDataUri}
                   readOnly
-                  className="w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm break-all"
+                  className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 p-3 font-mono text-sm break-all dark:text-gray-100"
                 />
               </div>
             </>

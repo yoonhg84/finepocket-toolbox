@@ -19,17 +19,17 @@ function ToolGrid({ tools }: { tools: typeof ALL_TOOLS }) {
         <Link
           key={tool.slug}
           href={tool.href}
-          className="block p-5 border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-md transition-all group"
+          className="block p-5 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-md transition-all group"
         >
           <div className="flex items-center gap-3 mb-2">
-            <span className="text-lg font-mono bg-gray-100 px-2 py-1 rounded group-hover:bg-blue-50">
+            <span className="text-lg font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30">
               {tool.icon}
             </span>
-            <h3 className="font-semibold text-gray-900 group-hover:text-blue-600">
+            <h3 className="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">
               {tool.name}
             </h3>
           </div>
-          <p className="text-sm text-gray-500">{tool.shortDescription}</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">{tool.shortDescription}</p>
         </Link>
       ))}
     </div>
@@ -54,35 +54,35 @@ export default function Home() {
       />
 
       <section className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
           Free Online Developer, Text & Finance Tools
         </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           {ALL_TOOLS.length} powerful tools that run entirely in your browser.
           No data is sent to any server. No sign-up required.
         </p>
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Finance & Calculators</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Finance & Calculators</h2>
         <ToolGrid tools={financeTools} />
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Developer Tools</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Developer Tools</h2>
         <ToolGrid tools={devTools} />
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Text Tools</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Text Tools</h2>
         <ToolGrid tools={textTools} />
       </section>
 
-      <section className="text-center py-8 bg-gray-50 rounded-xl">
-        <h2 className="text-xl font-semibold text-gray-900 mb-2">
+      <section className="text-center py-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
           Your Privacy Matters
         </h2>
-        <p className="text-gray-600">
+        <p className="text-gray-600 dark:text-gray-400">
           All tools process data entirely in your browser. Nothing is uploaded to
           any server. Your data stays on your device.
         </p>

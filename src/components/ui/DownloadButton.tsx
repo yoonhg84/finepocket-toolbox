@@ -20,7 +20,7 @@ export function DownloadButton({
   return (
     <button
       onClick={() => downloadFile(content, filename, mimeType)}
-      className={`px-3 py-1.5 text-sm font-medium rounded-md bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200 transition-colors ${className}`}
+      className={`px-3 py-1.5 text-sm font-medium rounded-md bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-600 transition-colors ${className}`}
       aria-label={label}
     >
       {label}

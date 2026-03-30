@@ -132,7 +132,7 @@ export function JsonFormatterTool() {
       {/* Indent selector — only in format and sort modes */}
       {(mode === "format" || mode === "sort") && (
         <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-600">Indent:</span>
+          <span className="text-sm text-gray-600 dark:text-gray-400">Indent:</span>
           <div className="flex gap-1">
             {INDENT_OPTIONS.map((opt) => (
               <button
@@ -140,8 +140,8 @@ export function JsonFormatterTool() {
                 onClick={() => setIndent(opt.value)}
                 className={`px-3 py-1 text-xs font-medium rounded-md border transition-colors ${
                   indent === opt.value
-                    ? "bg-blue-50 text-blue-700 border-blue-300"
-                    : "bg-white text-gray-600 border-gray-300 hover:bg-gray-50"
+                    ? "bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-300 dark:border-blue-600"
+                    : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700"
                 }`}
               >
                 {opt.label}
@@ -158,13 +158,13 @@ export function JsonFormatterTool() {
           <div className="flex items-center justify-between">
             <label
               htmlFor="json-input"
-              className="text-sm font-medium text-gray-700"
+              className="text-sm font-medium text-gray-700 dark:text-gray-300"
             >
               Input
             </label>
             <button
               onClick={loadSample}
-              className="text-xs text-blue-600 hover:text-blue-800 transition-colors"
+              className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors"
             >
               Load Sample
             </button>
@@ -174,7 +174,7 @@ export function JsonFormatterTool() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder='Paste JSON here, e.g. {"key": "value"}'
-            className="w-full h-80 p-3 font-mono text-sm border border-gray-300 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+            className="w-full h-80 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
             spellCheck={false}
           />
           <FileUpload
@@ -186,14 +186,14 @@ export function JsonFormatterTool() {
 
         {/* Output */}
         <div className="space-y-2">
-          <label className="text-sm font-medium text-gray-700">
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
             Output
           </label>
           <pre
             className={`w-full h-80 p-3 font-mono text-sm border rounded-lg overflow-auto ${
               mode === "validate" && !error && input.trim()
-                ? "bg-green-50 border-green-300 text-green-800"
-                : "bg-gray-50 border-gray-300 text-gray-800"
+                ? "bg-green-50 dark:bg-green-900/30 border-green-300 dark:border-green-600 text-green-800 dark:text-green-200"
+                : "bg-gray-50 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200"
             }`}
           >
             <code>{output}</code>

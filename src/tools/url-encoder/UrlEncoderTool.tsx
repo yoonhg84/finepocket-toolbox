@@ -49,7 +49,7 @@ export function UrlEncoderTool() {
           className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
             direction === "encode"
               ? "bg-blue-600 text-white"
-              : "bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200"
+              : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600"
           }`}
         >
           Encode
@@ -59,7 +59,7 @@ export function UrlEncoderTool() {
           className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
             direction === "decode"
               ? "bg-blue-600 text-white"
-              : "bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200"
+              : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600"
           }`}
         >
           Decode
@@ -69,7 +69,7 @@ export function UrlEncoderTool() {
       {/* Mode Selector (only for encoding) */}
       {direction === "encode" && (
         <div className="flex items-center gap-3">
-          <span className="text-sm text-gray-600">Mode:</span>
+          <span className="text-sm text-gray-600 dark:text-gray-400">Mode:</span>
           <label className="flex items-center gap-1.5 text-sm cursor-pointer select-none">
             <input
               type="radio"
@@ -78,8 +78,8 @@ export function UrlEncoderTool() {
               onChange={() => setMode("component")}
               className="text-blue-600 focus:ring-blue-500"
             />
-            <span className="text-gray-700">encodeURIComponent</span>
-            <span className="text-gray-400">(recommended)</span>
+            <span className="text-gray-700 dark:text-gray-300">encodeURIComponent</span>
+            <span className="text-gray-400 dark:text-gray-500">(recommended)</span>
           </label>
           <label className="flex items-center gap-1.5 text-sm cursor-pointer select-none">
             <input
@@ -89,14 +89,14 @@ export function UrlEncoderTool() {
               onChange={() => setMode("uri")}
               className="text-blue-600 focus:ring-blue-500"
             />
-            <span className="text-gray-700">encodeURI</span>
+            <span className="text-gray-700 dark:text-gray-300">encodeURI</span>
           </label>
         </div>
       )}
 
       {/* Input */}
       <div>
-        <label htmlFor="url-input" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="url-input" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
           {direction === "encode" ? "Text to Encode" : "URL to Decode"}
         </label>
         <textarea
@@ -109,7 +109,7 @@ export function UrlEncoderTool() {
               ? "Enter text to encode… e.g. Hello World! こんにちは"
               : "Enter URL-encoded text… e.g. Hello%20World%21"
           }
-          className="w-full rounded-lg border border-gray-300 p-3 font-mono text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+          className="w-full rounded-lg border border-gray-300 dark:border-gray-600 p-3 font-mono text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-100"
         />
       </div>
 
@@ -118,7 +118,7 @@ export function UrlEncoderTool() {
       {/* Output */}
       <div>
         <div className="flex items-center justify-between mb-1">
-          <label htmlFor="url-output" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="url-output" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
             {direction === "encode" ? "Encoded Output" : "Decoded Output"}
           </label>
           <CopyButton getText={() => output} label="Copy" />
@@ -129,7 +129,7 @@ export function UrlEncoderTool() {
           value={output}
           readOnly
           placeholder="Output will appear here…"
-          className="w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm"
+          className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 p-3 font-mono text-sm dark:text-gray-100"
         />
       </div>
     </div>

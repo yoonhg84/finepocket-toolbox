@@ -48,7 +48,7 @@ export function CaseConverterTool() {
     <div className="space-y-4">
       {/* Input */}
       <div>
-        <label htmlFor="case-input" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="case-input" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
           Input
         </label>
         <textarea
@@ -57,7 +57,7 @@ export function CaseConverterTool() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type or paste your text here…"
-          className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+          className="w-full rounded-lg border border-gray-300 dark:border-gray-600 p-3 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-100"
         />
       </div>
 
@@ -70,7 +70,7 @@ export function CaseConverterTool() {
             className={`px-3 py-2.5 text-sm font-medium rounded-md border transition-colors ${
               activeCase === option.label
                 ? "bg-blue-600 text-white border-blue-600"
-                : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
+                : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700"
             }`}
             title={`Example: ${option.example}`}
           >
@@ -82,9 +82,9 @@ export function CaseConverterTool() {
       {/* Output */}
       <div>
         <div className="flex items-center justify-between mb-1">
-          <label htmlFor="case-output" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="case-output" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
             Output
-            {activeCase && <span className="text-gray-400 ml-1">({activeCase})</span>}
+            {activeCase && <span className="text-gray-400 dark:text-gray-500 ml-1">({activeCase})</span>}
           </label>
           <CopyButton getText={() => output} label="Copy" />
         </div>
@@ -94,7 +94,7 @@ export function CaseConverterTool() {
           value={output}
           readOnly
           placeholder="Converted text will appear here…"
-          className="w-full rounded-lg border border-gray-300 bg-gray-50 p-3 text-sm"
+          className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 p-3 text-sm dark:text-gray-100"
         />
       </div>
     </div>

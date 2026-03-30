@@ -38,7 +38,7 @@ export function LoremIpsumTool() {
         <div>
           <label
             htmlFor="unit"
-            className="text-sm font-medium text-gray-700 block mb-1"
+            className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1"
           >
             Unit
           </label>
@@ -46,7 +46,7 @@ export function LoremIpsumTool() {
             id="unit"
             value={unit}
             onChange={(e) => setUnit(e.target.value as Unit)}
-            className="px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+            className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 dark:text-gray-100"
           >
             <option value="words">Words</option>
             <option value="sentences">Sentences</option>
@@ -58,7 +58,7 @@ export function LoremIpsumTool() {
         <div>
           <label
             htmlFor="quantity"
-            className="text-sm font-medium text-gray-700 block mb-1"
+            className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1"
           >
             Quantity
           </label>
@@ -73,28 +73,28 @@ export function LoremIpsumTool() {
                 Math.max(1, Math.min(100, parseInt(e.target.value, 10) || 1))
               )
             }
-            className="w-24 px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-24 px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 dark:text-gray-100"
           />
         </div>
 
         {/* Checkboxes */}
         <div className="flex flex-col gap-1">
-          <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+          <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
             <input
               type="checkbox"
               checked={startWithLorem}
               onChange={(e) => setStartWithLorem(e.target.checked)}
-              className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              className="rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500"
             />
             Start with &quot;Lorem ipsum&quot;
           </label>
           {unit === "paragraphs" && (
-            <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+            <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
               <input
                 type="checkbox"
                 checked={wrapHtml}
                 onChange={(e) => setWrapHtml(e.target.checked)}
-                className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                className="rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500"
               />
               Wrap in HTML &lt;p&gt; tags
             </label>
@@ -112,12 +112,12 @@ export function LoremIpsumTool() {
 
       {/* Output */}
       <div className="space-y-2">
-        <label className="text-sm font-medium text-gray-700">Output</label>
+        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Output</label>
         <textarea
           value={output}
           readOnly
           placeholder="Click Generate to create Lorem Ipsum text..."
-          className="w-full h-64 p-3 font-mono text-sm border border-gray-300 rounded-lg resize-y bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full h-64 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y bg-gray-50 dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
           spellCheck={false}
         />
         <div className="flex gap-2">

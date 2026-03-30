@@ -19,9 +19,9 @@ function SectionCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-5">
-      <h3 className="text-base font-semibold text-gray-900 mb-1">{title}</h3>
-      <p className="text-sm text-gray-500 mb-4">{description}</p>
+    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5">
+      <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100 mb-1">{title}</h3>
+      <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{description}</p>
       {children}
     </div>
   );
@@ -42,7 +42,7 @@ function NumberInput({
 }) {
   return (
     <div className="flex-1 min-w-0">
-      <label className="block text-xs font-medium text-gray-500 mb-1">
+      <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
         {label}
       </label>
       <div className="relative">
@@ -51,11 +51,11 @@ function NumberInput({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder ?? ""}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
           step="any"
         />
         {suffix && (
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-gray-400">
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-gray-400 dark:text-gray-500">
             {suffix}
           </span>
         )}
@@ -74,13 +74,13 @@ function ResultDisplay({
   accent?: "green" | "red" | "blue";
 }) {
   const colors = {
-    green: "bg-green-50 border-green-200 text-green-700",
-    red: "bg-red-50 border-red-200 text-red-700",
-    blue: "bg-blue-50 border-blue-200 text-blue-700",
+    green: "bg-green-50 dark:bg-green-900/30 border-green-200 dark:border-green-700 text-green-700 dark:text-green-300",
+    red: "bg-red-50 dark:bg-red-900/30 border-red-200 dark:border-red-700 text-red-700 dark:text-red-300",
+    blue: "bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700 text-blue-700 dark:text-blue-300",
   };
   const colorClass = accent
     ? colors[accent]
-    : "bg-gray-50 border-gray-200 text-gray-900";
+    : "bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100";
 
   return (
     <div className={`rounded-md border px-4 py-3 ${colorClass}`}>
@@ -241,26 +241,26 @@ export function PercentageCalculatorTool() {
             suffix="%"
           />
           <div className="flex-shrink-0">
-            <label className="block text-xs font-medium text-gray-500 mb-1">
+            <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
               Mode
             </label>
-            <div className="flex rounded-md overflow-hidden border border-gray-300">
+            <div className="flex rounded-md overflow-hidden border border-gray-300 dark:border-gray-600">
               <button
                 onClick={() => setApplyMode("subtract")}
                 className={`px-3 py-2 text-sm font-medium transition-colors ${
                   applyMode === "subtract"
                     ? "bg-blue-600 text-white"
-                    : "bg-white text-gray-700 hover:bg-gray-50"
+                    : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
                 }`}
               >
                 Discount
               </button>
               <button
                 onClick={() => setApplyMode("add")}
-                className={`px-3 py-2 text-sm font-medium border-l border-gray-300 transition-colors ${
+                className={`px-3 py-2 text-sm font-medium border-l border-gray-300 dark:border-gray-600 transition-colors ${
                   applyMode === "add"
                     ? "bg-blue-600 text-white"
-                    : "bg-white text-gray-700 hover:bg-gray-50"
+                    : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
                 }`}
               >
                 Markup

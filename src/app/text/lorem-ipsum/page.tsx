@@ -12,7 +12,7 @@ const LoremIpsumTool = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="h-96 animate-pulse bg-gray-100 rounded-lg" />
+      <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-700 rounded-lg" />
     ),
   }
 );

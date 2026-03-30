@@ -76,7 +76,7 @@ export function HashGeneratorTool() {
     <div className="space-y-6">
       {/* Input Section */}
       <div>
-        <label htmlFor="hash-input" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="hash-input" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
           Text Input
         </label>
         <textarea
@@ -85,14 +85,14 @@ export function HashGeneratorTool() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Enter text to hash…"
-          className="w-full rounded-lg border border-gray-300 p-3 font-mono text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+          className="w-full rounded-lg border border-gray-300 dark:border-gray-600 p-3 font-mono text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-100"
         />
       </div>
 
       <div className="relative flex items-center">
-        <div className="flex-grow border-t border-gray-200" />
-        <span className="mx-4 text-sm text-gray-400">or</span>
-        <div className="flex-grow border-t border-gray-200" />
+        <div className="flex-grow border-t border-gray-200 dark:border-gray-700" />
+        <span className="mx-4 text-sm text-gray-400 dark:text-gray-500">or</span>
+        <div className="flex-grow border-t border-gray-200 dark:border-gray-700" />
       </div>
 
       <FileUpload
@@ -102,19 +102,19 @@ export function HashGeneratorTool() {
       />
 
       {fileName && (
-        <p className="text-sm text-gray-500">
-          Hashing file: <span className="font-medium text-gray-700">{fileName}</span>
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          Hashing file: <span className="font-medium text-gray-700 dark:text-gray-300">{fileName}</span>
         </p>
       )}
 
       {/* Options */}
       <div className="flex items-center gap-3">
-        <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer select-none">
+        <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer select-none">
           <input
             type="checkbox"
             checked={uppercase}
             onChange={(e) => setUppercase(e.target.checked)}
-            className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+            className="rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500"
           />
           Uppercase output
         </label>
@@ -122,7 +122,7 @@ export function HashGeneratorTool() {
 
       {/* Loading State */}
       {loading && (
-        <div className="flex items-center gap-2 text-sm text-gray-500">
+        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
           <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
@@ -133,12 +133,12 @@ export function HashGeneratorTool() {
 
       {/* Results Table */}
       {hasResults && !loading && (
-        <div className="overflow-x-auto rounded-lg border border-gray-200">
+        <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
           <table className="w-full text-sm">
             <thead>
-              <tr className="bg-gray-50 border-b border-gray-200">
-                <th className="text-left px-4 py-2.5 font-medium text-gray-700 w-28">Algorithm</th>
-                <th className="text-left px-4 py-2.5 font-medium text-gray-700">Hash Value</th>
+              <tr className="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                <th className="text-left px-4 py-2.5 font-medium text-gray-700 dark:text-gray-300 w-28">Algorithm</th>
+                <th className="text-left px-4 py-2.5 font-medium text-gray-700 dark:text-gray-300">Hash Value</th>
                 <th className="px-4 py-2.5 w-20" />
               </tr>
             </thead>
@@ -147,13 +147,13 @@ export function HashGeneratorTool() {
                 const hash = hashes[key];
                 if (!hash) return null;
                 return (
-                  <tr key={key} className="border-b border-gray-100 last:border-b-0">
-                    <td className="px-4 py-3 font-medium text-gray-700">
+                  <tr key={key} className="border-b border-gray-100 dark:border-gray-800 last:border-b-0">
+                    <td className="px-4 py-3 font-medium text-gray-700 dark:text-gray-300">
                       <div>{label}</div>
-                      <div className="text-xs text-gray-400">{bits} bit</div>
+                      <div className="text-xs text-gray-400 dark:text-gray-500">{bits} bit</div>
                     </td>
                     <td className="px-4 py-3">
-                      <code className="font-mono text-xs text-gray-800 break-all">
+                      <code className="font-mono text-xs text-gray-800 dark:text-gray-200 break-all">
                         {formatHash(hash)}
                       </code>
                     </td>

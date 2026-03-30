@@ -29,12 +29,12 @@ export function DataConverterTool() {
   return (
     <div className="space-y-6">
       {/* Input Section */}
-      <div className="bg-white border border-gray-200 rounded-lg p-4 space-y-4">
+      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 space-y-4">
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="flex-1">
             <label
               htmlFor="data-value"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
             >
               Value
             </label>
@@ -44,7 +44,7 @@ export function DataConverterTool() {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Enter a value"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100"
               min="0"
               step="any"
             />
@@ -52,7 +52,7 @@ export function DataConverterTool() {
           <div className="sm:w-48">
             <label
               htmlFor="data-unit"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
             >
               Unit
             </label>
@@ -60,7 +60,7 @@ export function DataConverterTool() {
               id="data-unit"
               value={fromUnit}
               onChange={(e) => setFromUnit(e.target.value as DataUnit)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
             >
               {DATA_UNITS.map((u) => (
                 <option key={u.id} value={u.id}>
@@ -73,26 +73,26 @@ export function DataConverterTool() {
       </div>
 
       {/* Results Table */}
-      <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
-        <div className="flex items-center justify-between px-4 py-3 bg-gray-50 border-b border-gray-200">
-          <h3 className="text-sm font-medium text-gray-700">
+      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+        <div className="flex items-center justify-between px-4 py-3 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">
             Conversion Results
           </h3>
           <CopyButton text={copyText} label="Copy All" />
         </div>
 
-        <div className="divide-y divide-gray-100">
+        <div className="divide-y divide-gray-100 dark:divide-gray-800">
           {results.map((row) => (
             <div
               key={row.unit.id}
               className={`flex items-center justify-between px-4 py-2.5 ${
                 row.unit.id === fromUnit
-                  ? "bg-blue-50 border-l-2 border-blue-500"
-                  : "hover:bg-gray-50"
+                  ? "bg-blue-50 dark:bg-blue-900/30 border-l-2 border-blue-500"
+                  : "hover:bg-gray-50 dark:hover:bg-gray-700"
               }`}
             >
-              <span className="text-sm text-gray-600">{row.unit.label}</span>
-              <span className="text-sm font-mono font-medium text-gray-900">
+              <span className="text-sm text-gray-600 dark:text-gray-400">{row.unit.label}</span>
+              <span className="text-sm font-mono font-medium text-gray-900 dark:text-gray-100">
                 {row.value}
               </span>
             </div>
@@ -101,8 +101,8 @@ export function DataConverterTool() {
       </div>
 
       {/* Info Box */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <p className="text-sm text-blue-800">
+      <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-4">
+        <p className="text-sm text-blue-800 dark:text-blue-300">
           <strong>Note:</strong> All units use binary (×1024) conversion.
           1 KB = 1,024 Bytes, 1 MB = 1,024 KB, 1 GB = 1,024 MB, and so on.
         </p>

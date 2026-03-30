@@ -72,7 +72,7 @@ function CurrencyDropdown({
     <div ref={containerRef} className="relative">
       <label
         htmlFor={id}
-        className="block text-sm font-medium text-gray-700 mb-1"
+        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
       >
         {label}
       </label>
@@ -85,32 +85,32 @@ function CurrencyDropdown({
             setTimeout(() => inputRef.current?.focus(), 0);
           }
         }}
-        className="w-full flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg text-sm bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-left"
+        className="w-full flex items-center gap-2 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-left"
       >
         {selected && (
           <>
             <span className="text-lg">{selected.flag}</span>
-            <span className="font-medium">{selected.code}</span>
-            <span className="text-gray-500 truncate">{selected.name}</span>
+            <span className="font-medium dark:text-gray-100">{selected.code}</span>
+            <span className="text-gray-500 dark:text-gray-400 truncate">{selected.name}</span>
           </>
         )}
       </button>
 
       {open && (
-        <div className="absolute z-50 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg max-h-64 overflow-hidden">
-          <div className="p-2 border-b border-gray-100">
+        <div className="absolute z-50 mt-1 w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg max-h-64 overflow-hidden">
+          <div className="p-2 border-b border-gray-100 dark:border-gray-800">
             <input
               ref={inputRef}
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search currency..."
-              className="w-full px-2 py-1.5 text-sm border border-gray-200 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full px-2 py-1.5 text-sm border border-gray-200 dark:border-gray-700 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-100"
             />
           </div>
           <div className="overflow-y-auto max-h-48">
             {filtered.length === 0 ? (
-              <div className="px-3 py-2 text-sm text-gray-400">
+              <div className="px-3 py-2 text-sm text-gray-400 dark:text-gray-500">
                 No currencies found
               </div>
             ) : (
@@ -119,13 +119,13 @@ function CurrencyDropdown({
                   key={c.code}
                   type="button"
                   onClick={() => handleSelect(c.code)}
-                  className={`w-full flex items-center gap-2 px-3 py-2 text-sm text-left hover:bg-blue-50 transition-colors ${
-                    c.code === value ? "bg-blue-50 text-blue-700" : ""
+                  className={`w-full flex items-center gap-2 px-3 py-2 text-sm text-left hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors ${
+                    c.code === value ? "bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300" : ""
                   }`}
                 >
                   <span className="text-lg">{c.flag}</span>
-                  <span className="font-medium">{c.code}</span>
-                  <span className="text-gray-500 truncate">{c.name}</span>
+                  <span className="font-medium dark:text-gray-100">{c.code}</span>
+                  <span className="text-gray-500 dark:text-gray-400 truncate">{c.name}</span>
                 </button>
               ))
             )}
@@ -193,9 +193,9 @@ export function CurrencyConverterTool() {
   if (loading) {
     return (
       <div className="space-y-4">
-        <div className="h-12 animate-pulse bg-gray-100 rounded-lg" />
-        <div className="h-48 animate-pulse bg-gray-100 rounded-lg" />
-        <div className="h-32 animate-pulse bg-gray-100 rounded-lg" />
+        <div className="h-12 animate-pulse bg-gray-100 dark:bg-gray-700 rounded-lg" />
+        <div className="h-48 animate-pulse bg-gray-100 dark:bg-gray-700 rounded-lg" />
+        <div className="h-32 animate-pulse bg-gray-100 dark:bg-gray-700 rounded-lg" />
       </div>
     );
   }
@@ -203,11 +203,11 @@ export function CurrencyConverterTool() {
   // Error state
   if (error) {
     return (
-      <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
-        <p className="text-red-700 font-medium mb-2">
+      <div className="bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-700 rounded-lg p-6 text-center">
+        <p className="text-red-700 dark:text-red-300 font-medium mb-2">
           Could not load exchange rates
         </p>
-        <p className="text-red-600 text-sm mb-4">{error}</p>
+        <p className="text-red-600 dark:text-red-400 text-sm mb-4">{error}</p>
         <button
           onClick={() => window.location.reload()}
           className="px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition-colors"
@@ -227,7 +227,7 @@ export function CurrencyConverterTool() {
       <div>
         <label
           htmlFor="amount"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
         >
           Amount
         </label>
@@ -238,7 +238,7 @@ export function CurrencyConverterTool() {
           step="any"
           value={amount}
           onChange={(e) => setAmount(parseFloat(e.target.value) || 0)}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100"
         />
       </div>
 
@@ -254,7 +254,7 @@ export function CurrencyConverterTool() {
         <button
           type="button"
           onClick={handleSwap}
-          className="mb-0.5 p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-colors"
+          className="mb-0.5 p-2 text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-full transition-colors"
           title="Swap currencies"
           aria-label="Swap currencies"
         >
@@ -283,16 +283,16 @@ export function CurrencyConverterTool() {
 
       {/* Result */}
       {result && (
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-5">
-          <p className="text-sm text-gray-600 mb-1">
+        <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-5">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">
             {fromInfo?.flag} {formatCurrencyAmount(amount, fromCurrency)}{" "}
             {fromCurrency} =
           </p>
-          <p className="text-3xl font-bold text-gray-900">
+          <p className="text-3xl font-bold text-gray-900 dark:text-gray-100">
             {toInfo?.flag} {formatCurrencyAmount(result.convertedAmount, toCurrency)}{" "}
             {toCurrency}
           </p>
-          <div className="mt-3 flex flex-col sm:flex-row sm:gap-4 text-sm text-gray-600">
+          <div className="mt-3 flex flex-col sm:flex-row sm:gap-4 text-sm text-gray-600 dark:text-gray-400">
             <span>
               1 {fromCurrency} = {formatRate(result.rate)} {toCurrency}
             </span>
@@ -301,7 +301,7 @@ export function CurrencyConverterTool() {
             </span>
           </div>
           {ratesData?.lastUpdated && (
-            <p className="text-xs text-gray-400 mt-2">
+            <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
               Last updated: {ratesData.lastUpdated}
             </p>
           )}
@@ -309,8 +309,8 @@ export function CurrencyConverterTool() {
       )}
 
       {/* YMYL Disclaimer */}
-      <div className="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3">
-        <p className="text-xs text-amber-800">
+      <div className="bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700 rounded-lg px-4 py-3">
+        <p className="text-xs text-amber-800 dark:text-amber-200">
           Exchange rates shown are for reference only. Actual transaction rates
           may differ. Please confirm with your financial institution.
         </p>
@@ -319,20 +319,20 @@ export function CurrencyConverterTool() {
       {/* Popular Conversions Table */}
       {ratesData && (
         <div>
-          <h3 className="text-sm font-semibold text-gray-800 mb-3">
+          <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-3">
             Popular Exchange Rates
           </h3>
-          <div className="overflow-x-auto border border-gray-200 rounded-lg">
+          <div className="overflow-x-auto border border-gray-200 dark:border-gray-700 rounded-lg">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-gray-50 border-b border-gray-200">
-                  <th className="text-left px-4 py-2 font-medium text-gray-600">
+                <tr className="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                  <th className="text-left px-4 py-2 font-medium text-gray-600 dark:text-gray-400">
                     Pair
                   </th>
-                  <th className="text-right px-4 py-2 font-medium text-gray-600">
+                  <th className="text-right px-4 py-2 font-medium text-gray-600 dark:text-gray-400">
                     Rate
                   </th>
-                  <th className="text-right px-4 py-2 font-medium text-gray-600">
+                  <th className="text-right px-4 py-2 font-medium text-gray-600 dark:text-gray-400">
                     Reverse
                   </th>
                 </tr>
@@ -355,15 +355,15 @@ export function CurrencyConverterTool() {
                   return (
                     <tr
                       key={`${from}-${to}`}
-                      className="border-b border-gray-100 last:border-0 hover:bg-gray-50"
+                      className="border-b border-gray-100 dark:border-gray-800 last:border-0 hover:bg-gray-50 dark:hover:bg-gray-700"
                     >
-                      <td className="px-4 py-2">
+                      <td className="px-4 py-2 dark:text-gray-300">
                         {fromC?.flag} {from} / {toC?.flag} {to}
                       </td>
-                      <td className="px-4 py-2 text-right font-mono">
+                      <td className="px-4 py-2 text-right font-mono dark:text-gray-300">
                         {formatRate(pair.rate)}
                       </td>
-                      <td className="px-4 py-2 text-right font-mono">
+                      <td className="px-4 py-2 text-right font-mono dark:text-gray-300">
                         {formatRate(pair.reverseRate)}
                       </td>
                     </tr>

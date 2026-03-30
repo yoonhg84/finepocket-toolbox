@@ -12,10 +12,10 @@ import {
 type UnitSystem = "metric" | "imperial";
 
 const CATEGORY_COLORS: Record<string, string> = {
-  Underweight: "text-blue-600",
-  Normal: "text-green-600",
-  Overweight: "text-yellow-600",
-  Obese: "text-red-600",
+  Underweight: "text-blue-600 dark:text-blue-400",
+  Normal: "text-green-600 dark:text-green-400",
+  Overweight: "text-yellow-600 dark:text-yellow-400",
+  Obese: "text-red-600 dark:text-red-400",
 };
 
 export function BmiCalculatorTool() {
@@ -58,7 +58,7 @@ export function BmiCalculatorTool() {
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               unit === u
                 ? "bg-blue-600 text-white"
-                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
             }`}
           >
             {u === "metric" ? "Metric (cm / kg)" : "Imperial (ft-in / lbs)"}
@@ -70,7 +70,7 @@ export function BmiCalculatorTool() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {unit === "metric" ? (
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Height (cm)
             </label>
             <input
@@ -79,12 +79,12 @@ export function BmiCalculatorTool() {
               onChange={(e) => setHeightCm(e.target.value)}
               placeholder=""
               min="0"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
             />
           </div>
         ) : (
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Height
             </label>
             <div className="flex gap-2">
@@ -95,9 +95,9 @@ export function BmiCalculatorTool() {
                   onChange={(e) => setFeet(e.target.value)}
                   placeholder=""
                   min="0"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
                 />
-                <span className="text-xs text-gray-500 mt-0.5 block">ft</span>
+                <span className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 block">ft</span>
               </div>
               <div className="flex-1">
                 <input
@@ -107,16 +107,16 @@ export function BmiCalculatorTool() {
                   placeholder=""
                   min="0"
                   max="11"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
                 />
-                <span className="text-xs text-gray-500 mt-0.5 block">in</span>
+                <span className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 block">in</span>
               </div>
             </div>
           </div>
         )}
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Weight ({unit === "metric" ? "kg" : "lbs"})
           </label>
           <input
@@ -129,7 +129,7 @@ export function BmiCalculatorTool() {
             }
             placeholder={unit === "metric" ? "70" : "154"}
             min="0"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
           />
         </div>
       </div>
@@ -139,8 +139,8 @@ export function BmiCalculatorTool() {
         <div className="space-y-5 pt-2">
           {/* BMI Score */}
           <div className="text-center">
-            <p className="text-sm text-gray-500 mb-1">Your BMI</p>
-            <p className="text-5xl font-bold text-gray-900">{result.bmi}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Your BMI</p>
+            <p className="text-5xl font-bold text-gray-900 dark:text-gray-100">{result.bmi}</p>
             <p
               className={`text-lg font-semibold mt-1 ${CATEGORY_COLORS[result.category]}`}
             >
@@ -162,10 +162,10 @@ export function BmiCalculatorTool() {
                 className="absolute top-full -translate-x-1/2 transition-all duration-300"
                 style={{ left: `${gaugePercent}%` }}
               >
-                <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-b-[8px] border-l-transparent border-r-transparent border-b-gray-800 mx-auto" />
+                <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-b-[8px] border-l-transparent border-r-transparent border-b-gray-800 dark:border-b-gray-200 mx-auto" />
               </div>
             </div>
-            <div className="flex justify-between text-[10px] text-gray-500 mt-3 px-0.5">
+            <div className="flex justify-between text-[10px] text-gray-500 dark:text-gray-400 mt-3 px-0.5">
               <span>Underweight</span>
               <span>Normal</span>
               <span>Overweight</span>
@@ -175,17 +175,17 @@ export function BmiCalculatorTool() {
 
           {/* Details */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="text-xs text-gray-500 mb-0.5">BMI Prime</p>
-              <p className="text-xl font-semibold text-gray-900">
+            <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-0.5">BMI Prime</p>
+              <p className="text-xl font-semibold text-gray-900 dark:text-gray-100">
                 {result.bmiPrime}
               </p>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="text-xs text-gray-500 mb-0.5">
+            <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-0.5">
                 Healthy Weight Range
               </p>
-              <p className="text-xl font-semibold text-gray-900">
+              <p className="text-xl font-semibold text-gray-900 dark:text-gray-100">
                 {unit === "metric"
                   ? `${result.healthyWeightRange.min} - ${result.healthyWeightRange.max} kg`
                   : `${Math.round(kgToLbs(result.healthyWeightRange.min) * 10) / 10} - ${Math.round(kgToLbs(result.healthyWeightRange.max) * 10) / 10} lbs`}
@@ -194,7 +194,7 @@ export function BmiCalculatorTool() {
           </div>
 
           {/* YMYL Disclaimer */}
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 text-sm text-amber-800">
+          <div className="bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700 rounded-lg p-4 text-sm text-amber-800 dark:text-amber-200">
             <strong>Disclaimer:</strong> BMI is a reference indicator only.
             Consult a healthcare professional for accurate health assessment. May
             not be accurate for muscular individuals, pregnant women, elderly, or

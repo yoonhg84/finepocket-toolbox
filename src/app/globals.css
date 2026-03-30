@@ -12,21 +12,21 @@ code, pre, .font-mono {
 
 /* Diff highlighting */
 .diff-added {
-  @apply bg-green-100 text-green-900;
+  @apply bg-green-100 text-green-900 dark:bg-green-900/40 dark:text-green-200;
 }
 .diff-removed {
-  @apply bg-red-100 text-red-900;
+  @apply bg-red-100 text-red-900 dark:bg-red-900/40 dark:text-red-200;
 }
 .diff-changed {
-  @apply bg-yellow-100;
+  @apply bg-yellow-100 dark:bg-yellow-900/40;
 }
 
 /* Regex match highlighting */
 .regex-match {
-  @apply bg-yellow-200 rounded-sm;
+  @apply bg-yellow-200 rounded-sm dark:bg-yellow-700/50;
 }
 .regex-match-alt {
-  @apply bg-blue-200 rounded-sm;
+  @apply bg-blue-200 rounded-sm dark:bg-blue-700/50;
 }
 
 /* Markdown preview prose styling */
@@ -38,15 +38,15 @@ code, pre, .font-mono {
 .markdown-preview ul { @apply list-disc list-inside mb-3; }
 .markdown-preview ol { @apply list-decimal list-inside mb-3; }
 .markdown-preview li { @apply mb-1; }
-.markdown-preview blockquote { @apply border-l-4 border-gray-300 pl-4 italic text-gray-600 mb-3; }
-.markdown-preview code { @apply bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono; }
-.markdown-preview pre { @apply bg-gray-100 p-4 rounded-lg overflow-x-auto mb-3; }
+.markdown-preview blockquote { @apply border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic text-gray-600 dark:text-gray-400 mb-3; }
+.markdown-preview code { @apply bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm font-mono; }
+.markdown-preview pre { @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-3; }
 .markdown-preview pre code { @apply bg-transparent p-0; }
-.markdown-preview a { @apply text-blue-600 underline; }
-.markdown-preview hr { @apply border-gray-300 my-6; }
+.markdown-preview a { @apply text-blue-600 dark:text-blue-400 underline; }
+.markdown-preview hr { @apply border-gray-300 dark:border-gray-600 my-6; }
 .markdown-preview table { @apply w-full border-collapse mb-3; }
-.markdown-preview th { @apply border border-gray-300 px-3 py-2 bg-gray-50 font-semibold text-left; }
-.markdown-preview td { @apply border border-gray-300 px-3 py-2; }
+.markdown-preview th { @apply border border-gray-300 dark:border-gray-600 px-3 py-2 bg-gray-50 dark:bg-gray-800 font-semibold text-left; }
+.markdown-preview td { @apply border border-gray-300 dark:border-gray-600 px-3 py-2; }
 .markdown-preview img { @apply max-w-full rounded; }
 .markdown-preview strong { @apply font-bold; }
 .markdown-preview em { @apply italic; }

@@ -27,8 +27,8 @@ export function CopyButton({ text, getText, label = "Copy", className = "" }: Co
       onClick={handleCopy}
       className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
         copied
-          ? "bg-green-100 text-green-700 border border-green-300"
-          : "bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200"
+          ? "bg-green-100 text-green-700 border border-green-300 dark:bg-green-900/40 dark:text-green-300 dark:border-green-700"
+          : "bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-600"
       } ${className}`}
       aria-label={copied ? "Copied!" : label}
     >

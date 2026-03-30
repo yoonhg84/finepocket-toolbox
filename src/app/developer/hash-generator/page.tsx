@@ -6,7 +6,7 @@ import { content } from "@/tools/hash-generator/content";
 
 const HashGeneratorTool = dynamic(
   () => import("@/tools/hash-generator/HashGeneratorTool").then((m) => ({ default: m.HashGeneratorTool })),
-  { ssr: false, loading: () => <div className="h-96 animate-pulse bg-gray-100 rounded-lg" /> }
+  { ssr: false, loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-700 rounded-lg" /> }
 );
 
 const tool = ALL_TOOLS.find((t) => t.slug === "hash-generator")!;

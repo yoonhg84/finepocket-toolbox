@@ -62,7 +62,7 @@ export function DiffCheckerTool() {
         <div className="space-y-2">
           <label
             htmlFor="diff-original"
-            className="text-sm font-medium text-gray-700"
+            className="text-sm font-medium text-gray-700 dark:text-gray-300"
           >
             Original
           </label>
@@ -71,7 +71,7 @@ export function DiffCheckerTool() {
             value={original}
             onChange={(e) => setOriginal(e.target.value)}
             placeholder="Paste original text here..."
-            className="w-full h-64 p-3 font-mono text-sm border border-gray-300 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+            className="w-full h-64 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
             spellCheck={false}
           />
         </div>
@@ -80,7 +80,7 @@ export function DiffCheckerTool() {
         <div className="space-y-2">
           <label
             htmlFor="diff-modified"
-            className="text-sm font-medium text-gray-700"
+            className="text-sm font-medium text-gray-700 dark:text-gray-300"
           >
             Modified
           </label>
@@ -89,7 +89,7 @@ export function DiffCheckerTool() {
             value={modified}
             onChange={(e) => setModified(e.target.value)}
             placeholder="Paste modified text here..."
-            className="w-full h-64 p-3 font-mono text-sm border border-gray-300 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+            className="w-full h-64 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
             spellCheck={false}
           />
         </div>
@@ -105,7 +105,7 @@ export function DiffCheckerTool() {
         </button>
         <button
           onClick={handleClear}
-          className="px-5 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-lg hover:bg-gray-200 transition-colors"
+          className="px-5 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
         >
           Clear
         </button>
@@ -116,14 +116,14 @@ export function DiffCheckerTool() {
         <div className="space-y-4">
           {/* Stats bar */}
           {stats && (
-            <div className="flex items-center gap-4 px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm">
-              <span className="text-green-700 font-medium">
+            <div className="flex items-center gap-4 px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm">
+              <span className="text-green-700 dark:text-green-300 font-medium">
                 +{stats.additions} addition{stats.additions !== 1 ? "s" : ""}
               </span>
-              <span className="text-red-700 font-medium">
+              <span className="text-red-700 dark:text-red-300 font-medium">
                 -{stats.deletions} deletion{stats.deletions !== 1 ? "s" : ""}
               </span>
-              <span className="text-gray-500">
+              <span className="text-gray-500 dark:text-gray-400">
                 {stats.changes} total change{stats.changes !== 1 ? "s" : ""}
               </span>
             </div>
@@ -150,7 +150,7 @@ export function DiffCheckerTool() {
 
 function InlineDiffView({ changes }: { changes: Change[] }) {
   return (
-    <pre className="w-full p-4 font-mono text-sm border border-gray-300 rounded-lg overflow-auto bg-white max-h-[32rem]">
+    <pre className="w-full p-4 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg overflow-auto bg-white dark:bg-gray-800 dark:text-gray-100 max-h-[32rem]">
       {changes.map((part, i) => {
         let className = "";
         if (part.added) className = "diff-added";
@@ -221,17 +221,17 @@ function SideBySideDiffView({ changes }: { changes: Change[] }) {
       case "added":
         return "diff-added";
       case "empty":
-        return "bg-gray-50 text-gray-300";
+        return "bg-gray-50 dark:bg-gray-800 text-gray-300 dark:text-gray-600";
       default:
         return "";
     }
   };
 
   return (
-    <div className="grid grid-cols-2 gap-0 border border-gray-300 rounded-lg overflow-auto max-h-[32rem] font-mono text-sm">
+    <div className="grid grid-cols-2 gap-0 border border-gray-300 dark:border-gray-600 rounded-lg overflow-auto max-h-[32rem] font-mono text-sm">
       {/* Left (original) */}
-      <div className="border-r border-gray-300">
-        <div className="px-3 py-1.5 bg-gray-50 border-b border-gray-300 text-xs font-medium text-gray-500">
+      <div className="border-r border-gray-300 dark:border-gray-600">
+        <div className="px-3 py-1.5 bg-gray-50 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-600 text-xs font-medium text-gray-500 dark:text-gray-400">
           Original
         </div>
         <div>
@@ -248,7 +248,7 @@ function SideBySideDiffView({ changes }: { changes: Change[] }) {
 
       {/* Right (modified) */}
       <div>
-        <div className="px-3 py-1.5 bg-gray-50 border-b border-gray-300 text-xs font-medium text-gray-500">
+        <div className="px-3 py-1.5 bg-gray-50 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-600 text-xs font-medium text-gray-500 dark:text-gray-400">
           Modified
         </div>
         <div>

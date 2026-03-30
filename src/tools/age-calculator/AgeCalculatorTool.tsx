@@ -13,19 +13,19 @@ function StatCard({
   sub?: string;
 }) {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-4 text-center">
-      <div className="text-2xl font-bold text-gray-900">{value}</div>
-      <div className="text-xs text-gray-500 mt-1">{label}</div>
-      {sub && <div className="text-xs text-gray-400 mt-0.5">{sub}</div>}
+    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-center">
+      <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">{value}</div>
+      <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">{label}</div>
+      {sub && <div className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">{sub}</div>}
     </div>
   );
 }
 
 function InfoRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0">
-      <span className="text-sm text-gray-600">{label}</span>
-      <span className="text-sm font-semibold text-gray-900">{value}</span>
+    <div className="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-800 last:border-0">
+      <span className="text-sm text-gray-600 dark:text-gray-400">{label}</span>
+      <span className="text-sm font-semibold text-gray-900 dark:text-gray-100">{value}</span>
     </div>
   );
 }
@@ -55,8 +55,8 @@ export function AgeCalculatorTool() {
   return (
     <div className="space-y-6">
       {/* Date of Birth Input */}
-      <div className="bg-white border border-gray-200 rounded-lg p-5">
-        <label className="block text-sm font-semibold text-gray-700 mb-2">
+      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5">
+        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
           Date of Birth
         </label>
         <input
@@ -64,30 +64,30 @@ export function AgeCalculatorTool() {
           value={birthDate}
           onChange={(e) => setBirthDate(e.target.value)}
           max={todayStr}
-          className="w-full sm:w-auto px-4 py-3 border border-gray-300 rounded-md text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="w-full sm:w-auto px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
         />
       </div>
 
       {ageResult && (
         <>
           {/* Exact Age */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-5">
-            <h3 className="text-sm font-semibold text-blue-700 mb-3">
+          <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-5">
+            <h3 className="text-sm font-semibold text-blue-700 dark:text-blue-300 mb-3">
               Your Age
             </h3>
             <div className="flex items-baseline gap-2 flex-wrap">
-              <span className="text-4xl font-bold text-blue-700">
+              <span className="text-4xl font-bold text-blue-700 dark:text-blue-300">
                 {ageResult.years}
               </span>
-              <span className="text-lg text-blue-600">years</span>
-              <span className="text-4xl font-bold text-blue-700">
+              <span className="text-lg text-blue-600 dark:text-blue-400">years</span>
+              <span className="text-4xl font-bold text-blue-700 dark:text-blue-300">
                 {ageResult.months}
               </span>
-              <span className="text-lg text-blue-600">months</span>
-              <span className="text-4xl font-bold text-blue-700">
+              <span className="text-lg text-blue-600 dark:text-blue-400">months</span>
+              <span className="text-4xl font-bold text-blue-700 dark:text-blue-300">
                 {ageResult.days}
               </span>
-              <span className="text-lg text-blue-600">days</span>
+              <span className="text-lg text-blue-600 dark:text-blue-400">days</span>
             </div>
           </div>
 
@@ -127,8 +127,8 @@ export function AgeCalculatorTool() {
           </div>
 
           {/* Additional Info */}
-          <div className="bg-white border border-gray-200 rounded-lg p-5">
-            <h3 className="text-sm font-semibold text-gray-700 mb-3">
+          <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5">
+            <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
               Details
             </h3>
             <InfoRow
@@ -154,34 +154,34 @@ export function AgeCalculatorTool() {
       )}
 
       {/* Date Interval Calculator */}
-      <div className="bg-white border border-gray-200 rounded-lg p-5">
-        <h3 className="text-base font-semibold text-gray-900 mb-1">
+      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5">
+        <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100 mb-1">
           Date Interval Calculator
         </h3>
-        <p className="text-sm text-gray-500 mb-4">
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
           Calculate the time between any two dates
         </p>
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="flex-1">
-            <label className="block text-xs font-medium text-gray-500 mb-1">
+            <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
               Start Date
             </label>
             <input
               type="date"
               value={intervalStart}
               onChange={(e) => setIntervalStart(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
             />
           </div>
           <div className="flex-1">
-            <label className="block text-xs font-medium text-gray-500 mb-1">
+            <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
               End Date
             </label>
             <input
               type="date"
               value={intervalEnd}
               onChange={(e) => setIntervalEnd(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
             />
           </div>
         </div>

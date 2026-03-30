@@ -87,13 +87,13 @@ export function RegexTesterTool() {
       <div className="space-y-2">
         <label
           htmlFor="regex-pattern"
-          className="text-sm font-medium text-gray-700"
+          className="text-sm font-medium text-gray-700 dark:text-gray-300"
         >
           Pattern
         </label>
         <div className="flex items-center gap-2 flex-wrap">
-          <div className="flex-1 min-w-0 flex items-center border border-gray-300 rounded-lg bg-white focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent">
-            <span className="pl-3 text-gray-400 font-mono text-sm select-none">
+          <div className="flex-1 min-w-0 flex items-center border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent">
+            <span className="pl-3 text-gray-400 dark:text-gray-500 font-mono text-sm select-none">
               /
             </span>
             <input
@@ -102,10 +102,10 @@ export function RegexTesterTool() {
               value={pattern}
               onChange={(e) => setPattern(e.target.value)}
               placeholder="Enter regex pattern..."
-              className="flex-1 min-w-0 py-2 px-1 font-mono text-sm bg-transparent focus:outline-none"
+              className="flex-1 min-w-0 py-2 px-1 font-mono text-sm bg-transparent focus:outline-none dark:text-gray-100"
               spellCheck={false}
             />
-            <span className="pr-3 text-gray-400 font-mono text-sm select-none">
+            <span className="pr-3 text-gray-400 dark:text-gray-500 font-mono text-sm select-none">
               /{flagStr}
             </span>
           </div>
@@ -119,8 +119,8 @@ export function RegexTesterTool() {
                 title={f.title}
                 className={`w-8 h-8 text-sm font-mono font-bold rounded-md border transition-colors ${
                   flags[f.key]
-                    ? "bg-blue-50 text-blue-700 border-blue-300"
-                    : "bg-white text-gray-400 border-gray-300 hover:bg-gray-50"
+                    ? "bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-300 dark:border-blue-600"
+                    : "bg-white dark:bg-gray-800 text-gray-400 dark:text-gray-500 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700"
                 }`}
               >
                 {f.label}
@@ -134,17 +134,17 @@ export function RegexTesterTool() {
       <div className="relative">
         <button
           onClick={() => setShowPresets(!showPresets)}
-          className="px-3 py-1.5 text-sm font-medium rounded-md bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200 transition-colors"
+          className="px-3 py-1.5 text-sm font-medium rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
         >
           Presets {showPresets ? "▲" : "▼"}
         </button>
         {showPresets && (
-          <div className="absolute z-10 mt-1 w-full max-w-md bg-white border border-gray-200 rounded-lg shadow-lg p-2 grid grid-cols-2 sm:grid-cols-3 gap-1">
+          <div className="absolute z-10 mt-1 w-full max-w-md bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2 grid grid-cols-2 sm:grid-cols-3 gap-1">
             {PRESETS.map((preset) => (
               <button
                 key={preset.name}
                 onClick={() => applyPreset(preset)}
-                className="px-3 py-2 text-xs text-left rounded-md hover:bg-blue-50 hover:text-blue-700 transition-colors truncate"
+                className="px-3 py-2 text-xs text-left rounded-md hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-700 dark:hover:text-blue-300 transition-colors truncate dark:text-gray-300"
                 title={preset.pattern}
               >
                 {preset.name}
@@ -160,7 +160,7 @@ export function RegexTesterTool() {
       <div className="space-y-2">
         <label
           htmlFor="test-string"
-          className="text-sm font-medium text-gray-700"
+          className="text-sm font-medium text-gray-700 dark:text-gray-300"
         >
           Test String
         </label>
@@ -169,7 +169,7 @@ export function RegexTesterTool() {
           value={testStr}
           onChange={(e) => setTestStr(e.target.value)}
           placeholder="Enter text to test against the regex..."
-          className="w-full h-32 p-3 font-mono text-sm border border-gray-300 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+          className="w-full h-32 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
           spellCheck={false}
         />
       </div>
@@ -178,15 +178,15 @@ export function RegexTesterTool() {
       {testStr && (
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-gray-700">
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
               Match Highlighting
             </span>
-            <span className="text-sm text-gray-500">
+            <span className="text-sm text-gray-500 dark:text-gray-400">
               {matches.length} match{matches.length !== 1 ? "es" : ""} found
             </span>
           </div>
           <div
-            className="w-full min-h-[4rem] p-3 font-mono text-sm border border-gray-300 rounded-lg bg-gray-50 whitespace-pre-wrap break-all"
+            className="w-full min-h-[4rem] p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-100 whitespace-pre-wrap break-all"
             dangerouslySetInnerHTML={{ __html: highlightedHtml }}
           />
         </div>
@@ -195,23 +195,23 @@ export function RegexTesterTool() {
       {/* Match details table */}
       {matches.length > 0 && (
         <div className="space-y-2">
-          <span className="text-sm font-medium text-gray-700">
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
             Match Details
           </span>
-          <div className="overflow-x-auto border border-gray-200 rounded-lg">
+          <div className="overflow-x-auto border border-gray-200 dark:border-gray-700 rounded-lg">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-gray-50 text-left">
-                  <th className="px-3 py-2 font-medium text-gray-600 w-16">
+                <tr className="bg-gray-50 dark:bg-gray-800 text-left">
+                  <th className="px-3 py-2 font-medium text-gray-600 dark:text-gray-400 w-16">
                     #
                   </th>
-                  <th className="px-3 py-2 font-medium text-gray-600 w-20">
+                  <th className="px-3 py-2 font-medium text-gray-600 dark:text-gray-400 w-20">
                     Index
                   </th>
-                  <th className="px-3 py-2 font-medium text-gray-600">
+                  <th className="px-3 py-2 font-medium text-gray-600 dark:text-gray-400">
                     Full Match
                   </th>
-                  <th className="px-3 py-2 font-medium text-gray-600">
+                  <th className="px-3 py-2 font-medium text-gray-600 dark:text-gray-400">
                     Groups
                   </th>
                 </tr>
@@ -220,26 +220,26 @@ export function RegexTesterTool() {
                 {matches.map((m, i) => (
                   <tr
                     key={i}
-                    className="border-t border-gray-100 hover:bg-gray-50"
+                    className="border-t border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700"
                   >
-                    <td className="px-3 py-2 text-gray-500">{i + 1}</td>
-                    <td className="px-3 py-2 font-mono text-gray-600">
+                    <td className="px-3 py-2 text-gray-500 dark:text-gray-400">{i + 1}</td>
+                    <td className="px-3 py-2 font-mono text-gray-600 dark:text-gray-400">
                       {m.index}
                     </td>
-                    <td className="px-3 py-2 font-mono text-blue-700 break-all">
+                    <td className="px-3 py-2 font-mono text-blue-700 dark:text-blue-300 break-all">
                       {m.fullMatch}
                     </td>
-                    <td className="px-3 py-2 font-mono text-gray-600 break-all">
+                    <td className="px-3 py-2 font-mono text-gray-600 dark:text-gray-400 break-all">
                       {m.groups.length > 0
                         ? m.groups.map((g, gi) => (
                             <span
                               key={gi}
-                              className="inline-block mr-2 px-1.5 py-0.5 bg-purple-50 text-purple-700 rounded text-xs"
+                              className="inline-block mr-2 px-1.5 py-0.5 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded text-xs"
                             >
                               ${gi + 1}: {g}
                             </span>
                           ))
-                        : <span className="text-gray-400">—</span>}
+                        : <span className="text-gray-400 dark:text-gray-500">—</span>}
                     </td>
                   </tr>
                 ))}
@@ -250,10 +250,10 @@ export function RegexTesterTool() {
       )}
 
       {/* Replace section */}
-      <div className="space-y-2 border-t border-gray-200 pt-4">
+      <div className="space-y-2 border-t border-gray-200 dark:border-gray-700 pt-4">
         <label
           htmlFor="replacement"
-          className="text-sm font-medium text-gray-700"
+          className="text-sm font-medium text-gray-700 dark:text-gray-300"
         >
           Replacement (optional)
         </label>
@@ -263,18 +263,18 @@ export function RegexTesterTool() {
           value={replacement}
           onChange={(e) => setReplacement(e.target.value)}
           placeholder="Enter replacement string (use $1, $2 for groups)..."
-          className="w-full p-3 font-mono text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+          className="w-full p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
           spellCheck={false}
         />
         {replacement && testStr && (
           <div className="space-y-1">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 Replace Result
               </span>
               <CopyButton text={replaceResult} label="Copy Result" />
             </div>
-            <pre className="w-full min-h-[3rem] p-3 font-mono text-sm border border-gray-300 rounded-lg bg-gray-50 whitespace-pre-wrap break-all">
+            <pre className="w-full min-h-[3rem] p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-100 whitespace-pre-wrap break-all">
               {replaceResult}
             </pre>
             <ErrorMessage message={replaceError} />
