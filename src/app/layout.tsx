@@ -27,6 +27,7 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
   creator: ORGANIZATION_NAME,
   publisher: ORGANIZATION_NAME,
+  referrer: "strict-origin-when-cross-origin",
   manifest: "/manifest.webmanifest",
   icons: {
     icon: [
@@ -55,6 +56,12 @@ export default function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "window.googlefc=window.googlefc||{};window.googlefc.callbackQueue=window.googlefc.callbackQueue||[];",
+          }}
+        />
         {adsenseClientId ? (
           <>
             <meta name="google-adsense-account" content={adsenseClientId} />

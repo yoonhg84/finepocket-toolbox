@@ -26,6 +26,10 @@ export function middleware(request: NextRequest) {
     redirectUrl.pathname = localizePath(request.nextUrl.pathname, locale);
 
     const response = NextResponse.redirect(redirectUrl);
+    response.headers.set(
+      "Referrer-Policy",
+      "strict-origin-when-cross-origin"
+    );
     response.cookies.set(LOCALE_COOKIE_NAME, locale, {
       path: "/",
       maxAge: 60 * 60 * 24 * 365,
@@ -42,6 +46,11 @@ export function middleware(request: NextRequest) {
       headers: requestHeaders,
     },
   });
+
+  response.headers.set(
+    "Referrer-Policy",
+    "strict-origin-when-cross-origin"
+  );
 
   response.cookies.set(LOCALE_COOKIE_NAME, pathnameLocale, {
     path: "/",
