@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Reviewer"
+  short_description: "Review UI changes for dark mode and i18n compliance"
+  default_prompt: "Use $ui-reviewer to review changed UI files for dark mode coverage and i18n readiness, then report concrete issues with file and line references."
