@@ -1,8 +1,13 @@
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { getServerTranslator } from "@/i18n/server";
 import { getLocalizedToolText } from "@/i18n/tools";
-import type { ToolMeta } from "@/lib/tools-registry";
+import {
+  getCategoryHref,
+  getCategoryLabelKey,
+  type ToolMeta,
+} from "@/lib/tools-registry";
 import type { ToolContent } from "@/lib/seo";
+import { buildBreadcrumbJsonLd } from "@/lib/seo";
 import { RelatedTools } from "./RelatedTools";
 import { FaqSection } from "./FaqSection";
 import { SeoSection } from "./SeoSection";
@@ -16,20 +21,28 @@ interface ToolPageLayoutProps {
 export function ToolPageLayout({ tool, content, children }: ToolPageLayoutProps) {
   const t = getServerTranslator();
   const localizedTool = getLocalizedToolText(tool, t);
-  const categoryLabel =
-    tool.category === "developer"
-      ? t("nav.developerTools")
-      : tool.category === "text"
-        ? t("nav.textTools")
-        : t("nav.financeTools");
+  const categoryLabel = t(getCategoryLabelKey(tool.category));
+  const categoryHref = getCategoryHref(tool.category);
   const breadcrumbItems = [
     { label: t("common.home"), href: "/" },
-    { label: categoryLabel },
+    { label: categoryLabel, href: categoryHref },
     { label: localizedTool.name },
   ];
 
   return (
     <div className="max-w-[960px] mx-auto px-4 py-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildBreadcrumbJsonLd([
+              { name: t("common.home"), href: "/" },
+              { name: categoryLabel, href: categoryHref },
+              { name: localizedTool.name },
+            ])
+          ),
+        }}
+      />
       <Breadcrumb items={breadcrumbItems} />
 
       <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">{localizedTool.name}</h1>

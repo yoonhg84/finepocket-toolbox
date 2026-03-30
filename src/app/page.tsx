@@ -2,14 +2,19 @@ import Link from "next/link";
 import type { TranslateFn } from "@/i18n";
 import { getServerTranslator } from "@/i18n/server";
 import { getLocalizedToolText } from "@/i18n/tools";
-import { ALL_TOOLS, getToolsByCategory } from "@/lib/tools-registry";
-import type { Metadata } from "next";
+import {
+  ALL_TOOLS,
+  getCategoryHref,
+  getToolsByCategory,
+} from "@/lib/tools-registry";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "FinePocket Toolbox - Free Online Developer, Text & Finance Tools",
+export const metadata = buildPageMetadata({
+  title: "Free Online Developer, Text & Finance Tools",
   description:
-    "Free online tools for developers and everyone. JSON formatter, Base64 encoder, loan calculator, unit converter, and more. All tools run entirely in your browser.",
-};
+    "Free online tools for developers and everyone. Explore browser-based utilities for development, writing, and everyday finance calculations.",
+  path: "/",
+});
 
 const devTools = getToolsByCategory("developer");
 const textTools = getToolsByCategory("text");
@@ -78,17 +83,32 @@ export default function Home() {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">{t("nav.financeTools")}</h2>
+        <Link
+          href={getCategoryHref("finance")}
+          className="mb-6 inline-block text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
+        >
+          {t("nav.financeTools")}
+        </Link>
         <ToolGrid tools={financeTools} t={t} />
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">{t("nav.developerTools")}</h2>
+        <Link
+          href={getCategoryHref("developer")}
+          className="mb-6 inline-block text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
+        >
+          {t("nav.developerTools")}
+        </Link>
         <ToolGrid tools={devTools} t={t} />
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">{t("nav.textTools")}</h2>
+        <Link
+          href={getCategoryHref("text")}
+          className="mb-6 inline-block text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
+        >
+          {t("nav.textTools")}
+        </Link>
         <ToolGrid tools={textTools} t={t} />
       </section>
 

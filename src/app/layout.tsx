@@ -6,6 +6,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { getMessages } from "@/i18n";
 import { getRequestLocale } from "@/i18n/server";
+import { SITE_NAME } from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -21,12 +22,13 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "FinePocket Toolbox - Free Online Developer & Text Tools",
-    template: "%s | FinePocket Toolbox",
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Free online tools for developers and writers. JSON formatter, Base64 encoder, hash generator, word counter, and more. All tools run in your browser — no data sent to servers.",
+    "Free online developer, text, and finance tools. Fast browser-based utilities with privacy-first defaults and no sign-up required.",
   metadataBase: new URL("https://toolbox.finepocket.app"),
+  applicationName: SITE_NAME,
 };
 
 export default function RootLayout({

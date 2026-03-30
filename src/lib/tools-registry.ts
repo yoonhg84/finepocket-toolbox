@@ -1,12 +1,32 @@
+export type ToolCategory = "developer" | "text" | "finance";
+
 export interface ToolMeta {
   slug: string;
-  category: "developer" | "text" | "finance";
+  category: ToolCategory;
   name: string;
   shortDescription: string;
   href: string;
   keywords: string[];
   icon: string;
 }
+
+export const CATEGORY_META: Record<
+  ToolCategory,
+  { href: string; labelKey: string }
+> = {
+  developer: {
+    href: "/developer",
+    labelKey: "nav.developerTools",
+  },
+  text: {
+    href: "/text",
+    labelKey: "nav.textTools",
+  },
+  finance: {
+    href: "/finance",
+    labelKey: "nav.financeTools",
+  },
+};
 
 export const ALL_TOOLS: ToolMeta[] = [
   {
@@ -224,10 +244,18 @@ export function getRelatedTools(currentSlug: string, count = 3): ToolMeta[] {
   return [...sameCategory, ...otherCategory].slice(0, count);
 }
 
-export function getToolsByCategory(category: string): ToolMeta[] {
+export function getToolsByCategory(category: ToolCategory): ToolMeta[] {
   return ALL_TOOLS.filter((t) => t.category === category);
 }
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {
   return ALL_TOOLS.find((t) => t.slug === slug);
+}
+
+export function getCategoryHref(category: ToolCategory): string {
+  return CATEGORY_META[category].href;
+}
+
+export function getCategoryLabelKey(category: ToolCategory): string {
+  return CATEGORY_META[category].labelKey;
 }
