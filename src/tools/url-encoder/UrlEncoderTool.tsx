@@ -1,0 +1,137 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+import { CopyButton } from "@/components/ui/CopyButton";
+import { ErrorMessage } from "@/components/ui/ErrorMessage";
+import { urlEncode, urlDecode } from "./logic";
+
+type Direction = "encode" | "decode";
+type EncodeMode = "component" | "uri";
+
+export function UrlEncoderTool() {
+  const [direction, setDirection] = useState<Direction>("encode");
+  const [mode, setMode] = useState<EncodeMode>("component");
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const debounceRef = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+
+    debounceRef.current = setTimeout(() => {
+      setError(null);
+      if (!input) {
+        setOutput("");
+        return;
+      }
+
+      if (direction === "encode") {
+        setOutput(urlEncode(input, mode));
+      } else {
+        const { result, error: decodeError } = urlDecode(input);
+        setOutput(result);
+        setError(decodeError);
+      }
+    }, 300);
+
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
+  }, [input, direction, mode]);
+
+  return (
+    <div className="space-y-4">
+      {/* Direction Toggle */}
+      <div className="flex items-center gap-3">
+        <button
+          onClick={() => setDirection("encode")}
+          className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+            direction === "encode"
+              ? "bg-blue-600 text-white"
+              : "bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200"
+          }`}
+        >
+          Encode
+        </button>
+        <button
+          onClick={() => setDirection("decode")}
+          className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+            direction === "decode"
+              ? "bg-blue-600 text-white"
+              : "bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200"
+          }`}
+        >
+          Decode
+        </button>
+      </div>
+
+      {/* Mode Selector (only for encoding) */}
+      {direction === "encode" && (
+        <div className="flex items-center gap-3">
+          <span className="text-sm text-gray-600">Mode:</span>
+          <label className="flex items-center gap-1.5 text-sm cursor-pointer select-none">
+            <input
+              type="radio"
+              name="encode-mode"
+              checked={mode === "component"}
+              onChange={() => setMode("component")}
+              className="text-blue-600 focus:ring-blue-500"
+            />
+            <span className="text-gray-700">encodeURIComponent</span>
+            <span className="text-gray-400">(recommended)</span>
+          </label>
+          <label className="flex items-center gap-1.5 text-sm cursor-pointer select-none">
+            <input
+              type="radio"
+              name="encode-mode"
+              checked={mode === "uri"}
+              onChange={() => setMode("uri")}
+              className="text-blue-600 focus:ring-blue-500"
+            />
+            <span className="text-gray-700">encodeURI</span>
+          </label>
+        </div>
+      )}
+
+      {/* Input */}
+      <div>
+        <label htmlFor="url-input" className="block text-sm font-medium text-gray-700 mb-1">
+          {direction === "encode" ? "Text to Encode" : "URL to Decode"}
+        </label>
+        <textarea
+          id="url-input"
+          rows={5}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder={
+            direction === "encode"
+              ? "Enter text to encode… e.g. Hello World! こんにちは"
+              : "Enter URL-encoded text… e.g. Hello%20World%21"
+          }
+          className="w-full rounded-lg border border-gray-300 p-3 font-mono text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+        />
+      </div>
+
+      <ErrorMessage message={error} />
+
+      {/* Output */}
+      <div>
+        <div className="flex items-center justify-between mb-1">
+          <label htmlFor="url-output" className="block text-sm font-medium text-gray-700">
+            {direction === "encode" ? "Encoded Output" : "Decoded Output"}
+          </label>
+          <CopyButton getText={() => output} label="Copy" />
+        </div>
+        <textarea
+          id="url-output"
+          rows={5}
+          value={output}
+          readOnly
+          placeholder="Output will appear here…"
+          className="w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm"
+        />
+      </div>
+    </div>
+  );
+}
