@@ -87,6 +87,46 @@ export default function Home() {
         <ToolSearch />
       </section>
 
+      <section className="mb-12">
+        <Link
+          href={getCategoryHref("finance", locale)}
+          className="mb-6 inline-block text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
+        >
+          {t("nav.financeTools")}
+        </Link>
+        <ToolGrid tools={financeTools} t={t} locale={locale} />
+      </section>
+
+      <section className="mb-12">
+        <Link
+          href={getCategoryHref("calculators", locale)}
+          className="mb-6 inline-block text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
+        >
+          {t("nav.calculatorTools")}
+        </Link>
+        <ToolGrid tools={calculatorTools} t={t} locale={locale} />
+      </section>
+
+      <section className="mb-12">
+        <Link
+          href={getCategoryHref("developer", locale)}
+          className="mb-6 inline-block text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
+        >
+          {t("nav.developerTools")}
+        </Link>
+        <ToolGrid tools={devTools} t={t} locale={locale} />
+      </section>
+
+      <section className="mb-12">
+        <Link
+          href={getCategoryHref("text", locale)}
+          className="mb-6 inline-block text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
+        >
+          {t("nav.textTools")}
+        </Link>
+        <ToolGrid tools={textTools} t={t} locale={locale} />
+      </section>
+
       <section className="mb-12 rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-6 dark:border-gray-700 dark:from-gray-900 dark:to-gray-800">
         <div className="grid gap-6 lg:grid-cols-[1.5fr,1fr]">
           <div>
@@ -177,46 +217,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
-
-      <section className="mb-12">
-        <Link
-          href={getCategoryHref("finance", locale)}
-          className="mb-6 inline-block text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
-        >
-          {t("nav.financeTools")}
-        </Link>
-        <ToolGrid tools={financeTools} t={t} locale={locale} />
-      </section>
-
-      <section className="mb-12">
-        <Link
-          href={getCategoryHref("calculators", locale)}
-          className="mb-6 inline-block text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
-        >
-          {t("nav.calculatorTools")}
-        </Link>
-        <ToolGrid tools={calculatorTools} t={t} locale={locale} />
-      </section>
-
-      <section className="mb-12">
-        <Link
-          href={getCategoryHref("developer", locale)}
-          className="mb-6 inline-block text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
-        >
-          {t("nav.developerTools")}
-        </Link>
-        <ToolGrid tools={devTools} t={t} locale={locale} />
-      </section>
-
-      <section className="mb-12">
-        <Link
-          href={getCategoryHref("text", locale)}
-          className="mb-6 inline-block text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
-        >
-          {t("nav.textTools")}
-        </Link>
-        <ToolGrid tools={textTools} t={t} locale={locale} />
       </section>
 
       <section className="text-center py-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
