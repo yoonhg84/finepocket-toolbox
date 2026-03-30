@@ -101,31 +101,44 @@ export default function Home() {
               )}
             </p>
             <ul className="mt-5 grid gap-3 text-sm text-gray-600 dark:text-gray-400 sm:grid-cols-2">
-              {[
-                t(
-                  "home.trustPoint1",
-                  undefined,
-                  "Most tools process input locally in the browser."
-                ),
-                t(
-                  "home.trustPoint2",
-                  undefined,
-                  "Pages that rely on external reference data say so clearly."
-                ),
-                t(
-                  "home.trustPoint3",
-                  undefined,
-                  "Finance and health outputs are framed as reference-only guidance."
-                ),
-                t(
-                  "home.trustPoint4",
-                  undefined,
-                  "Policy, privacy, and contact pages stay one click away."
-                ),
-              ].map((point) => (
-                <li key={point} className="flex items-start gap-3">
-                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-emerald-500 dark:bg-emerald-400" />
-                  <span>{point}</span>
+              {([
+                {
+                  icon: (
+                    <svg className="h-5 w-5 text-emerald-500 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  ),
+                  text: t("home.trustPoint1", undefined, "Most tools process input locally in the browser."),
+                },
+                {
+                  icon: (
+                    <svg className="h-5 w-5 text-emerald-500 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                  ),
+                  text: t("home.trustPoint2", undefined, "Pages that rely on external reference data say so clearly."),
+                },
+                {
+                  icon: (
+                    <svg className="h-5 w-5 text-emerald-500 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                    </svg>
+                  ),
+                  text: t("home.trustPoint3", undefined, "Finance and health outputs are framed as reference-only guidance."),
+                },
+                {
+                  icon: (
+                    <svg className="h-5 w-5 text-emerald-500 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                    </svg>
+                  ),
+                  text: t("home.trustPoint4", undefined, "Policy, privacy, and contact pages stay one click away."),
+                },
+              ] as const).map((item) => (
+                <li key={item.text} className="flex items-start gap-3">
+                  <span className="mt-0.5 shrink-0">{item.icon}</span>
+                  <span>{item.text}</span>
                 </li>
               ))}
             </ul>
