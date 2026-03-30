@@ -72,7 +72,7 @@ export function CompoundInterestTool() {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            {locale === "ko" ? `연 이자율: ${rate}%` : `Annual Interest Rate: ${rate}%`}
+            {`${ui("Annual Interest Rate")}: ${rate}%`}
           </label>
           <div className="flex gap-2 items-center">
             <input
@@ -99,7 +99,9 @@ export function CompoundInterestTool() {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            {locale === "ko" ? `투자 기간: ${years}년` : `Investment Period: ${years} years`}
+            {locale === "ko"
+              ? `${ui("Investment Period")}: ${years}년`
+              : `${ui("Investment Period")}: ${years} years`}
           </label>
           <div className="flex gap-2 items-center">
             <input

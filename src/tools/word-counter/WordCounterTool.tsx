@@ -17,7 +17,7 @@ export function WordCounterTool() {
   const readability = useMemo(() => fleschReadingEase(text), [text]);
 
   const statItems = [
-    { label: locale === "ko" ? "글자 수" : "Characters", value: stats.characters },
+    { label: ui("Characters"), value: stats.characters },
     { label: ui("No Spaces"), value: stats.charactersNoSpaces },
     { label: ui("Words"), value: stats.words },
     { label: ui("Sentences"), value: stats.sentences },
@@ -33,18 +33,22 @@ export function WordCounterTool() {
   ];
 
   const reportText = [
-    `Word Count Report`,
+    locale === "ko" ? ui("Word Count Report") : "Word Count Report",
     `─────────────────`,
-    `Characters: ${stats.characters}`,
-    `Characters (no spaces): ${stats.charactersNoSpaces}`,
-    `Words: ${stats.words}`,
-    `Sentences: ${stats.sentences}`,
-    `Paragraphs: ${stats.paragraphs}`,
-    `Reading Time: ${stats.readingTimeMin} min`,
-    `Speaking Time: ${stats.speakingTimeMin} min`,
-    `Readability: ${readability.score} (${readability.label})`,
+    `${ui("Characters")}: ${stats.characters}`,
+    `${ui("Characters (no spaces)")}: ${stats.charactersNoSpaces}`,
+    `${ui("Words")}: ${stats.words}`,
+    `${ui("Sentences")}: ${stats.sentences}`,
+    `${ui("Paragraphs")}: ${stats.paragraphs}`,
+    locale === "ko"
+      ? `${ui("Reading Time")}: ${stats.readingTimeMin}분`
+      : `${ui("Reading Time")}: ${stats.readingTimeMin} min`,
+    locale === "ko"
+      ? `${ui("Speaking Time")}: ${stats.speakingTimeMin}분`
+      : `${ui("Speaking Time")}: ${stats.speakingTimeMin} min`,
+    `${ui("Readability")}: ${readability.score} (${ui(readability.label)})`,
     ``,
-    `Top Keywords:`,
+    `${ui("Top Keywords")}:`,
     ...keywords.map((k) => `  ${k.word}: ${k.count} (${k.percentage}%)`),
   ].join("\n");
 
@@ -107,7 +111,7 @@ export function WordCounterTool() {
                       : "bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400"
               }`}
             >
-              {text.trim() ? readability.label : "N/A"}
+              {text.trim() ? ui(readability.label) : ui("N/A")}
             </span>
           </div>
           {text.trim() && (

@@ -335,6 +335,9 @@ export function ColorPickerTool() {
 /* ---- Helper sub-component ---- */
 
 function FormatRow({ label, value }: { label: string; value: string }) {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
+
   return (
     <div className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 rounded-md px-3 py-2">
       <span className="text-xs font-medium text-gray-500 dark:text-gray-400 w-12 shrink-0">
@@ -343,7 +346,7 @@ function FormatRow({ label, value }: { label: string; value: string }) {
       <code className="text-sm font-mono text-gray-800 dark:text-gray-200 flex-1 truncate">
         {value}
       </code>
-      <CopyButton text={value} label="Copy" className="text-[10px] px-1.5 py-0.5" />
+      <CopyButton text={value} label={ui("Copy")} className="text-[10px] px-1.5 py-0.5" />
     </div>
   );
 }

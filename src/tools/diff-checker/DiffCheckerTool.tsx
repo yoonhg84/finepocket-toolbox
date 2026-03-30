@@ -150,7 +150,11 @@ export function DiffCheckerTool() {
           {viewMode === "inline" ? (
             <InlineDiffView changes={changes} />
           ) : (
-            <SideBySideDiffView changes={changes} />
+            <SideBySideDiffView
+              changes={changes}
+              originalLabel={ui("Original")}
+              modifiedLabel={ui("Modified")}
+            />
           )}
         </div>
       )}
@@ -176,7 +180,15 @@ function InlineDiffView({ changes }: { changes: Change[] }) {
   );
 }
 
-function SideBySideDiffView({ changes }: { changes: Change[] }) {
+function SideBySideDiffView({
+  changes,
+  originalLabel,
+  modifiedLabel,
+}: {
+  changes: Change[];
+  originalLabel: string;
+  modifiedLabel: string;
+}) {
   // Build left (original) and right (modified) line arrays
   const leftLines: Array<{ text: string; type: "unchanged" | "removed" | "empty" }> = [];
   const rightLines: Array<{ text: string; type: "unchanged" | "added" | "empty" }> = [];
@@ -242,7 +254,7 @@ function SideBySideDiffView({ changes }: { changes: Change[] }) {
       {/* Left (original) */}
       <div className="border-r border-gray-300 dark:border-gray-600">
         <div className="px-3 py-1.5 bg-gray-50 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-600 text-xs font-medium text-gray-500 dark:text-gray-400">
-          Original
+          {originalLabel}
         </div>
         <div>
           {leftLines.map((line, i) => (
@@ -259,7 +271,7 @@ function SideBySideDiffView({ changes }: { changes: Change[] }) {
       {/* Right (modified) */}
       <div>
         <div className="px-3 py-1.5 bg-gray-50 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-600 text-xs font-medium text-gray-500 dark:text-gray-400">
-          Modified
+          {modifiedLabel}
         </div>
         <div>
           {rightLines.map((line, i) => (

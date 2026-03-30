@@ -233,8 +233,9 @@ export function JwtDecoderTool() {
               </code>
             </div>
             <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
-              Signature verification requires the signing secret or public key
-              and is not performed client-side.
+              {ui(
+                "Signature verification requires the signing secret or public key and is not performed client-side."
+              )}
             </p>
           </div>
         </div>

@@ -453,6 +453,121 @@ const KO_TOOL_PAGE_CONTENT: Record<string, ToolContent> = {
   },
 };
 
+const JA_TOOL_PAGE_CONTENT: Record<string, ToolContent> = {
+  "percentage-calculator": {
+    title: "パーセンテージ計算機",
+    description: "割合、比率、増減率、割引や上乗せをすばやく計算できるブラウザベースのツールです。",
+    whatIs:
+      "パーセンテージ計算機は、割引率、上昇率、部分と全体の比率など、割合に関する複数の計算を1ページで処理できるツールです。日常の計算から仕事の見積もりまで幅広く使えます。",
+    howToUse:
+      "1. 必要な計算タイプを選択します。2. 数値を入力します。3. 結果カードで割合や最終金額を確認します。",
+    howItWorks:
+      "基本的な百分率の計算式と増減率の計算式を使って結果を即座に求めます。入力値はブラウザ内でのみ処理されます。",
+    useCases: [
+      "割引額を計算したいとき",
+      "増減率をすばやく確認したいとき",
+      "部分が全体に占める割合を求めたいとき",
+    ],
+    faq: [
+      { q: "割引と上乗せの両方を計算できますか？", a: "はい。割合を加算する場合と減算する場合の両方に対応しています。" },
+      { q: "小数点も入力できますか？", a: "はい。通常の小数入力に対応しています。" },
+      { q: "複数の計算タイプがありますか？", a: "はい。基本割合、逆算、増減率、適用計算などを利用できます。" },
+    ],
+  },
+};
+
+const DE_TOOL_PAGE_CONTENT: Record<string, ToolContent> = {
+  "percentage-calculator": {
+    title: "Prozentrechner",
+    description: "Berechnen Sie Prozente, Verhältnisse, Veränderungen sowie Rabatte oder Aufschläge schnell im Browser.",
+    whatIs:
+      "Der Prozentrechner ist ein Tool, mit dem Sie mehrere prozentbezogene Berechnungen an einem Ort erledigen können, etwa Rabatte, Preisänderungen und das Verhältnis eines Teils zum Ganzen. Er eignet sich sowohl für Alltagsrechnungen als auch für Arbeits- und Planungsaufgaben.",
+    howToUse:
+      "1. Wählen Sie die gewünschte Berechnungsart. 2. Geben Sie die Zahlen ein. 3. Prüfen Sie das Ergebnis im Resultatfeld.",
+    howItWorks:
+      "Das Tool verwendet Standardformeln für Prozentwerte, Verhältnisberechnungen und prozentuale Veränderungen. Alle Berechnungen erfolgen direkt im Browser.",
+    useCases: [
+      "Rabatte und Preisnachlässe prüfen",
+      "Preisänderungen oder Wachstumsraten vergleichen",
+      "Den Anteil eines Werts am Gesamtwert berechnen",
+    ],
+    faq: [
+      { q: "Kann ich sowohl Rabatte als auch Aufschläge berechnen?", a: "Ja. Das Tool unterstützt beide Richtungen." },
+      { q: "Kann ich Dezimalzahlen eingeben?", a: "Ja. Normale Dezimalwerte werden unterstützt." },
+      { q: "Gibt es mehrere Berechnungsarten?", a: "Ja. Es gibt Grundberechnung, Rückwärtsrechnung, Veränderung und Prozentanwendung." },
+    ],
+  },
+};
+
+const ES_TOOL_PAGE_CONTENT: Record<string, ToolContent> = {
+  "percentage-calculator": {
+    title: "Calculadora de porcentajes",
+    description: "Calcula porcentajes, proporciones, cambios porcentuales y descuentos o recargos rápidamente en el navegador.",
+    whatIs:
+      "La calculadora de porcentajes permite resolver en una sola página operaciones habituales relacionadas con porcentajes, como descuentos, aumentos y la relación entre una parte y un total. Sirve tanto para cálculos cotidianos como para tareas de trabajo o planificación.",
+    howToUse:
+      "1. Elige el tipo de cálculo que necesitas. 2. Introduce los números. 3. Revisa el resultado en la tarjeta de salida.",
+    howItWorks:
+      "La herramienta aplica fórmulas estándar para porcentajes, relaciones y variaciones porcentuales. Todo se calcula directamente en el navegador.",
+    useCases: [
+      "Calcular descuentos y precios rebajados",
+      "Comparar aumentos, caídas o variaciones",
+      "Saber qué porcentaje representa una parte del total",
+    ],
+    faq: [
+      { q: "¿Puedo calcular descuentos y recargos?", a: "Sí. La herramienta admite ambos casos." },
+      { q: "¿Puedo introducir decimales?", a: "Sí. Se admiten números decimales normales." },
+      { q: "¿Hay varios tipos de cálculo?", a: "Sí. Incluye porcentaje básico, cálculo inverso, cambio porcentual y aplicación de porcentaje." },
+    ],
+  },
+};
+
+const FR_TOOL_PAGE_CONTENT: Record<string, ToolContent> = {
+  "percentage-calculator": {
+    title: "Calculatrice de pourcentages",
+    description: "Calculez rapidement pourcentages, ratios, variations et remises ou majorations dans le navigateur.",
+    whatIs:
+      "La calculatrice de pourcentages permet d'effectuer sur une seule page plusieurs calculs liés aux pourcentages, comme les remises, les hausses et le rapport entre une partie et un total. Elle convient aussi bien aux calculs du quotidien qu'aux besoins de travail ou de planification.",
+    howToUse:
+      "1. Choisissez le type de calcul souhaité. 2. Saisissez les nombres. 3. Vérifiez le résultat dans la carte de sortie.",
+    howItWorks:
+      "L'outil applique des formules standard pour les pourcentages, les ratios et les variations en pourcentage. Tous les calculs sont effectués directement dans le navigateur.",
+    useCases: [
+      "Vérifier une remise ou un prix soldé",
+      "Comparer une hausse, une baisse ou une évolution",
+      "Calculer la part d'une valeur dans un total",
+    ],
+    faq: [
+      { q: "Puis-je calculer une remise et une majoration ?", a: "Oui. L'outil prend en charge les deux cas." },
+      { q: "Puis-je saisir des nombres décimaux ?", a: "Oui. Les décimales classiques sont prises en charge." },
+      { q: "Y a-t-il plusieurs types de calcul ?", a: "Oui. Le calculateur inclut le pourcentage de base, le calcul inverse, la variation et l'application d'un pourcentage." },
+    ],
+  },
+};
+
+const PT_TOOL_PAGE_CONTENT: Record<string, ToolContent> = {
+  "percentage-calculator": {
+    title: "Calculadora de porcentagem",
+    description: "Calcule rapidamente porcentagens, proporções, variações e descontos ou acréscimos no navegador.",
+    whatIs:
+      "A calculadora de porcentagem permite resolver em uma única página vários cálculos relacionados a porcentagens, como descontos, aumentos e a relação entre uma parte e o total. Ela é útil tanto para contas do dia a dia quanto para planejamento e trabalho.",
+    howToUse:
+      "1. Escolha o tipo de cálculo desejado. 2. Digite os números. 3. Confira o resultado no cartão de saída.",
+    howItWorks:
+      "A ferramenta aplica fórmulas padrão para porcentagens, relações e variações percentuais. Todos os cálculos são feitos diretamente no navegador.",
+    useCases: [
+      "Calcular descontos e preços promocionais",
+      "Comparar aumentos, quedas ou variações",
+      "Descobrir qual porcentagem uma parte representa do total",
+    ],
+    faq: [
+      { q: "Posso calcular desconto e acréscimo?", a: "Sim. A ferramenta cobre os dois casos." },
+      { q: "Posso inserir números decimais?", a: "Sim. Decimais comuns são aceitos." },
+      { q: "Existem vários tipos de cálculo?", a: "Sim. Há cálculo básico, cálculo inverso, variação percentual e aplicação de porcentagem." },
+    ],
+  },
+};
+
 export function getLocalizedToolPageContent(
   slug: string,
   locale: Locale,
@@ -460,6 +575,26 @@ export function getLocalizedToolPageContent(
 ): ToolContent {
   if (locale === "ko") {
     return KO_TOOL_PAGE_CONTENT[slug] ?? fallback;
+  }
+
+  if (locale === "ja") {
+    return JA_TOOL_PAGE_CONTENT[slug] ?? fallback;
+  }
+
+  if (locale === "de") {
+    return DE_TOOL_PAGE_CONTENT[slug] ?? fallback;
+  }
+
+  if (locale === "es") {
+    return ES_TOOL_PAGE_CONTENT[slug] ?? fallback;
+  }
+
+  if (locale === "fr") {
+    return FR_TOOL_PAGE_CONTENT[slug] ?? fallback;
+  }
+
+  if (locale === "pt") {
+    return PT_TOOL_PAGE_CONTENT[slug] ?? fallback;
   }
 
   return fallback;

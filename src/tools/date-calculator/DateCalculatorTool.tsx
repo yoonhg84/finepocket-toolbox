@@ -67,7 +67,7 @@ export function DateCalculatorTool() {
   return (
     <div className="space-y-4">
       <TabGroup
-        tabs={TABS.map((tab) => ({ ...tab, label: locale === "ko" ? (tab.id === "add-subtract" ? "더하기 / 빼기" : "날짜 사이") : tab.label }))}
+        tabs={TABS.map((tab) => ({ ...tab, label: ui(tab.label) }))}
         activeTab={mode}
         onChange={(id) => setMode(id as Mode)}
       />

@@ -1,5 +1,7 @@
 "use client";
 
+import { useI18n } from "@/components/layout/LocaleProvider";
+import { getToolUiText } from "@/tools/ui-text";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -16,8 +18,10 @@ interface LoanPieChartProps {
 }
 
 export default function LoanPieChart({ principal, interest }: LoanPieChartProps) {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const data = {
-    labels: ["Principal", "Interest"],
+    labels: [ui("Principal"), ui("Interest")],
     datasets: [
       {
         data: [principal, interest],

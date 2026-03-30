@@ -1,5 +1,7 @@
 "use client";
 
+import { useI18n } from "@/components/layout/LocaleProvider";
+import { getToolUiText } from "@/tools/ui-text";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -28,6 +30,8 @@ interface LoanLineChartProps {
 }
 
 export default function LoanLineChart({ schedule }: LoanLineChartProps) {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   // Downsample for large schedules
   const step = schedule.length > 120 ? Math.ceil(schedule.length / 60) : 1;
   const sampled = schedule.filter((_, i) => i % step === 0 || i === schedule.length - 1);
@@ -36,7 +40,7 @@ export default function LoanLineChart({ schedule }: LoanLineChartProps) {
     labels: sampled.map((r) => `${r.month}`),
     datasets: [
       {
-        label: "Remaining Balance",
+        label: ui("Remaining Balance"),
         data: sampled.map((r) => r.balance),
         borderColor: "#3b82f6",
         backgroundColor: "rgba(59, 130, 246, 0.1)",
@@ -58,17 +62,17 @@ export default function LoanLineChart({ schedule }: LoanLineChartProps) {
         callbacks: {
           label: (ctx: { raw: unknown }) => {
             const val = ctx.raw as number;
-            return `Balance: ${val.toLocaleString()}`;
+            return `${ui("Balance")}: ${val.toLocaleString()}`;
           },
         },
       },
     },
     scales: {
       x: {
-        title: { display: true, text: "Month" },
+        title: { display: true, text: ui("Month") },
       },
       y: {
-        title: { display: true, text: "Balance" },
+        title: { display: true, text: ui("Balance") },
         beginAtZero: true,
       },
     },

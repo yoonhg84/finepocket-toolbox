@@ -86,7 +86,7 @@ export function LoanCalculatorTool() {
         {/* Interest Rate */}
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            {locale === "ko" ? `연 이자율: ${rate}%` : `Annual Interest Rate: ${rate}%`}
+            {`${ui("Annual Interest Rate")}: ${rate}%`}
           </label>
           <div className="flex gap-2 items-center">
             <input
@@ -115,8 +115,8 @@ export function LoanCalculatorTool() {
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             {locale === "ko"
-              ? `대출 기간: ${termValue} ${termUnit === "years" ? "년" : "개월"}`
-              : `Loan Term: ${termValue} ${termUnit}`}
+              ? `${ui("Loan Term")}: ${termValue} ${termUnit === "years" ? "년" : "개월"}`
+              : `${ui("Loan Term")}: ${termValue} ${termUnit}`}
           </label>
           <div className="flex gap-2 items-center">
             <input

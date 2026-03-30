@@ -1,5 +1,7 @@
 "use client";
 
+import { useI18n } from "@/components/layout/LocaleProvider";
+import { getToolUiText } from "@/tools/ui-text";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -30,11 +32,15 @@ interface CompoundAreaChartProps {
 export default function CompoundAreaChart({
   yearByYear,
 }: CompoundAreaChartProps) {
+  const { locale } = useI18n();
+  const ui = getToolUiText(locale);
   const data = {
-    labels: yearByYear.map((r) => `Year ${r.year}`),
+    labels: yearByYear.map((r) =>
+      locale === "ko" ? `${r.year}년` : `${ui("Year")} ${r.year}`
+    ),
     datasets: [
       {
-        label: "Total Invested",
+        label: ui("Total Invested"),
         data: yearByYear.map((r) => r.totalInvested),
         borderColor: "#3b82f6",
         backgroundColor: "rgba(59, 130, 246, 0.3)",
@@ -44,7 +50,7 @@ export default function CompoundAreaChart({
         order: 2,
       },
       {
-        label: "Balance (Invested + Interest)",
+        label: ui("Balance (Invested + Interest)"),
         data: yearByYear.map((r) => r.balance),
         borderColor: "#8b5cf6",
         backgroundColor: "rgba(139, 92, 246, 0.2)",
@@ -78,10 +84,10 @@ export default function CompoundAreaChart({
     },
     scales: {
       x: {
-        title: { display: true, text: "Year" },
+        title: { display: true, text: ui("Year") },
       },
       y: {
-        title: { display: true, text: "Amount ($)" },
+        title: { display: true, text: ui("Amount ($)") },
         beginAtZero: true,
       },
     },

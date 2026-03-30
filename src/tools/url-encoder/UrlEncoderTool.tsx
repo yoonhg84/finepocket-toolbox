@@ -110,8 +110,12 @@ export function UrlEncoderTool() {
           onChange={(e) => setInput(e.target.value)}
           placeholder={
             direction === "encode"
-              ? `${ui("Enter text to encode…")} e.g. Hello World! こんにちは`
-              : "Enter URL-encoded text… e.g. Hello%20World%21"
+              ? locale === "ko"
+                ? `${ui("Enter text to encode…")} 예: 안녕하세요 세계!`
+                : `${ui("Enter text to encode…")} e.g. Hello World! こんにちは`
+              : locale === "ko"
+                ? `${ui("Enter URL-encoded text…")} 예: Hello%20World%21`
+                : "Enter URL-encoded text… e.g. Hello%20World%21"
           }
           className="w-full rounded-lg border border-gray-300 dark:border-gray-600 p-3 font-mono text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-100"
         />

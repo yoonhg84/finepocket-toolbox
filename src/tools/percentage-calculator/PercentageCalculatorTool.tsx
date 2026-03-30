@@ -166,7 +166,17 @@ export function PercentageCalculatorTool() {
               label={
                 locale === "ko"
                   ? `${basicX}의 ${basicY}%`
-                  : `${basicY}% of ${basicX}`
+                  : locale === "ja"
+                    ? `${basicX} の ${basicY}%`
+                    : locale === "de"
+                      ? `${basicY}% von ${basicX}`
+                      : locale === "es"
+                        ? `${basicY}% de ${basicX}`
+                        : locale === "fr"
+                          ? `${basicY}% de ${basicX}`
+                          : locale === "pt"
+                            ? `${basicY}% de ${basicX}`
+                            : `${basicY}% of ${basicX}`
               }
               value={formatNumber(basicResult.result)}
               accent="blue"
@@ -198,7 +208,17 @@ export function PercentageCalculatorTool() {
               label={
                 locale === "ko"
                   ? `${revX}는 ${revY}의 몇 %인가요`
-                  : `${revX} is what % of ${revY}`
+                  : locale === "ja"
+                    ? `${revX} は ${revY} の何%ですか`
+                    : locale === "de"
+                      ? `Wie viel % sind ${revX} von ${revY}`
+                      : locale === "es"
+                        ? `${revX} es qué % de ${revY}`
+                        : locale === "fr"
+                          ? `${revX} représente quel % de ${revY}`
+                          : locale === "pt"
+                            ? `${revX} é que % de ${revY}`
+                            : `${revX} is what % of ${revY}`
               }
               value={`${formatNumber(reverseResult.percentage)}%`}
               accent="blue"
@@ -230,7 +250,17 @@ export function PercentageCalculatorTool() {
               label={
                 locale === "ko"
                   ? `${changeFrom}에서 ${changeTo}(으)로 변화`
-                  : `Change from ${changeFrom} to ${changeTo}`
+                  : locale === "ja"
+                    ? `${changeFrom} から ${changeTo} への変化`
+                    : locale === "de"
+                      ? `Änderung von ${changeFrom} zu ${changeTo}`
+                      : locale === "es"
+                        ? `Cambio de ${changeFrom} a ${changeTo}`
+                        : locale === "fr"
+                          ? `Variation de ${changeFrom} à ${changeTo}`
+                          : locale === "pt"
+                            ? `Mudança de ${changeFrom} para ${changeTo}`
+                            : `Change from ${changeFrom} to ${changeTo}`
               }
               value={`${changeResult.isIncrease ? "+" : ""}${formatNumber(changeResult.change)}%`}
               accent={changeResult.isIncrease ? "green" : "red"}
