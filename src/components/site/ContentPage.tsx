@@ -1,14 +1,40 @@
 import type { ReactNode } from "react";
+import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import type { SitePageContent } from "@/content/site-pages";
+import { localizePath } from "@/i18n";
+import { getRequestLocale, getServerTranslator } from "@/i18n/server";
+import { buildBreadcrumbJsonLd } from "@/lib/seo";
 
 interface ContentPageProps {
   content: SitePageContent;
+  path: string;
   children?: ReactNode;
 }
 
-export function ContentPage({ content, children }: ContentPageProps) {
+export function ContentPage({ content, path, children }: ContentPageProps) {
+  const locale = getRequestLocale();
+  const t = getServerTranslator(locale);
+  const localizedPath = localizePath(path, locale);
+  const breadcrumbItems = [
+    { label: t("common.home"), href: localizePath("/", locale) },
+    { label: content.title },
+  ];
+
   return (
     <div className="max-w-[960px] mx-auto px-4 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildBreadcrumbJsonLd([
+              { name: t("common.home"), href: localizePath("/", locale) },
+              { name: content.title, href: localizedPath },
+            ])
+          ),
+        }}
+      />
+      <Breadcrumb items={breadcrumbItems} />
+
       <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
         {content.title}
       </h1>

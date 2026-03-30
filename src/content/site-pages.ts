@@ -33,6 +33,8 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
       title: "About FinePocket Toolbox",
       description:
         "Learn how FinePocket Toolbox builds fast, browser-based tools with privacy, clarity, and practical utility in mind.",
+      lastUpdatedLabel: "Last updated",
+      lastUpdated: LAST_UPDATED,
       intro: [
         "FinePocket Toolbox is a collection of browser-based tools for developers, writers, students, and anyone who wants quick answers without installing software or creating an account.",
         "The project aims to keep everyday tasks simple: open a tool, solve the problem, and move on. Wherever possible, processing happens directly in the browser so sensitive input can stay on the user's device.",
@@ -53,10 +55,23 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
           ],
         },
         {
+          title: "How pages are reviewed",
+          paragraphs: [
+            "The site aims to make each page useful before and after the interactive tool is used. That means checking the formulas, verifying edge cases in the UI, and writing plain-language explanations that match what the tool actually does.",
+            "Pages with higher-trust topics such as finance or health are reviewed more conservatively. The goal is to present them as reference aids, not as substitutes for legal, medical, or financial advice.",
+          ],
+          bullets: [
+            "Check result logic and common edge cases before publishing",
+            "Keep tool copy aligned with the actual implementation",
+            "Add clear disclaimers for finance and health-related outputs",
+            "Keep policy and contact links visible across the site",
+          ],
+        },
+        {
           title: "Quality and advertising",
           paragraphs: [
             "New tools are reviewed for accessibility, responsive behavior, dark mode support, and plain-language explanations. Finance-related pages also include reference-only disclaimers because they should help with planning, not impersonate professional advice.",
-            "The long-term monetization model is non-intrusive advertising. Ads should support the project without interrupting the core task or creating accidental clicks near important controls.",
+            "The long-term monetization model is non-intrusive advertising. Ads should support the project without interrupting the core task, blending into primary controls, or appearing in a way that could confuse a result with paid content.",
           ],
           bullets: [
             "No forced sign-up before using a tool",
@@ -100,6 +115,14 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
           paragraphs: [
             "FinePocket may use local browser storage for product preferences such as theme or language settings on FinePocket Toolbox.",
             "If advertising is enabled, partners such as Google AdSense may use cookies or similar technologies to deliver, measure, or personalize ads in line with their policies and applicable consent requirements.",
+            "Where regional consent rules apply, FinePocket aims to show advertising in a way that respects those rules instead of treating consent as optional.",
+          ],
+        },
+        {
+          title: "Reference data and network requests",
+          paragraphs: [
+            "Most tools work entirely with local browser processing, but some pages rely on external reference data. For example, a currency page may request cached exchange-rate data through a site API route so the page can display current reference values.",
+            "When that happens, the page should explain the dependency clearly. The reference request may still generate ordinary infrastructure logs, but the tool should avoid transmitting user-entered content unless that transmission is necessary for the feature.",
           ],
         },
         {
@@ -171,6 +194,13 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
           ],
         },
         {
+          title: "Advertising and external destinations",
+          paragraphs: [
+            "If the site displays advertising, those placements are intended to stay distinct from the main workflow and from the meaning of the tool result itself.",
+            "Clicks to third-party advertisers, partners, or linked services are governed by the terms and privacy practices of those third parties, not by these site terms.",
+          ],
+        },
+        {
           title: "Updates and contact",
           paragraphs: [
             "These terms may be updated when the product evolves or legal requirements change. Continued use after an update means you accept the revised terms. Questions can be sent to support@finepocket.app.",
@@ -210,6 +240,18 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
           title: "Feature requests",
           paragraphs: [
             "Suggestions for new tools or improvements are most useful when they describe the job to be done, the likely user, and what makes the workflow difficult today.",
+          ],
+        },
+        {
+          title: "What helps us review faster",
+          paragraphs: [
+            "The fastest way to get a useful response is to include enough concrete context in the first message. Repro steps, page URLs, expected behavior, and screenshots reduce the back-and-forth required to understand the issue.",
+          ],
+          bullets: [
+            "Exact page URL and locale",
+            "What you expected to happen",
+            "What actually happened instead",
+            "Whether the issue is reproducible",
           ],
         },
         {
@@ -1221,6 +1263,8 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
       title: "FinePocket Toolbox 소개",
       description:
         "FinePocket Toolbox가 개인정보 보호, 명확성, 실용성을 중심에 두고 빠른 브라우저 기반 도구를 어떻게 만드는지 소개합니다.",
+      lastUpdatedLabel: "최종 업데이트",
+      lastUpdated: LAST_UPDATED,
       intro: [
         "FinePocket Toolbox는 개발자, 작성자, 학생, 그리고 프로그램 설치나 회원가입 없이 빠르게 답을 얻고 싶은 사람들을 위한 브라우저 기반 도구 모음입니다.",
         "이 프로젝트의 목표는 일상적인 작업을 단순하게 만드는 것입니다. 도구를 열고, 문제를 해결하고, 바로 다음 작업으로 넘어갈 수 있도록 설계했습니다. 가능한 경우 처리 과정은 브라우저 안에서 끝나며, 민감한 입력값은 사용자의 기기에 남도록 합니다.",
@@ -1241,10 +1285,23 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
           ],
         },
         {
+          title: "페이지를 검토하는 기준",
+          paragraphs: [
+            "이 사이트는 버튼을 누르기 전과 후 모두 페이지가 도움이 되어야 한다고 봅니다. 그래서 계산식과 결과 로직을 확인하고, 인터페이스의 경계 사례를 점검하며, 도구가 실제로 하는 일을 설명 콘텐츠와 맞춰 둡니다.",
+            "금융이나 건강처럼 신뢰 기대치가 높은 주제는 더 보수적으로 다룹니다. 이런 페이지는 전문 조언을 대체하는 것이 아니라 참고용 보조 수단으로 제시하는 것을 원칙으로 합니다.",
+          ],
+          bullets: [
+            "결과 로직과 자주 발생하는 경계 사례 점검",
+            "설명 문구와 실제 구현 동작 정합성 확인",
+            "금융·건강 결과에는 참고용 안내 추가",
+            "정책 및 문의 링크를 사이트 전반에 노출",
+          ],
+        },
+        {
           title: "품질과 광고",
           paragraphs: [
             "새로운 도구는 접근성, 반응형 동작, 다크 모드, 이해하기 쉬운 설명을 기준으로 점검합니다. 금융 관련 페이지에는 결과가 참고용이라는 점을 분명히 하는 안내도 포함합니다.",
-            "장기적인 수익화 모델은 비침해형 광고를 전제로 합니다. 광고는 핵심 작업을 방해하거나 중요한 조작 근처에서 오클릭을 유도해서는 안 됩니다.",
+            "장기적인 수익화 모델은 비침해형 광고를 전제로 합니다. 광고는 핵심 작업을 방해하거나, 주요 조작과 섞이거나, 결과 자체를 유료 콘텐츠처럼 오해하게 만들어서는 안 됩니다.",
           ],
           bullets: [
             "도구 사용 전에 회원가입 강제 없음",
@@ -1288,6 +1345,14 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
           paragraphs: [
             "FinePocket는 FinePocket Toolbox의 테마나 언어 같은 제품 환경설정을 위해 브라우저 로컬 저장소를 사용할 수 있습니다.",
             "광고가 활성화되면 Google AdSense 같은 파트너가 광고 제공, 측정, 개인화를 위해 쿠키나 유사 기술을 사용할 수 있으며, 이는 각 파트너의 정책과 적용 가능한 동의 요구사항을 따릅니다.",
+            "지역별 동의 규칙이 적용되는 경우 FinePocket는 그 요구사항을 선택사항처럼 취급하지 않고, 광고 노출 방식에 반영하려고 합니다.",
+          ],
+        },
+        {
+          title: "참조 데이터와 네트워크 요청",
+          paragraphs: [
+            "대부분의 도구는 로컬 브라우저 처리로 동작하지만, 일부 페이지는 외부 참조 데이터에 의존합니다. 예를 들어 환율 페이지는 현재 참고 값을 보여주기 위해 사이트 API 경로를 통해 캐시된 환율 데이터를 요청할 수 있습니다.",
+            "이 경우 페이지는 해당 의존성을 명확하게 설명해야 합니다. 참조 데이터 요청 자체로 일반적인 인프라 로그가 남을 수는 있지만, 기능상 꼭 필요하지 않은 한 사용자가 입력한 내용까지 전송하지 않는 것을 원칙으로 합니다.",
           ],
         },
         {
@@ -1359,6 +1424,13 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
           ],
         },
         {
+          title: "광고와 외부 이동",
+          paragraphs: [
+            "사이트에 광고가 표시되는 경우에도 그 배치는 주요 워크플로우 및 도구 결과와 구분되도록 운영하는 것을 원칙으로 합니다.",
+            "광고주, 제휴사, 외부 서비스로 이동한 이후의 약관과 개인정보 처리 방식은 해당 제3자의 정책이 적용되며, 이 사이트 약관이 직접 적용되지는 않습니다.",
+          ],
+        },
+        {
           title: "업데이트와 연락처",
           paragraphs: [
             "제품 변화나 법적 요구사항의 변화에 따라 본 약관은 업데이트될 수 있습니다. 업데이트 이후에도 사이트를 계속 사용하면 개정된 약관에 동의한 것으로 봅니다. 문의는 support@finepocket.app 으로 보낼 수 있습니다.",
@@ -1398,6 +1470,18 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
           title: "기능 제안",
           paragraphs: [
             "새로운 도구나 개선 아이디어는 해결하려는 작업, 예상 사용자, 현재 워크플로우가 왜 불편한지를 함께 설명해 주시면 더 큰 도움이 됩니다.",
+          ],
+        },
+        {
+          title: "더 빠른 검토에 도움이 되는 정보",
+          paragraphs: [
+            "첫 메시지에 구체적인 맥락이 많을수록 더 빠르고 정확한 답변이 가능합니다. 재현 단계, 페이지 URL, 기대 동작, 스크린샷이 있으면 문제를 파악하기 위한 왕복을 줄일 수 있습니다.",
+          ],
+          bullets: [
+            "정확한 페이지 URL과 언어 경로",
+            "기대한 동작",
+            "실제로 발생한 동작",
+            "같은 문제가 반복 재현되는지 여부",
           ],
         },
         {

@@ -24,7 +24,7 @@ export default function AboutPage() {
           __html: JSON.stringify(buildOrganizationJsonLd()),
         }}
       />
-      <ContentPage content={content} />
+      <ContentPage content={content} path="/about" />
     </>
   );
 }

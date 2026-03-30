@@ -30,7 +30,7 @@ export default function ContactPage() {
           ),
         }}
       />
-      <ContentPage content={content} />
+      <ContentPage content={content} path="/contact" />
     </>
   );
 }

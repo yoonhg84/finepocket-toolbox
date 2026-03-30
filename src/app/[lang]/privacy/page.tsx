@@ -14,5 +14,10 @@ export function generateMetadata() {
 }
 
 export default function PrivacyPage() {
-  return <ContentPage content={getSitePageContent("privacy", getRequestLocale())} />;
+  return (
+    <ContentPage
+      content={getSitePageContent("privacy", getRequestLocale())}
+      path="/privacy"
+    />
+  );
 }

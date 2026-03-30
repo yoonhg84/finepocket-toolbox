@@ -14,5 +14,10 @@ export function generateMetadata() {
 }
 
 export default function TermsPage() {
-  return <ContentPage content={getSitePageContent("terms", getRequestLocale())} />;
+  return (
+    <ContentPage
+      content={getSitePageContent("terms", getRequestLocale())}
+      path="/terms"
+    />
+  );
 }
