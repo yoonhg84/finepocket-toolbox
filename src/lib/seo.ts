@@ -12,6 +12,7 @@ export interface ToolContent {
 }
 
 export const SITE_NAME = "FinePocket Toolbox";
+export const ORGANIZATION_NAME = "FinePocket";
 export const SITE_URL = "https://toolbox.finepocket.app";
 export const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/apple-icon.png`;
 
@@ -137,7 +138,7 @@ export function buildOrganizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: SITE_NAME,
+    name: ORGANIZATION_NAME,
     url: SITE_URL,
     email: "support@finepocket.app",
   };

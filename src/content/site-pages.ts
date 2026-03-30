@@ -48,7 +48,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "Privacy-first design",
           paragraphs: [
-            "Whenever a feature can run safely in the browser, FinePocket Toolbox keeps it in the browser. Formatters, encoders, decoders, text utilities, and many calculators are designed around that principle.",
+            "Whenever a feature can run safely in the browser, FinePocket keeps that processing inside FinePocket Toolbox. Formatters, encoders, decoders, text utilities, and many calculators are designed around that principle.",
             "If a tool depends on external reference data, the page should explain that dependency clearly instead of hiding it.",
           ],
         },
@@ -75,17 +75,17 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
       metaTitle: "Privacy Policy",
       title: "Privacy Policy",
       description:
-        "Read how FinePocket Toolbox handles browser-based processing, hosting logs, advertising, analytics, and contact requests.",
+        "Read how FinePocket handles browser-based processing, hosting logs, advertising, analytics, and contact requests for FinePocket Toolbox.",
       lastUpdatedLabel: "Last updated",
       lastUpdated: LAST_UPDATED,
       intro: [
-        "FinePocket Toolbox is designed so that many tools run directly in the browser. This policy explains what data is and is not processed when you use the site.",
+        "FinePocket operates FinePocket Toolbox, and many tools are designed to run directly in the browser. This policy explains what data is and is not processed when you use the site.",
       ],
       sections: [
         {
           title: "Browser-based processing",
           paragraphs: [
-            "For browser-based tools such as formatters, encoders, decoders, text utilities, and many calculators, the data you enter is processed locally in your browser. FinePocket Toolbox does not intentionally send that input to an application server for storage or analysis.",
+            "For browser-based tools such as formatters, encoders, decoders, text utilities, and many calculators, the data you enter is processed locally in your browser. FinePocket does not intentionally send that input to an application server for storage or analysis.",
             "If a tool requires external reference data, such as exchange rates, the page should make that dependency clear.",
           ],
         },
@@ -98,7 +98,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "Cookies, preferences, and advertising",
           paragraphs: [
-            "FinePocket Toolbox may use local browser storage for product preferences such as theme or language settings.",
+            "FinePocket may use local browser storage for product preferences such as theme or language settings on FinePocket Toolbox.",
             "If advertising is enabled, partners such as Google AdSense may use cookies or similar technologies to deliver, measure, or personalize ads in line with their policies and applicable consent requirements.",
           ],
         },
@@ -142,7 +142,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "Service scope",
           paragraphs: [
-            "FinePocket Toolbox provides online utilities, calculators, and reference content for general informational and productivity use. The service is offered on an as-is and as-available basis.",
+            "FinePocket provides online utilities, calculators, and reference content through FinePocket Toolbox for general informational and productivity use. The service is offered on an as-is and as-available basis.",
           ],
         },
         {
@@ -159,15 +159,15 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "Accuracy and reference-only information",
           paragraphs: [
-            "Tool outputs are provided for convenience and general information. FinePocket Toolbox does not guarantee that every result is complete, error-free, or suitable for every context.",
+            "Tool outputs are provided for convenience and general information. FinePocket does not guarantee that every result is complete, error-free, or suitable for every context.",
             "Finance, health, and planning tools should be treated as reference aids only. They do not replace professional advice.",
           ],
         },
         {
           title: "Liability and third-party services",
           paragraphs: [
-            "Some features may rely on third-party providers such as hosting, analytics, or advertising services. FinePocket Toolbox is not responsible for downtime, policy changes, or actions taken by those providers.",
-            "To the maximum extent permitted by law, FinePocket Toolbox will not be liable for indirect, incidental, special, consequential, or exemplary damages arising from use of the site or reliance on its outputs.",
+            "Some features may rely on third-party providers such as hosting, analytics, or advertising services. FinePocket is not responsible for downtime, policy changes, or actions taken by those providers.",
+            "To the maximum extent permitted by law, FinePocket will not be liable for indirect, incidental, special, consequential, or exemplary damages arising from use of the site or reliance on its outputs.",
           ],
         },
         {
@@ -182,9 +182,9 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
       metaTitle: "Contact Us",
       title: "Contact Us",
       description:
-        "Contact FinePocket Toolbox for support, bug reports, partnerships, or suggestions for new tools.",
+        "Contact FinePocket regarding support, bug reports, partnerships, or suggestions for FinePocket Toolbox.",
       intro: [
-        "Questions, bug reports, product feedback, advertising inquiries, and partnership requests are all welcome. Email is the primary support channel for FinePocket Toolbox.",
+        "Questions, bug reports, product feedback, advertising inquiries, and partnership requests are all welcome. Email is the primary support channel for FinePocket.",
       ],
       email: SUPPORT_EMAIL,
       sections: [
@@ -277,13 +277,13 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
       lastUpdatedLabel: "Zuletzt aktualisiert",
       lastUpdated: LAST_UPDATED,
       intro: [
-        "FinePocket Toolbox ist so aufgebaut, dass viele Tools direkt im Browser laufen. Diese Richtlinie erklärt, welche Daten bei der Nutzung der Website verarbeitet werden und welche nicht.",
+        "FinePocket betreibt FinePocket Toolbox, und viele Tools sind so aufgebaut, dass sie direkt im Browser laufen. Diese Richtlinie erklärt, welche Daten bei der Nutzung der Website verarbeitet werden und welche nicht.",
       ],
       sections: [
         {
           title: "Browserbasierte Verarbeitung",
           paragraphs: [
-            "Bei browserbasierten Tools wie Formatierern, Encodern, Decodern, Textwerkzeugen und vielen Rechnern werden Ihre Eingaben lokal im Browser verarbeitet. FinePocket Toolbox sendet diese Eingaben nicht absichtlich an einen Anwendungsserver, um sie zu speichern oder auszuwerten.",
+            "Bei browserbasierten Tools wie Formatierern, Encodern, Decodern, Textwerkzeugen und vielen Rechnern werden Ihre Eingaben lokal im Browser verarbeitet. FinePocket sendet diese Eingaben nicht absichtlich an einen Anwendungsserver, um sie zu speichern oder auszuwerten.",
             "Wenn ein Tool externe Referenzdaten benötigt, etwa Wechselkurse, sollte die Seite diese Abhängigkeit deutlich machen.",
           ],
         },
@@ -296,7 +296,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "Cookies, Einstellungen und Werbung",
           paragraphs: [
-            "FinePocket Toolbox kann lokalen Browser-Speicher für Produkteinstellungen wie Theme oder Sprache verwenden.",
+            "FinePocket kann für FinePocket Toolbox lokalen Browser-Speicher für Produkteinstellungen wie Theme oder Sprache verwenden.",
             "Wenn Werbung aktiviert ist, können Partner wie Google AdSense Cookies oder ähnliche Technologien nutzen, um Anzeigen bereitzustellen, zu messen oder zu personalisieren, soweit dies nach ihren Richtlinien und geltenden Einwilligungsanforderungen zulässig ist.",
           ],
         },
@@ -364,8 +364,8 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "Haftung und Drittanbieter",
           paragraphs: [
-            "Einige Funktionen können von Drittanbietern wie Hosting-, Analyse- oder Werbediensten abhängen. FinePocket Toolbox ist nicht verantwortlich für Ausfälle, Richtlinienänderungen oder Maßnahmen dieser Anbieter.",
-            "Soweit gesetzlich zulässig, haftet FinePocket Toolbox nicht für indirekte, zufällige, besondere, Folge- oder exemplarische Schäden, die aus der Nutzung der Website oder dem Vertrauen auf ihre Ergebnisse entstehen.",
+            "Einige Funktionen können von Drittanbietern wie Hosting-, Analyse- oder Werbediensten abhängen. FinePocket ist nicht verantwortlich für Ausfälle, Richtlinienänderungen oder Maßnahmen dieser Anbieter.",
+            "Soweit gesetzlich zulässig, haftet FinePocket nicht für indirekte, zufällige, besondere, Folge- oder exemplarische Schäden, die aus der Nutzung der Website oder dem Vertrauen auf ihre Ergebnisse entstehen.",
           ],
         },
         {
@@ -380,7 +380,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
       metaTitle: "Kontakt",
       title: "Kontakt",
       description:
-        "Kontaktieren Sie FinePocket Toolbox für Support, Fehlermeldungen, Partnerschaften oder Vorschläge für neue Tools.",
+        "Kontaktieren Sie FinePocket für Support, Fehlermeldungen, Partnerschaften oder Vorschläge rund um FinePocket Toolbox.",
       intro: [
         "Fragen, Fehlermeldungen, Produktfeedback, Werbeanfragen und Partnerschaftsanfragen sind willkommen. E-Mail ist der primäre Support-Kanal von FinePocket Toolbox.",
       ],
@@ -471,17 +471,17 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
       metaTitle: "プライバシーポリシー",
       title: "プライバシーポリシー",
       description:
-        "FinePocket Toolbox が、ブラウザ内処理、ホスティングログ、広告、分析、お問い合わせをどのように扱うかを説明します。",
+        "FinePocket が、FinePocket Toolbox に関するブラウザ内処理、ホスティングログ、広告、分析、お問い合わせをどのように扱うかを説明します。",
       lastUpdatedLabel: "最終更新",
       lastUpdated: LAST_UPDATED,
       intro: [
-        "FinePocket Toolbox は、多くのツールがブラウザ内で直接動作するように設計されています。このポリシーでは、サイト利用時にどのようなデータが処理され、どのようなデータが処理されないかを説明します。",
+        "FinePocket は FinePocket Toolbox を運営しており、多くのツールがブラウザ内で直接動作するように設計されています。このポリシーでは、サイト利用時にどのようなデータが処理され、どのようなデータが処理されないかを説明します。",
       ],
       sections: [
         {
           title: "ブラウザ内処理",
           paragraphs: [
-            "フォーマッタ、エンコーダ、デコーダ、テキストユーティリティ、多くの計算ツールでは、入力したデータはブラウザ内でローカルに処理されます。FinePocket Toolbox がその入力を保存や分析のためにアプリケーションサーバーへ意図的に送信することはありません。",
+            "フォーマッタ、エンコーダ、デコーダ、テキストユーティリティ、多くの計算ツールでは、入力したデータはブラウザ内でローカルに処理されます。FinePocket がその入力を保存や分析のためにアプリケーションサーバーへ意図的に送信することはありません。",
             "為替レートのような外部参照データが必要なツールでは、その依存関係をページ上で明確に示すようにします。",
           ],
         },
@@ -494,7 +494,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "Cookie、設定、広告",
           paragraphs: [
-            "FinePocket Toolbox は、テーマや言語設定などのプロダクト設定のためにブラウザのローカルストレージを使用する場合があります。",
+            "FinePocket は、FinePocket Toolbox のテーマや言語設定などのプロダクト設定のためにブラウザのローカルストレージを使用する場合があります。",
             "広告が有効な場合、Google AdSense などのパートナーは、自社ポリシーと適用される同意要件に従って、広告の配信、測定、またはパーソナライズのために Cookie や類似技術を使用する場合があります。",
           ],
         },
@@ -538,7 +538,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "サービスの範囲",
           paragraphs: [
-            "FinePocket Toolbox は、一般的な情報取得や生産性向上のためのオンラインツール、計算機、参考コンテンツを提供します。サービスは現状有姿かつ提供可能な範囲で提供されます。",
+            "FinePocket は、FinePocket Toolbox を通じて一般的な情報取得や生産性向上のためのオンラインツール、計算機、参考コンテンツを提供します。サービスは現状有姿かつ提供可能な範囲で提供されます。",
           ],
         },
         {
@@ -555,15 +555,15 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "正確性と参考情報",
           paragraphs: [
-            "ツールの結果は利便性と一般的な情報提供のために提供されます。FinePocket Toolbox は、すべての結果が完全、無誤、またはあらゆる文脈に適していることを保証しません。",
+            "ツールの結果は利便性と一般的な情報提供のために提供されます。FinePocket は、すべての結果が完全、無誤、またはあらゆる文脈に適していることを保証しません。",
             "金融、健康、計画に関するツールは参考用途に限られ、専門家の助言に代わるものではありません。",
           ],
         },
         {
           title: "責任と第三者サービス",
           paragraphs: [
-            "一部の機能は、ホスティング、分析、広告などの第三者プロバイダーに依存する場合があります。FinePocket Toolbox は、それらの提供者による停止、方針変更、または行為について責任を負いません。",
-            "法令で認められる最大限の範囲で、FinePocket Toolbox は、サイト利用または結果への依拠から生じる間接的、付随的、特別、結果的、または懲罰的損害について責任を負いません。",
+            "一部の機能は、ホスティング、分析、広告などの第三者プロバイダーに依存する場合があります。FinePocket は、それらの提供者による停止、方針変更、または行為について責任を負いません。",
+            "法令で認められる最大限の範囲で、FinePocket は、サイト利用または結果への依拠から生じる間接的、付随的、特別、結果的、または懲罰的損害について責任を負いません。",
           ],
         },
         {
@@ -580,7 +580,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
       description:
         "サポート、不具合報告、提携、新しいツールの提案について FinePocket Toolbox に連絡できます。",
       intro: [
-        "質問、不具合報告、製品フィードバック、広告の相談、提携の相談を歓迎します。FinePocket Toolbox の主なサポート窓口はメールです。",
+        "質問、不具合報告、製品フィードバック、広告の相談、提携の相談を歓迎します。FinePocket の主なサポート窓口はメールです。",
       ],
       email: SUPPORT_EMAIL,
       sections: [
@@ -673,13 +673,13 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
       lastUpdatedLabel: "Última actualización",
       lastUpdated: LAST_UPDATED,
       intro: [
-        "FinePocket Toolbox está diseñado para que muchas herramientas funcionen directamente en el navegador. Esta política explica qué datos se procesan y cuáles no cuando utilizas el sitio.",
+        "FinePocket opera FinePocket Toolbox, y muchas herramientas están diseñadas para funcionar directamente en el navegador. Esta política explica qué datos se procesan y cuáles no cuando utilizas el sitio.",
       ],
       sections: [
         {
           title: "Procesamiento en el navegador",
           paragraphs: [
-            "En herramientas basadas en el navegador como formateadores, codificadores, decodificadores, utilidades de texto y muchas calculadoras, los datos que introduces se procesan localmente en tu navegador. FinePocket Toolbox no envía intencionadamente esa entrada a un servidor de aplicaciones para almacenarla o analizarla.",
+            "En herramientas basadas en el navegador como formateadores, codificadores, decodificadores, utilidades de texto y muchas calculadoras, los datos que introduces se procesan localmente en tu navegador. FinePocket no envía intencionadamente esa entrada a un servidor de aplicaciones para almacenarla o analizarla.",
             "Si una herramienta necesita datos de referencia externos, como tipos de cambio, la página debe indicarlo claramente.",
           ],
         },
@@ -753,15 +753,15 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "Exactitud e información de referencia",
           paragraphs: [
-            "Los resultados de las herramientas se proporcionan por conveniencia e información general. FinePocket Toolbox no garantiza que cada resultado sea completo, libre de errores o adecuado para cualquier contexto.",
+            "Los resultados de las herramientas se proporcionan por conveniencia e información general. FinePocket no garantiza que cada resultado sea completo, libre de errores o adecuado para cualquier contexto.",
             "Las herramientas financieras, de salud y de planificación deben considerarse solo ayudas de referencia y no sustituyen asesoramiento profesional.",
           ],
         },
         {
           title: "Responsabilidad y servicios de terceros",
           paragraphs: [
-            "Algunas funciones pueden depender de proveedores externos como servicios de hosting, analítica o publicidad. FinePocket Toolbox no es responsable de caídas, cambios de políticas o acciones de dichos proveedores.",
-            "En la máxima medida permitida por la ley, FinePocket Toolbox no será responsable de daños indirectos, incidentales, especiales, consecuentes o ejemplares derivados del uso del sitio o de la confianza en sus resultados.",
+            "Algunas funciones pueden depender de proveedores externos como servicios de hosting, analítica o publicidad. FinePocket no es responsable de caídas, cambios de políticas o acciones de dichos proveedores.",
+            "En la máxima medida permitida por la ley, FinePocket no será responsable de daños indirectos, incidentales, especiales, consecuentes o ejemplares derivados del uso del sitio o de la confianza en sus resultados.",
           ],
         },
         {
@@ -776,7 +776,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
       metaTitle: "Contacto",
       title: "Contacto",
       description:
-        "Contacta con FinePocket Toolbox para soporte, informes de errores, alianzas o sugerencias de nuevas herramientas.",
+        "Contacta con FinePocket para soporte, informes de errores, alianzas o sugerencias relacionadas con FinePocket Toolbox.",
       intro: [
         "Las preguntas, informes de errores, comentarios sobre el producto, consultas publicitarias y solicitudes de colaboración son bienvenidos. El correo electrónico es el canal principal de soporte de FinePocket Toolbox.",
       ],
@@ -934,7 +934,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "Portée du service",
           paragraphs: [
-            "FinePocket Toolbox fournit des utilitaires en ligne, des calculatrices et des contenus de référence à des fins générales d'information et de productivité. Le service est fourni tel quel et selon disponibilité.",
+            "FinePocket fournit, via FinePocket Toolbox, des utilitaires en ligne, des calculatrices et des contenus de référence à des fins générales d'information et de productivité. Le service est fourni tel quel et selon disponibilité.",
           ],
         },
         {
@@ -958,7 +958,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "Responsabilité et services tiers",
           paragraphs: [
-            "Certaines fonctionnalités peuvent dépendre de fournisseurs tiers tels que l'hébergement, l'analytique ou la publicité. FinePocket Toolbox n'est pas responsable des interruptions, changements de politique ou actions de ces fournisseurs.",
+            "Certaines fonctionnalités peuvent dépendre de fournisseurs tiers tels que l'hébergement, l'analytique ou la publicité. FinePocket n'est pas responsable des interruptions, changements de politique ou actions de ces fournisseurs.",
             "Dans toute la mesure permise par la loi, FinePocket Toolbox ne saurait être tenu responsable des dommages indirects, accessoires, spéciaux, consécutifs ou exemplaires résultant de l'utilisation du site ou de la confiance accordée à ses résultats.",
           ],
         },
@@ -974,7 +974,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
       metaTitle: "Contact",
       title: "Contact",
       description:
-        "Contactez FinePocket Toolbox pour le support, les signalements de bugs, les partenariats ou les suggestions de nouveaux outils.",
+        "Contactez FinePocket pour le support, les signalements de bugs, les partenariats ou les suggestions liées à FinePocket Toolbox.",
       intro: [
         "Les questions, signalements de bugs, retours produit, demandes publicitaires et propositions de partenariat sont les bienvenus. L'e-mail est le principal canal de support de FinePocket Toolbox.",
       ],
@@ -1069,13 +1069,13 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
       lastUpdatedLabel: "Última atualização",
       lastUpdated: LAST_UPDATED,
       intro: [
-        "O FinePocket Toolbox foi projetado para que muitas ferramentas funcionem diretamente no navegador. Esta política explica quais dados são processados e quais não são quando você usa o site.",
+        "A FinePocket opera o FinePocket Toolbox, e muitas ferramentas foram projetadas para funcionar diretamente no navegador. Esta política explica quais dados são processados e quais não são quando você usa o site.",
       ],
       sections: [
         {
           title: "Processamento no navegador",
           paragraphs: [
-            "Em ferramentas baseadas no navegador, como formatadores, codificadores, decodificadores, utilitários de texto e muitas calculadoras, os dados inseridos são processados localmente no navegador. O FinePocket Toolbox não envia intencionalmente essa entrada para um servidor de aplicação para armazenamento ou análise.",
+            "Em ferramentas baseadas no navegador, como formatadores, codificadores, decodificadores, utilitários de texto e muitas calculadoras, os dados inseridos são processados localmente no navegador. A FinePocket não envia intencionalmente essa entrada para um servidor de aplicação para armazenamento ou análise.",
             "Se uma ferramenta precisar de dados de referência externos, como taxas de câmbio, a página deve deixar essa dependência clara.",
           ],
         },
@@ -1088,7 +1088,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "Cookies, preferências e publicidade",
           paragraphs: [
-            "O FinePocket Toolbox pode usar armazenamento local do navegador para preferências do produto, como tema ou idioma.",
+            "A FinePocket pode usar armazenamento local do navegador para preferências do produto no FinePocket Toolbox, como tema ou idioma.",
             "Se a publicidade estiver ativada, parceiros como o Google AdSense poderão usar cookies ou tecnologias semelhantes para entregar, medir ou personalizar anúncios de acordo com suas políticas e requisitos de consentimento aplicáveis.",
           ],
         },
@@ -1132,7 +1132,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "Escopo do serviço",
           paragraphs: [
-            "O FinePocket Toolbox oferece utilitários online, calculadoras e conteúdo de referência para fins gerais de informação e produtividade. O serviço é fornecido no estado em que se encontra e conforme disponibilidade.",
+            "A FinePocket oferece, por meio do FinePocket Toolbox, utilitários online, calculadoras e conteúdo de referência para fins gerais de informação e produtividade. O serviço é fornecido no estado em que se encontra e conforme disponibilidade.",
           ],
         },
         {
@@ -1149,14 +1149,14 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "Precisão e informação de referência",
           paragraphs: [
-            "Os resultados das ferramentas são fornecidos por conveniência e informação geral. O FinePocket Toolbox não garante que cada resultado seja completo, livre de erros ou adequado para qualquer contexto.",
+            "Os resultados das ferramentas são fornecidos por conveniência e informação geral. A FinePocket não garante que cada resultado seja completo, livre de erros ou adequado para qualquer contexto.",
             "Ferramentas de finanças, saúde e planejamento devem ser tratadas apenas como apoio de referência e não substituem aconselhamento profissional.",
           ],
         },
         {
           title: "Responsabilidade e serviços de terceiros",
           paragraphs: [
-            "Alguns recursos podem depender de provedores terceiros, como hospedagem, análises ou publicidade. O FinePocket Toolbox não é responsável por indisponibilidades, mudanças de política ou ações desses provedores.",
+            "Alguns recursos podem depender de provedores terceiros, como hospedagem, análises ou publicidade. A FinePocket não é responsável por indisponibilidades, mudanças de política ou ações desses provedores.",
             "Na máxima medida permitida por lei, o FinePocket Toolbox não será responsável por danos indiretos, incidentais, especiais, consequenciais ou exemplares decorrentes do uso do site ou da confiança em seus resultados.",
           ],
         },
@@ -1172,7 +1172,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
       metaTitle: "Contato",
       title: "Contato",
       description:
-        "Entre em contato com o FinePocket Toolbox para suporte, relatos de bugs, parcerias ou sugestões de novas ferramentas.",
+        "Entre em contato com a FinePocket para suporte, relatos de bugs, parcerias ou sugestões relacionadas ao FinePocket Toolbox.",
       intro: [
         "Dúvidas, relatos de bugs, feedback sobre o produto, consultas de publicidade e pedidos de parceria são bem-vindos. O e-mail é o principal canal de suporte do FinePocket Toolbox.",
       ],
@@ -1236,7 +1236,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "개인정보 보호 우선 설계",
           paragraphs: [
-            "기능을 브라우저 안에서 안전하게 실행할 수 있다면 FinePocket Toolbox는 그 처리를 브라우저 안에 남깁니다. 포매터, 인코더, 디코더, 텍스트 유틸리티, 많은 계산 도구가 이 원칙을 따릅니다.",
+            "기능을 브라우저 안에서 안전하게 실행할 수 있다면 FinePocket는 FinePocket Toolbox 안에서 그 처리를 유지합니다. 포매터, 인코더, 디코더, 텍스트 유틸리티, 많은 계산 도구가 이 원칙을 따릅니다.",
             "도구가 외부 참조 데이터에 의존하는 경우에는 그 사실을 페이지에서 명확하게 설명해야 한다고 봅니다.",
           ],
         },
@@ -1263,17 +1263,17 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
       metaTitle: "개인정보 처리방침",
       title: "개인정보 처리방침",
       description:
-        "FinePocket Toolbox가 브라우저 내 처리, 호스팅 로그, 광고, 분석, 문의 요청을 어떻게 다루는지 확인할 수 있습니다.",
+        "FinePocket가 FinePocket Toolbox와 관련된 브라우저 내 처리, 호스팅 로그, 광고, 분석, 문의 요청을 어떻게 다루는지 확인할 수 있습니다.",
       lastUpdatedLabel: "최종 업데이트",
       lastUpdated: LAST_UPDATED,
       intro: [
-        "FinePocket Toolbox는 많은 도구가 브라우저 안에서 직접 동작하도록 설계되어 있습니다. 이 방침은 사이트 이용 시 어떤 데이터가 처리되고 어떤 데이터가 처리되지 않는지 설명합니다.",
+        "FinePocket는 FinePocket Toolbox를 운영하며, 많은 도구가 브라우저 안에서 직접 동작하도록 설계되어 있습니다. 이 방침은 사이트 이용 시 어떤 데이터가 처리되고 어떤 데이터가 처리되지 않는지 설명합니다.",
       ],
       sections: [
         {
           title: "브라우저 내 처리",
           paragraphs: [
-            "포매터, 인코더, 디코더, 텍스트 유틸리티, 많은 계산 도구와 같은 브라우저 기반 도구에서는 사용자가 입력한 데이터가 브라우저 안에서 로컬로 처리됩니다. FinePocket Toolbox는 그 입력을 저장하거나 분석하기 위해 애플리케이션 서버로 의도적으로 전송하지 않습니다.",
+            "포매터, 인코더, 디코더, 텍스트 유틸리티, 많은 계산 도구와 같은 브라우저 기반 도구에서는 사용자가 입력한 데이터가 브라우저 안에서 로컬로 처리됩니다. FinePocket는 그 입력을 저장하거나 분석하기 위해 애플리케이션 서버로 의도적으로 전송하지 않습니다.",
             "환율처럼 외부 참조 데이터가 필요한 도구의 경우에는 해당 의존성을 페이지에서 명확히 안내해야 합니다.",
           ],
         },
@@ -1286,7 +1286,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "쿠키, 환경설정, 광고",
           paragraphs: [
-            "FinePocket Toolbox는 테마나 언어와 같은 제품 환경설정을 위해 브라우저 로컬 저장소를 사용할 수 있습니다.",
+            "FinePocket는 FinePocket Toolbox의 테마나 언어 같은 제품 환경설정을 위해 브라우저 로컬 저장소를 사용할 수 있습니다.",
             "광고가 활성화되면 Google AdSense 같은 파트너가 광고 제공, 측정, 개인화를 위해 쿠키나 유사 기술을 사용할 수 있으며, 이는 각 파트너의 정책과 적용 가능한 동의 요구사항을 따릅니다.",
           ],
         },
@@ -1330,7 +1330,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "서비스 범위",
           paragraphs: [
-            "FinePocket Toolbox는 일반적인 정보 제공과 생산성 향상을 위한 온라인 유틸리티, 계산기, 참고 콘텐츠를 제공합니다. 서비스는 현 상태 그대로, 그리고 제공 가능한 범위 안에서 제공됩니다.",
+            "FinePocket는 FinePocket Toolbox를 통해 일반적인 정보 제공과 생산성 향상을 위한 온라인 유틸리티, 계산기, 참고 콘텐츠를 제공합니다. 서비스는 현 상태 그대로, 그리고 제공 가능한 범위 안에서 제공됩니다.",
           ],
         },
         {
@@ -1347,15 +1347,15 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
         {
           title: "정확성 및 참고 정보",
           paragraphs: [
-            "도구 결과는 편의와 일반적인 정보 제공을 위해 제공됩니다. FinePocket Toolbox는 모든 결과가 완전하거나 오류가 없거나 모든 상황에 적합하다고 보장하지 않습니다.",
+            "도구 결과는 편의와 일반적인 정보 제공을 위해 제공됩니다. FinePocket는 모든 결과가 완전하거나 오류가 없거나 모든 상황에 적합하다고 보장하지 않습니다.",
             "금융, 건강, 계획 관련 도구는 참고용 보조 수단으로만 사용해야 하며 전문적인 조언을 대체하지 않습니다.",
           ],
         },
         {
           title: "책임과 제3자 서비스",
           paragraphs: [
-            "일부 기능은 호스팅, 분석, 광고와 같은 제3자 제공자에 의존할 수 있습니다. FinePocket Toolbox는 그러한 제공자의 장애, 정책 변경, 또는 행위에 대해 책임지지 않습니다.",
-            "법이 허용하는 최대 범위에서 FinePocket Toolbox는 사이트 이용이나 결과에 대한 신뢰로 인해 발생하는 간접적, 부수적, 특별, 결과적, 징벌적 손해에 대해 책임지지 않습니다.",
+            "일부 기능은 호스팅, 분석, 광고와 같은 제3자 제공자에 의존할 수 있습니다. FinePocket는 그러한 제공자의 장애, 정책 변경, 또는 행위에 대해 책임지지 않습니다.",
+            "법이 허용하는 최대 범위에서 FinePocket는 사이트 이용이나 결과에 대한 신뢰로 인해 발생하는 간접적, 부수적, 특별, 결과적, 징벌적 손해에 대해 책임지지 않습니다.",
           ],
         },
         {
@@ -1372,7 +1372,7 @@ const SITE_PAGE_CONTENT: Record<Locale, Record<SitePageKey, SitePageContent>> = 
       description:
         "지원, 버그 제보, 제휴, 새로운 도구 제안과 관련해 FinePocket Toolbox에 문의할 수 있습니다.",
       intro: [
-        "질문, 버그 제보, 제품 피드백, 광고 문의, 제휴 요청을 모두 환영합니다. FinePocket Toolbox의 주요 지원 채널은 이메일입니다.",
+        "질문, 버그 제보, 제품 피드백, 광고 문의, 제휴 요청을 모두 환영합니다. FinePocket의 주요 지원 채널은 이메일입니다.",
       ],
       email: SUPPORT_EMAIL,
       sections: [
