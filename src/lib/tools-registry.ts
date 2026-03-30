@@ -10,6 +10,8 @@ export interface ToolMeta {
   href: string;
   keywords: string[];
   icon: string;
+  hubOrder?: number;
+  relatedSlugs?: string[];
 }
 
 export const CATEGORY_META: Record<
@@ -39,6 +41,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/developer/json-formatter",
     keywords: ["json formatter", "json validator", "json beautifier", "json pretty print"],
     icon: "{ }",
+    relatedSlugs: ["diff-checker", "regex-tester", "base64"],
   },
   {
     slug: "base64",
@@ -48,6 +51,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/developer/base64",
     keywords: ["base64 encode", "base64 decode", "base64 converter"],
     icon: "B64",
+    relatedSlugs: ["url-encoder", "jwt-decoder", "json-formatter"],
   },
   {
     slug: "jwt-decoder",
@@ -57,6 +61,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/developer/jwt-decoder",
     keywords: ["jwt decoder", "jwt debugger", "json web token decoder"],
     icon: "JWT",
+    relatedSlugs: ["base64", "json-formatter", "url-encoder"],
   },
   {
     slug: "url-encoder",
@@ -66,6 +71,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/developer/url-encoder",
     keywords: ["url encoder", "url decoder", "percent encoding"],
     icon: "%",
+    relatedSlugs: ["base64", "json-formatter", "regex-tester"],
   },
   {
     slug: "regex-tester",
@@ -75,6 +81,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/developer/regex-tester",
     keywords: ["regex tester", "regex101", "regular expression tester"],
     icon: ".*",
+    relatedSlugs: ["diff-checker", "json-formatter", "url-encoder"],
   },
   {
     slug: "hash-generator",
@@ -84,6 +91,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/developer/hash-generator",
     keywords: ["md5 hash generator", "sha256 generator", "hash generator online"],
     icon: "#",
+    relatedSlugs: ["base64", "json-formatter", "diff-checker"],
   },
   {
     slug: "diff-checker",
@@ -93,6 +101,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/developer/diff-checker",
     keywords: ["diff checker", "text compare", "text diff online"],
     icon: "±",
+    relatedSlugs: ["json-formatter", "markdown-preview", "case-converter"],
   },
   {
     slug: "color-picker",
@@ -102,6 +111,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/developer/color-picker",
     keywords: ["color picker", "hex to rgb", "color converter"],
     icon: "🎨",
+    relatedSlugs: ["markdown-preview", "base64", "json-formatter"],
   },
   {
     slug: "word-counter",
@@ -111,6 +121,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/text/word-counter",
     keywords: ["word counter", "character counter", "word count online"],
     icon: "Aa",
+    relatedSlugs: ["case-converter", "markdown-preview", "lorem-ipsum"],
   },
   {
     slug: "case-converter",
@@ -120,6 +131,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/text/case-converter",
     keywords: ["case converter", "uppercase converter", "title case converter"],
     icon: "Aa",
+    relatedSlugs: ["word-counter", "markdown-preview", "lorem-ipsum"],
   },
   {
     slug: "lorem-ipsum",
@@ -129,6 +141,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/text/lorem-ipsum",
     keywords: ["lorem ipsum generator", "placeholder text", "dummy text generator"],
     icon: "Li",
+    relatedSlugs: ["markdown-preview", "word-counter", "case-converter"],
   },
   {
     slug: "markdown-preview",
@@ -138,6 +151,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/text/markdown-preview",
     keywords: ["markdown preview", "markdown editor online", "markdown to html"],
     icon: "MD",
+    relatedSlugs: ["word-counter", "case-converter", "lorem-ipsum"],
   },
   // Finance & Calculator tools
   {
@@ -148,6 +162,8 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/finance/percentage-calculator",
     keywords: ["percentage calculator", "percent calculator", "percentage change", "discount calculator"],
     icon: "%",
+    hubOrder: 4,
+    relatedSlugs: ["loan-calculator", "currency-converter", "tip-calculator"],
   },
   {
     slug: "tip-calculator",
@@ -157,6 +173,8 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/finance/tip-calculator",
     keywords: ["tip calculator", "gratuity calculator", "bill splitter", "tip calculator for restaurant"],
     icon: "💰",
+    hubOrder: 7,
+    relatedSlugs: ["percentage-calculator", "currency-converter", "date-calculator"],
   },
   {
     slug: "age-calculator",
@@ -166,6 +184,8 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/finance/age-calculator",
     keywords: ["age calculator", "how old am I", "birthday calculator", "age in days"],
     icon: "🎂",
+    hubOrder: 10,
+    relatedSlugs: ["date-calculator", "bmi-calculator", "unit-converter"],
   },
   {
     slug: "data-converter",
@@ -175,6 +195,8 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/finance/data-converter",
     keywords: ["byte converter", "MB to GB", "data unit converter", "storage converter"],
     icon: "💾",
+    hubOrder: 12,
+    relatedSlugs: ["unit-converter", "json-formatter", "base64"],
   },
   {
     slug: "unit-converter",
@@ -184,6 +206,8 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/finance/unit-converter",
     keywords: ["unit converter", "cm to inches", "kg to lbs", "metric converter"],
     icon: "📏",
+    hubOrder: 9,
+    relatedSlugs: ["currency-converter", "data-converter", "date-calculator"],
   },
   {
     slug: "bmi-calculator",
@@ -193,6 +217,8 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/finance/bmi-calculator",
     keywords: ["BMI calculator", "body mass index", "BMI chart", "weight calculator"],
     icon: "⚖️",
+    hubOrder: 11,
+    relatedSlugs: ["age-calculator", "unit-converter", "date-calculator"],
   },
   {
     slug: "loan-calculator",
@@ -202,6 +228,8 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/finance/loan-calculator",
     keywords: ["loan calculator", "mortgage calculator", "EMI calculator", "loan payment calculator"],
     icon: "🏦",
+    hubOrder: 1,
+    relatedSlugs: ["compound-interest", "percentage-calculator", "currency-converter"],
   },
   {
     slug: "compound-interest",
@@ -211,6 +239,8 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/finance/compound-interest",
     keywords: ["compound interest calculator", "investment calculator", "savings calculator"],
     icon: "📈",
+    hubOrder: 2,
+    relatedSlugs: ["loan-calculator", "percentage-calculator", "currency-converter"],
   },
   {
     slug: "date-calculator",
@@ -220,6 +250,8 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/finance/date-calculator",
     keywords: ["date calculator", "days between dates", "date difference", "add days to date"],
     icon: "📅",
+    hubOrder: 8,
+    relatedSlugs: ["age-calculator", "loan-calculator", "tip-calculator"],
   },
   {
     slug: "currency-converter",
@@ -229,25 +261,46 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/finance/currency-converter",
     keywords: ["currency converter", "exchange rate", "USD to KRW", "currency calculator"],
     icon: "💱",
+    hubOrder: 3,
+    relatedSlugs: ["percentage-calculator", "loan-calculator", "compound-interest"],
   },
 ];
+
+const TOOL_ORDER = new Map(ALL_TOOLS.map((tool, index) => [tool.slug, index]));
+
+function sortTools(tools: ToolMeta[]): ToolMeta[] {
+  return [...tools].sort((left, right) => {
+    const hubOrderDelta = (left.hubOrder ?? Number.MAX_SAFE_INTEGER) - (right.hubOrder ?? Number.MAX_SAFE_INTEGER);
+    if (hubOrderDelta !== 0) return hubOrderDelta;
+
+    return (TOOL_ORDER.get(left.slug) ?? 0) - (TOOL_ORDER.get(right.slug) ?? 0);
+  });
+}
 
 export function getRelatedTools(currentSlug: string, count = 3): ToolMeta[] {
   const current = ALL_TOOLS.find((t) => t.slug === currentSlug);
   if (!current) return ALL_TOOLS.slice(0, count);
 
-  const sameCategory = ALL_TOOLS.filter(
-    (t) => t.category === current.category && t.slug !== currentSlug
+  const manualMatches = (current.relatedSlugs ?? [])
+    .map((slug) => getToolBySlug(slug))
+    .filter((tool): tool is ToolMeta => tool !== undefined && tool.slug !== currentSlug);
+  const sameCategory = sortTools(
+    ALL_TOOLS.filter((t) => t.category === current.category && t.slug !== currentSlug)
   );
-  const otherCategory = ALL_TOOLS.filter(
-    (t) => t.category !== current.category
+  const otherCategory = sortTools(
+    ALL_TOOLS.filter((t) => t.category !== current.category)
   );
 
-  return [...sameCategory, ...otherCategory].slice(0, count);
+  const deduped = new Map<string, ToolMeta>();
+  [...manualMatches, ...sameCategory, ...otherCategory].forEach((tool) => {
+    deduped.set(tool.slug, tool);
+  });
+
+  return Array.from(deduped.values()).slice(0, count);
 }
 
 export function getToolsByCategory(category: ToolCategory): ToolMeta[] {
-  return ALL_TOOLS.filter((t) => t.category === category);
+  return sortTools(ALL_TOOLS.filter((t) => t.category === category));
 }
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {

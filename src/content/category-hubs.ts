@@ -119,9 +119,10 @@ export const CATEGORY_HUBS: Record<ToolCategory, CategoryHubContent> = {
     category: "finance",
     title: "Finance & Calculators",
     description:
-      "Reference calculators and conversion tools for planning payments, comparing rates, and answering everyday money or measurement questions.",
+      "Reference calculators for planning payments, comparing rates, modeling growth, and answering high-intent money questions with clear assumptions.",
     intro: [
       "The finance category is where higher-intent planning tools live: loan calculations, compound interest, percentages, currency conversion, and related utility calculators. These pages are designed to answer a question quickly while still giving enough context to understand the result.",
+      "Supporting calculators such as date, unit, and tip tools still live here, but the strongest pages are the ones tied directly to borrowing, savings, rates, and payment planning.",
       "Because finance-related pages carry higher trust expectations, the content emphasizes formulas, assumptions, and reference-only disclaimers instead of presenting outputs as professional advice.",
     ],
     tasksTitle: "Common tasks in this category",
@@ -266,9 +267,10 @@ const KO_CATEGORY_HUBS: Record<ToolCategory, CategoryHubContent> = {
     category: "finance",
     title: "금융 및 계산기",
     description:
-      "상환 계획, 비율 비교, 날짜 계산, 통화 및 단위 변환처럼 실용적인 계산을 빠르게 처리할 수 있는 참고용 도구 모음입니다.",
+      "상환 계획, 금리 비교, 자산 성장 추정처럼 돈과 직접 연결된 질문에 답하는 고의도 참고용 계산기 모음입니다.",
     intro: [
-      "금융 카테고리에는 대출 계산, 복리 계산, 퍼센트 계산, 환율 변환 등 의도가 분명한 계획형 도구를 모아 두었습니다. 질문에 빠르게 답하면서도 결과를 이해할 수 있는 설명을 함께 제공하는 데 초점을 맞춥니다.",
+      "금융 카테고리에는 대출 계산, 복리 계산, 퍼센트 계산, 환율 변환처럼 의도가 분명한 계획형 도구를 우선 배치했습니다. 질문에 빠르게 답하면서도 결과를 이해할 수 있는 설명을 함께 제공하는 데 초점을 맞춥니다.",
+      "날짜, 단위, 팁 같은 보조 계산기도 함께 제공하지만, 핵심은 차입, 저축, 환산, 비용 비교처럼 돈과 직접 연결되는 상황을 돕는 것입니다.",
       "금융 관련 페이지는 신뢰 기대치가 높기 때문에, 결과를 전문가 조언처럼 제시하기보다 공식, 가정, 참고용 한계를 명확히 설명하는 방향으로 구성했습니다.",
     ],
     tasksTitle: "이 카테고리에서 자주 하는 작업",

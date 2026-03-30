@@ -4,7 +4,7 @@ import type { CategoryHubContent } from "@/content/category-hubs";
 import { localizePath } from "@/i18n";
 import { getRequestLocale, getServerTranslator } from "@/i18n/server";
 import { getLocalizedToolText } from "@/i18n/tools";
-import { buildBreadcrumbJsonLd } from "@/lib/seo";
+import { buildBreadcrumbJsonLd, buildFaqJsonLd, buildItemListJsonLd } from "@/lib/seo";
 import { getToolHref, getToolsByCategory } from "@/lib/tools-registry";
 
 interface CategoryHubPageProps {
@@ -30,6 +30,25 @@ export function CategoryHubPage({ content }: CategoryHubPageProps) {
               { name: t("common.home"), href: localizePath("/", locale) },
               { name: content.title },
             ])
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(buildFaqJsonLd(content.faq)),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildItemListJsonLd(
+              tools.map((tool) => ({
+                name: getLocalizedToolText(tool, t).name,
+                href: getToolHref(tool, locale),
+              }))
+            )
           ),
         }}
       />
