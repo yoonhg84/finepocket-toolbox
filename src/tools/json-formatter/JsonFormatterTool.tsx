@@ -178,7 +178,7 @@ export function JsonFormatterTool() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={ui('Paste JSON here, e.g. {"key": "value"}')}
-            className="w-full h-80 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
+            className="w-full h-96 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
             spellCheck={false}
           />
           <FileUpload
@@ -194,7 +194,7 @@ export function JsonFormatterTool() {
             {ui("Output")}
           </label>
           <pre
-            className={`w-full h-80 p-3 font-mono text-sm border rounded-lg overflow-auto ${
+            className={`w-full h-96 p-3 font-mono text-sm border rounded-lg overflow-auto ${
               mode === "validate" && !error && input.trim()
                 ? "bg-green-50 dark:bg-green-900/30 border-green-300 dark:border-green-600 text-green-800 dark:text-green-200"
                 : "bg-gray-50 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200"

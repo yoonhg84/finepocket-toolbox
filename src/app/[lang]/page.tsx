@@ -71,7 +71,7 @@ function CategoryHeading({ href, label }: { href: string; label: string }) {
     >
       {label}
       <svg
-        className="h-5 w-5 text-gray-400 group-hover:text-blue-500 dark:text-gray-500 dark:group-hover:text-blue-400 transition-transform group-hover:translate-x-0.5"
+        className="h-6 w-6 text-gray-400 group-hover:text-blue-500 dark:text-gray-500 dark:group-hover:text-blue-400 transition-transform group-hover:translate-x-0.5"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"

@@ -152,19 +152,6 @@ export function CategoryHubPage({ content }: CategoryHubPageProps) {
         </div>
       </section>
 
-      <section className="rounded-2xl border border-gray-200 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800/80">
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
-          {content.guideTitle}
-        </h2>
-        <ul className="space-y-2 text-gray-600 dark:text-gray-400">
-          {content.guidePoints.map((item) => (
-            <li key={item} className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-violet-500 dark:bg-violet-400" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
     </div>
   );
 }

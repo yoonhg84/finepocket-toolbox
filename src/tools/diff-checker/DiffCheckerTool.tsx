@@ -75,7 +75,7 @@ export function DiffCheckerTool() {
             value={original}
             onChange={(e) => setOriginal(e.target.value)}
             placeholder={ui("Paste original text here...")}
-            className="w-full h-64 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
+            className="w-full h-80 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
             spellCheck={false}
           />
         </div>
@@ -93,7 +93,7 @@ export function DiffCheckerTool() {
             value={modified}
             onChange={(e) => setModified(e.target.value)}
             placeholder={ui("Paste modified text here...")}
-            className="w-full h-64 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
+            className="w-full h-80 p-3 font-mono text-sm border border-gray-300 dark:border-gray-600 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 dark:text-gray-100"
             spellCheck={false}
           />
         </div>
