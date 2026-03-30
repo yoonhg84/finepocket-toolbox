@@ -27,7 +27,7 @@ export default function LocaleLayout({
   return (
     <LocaleProvider locale={locale} messages={messages}>
       <Header />
-      <main className="min-h-screen">{children}</main>
+      <main id="main-content" className="min-h-screen">{children}</main>
       <Footer />
     </LocaleProvider>
   );
