@@ -96,17 +96,23 @@ export function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 py-3">
+        <div className="md:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 py-3 max-h-[70vh] overflow-y-auto">
           {categories.map((item, index) => (
-            <div key={item.category} className={index === 0 ? undefined : "mt-4"}>
-              <Link
-                href={item.href}
-                className="block text-xs font-semibold uppercase text-gray-400 hover:text-blue-600 dark:text-gray-500 dark:hover:text-blue-400"
-                onClick={() => setMobileOpen(false)}
-              >
-                {item.label}
-              </Link>
-              <div className="mt-2">
+            <details key={item.category} className={index === 0 ? undefined : "mt-2"}>
+              <summary className="flex items-center justify-between cursor-pointer py-2 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 list-none [&::-webkit-details-marker]:hidden">
+                <span>{item.label}</span>
+                <svg className="h-4 w-4 shrink-0 transition-transform [[open]>&]:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div className="ml-2 border-l-2 border-gray-200 dark:border-gray-700 pl-3 pb-2">
+                <Link
+                  href={item.href}
+                  className="block py-1.5 text-xs font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {t("nav.browseCategory", { category: item.label }, `Browse ${item.label}`)}
+                </Link>
                 {item.tools.map((tool) => {
                   const localized = getLocalizedToolText(tool, t);
 
@@ -117,12 +123,13 @@ export function Header() {
                       className="block py-1.5 text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
                       onClick={() => setMobileOpen(false)}
                     >
+                      <span className="mr-2 font-mono text-xs">{tool.icon}</span>
                       {localized.name}
                     </Link>
                   );
                 })}
               </div>
-            </div>
+            </details>
           ))}
         </div>
       )}
