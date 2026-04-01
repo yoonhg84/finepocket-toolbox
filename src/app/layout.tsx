@@ -3,7 +3,12 @@ import localFont from "next/font/local";
 import { getAdSenseClientId } from "@/lib/adsense";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { getRequestLocale } from "@/i18n/server";
-import { ORGANIZATION_NAME, SITE_NAME, SITE_TAGLINE } from "@/lib/seo";
+import {
+  DEFAULT_SOCIAL_IMAGE,
+  ORGANIZATION_NAME,
+  SITE_NAME,
+  SITE_TAGLINE,
+} from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -27,6 +32,26 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
   creator: ORGANIZATION_NAME,
   publisher: ORGANIZATION_NAME,
+  openGraph: {
+    title: SITE_NAME,
+    description: SITE_TAGLINE,
+    siteName: SITE_NAME,
+    type: "website",
+    images: [
+      {
+        url: DEFAULT_SOCIAL_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: SITE_NAME,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_NAME,
+    description: SITE_TAGLINE,
+    images: [DEFAULT_SOCIAL_IMAGE],
+  },
   referrer: "strict-origin-when-cross-origin",
   manifest: "/manifest.webmanifest",
   icons: {

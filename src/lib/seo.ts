@@ -32,6 +32,7 @@ interface PageMetadataInput {
   path?: string;
   keywords?: string[];
   type?: "website" | "article";
+  socialEyebrow?: string;
 }
 
 function buildAbsoluteUrl(path = ""): string {
@@ -43,15 +44,33 @@ function buildLocalizedAbsoluteUrl(path: string | undefined, locale: Locale): st
   return buildAbsoluteUrl(localizePath(path ?? "/", locale));
 }
 
+function buildSocialImageUrl(input: {
+  title: string;
+  description: string;
+  socialEyebrow?: string;
+}): string {
+  const url = new URL("/api/og", SITE_URL);
+  url.searchParams.set("title", input.title);
+  url.searchParams.set("description", input.description);
+
+  if (input.socialEyebrow) {
+    url.searchParams.set("eyebrow", input.socialEyebrow);
+  }
+
+  return url.toString();
+}
+
 export function buildPageMetadata({
   title,
   description,
   path,
   keywords,
   type = "website",
+  socialEyebrow,
 }: PageMetadataInput): Metadata {
   const locale = getRequestLocale();
   const url = buildLocalizedAbsoluteUrl(path, locale);
+  const socialImageUrl = buildSocialImageUrl({ title, description, socialEyebrow });
   const languageAlternates = Object.fromEntries(
     INDEXABLE_LOCALES.map((alternateLocale) => [
       alternateLocale,
@@ -85,10 +104,10 @@ export function buildPageMetadata({
       locale,
       images: [
         {
-          url: DEFAULT_SOCIAL_IMAGE,
+          url: socialImageUrl,
           width: 1200,
           height: 630,
-          alt: SITE_NAME,
+          alt: title,
         },
       ],
     },
@@ -96,7 +115,7 @@ export function buildPageMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [DEFAULT_SOCIAL_IMAGE],
+      images: [socialImageUrl],
     },
   };
 }
