@@ -76,6 +76,21 @@ export function ToolPageLayout({ tool, content, children }: ToolPageLayoutProps)
         </section>
       )}
 
+      {tool.slug === "bmi-calculator" && (
+        <section className="mb-6 rounded-2xl border border-teal-200 bg-teal-50 p-4 text-sm text-teal-900 dark:border-teal-700 dark:bg-teal-900/25 dark:text-teal-100">
+          <h2 className="font-semibold">
+            {t("toolPage.healthNoticeTitle", undefined, "For informational purposes only")}
+          </h2>
+          <p className="mt-1 text-teal-800 dark:text-teal-200">
+            {t(
+              "toolPage.healthNoticeBody",
+              undefined,
+              "BMI is a general screening tool and does not account for muscle mass, bone density, age, or gender. It is not a medical diagnosis. Please consult a qualified healthcare professional for personalized health advice."
+            )}
+          </p>
+        </section>
+      )}
+
       <div className="mb-8">{children}</div>
 
       {showAdSlot && adsenseClientId && adsenseToolSlot ? (

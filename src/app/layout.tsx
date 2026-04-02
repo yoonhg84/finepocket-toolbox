@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import localFont from "next/font/local";
 import { getAdSenseClientId } from "@/lib/adsense";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
@@ -88,14 +89,7 @@ export default function RootLayout({
           }}
         />
         {adsenseClientId ? (
-          <>
-            <meta name="google-adsense-account" content={adsenseClientId} />
-            <script
-              async
-              crossOrigin="anonymous"
-              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`}
-            />
-          </>
+          <meta name="google-adsense-account" content={adsenseClientId} />
         ) : null}
         <script
           dangerouslySetInnerHTML={{
@@ -113,6 +107,13 @@ export default function RootLayout({
           Skip to content
         </a>
         <ThemeProvider>{children}</ThemeProvider>
+        {adsenseClientId ? (
+          <Script
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`}
+            strategy="afterInteractive"
+            crossOrigin="anonymous"
+          />
+        ) : null}
       </body>
     </html>
   );

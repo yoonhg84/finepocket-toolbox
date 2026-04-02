@@ -8,7 +8,7 @@ import {
   getToolHref,
   getToolsByCategory,
 } from "@/lib/tools-registry";
-import { buildPageMetadata, buildWebsiteJsonLd } from "@/lib/seo";
+import { buildPageMetadata, buildWebsiteJsonLd, buildOrganizationJsonLd } from "@/lib/seo";
 import { ToolSearch } from "@/components/ui/ToolSearch";
 
 export function generateMetadata() {
@@ -92,6 +92,12 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(buildWebsiteJsonLd(t("home.heroDescription"))),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(buildOrganizationJsonLd()),
         }}
       />
 

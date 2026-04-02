@@ -30,6 +30,7 @@ export function middleware(request: NextRequest) {
       "Referrer-Policy",
       "strict-origin-when-cross-origin"
     );
+    response.headers.set("Vary", "Accept-Language");
     response.cookies.set(LOCALE_COOKIE_NAME, locale, {
       path: "/",
       maxAge: 60 * 60 * 24 * 365,
@@ -51,6 +52,7 @@ export function middleware(request: NextRequest) {
     "Referrer-Policy",
     "strict-origin-when-cross-origin"
   );
+  response.headers.set("Vary", "Accept-Language");
 
   response.cookies.set(LOCALE_COOKIE_NAME, pathnameLocale, {
     path: "/",

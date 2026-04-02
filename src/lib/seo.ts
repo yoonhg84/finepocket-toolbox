@@ -9,6 +9,16 @@ import {
 import { getRequestLocale } from "@/i18n/server";
 import type { ToolMeta } from "./tools-registry";
 
+const OG_LOCALE_MAP: Record<string, string> = {
+  en: "en_US",
+  ko: "ko_KR",
+  ja: "ja_JP",
+  de: "de_DE",
+  es: "es_ES",
+  fr: "fr_FR",
+  pt: "pt_BR",
+};
+
 export interface ToolContent {
   title: string;
   description: string;
@@ -101,7 +111,7 @@ export function buildPageMetadata({
       url,
       siteName: SITE_NAME,
       type,
-      locale,
+      locale: OG_LOCALE_MAP[locale] ?? locale,
       images: [
         {
           url: socialImageUrl,
@@ -120,6 +130,13 @@ export function buildPageMetadata({
   };
 }
 
+const CATEGORY_LABELS: Record<string, string> = {
+  developer: "Developer Tools",
+  text: "Text Tools",
+  finance: "Finance Tools",
+  calculators: "Calculator Tools",
+};
+
 export function buildToolMetadata(tool: ToolMeta, content: ToolContent): Metadata {
   const title = `${content.title} - Free Online Tool`;
 
@@ -128,6 +145,7 @@ export function buildToolMetadata(tool: ToolMeta, content: ToolContent): Metadat
     description: content.description,
     path: tool.href,
     keywords: tool.keywords,
+    socialEyebrow: CATEGORY_LABELS[tool.category] ?? tool.category,
   });
 }
 
@@ -231,6 +249,14 @@ export function buildWebsiteJsonLd(description: string) {
       "@type": "Organization",
       name: ORGANIZATION_NAME,
       url: SITE_URL,
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/${locale}/?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
     },
   };
 }
