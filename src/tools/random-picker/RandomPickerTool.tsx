@@ -246,7 +246,7 @@ function WheelSpinner({ ui }: { ui: (s: string) => string }) {
 
       {/* Result */}
       {result && !spinning && (
-        <div className="text-center p-6 rounded-xl bg-gradient-to-r from-purple-50 to-pink-50
+        <div aria-live="polite" className="text-center p-6 rounded-xl bg-gradient-to-r from-purple-50 to-pink-50
                         dark:from-purple-900/30 dark:to-pink-900/30
                         border border-purple-200 dark:border-purple-700">
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{ui("The winner is...")}</p>
@@ -343,7 +343,7 @@ function CoinFlip({ ui }: { ui: (s: string) => string }) {
 
       {/* Result */}
       {currentResult && !flipping && (
-        <div className="text-center p-4 rounded-xl bg-gradient-to-r from-yellow-50 to-amber-50
+        <div aria-live="polite" className="text-center p-4 rounded-xl bg-gradient-to-r from-yellow-50 to-amber-50
                         dark:from-yellow-900/20 dark:to-amber-900/20
                         border border-yellow-200 dark:border-yellow-700">
           <p className="text-2xl font-bold text-yellow-700 dark:text-yellow-300 capitalize">
@@ -496,7 +496,7 @@ function DiceRoll({ ui }: { ui: (s: string) => string }) {
 
         {/* Total */}
         {currentRoll && currentRoll.dice.length > 1 && !rolling && (
-          <p className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <p aria-live="polite" className="text-lg font-semibold text-gray-700 dark:text-gray-300">
             {ui("Total")}: <span className="text-blue-600 dark:text-blue-400">{currentRoll.total}</span>
           </p>
         )}

@@ -416,6 +416,11 @@ const KO_TOOL_UI_TEXT: Record<string, string> = {
   "Download PNG": "PNG 다운로드",
   "Copy to Clipboard": "클립보드에 복사",
   "Copied!": "복사됨!",
+  "Failed to generate QR code": "QR 코드 생성에 실패했습니다",
+  "Please enter a valid number": "유효한 숫자를 입력하세요",
+  "Invalid timestamp": "유효하지 않은 타임스탬프",
+  "Invalid date format": "유효하지 않은 날짜 형식",
+  "Search emojis": "이모지 검색",
 };
 
 const JA_TOOL_UI_TEXT: Record<string, string> = {
@@ -684,6 +689,11 @@ const JA_TOOL_UI_TEXT: Record<string, string> = {
   "Days since Epoch": "エポックからの日数",
   "Seconds": "秒",
   "Milliseconds": "ミリ秒",
+  "Failed to generate QR code": "QRコードの生成に失敗しました",
+  "Please enter a valid number": "有効な数値を入力してください",
+  "Invalid timestamp": "無効なタイムスタンプ",
+  "Invalid date format": "無効な日付形式",
+  "Search emojis": "絵文字を検索",
 };
 
 const DE_TOOL_UI_TEXT: Record<string, string> = {

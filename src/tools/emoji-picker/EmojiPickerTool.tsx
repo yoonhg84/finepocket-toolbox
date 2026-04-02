@@ -94,7 +94,7 @@ export function EmojiPickerTool() {
     <div className="space-y-4">
       {/* Toast notification */}
       {toast && (
-        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 px-4 py-2.5 rounded-full shadow-lg text-sm font-medium animate-bounce-in">
+        <div role="status" aria-live="polite" className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 px-4 py-2.5 rounded-full shadow-lg text-sm font-medium animate-bounce-in">
           <span className="text-lg">{toast}</span>
           <span>{ui("Copied!")}</span>
         </div>
@@ -121,6 +121,7 @@ export function EmojiPickerTool() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder={ui("Search emojis...")}
+            aria-label={ui("Search emojis")}
             className="w-full rounded-lg border border-gray-300 dark:border-gray-600 pl-10 pr-4 py-2.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
           />
         </div>

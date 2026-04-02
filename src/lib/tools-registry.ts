@@ -105,7 +105,7 @@ export const ALL_TOOLS: ToolMeta[] = [
     href: "/developer/password-generator",
     keywords: ["password generator", "random password", "passphrase generator", "strong password"],
     icon: "\u{1F512}",
-    relatedSlugs: ["hash-generator", "base64", "uuid-generator"],
+    relatedSlugs: ["hash-generator", "base64", "qr-code"],
   },
   {
     slug: "diff-checker",

@@ -55,7 +55,10 @@ export interface StrengthResult {
 
 function getSecureRandom(max: number): number {
   const array = new Uint32Array(1);
-  crypto.getRandomValues(array);
+  const limit = Math.floor(0x100000000 / max) * max;
+  do {
+    crypto.getRandomValues(array);
+  } while (array[0] >= limit);
   return array[0] % max;
 }
 

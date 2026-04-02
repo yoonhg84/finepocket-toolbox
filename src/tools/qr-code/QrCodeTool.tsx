@@ -54,7 +54,7 @@ export function QrCodeTool() {
       renderQrToCanvas(canvas, matrix, size, fgColor, bgColor);
       setError(null);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Failed to generate QR code");
+      setError(e instanceof Error ? e.message : ui("Failed to generate QR code"));
       const ctx = canvas.getContext("2d");
       canvas.width = size;
       canvas.height = size;
@@ -246,6 +246,8 @@ export function QrCodeTool() {
             ref={canvasRef}
             width={size}
             height={size}
+            role="img"
+            aria-label={text.trim() ? `QR code: ${text.trim().slice(0, 100)}` : "QR code"}
             className="block max-w-full h-auto rounded"
             style={{ imageRendering: "pixelated" }}
           />

@@ -49,7 +49,7 @@ export function TimestampConverterTool() {
     }
     const num = Number(trimmed);
     if (isNaN(num)) {
-      setTsError("Please enter a valid number");
+      setTsError(ui("Please enter a valid number"));
       setTsFormats(null);
       setTsDateInfo(null);
       return;
@@ -62,7 +62,7 @@ export function TimestampConverterTool() {
       setTsDateInfo(info);
       setTsError("");
     } catch {
-      setTsError("Invalid timestamp");
+      setTsError(ui("Invalid timestamp"));
       setTsFormats(null);
       setTsDateInfo(null);
     }
@@ -81,7 +81,7 @@ export function TimestampConverterTool() {
       setDateResult(result);
       setDateError("");
     } catch {
-      setDateError("Invalid date format");
+      setDateError(ui("Invalid date format"));
       setDateResult(null);
     }
   }, []);
