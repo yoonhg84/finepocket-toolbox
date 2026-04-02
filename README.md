@@ -1,68 +1,50 @@
 # FinePocket Toolbox
 
-Free online utility tools built with Next.js 14 and Tailwind CSS. All tools run entirely in your browser — no data is sent to any server.
+Privacy-first online tools — all processing in your browser.
 
-**Live:** https://toolbox.finepocket.app
+**https://toolbox.finepocket.app**
 
-## Tools (28)
+## 28 Tools
 
-### Developer Tools
-JSON Formatter, Base64 Encoder/Decoder, JWT Decoder, URL Encoder/Decoder, Regex Tester, Hash Generator, Password Generator, Text Diff Checker, Color Picker, Timestamp Converter, QR Code Generator
+**Developer (11):** JSON Formatter · Base64 · JWT Decoder · URL Encoder · Regex Tester · Hash Generator · Password Generator · Diff Checker · Color Picker · Timestamp Converter · QR Code
 
-### Text Tools
-Word/Character Counter, Case Converter, Lorem Ipsum Generator, Markdown Previewer, ASCII Art Generator, Emoji Picker
+**Text (6):** Word Counter · Case Converter · Lorem Ipsum · Markdown Preview · ASCII Art · Emoji Picker
 
-### Calculators
-Percentage Calculator, Tip Calculator, Age Calculator, Data Storage Converter, Unit Converter, BMI Calculator, Date Calculator, Random Decision Maker
+**Calculators (8):** Percentage · Tip · Age · Data Storage · Unit Converter · BMI · Date Calculator · Random Picker
 
-### Finance
-Loan Calculator, Compound Interest Calculator, Currency Converter
+**Finance (3):** Loan · Compound Interest · Currency Converter
 
-## Tech Stack
+## Stack
 
-- **Framework:** Next.js 14 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS 3.4 (dark mode support)
-- **Charts:** chart.js + react-chartjs-2
-- **i18n:** 7 languages (en, ko, ja, de, es, fr, pt)
-- **Deployment:** Vercel
+Next.js 14 · React 18 · TypeScript · Tailwind CSS 3.4 · Chart.js · Vercel · 7 languages (en ko ja de es fr pt)
 
-## Getting Started
+## Dev
 
 ```bash
-npm install
-npm run dev
+npm install && npm run dev   # localhost:3000
+npm run build                # typecheck + lint + build
 ```
 
-Open http://localhost:3000.
-
-## Project Structure
+## Structure
 
 ```
-src/
-├── app/[lang]/        # Pages (i18n dynamic routes)
-├── components/        # Shared UI components
-│   ├── layout/        # Header, Footer, LocaleProvider
-│   ├── tool/          # ToolPageLayout, ToolCard
-│   └── ui/            # CopyButton, FileUpload, etc.
-├── tools/             # Individual tools
-│   └── <slug>/        # Tool.tsx + content.ts + logic.ts
-├── lib/               # Utilities (seo, tools-registry)
-├── i18n/              # Localization config & messages
-└── content/           # Localized tool page content
+src/tools/<slug>/        ← content.ts + logic.ts + <Name>Tool.tsx
+src/app/[lang]/<cat>/    ← page routes (i18n dynamic)
+src/lib/tools-registry.ts ← tool metadata registry
+src/tools/ui-text.ts     ← KO/JA translations
 ```
 
-## Adding a New Tool
+## Add a Tool
 
-1. Create `src/tools/<slug>/` with three files:
-   - `content.ts` — SEO content (title, description, FAQ)
-   - `logic.ts` — Pure logic functions (no React)
-   - `<Name>Tool.tsx` — Client component (`"use client"`, named export)
-2. Register in `src/lib/tools-registry.ts`
-3. Create route page under `src/app/[lang]/<category>/<slug>/page.tsx`
-4. Add Korean/Japanese translations in `src/tools/ui-text.ts`
-5. Verify with `npm run build`
+1. Create `src/tools/<slug>/` — `content.ts`, `logic.ts`, `<Name>Tool.tsx`
+2. Register in `tools-registry.ts`
+3. Add page route in `src/app/[lang]/<category>/<slug>/page.tsx`
+4. Add translations in `ui-text.ts`
+5. `npm run build`
 
-## License
+## Rules
 
-Private — All rights reserved.
+- All Tailwind colors need `dark:` variant
+- UI text via `getToolUiText(locale)`, not hardcoded
+- `logic.ts` = pure functions, no React
+- Prefer Web APIs over npm packages
