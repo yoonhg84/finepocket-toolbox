@@ -16,6 +16,7 @@ import { content as dataConverterContent } from "@/tools/data-converter/content"
 import { content as dateCalculatorContent } from "@/tools/date-calculator/content";
 import { content as percentageCalculatorContent } from "@/tools/percentage-calculator/content";
 import { content as tipCalculatorContent } from "@/tools/tip-calculator/content";
+import { content as randomPickerContent } from "@/tools/random-picker/content";
 import { content as unitConverterContent } from "@/tools/unit-converter/content";
 
 const loading = () => (
@@ -48,6 +49,13 @@ const CALCULATOR_COMPONENTS = {
     () =>
       import("@/tools/date-calculator/DateCalculatorTool").then((m) => ({
         default: m.DateCalculatorTool,
+      })),
+    { ssr: false, loading }
+  ),
+  "random-picker": dynamic(
+    () =>
+      import("@/tools/random-picker/RandomPickerTool").then((m) => ({
+        default: m.RandomPickerTool,
       })),
     { ssr: false, loading }
   ),
@@ -84,6 +92,7 @@ const CALCULATOR_CONTENT: Record<CalculatorToolSlug, ToolContent> = {
   "data-converter": dataConverterContent,
   "date-calculator": dateCalculatorContent,
   "percentage-calculator": percentageCalculatorContent,
+  "random-picker": randomPickerContent,
   "tip-calculator": tipCalculatorContent,
   "unit-converter": unitConverterContent,
 };

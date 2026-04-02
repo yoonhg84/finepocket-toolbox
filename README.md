@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FinePocket Toolbox
+
+Free online utility tools built with Next.js 14 and Tailwind CSS. All tools run entirely in your browser — no data is sent to any server.
+
+**Live:** https://toolbox.finepocket.app
+
+## Tools (28)
+
+### Developer Tools
+JSON Formatter, Base64 Encoder/Decoder, JWT Decoder, URL Encoder/Decoder, Regex Tester, Hash Generator, Password Generator, Text Diff Checker, Color Picker, Timestamp Converter, QR Code Generator
+
+### Text Tools
+Word/Character Counter, Case Converter, Lorem Ipsum Generator, Markdown Previewer, ASCII Art Generator, Emoji Picker
+
+### Calculators
+Percentage Calculator, Tip Calculator, Age Calculator, Data Storage Converter, Unit Converter, BMI Calculator, Date Calculator, Random Decision Maker
+
+### Finance
+Loan Calculator, Compound Interest Calculator, Currency Converter
+
+## Tech Stack
+
+- **Framework:** Next.js 14 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 3.4 (dark mode support)
+- **Charts:** chart.js + react-chartjs-2
+- **i18n:** 7 languages (en, ko, ja, de, es, fr, pt)
+- **Deployment:** Vercel
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/[lang]/        # Pages (i18n dynamic routes)
+├── components/        # Shared UI components
+│   ├── layout/        # Header, Footer, LocaleProvider
+│   ├── tool/          # ToolPageLayout, ToolCard
+│   └── ui/            # CopyButton, FileUpload, etc.
+├── tools/             # Individual tools
+│   └── <slug>/        # Tool.tsx + content.ts + logic.ts
+├── lib/               # Utilities (seo, tools-registry)
+├── i18n/              # Localization config & messages
+└── content/           # Localized tool page content
+```
 
-## Learn More
+## Adding a New Tool
 
-To learn more about Next.js, take a look at the following resources:
+1. Create `src/tools/<slug>/` with three files:
+   - `content.ts` — SEO content (title, description, FAQ)
+   - `logic.ts` — Pure logic functions (no React)
+   - `<Name>Tool.tsx` — Client component (`"use client"`, named export)
+2. Register in `src/lib/tools-registry.ts`
+3. Create route page under `src/app/[lang]/<category>/<slug>/page.tsx`
+4. Add Korean/Japanese translations in `src/tools/ui-text.ts`
+5. Verify with `npm run build`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Private — All rights reserved.
