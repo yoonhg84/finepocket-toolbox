@@ -1,7 +1,7 @@
 import { AdSlot } from "@/components/ads/AdSlot";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
-import { localizePath } from "@/i18n";
-import { getRequestLocale, getServerTranslator } from "@/i18n/server";
+import { localizePath, type Locale } from "@/i18n";
+import { getServerTranslator } from "@/i18n/server";
 import { getAdSenseClientId, getAdSenseToolSlot } from "@/lib/adsense";
 import { getLocalizedToolText } from "@/i18n/tools";
 import {
@@ -18,11 +18,16 @@ import { SeoSection } from "./SeoSection";
 interface ToolPageLayoutProps {
   tool: ToolMeta;
   content: ToolContent;
+  locale: Locale;
   children: React.ReactNode;
 }
 
-export function ToolPageLayout({ tool, content, children }: ToolPageLayoutProps) {
-  const locale = getRequestLocale();
+export function ToolPageLayout({
+  tool,
+  content,
+  locale,
+  children,
+}: ToolPageLayoutProps) {
   const t = getServerTranslator(locale);
   const localizedTool = getLocalizedToolText(tool, t);
   const categoryLabel = t(getCategoryLabelKey(tool.category));
@@ -126,7 +131,7 @@ export function ToolPageLayout({ tool, content, children }: ToolPageLayoutProps)
       )}
 
       <FaqSection items={content.faq} title={t("seo.faq")} />
-      <RelatedTools currentSlug={tool.slug} />
+      <RelatedTools currentSlug={tool.slug} locale={locale} />
     </div>
   );
 }

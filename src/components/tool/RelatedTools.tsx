@@ -1,15 +1,16 @@
 import Link from "next/link";
-import { getRequestLocale, getServerTranslator } from "@/i18n/server";
+import { type Locale } from "@/i18n";
+import { getServerTranslator } from "@/i18n/server";
 import { getLocalizedToolText } from "@/i18n/tools";
 import { getRelatedTools, getToolHref } from "@/lib/tools-registry";
 
 interface RelatedToolsProps {
   currentSlug: string;
+  locale: Locale;
 }
 
-export function RelatedTools({ currentSlug }: RelatedToolsProps) {
+export function RelatedTools({ currentSlug, locale }: RelatedToolsProps) {
   const related = getRelatedTools(currentSlug, 4);
-  const locale = getRequestLocale();
   const t = getServerTranslator(locale);
 
   return (

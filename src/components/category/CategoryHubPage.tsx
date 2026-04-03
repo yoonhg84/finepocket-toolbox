@@ -1,18 +1,18 @@
 import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import type { CategoryHubContent } from "@/content/category-hubs";
-import { localizePath } from "@/i18n";
-import { getRequestLocale, getServerTranslator } from "@/i18n/server";
+import { localizePath, type Locale } from "@/i18n";
+import { getServerTranslator } from "@/i18n/server";
 import { getLocalizedToolText } from "@/i18n/tools";
 import { buildBreadcrumbJsonLd, buildFaqJsonLd, buildItemListJsonLd } from "@/lib/seo";
 import { getToolHref, getToolsByCategory } from "@/lib/tools-registry";
 
 interface CategoryHubPageProps {
   content: CategoryHubContent;
+  locale: Locale;
 }
 
-export function CategoryHubPage({ content }: CategoryHubPageProps) {
-  const locale = getRequestLocale();
+export function CategoryHubPage({ content, locale }: CategoryHubPageProps) {
   const t = getServerTranslator(locale);
   const tools = getToolsByCategory(content.category);
   const breadcrumbItems = [

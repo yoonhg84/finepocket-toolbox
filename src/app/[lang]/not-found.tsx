@@ -4,7 +4,7 @@ import { localizePath } from "@/i18n";
 
 export default function NotFound() {
   const locale = getRequestLocale();
-  const t = getServerTranslator();
+  const t = getServerTranslator(locale);
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
@@ -13,10 +13,10 @@ export default function NotFound() {
           404
         </h1>
         <h2 className="mt-4 text-2xl font-semibold text-gray-900 dark:text-gray-100">
-          Page not found
+          {t("notFound.title")}
         </h2>
         <p className="mt-2 text-gray-500 dark:text-gray-400">
-          The page you are looking for does not exist or has been moved.
+          {t("notFound.description")}
         </p>
         <Link
           href={localizePath("/", locale)}

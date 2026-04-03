@@ -20,14 +20,18 @@
     "switchToLightMode": "Mudar para o modo claro",
     "language": "Idioma",
     "selectLanguage": "Selecionar idioma",
-    "home": "Início"
+    "home": "Início",
+    "lastUpdated": "Última atualização",
+    "skipToContent": "Ir para o conteúdo"
   },
   "nav": {
     "developerTools": "Ferramentas para desenvolvedores",
     "textTools": "Ferramentas de texto",
     "financeTools": "Ferramentas financeiras",
     "calculatorTools": "Calculadoras e conversores",
-    "toggleMenu": "Alternar menu"
+    "toggleMenu": "Alternar menu",
+    "browseCategory": "Ver {category}",
+    "openCategoryMenu": "Abrir menu de {category}"
   },
   "home": {
     "title": "FinePocket Toolbox",
@@ -42,6 +46,7 @@
     "privacy": "Política de privacidade",
     "terms": "Termos de serviço",
     "contact": "Contato",
+    "privacyChoices": "Privacidade e configurações de cookies",
     "copyright": "© {year} FinePocket. Todos os direitos reservados.",
     "browserOnly": "A maioria das ferramentas funciona no seu navegador. As páginas que usam dados externos explicam isso claramente."
   },
@@ -54,7 +59,16 @@
     "relatedTools": "Ferramentas relacionadas"
   },
   "toolPage": {
-    "browserBased": "Gratuito, no navegador e sem cadastro."
+    "browserBased": "Gratuito, no navegador e sem cadastro.",
+    "financeNoticeTitle": "Estimativas financeiras apenas como referência",
+    "financeNoticeBody": "Taxas, tarifas, impostos e regras específicas de cada provedor podem alterar o resultado real. Use estas ferramentas para planejar e comparar, e confirme as condições finais com a instituição responsável.",
+    "healthNoticeTitle": "Apenas para fins informativos",
+    "healthNoticeBody": "O IMC é um indicador geral e não considera massa muscular, densidade óssea, idade ou sexo. Não é um diagnóstico médico. Consulte um profissional de saúde qualificado para uma avaliação personalizada.",
+    "adDisclosure": "A publicidade pode ajudar a manter este site. Os controles principais permanecem separados das áreas de anúncio."
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "description": "A página que você procura não existe ou foi movida."
   },
   "tools": {
     "json-formatter": {

@@ -20,14 +20,18 @@
     "switchToLightMode": "Zum hellen Modus wechseln",
     "language": "Sprache",
     "selectLanguage": "Sprache auswählen",
-    "home": "Startseite"
+    "home": "Startseite",
+    "lastUpdated": "Zuletzt aktualisiert",
+    "skipToContent": "Zum Inhalt springen"
   },
   "nav": {
     "developerTools": "Entwicklertools",
     "textTools": "Textwerkzeuge",
     "financeTools": "Finanztools",
     "calculatorTools": "Rechner & Umrechner",
-    "toggleMenu": "Menü umschalten"
+    "toggleMenu": "Menü umschalten",
+    "browseCategory": "{category} durchsuchen",
+    "openCategoryMenu": "{category}-Menü öffnen"
   },
   "home": {
     "title": "FinePocket Toolbox",
@@ -42,6 +46,7 @@
     "privacy": "Datenschutz",
     "terms": "Nutzungsbedingungen",
     "contact": "Kontakt",
+    "privacyChoices": "Datenschutz- & Cookie-Einstellungen",
     "copyright": "© {year} FinePocket. Alle Rechte vorbehalten.",
     "browserOnly": "Die meisten Tools laufen in Ihrem Browser. Seiten mit externen Daten weisen klar darauf hin."
   },
@@ -54,7 +59,16 @@
     "relatedTools": "Ähnliche Tools"
   },
   "toolPage": {
-    "browserBased": "Kostenlos, browserbasiert, ohne Registrierung."
+    "browserBased": "Kostenlos, browserbasiert, ohne Registrierung.",
+    "financeNoticeTitle": "Finanzergebnisse nur als Richtwert",
+    "financeNoticeBody": "Zinsen, Gebühren, Steuern und anbieterspezifische Regeln können das tatsächliche Ergebnis verändern. Nutzen Sie diese Tools zur Planung und zum Vergleich und prüfen Sie die endgültigen Konditionen bei der jeweiligen Stelle.",
+    "healthNoticeTitle": "Nur zu Informationszwecken",
+    "healthNoticeBody": "Der BMI ist ein allgemeiner Richtwert und berücksichtigt weder Muskelmasse noch Knochendichte, Alter oder Geschlecht. Er ist keine medizinische Diagnose. Bitte wenden Sie sich für eine persönliche Gesundheitsbewertung an qualifiziertes Fachpersonal.",
+    "adDisclosure": "Werbung kann diese Website unterstützen. Wichtige Bedienelemente bleiben klar von Anzeigen getrennt."
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "description": "Die gesuchte Seite existiert nicht oder wurde verschoben."
   },
   "tools": {
     "json-formatter": {

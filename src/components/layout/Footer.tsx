@@ -1,11 +1,14 @@
 import { ConsentSettingsLink } from "@/components/layout/ConsentSettingsLink";
 import Link from "next/link";
-import { localizePath } from "@/i18n";
-import { getRequestLocale, getServerTranslator } from "@/i18n/server";
+import { localizePath, type Locale } from "@/i18n";
+import { getServerTranslator } from "@/i18n/server";
 
-export function Footer() {
-  const locale = getRequestLocale();
-  const t = getServerTranslator();
+interface FooterProps {
+  locale: Locale;
+}
+
+export function Footer({ locale }: FooterProps) {
+  const t = getServerTranslator(locale);
 
   return (
     <footer className="border-t border-gray-200 dark:border-gray-700 mt-16 py-8 bg-gray-50 dark:bg-gray-800">

@@ -20,7 +20,9 @@
     "switchToLightMode": "Switch to light mode",
     "language": "Language",
     "selectLanguage": "Select language",
-    "home": "Home"
+    "home": "Home",
+    "lastUpdated": "Last updated",
+    "skipToContent": "Skip to content"
   },
   "nav": {
     "developerTools": "Developer Tools",
@@ -68,7 +70,13 @@
     "browserBased": "Free, browser-based, no sign-up required.",
     "financeNoticeTitle": "Reference-only finance estimates",
     "financeNoticeBody": "Rates, fees, taxes, and provider-specific rules can change the real result. Use these tools for planning and comparison, then confirm terms with the relevant institution.",
+    "healthNoticeTitle": "For informational purposes only",
+    "healthNoticeBody": "BMI is a general screening tool and does not account for muscle mass, bone density, age, or gender. It is not a medical diagnosis. Please consult a qualified healthcare professional for personalized health advice.",
     "adDisclosure": "Advertising may support this site. Primary controls stay separate from ad placements."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has been moved."
   },
   "tools": {
     "json-formatter": {

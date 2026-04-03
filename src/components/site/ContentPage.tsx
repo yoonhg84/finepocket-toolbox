@@ -1,18 +1,23 @@
 import type { ReactNode } from "react";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import type { SitePageContent } from "@/content/site-pages";
-import { localizePath } from "@/i18n";
-import { getRequestLocale, getServerTranslator } from "@/i18n/server";
+import { localizePath, type Locale } from "@/i18n";
+import { getServerTranslator } from "@/i18n/server";
 import { buildBreadcrumbJsonLd } from "@/lib/seo";
 
 interface ContentPageProps {
   content: SitePageContent;
   path: string;
+  locale: Locale;
   children?: ReactNode;
 }
 
-export function ContentPage({ content, path, children }: ContentPageProps) {
-  const locale = getRequestLocale();
+export function ContentPage({
+  content,
+  path,
+  locale,
+  children,
+}: ContentPageProps) {
   const t = getServerTranslator(locale);
   const localizedPath = localizePath(path, locale);
   const breadcrumbItems = [
@@ -41,7 +46,9 @@ export function ContentPage({ content, path, children }: ContentPageProps) {
 
       {content.lastUpdated && (
         <p className="mb-8 text-sm text-gray-400 dark:text-gray-500">
-          {content.lastUpdatedLabel ?? "Last updated"}: {content.lastUpdated}
+          {content.lastUpdatedLabel ??
+            t("common.lastUpdated", undefined, "Last updated")}
+          : {content.lastUpdated}
         </p>
       )}
 

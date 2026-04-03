@@ -20,14 +20,18 @@
     "switchToLightMode": "Passer au mode clair",
     "language": "Langue",
     "selectLanguage": "Choisir la langue",
-    "home": "Accueil"
+    "home": "Accueil",
+    "lastUpdated": "Dernière mise à jour",
+    "skipToContent": "Aller au contenu"
   },
   "nav": {
     "developerTools": "Outils développeur",
     "textTools": "Outils de texte",
     "financeTools": "Outils financiers",
     "calculatorTools": "Calculatrices et convertisseurs",
-    "toggleMenu": "Basculer le menu"
+    "toggleMenu": "Basculer le menu",
+    "browseCategory": "Voir {category}",
+    "openCategoryMenu": "Ouvrir le menu {category}"
   },
   "home": {
     "title": "FinePocket Toolbox",
@@ -42,6 +46,7 @@
     "privacy": "Politique de confidentialité",
     "terms": "Conditions d'utilisation",
     "contact": "Contact",
+    "privacyChoices": "Paramètres de confidentialité et cookies",
     "copyright": "© {year} FinePocket. Tous droits réservés.",
     "browserOnly": "La plupart des outils fonctionnent dans votre navigateur. Les pages qui utilisent des données externes l'indiquent clairement."
   },
@@ -54,7 +59,16 @@
     "relatedTools": "Outils associés"
   },
   "toolPage": {
-    "browserBased": "Gratuit, dans le navigateur, sans inscription."
+    "browserBased": "Gratuit, dans le navigateur, sans inscription.",
+    "financeNoticeTitle": "Estimations financières à titre indicatif",
+    "financeNoticeBody": "Les taux, frais, taxes et règles propres à chaque organisme peuvent modifier le résultat réel. Utilisez ces outils pour planifier et comparer, puis vérifiez les conditions finales auprès de l'établissement concerné.",
+    "healthNoticeTitle": "À titre informatif uniquement",
+    "healthNoticeBody": "L'IMC est un indicateur général qui ne tient pas compte de la masse musculaire, de la densité osseuse, de l'âge ou du sexe. Il ne constitue pas un diagnostic médical. Consultez un professionnel de santé qualifié pour une évaluation personnalisée.",
+    "adDisclosure": "La publicité peut contribuer au financement du site. Les contrôles principaux restent distincts des emplacements publicitaires."
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "description": "La page que vous recherchez n'existe pas ou a été déplacée."
   },
   "tools": {
     "json-formatter": {

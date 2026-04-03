@@ -1,12 +1,11 @@
 import { notFound, permanentRedirect } from "next/navigation";
-import { localizePath } from "@/i18n";
-import { getRequestLocale } from "@/i18n/server";
+import { localizePath, type Locale } from "@/i18n";
 import { getToolBySlug } from "@/lib/tools-registry";
 
 export default function LegacyFinanceToolRedirectPage({
   params,
 }: {
-  params: { slug: string };
+  params: { lang: Locale; slug: string };
 }) {
   const tool = getToolBySlug(params.slug);
 
@@ -14,5 +13,5 @@ export default function LegacyFinanceToolRedirectPage({
     notFound();
   }
 
-  permanentRedirect(localizePath(tool.href, getRequestLocale()));
+  permanentRedirect(localizePath(tool.href, params.lang));
 }

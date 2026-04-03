@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { ToolPageLayout } from "@/components/tool/ToolPageLayout";
 import { getLocalizedToolPageContent } from "@/content/tool-page-content";
-import { getRequestLocale } from "@/i18n/server";
+import type { Locale } from "@/i18n";
 import {
   buildFaqJsonLd,
   buildToolJsonLd,
@@ -122,7 +122,11 @@ export function generateStaticParams() {
   return Object.keys(CALCULATOR_COMPONENTS).map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
+export function generateMetadata({
+  params,
+}: {
+  params: { lang: Locale; slug: string };
+}) {
   const pageData = getCalculatorPageData(params.slug);
   if (!pageData) {
     return {};
@@ -132,16 +136,17 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
     pageData.tool,
     getLocalizedToolPageContent(
       pageData.tool.slug,
-      getRequestLocale(),
+      params.lang,
       pageData.baseContent
-    )
+    ),
+    params.lang
   );
 }
 
 export default function CalculatorToolPage({
   params,
 }: {
-  params: { slug: string };
+  params: { lang: Locale; slug: string };
 }) {
   const pageData = getCalculatorPageData(params.slug);
   if (!pageData) {
@@ -150,7 +155,7 @@ export default function CalculatorToolPage({
 
   const content = getLocalizedToolPageContent(
     pageData.tool.slug,
-    getRequestLocale(),
+    params.lang,
     pageData.baseContent
   );
   const ToolComponent = pageData.ToolComponent;
@@ -160,7 +165,9 @@ export default function CalculatorToolPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(buildToolJsonLd(pageData.tool, content)),
+          __html: JSON.stringify(
+            buildToolJsonLd(pageData.tool, content, params.lang)
+          ),
         }}
       />
       <script
@@ -169,7 +176,11 @@ export default function CalculatorToolPage({
           __html: JSON.stringify(buildFaqJsonLd(content.faq)),
         }}
       />
-      <ToolPageLayout tool={pageData.tool} content={content}>
+      <ToolPageLayout
+        tool={pageData.tool}
+        content={content}
+        locale={params.lang}
+      >
         <ToolComponent />
       </ToolPageLayout>
     </>

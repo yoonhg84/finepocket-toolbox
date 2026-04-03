@@ -1,6 +1,6 @@
 import Link from "next/link";
-import type { TranslateFn } from "@/i18n";
-import { getRequestLocale, getServerTranslator } from "@/i18n/server";
+import type { Locale, TranslateFn } from "@/i18n";
+import { getServerTranslator } from "@/i18n/server";
 import { getLocalizedToolText } from "@/i18n/tools";
 import {
   ALL_TOOLS,
@@ -11,13 +11,14 @@ import {
 import { buildPageMetadata, buildWebsiteJsonLd, buildOrganizationJsonLd } from "@/lib/seo";
 import { ToolSearch } from "@/components/ui/ToolSearch";
 
-export function generateMetadata() {
-  const locale = getRequestLocale();
+export function generateMetadata({ params }: { params: { lang: Locale } }) {
+  const locale = params.lang;
   const t = getServerTranslator(locale);
 
   return buildPageMetadata({
     title: t("home.subtitle"),
     description: t("home.heroDescription"),
+    locale,
     path: "/",
   });
 }
@@ -34,7 +35,7 @@ function ToolGrid({
 }: {
   tools: typeof ALL_TOOLS;
   t: TranslateFn;
-  locale: ReturnType<typeof getRequestLocale>;
+  locale: Locale;
 }) {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
@@ -82,8 +83,8 @@ function CategoryHeading({ href, label }: { href: string; label: string }) {
   );
 }
 
-export default function Home() {
-  const locale = getRequestLocale();
+export default function Home({ params }: { params: { lang: Locale } }) {
+  const locale = params.lang;
   const t = getServerTranslator(locale);
 
   return (
@@ -91,7 +92,9 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(buildWebsiteJsonLd(t("home.heroDescription"))),
+          __html: JSON.stringify(
+            buildWebsiteJsonLd(t("home.heroDescription"), locale)
+          ),
         }}
       />
       <script

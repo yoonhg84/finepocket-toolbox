@@ -39,6 +39,7 @@ export const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/opengraph-image`;
 interface PageMetadataInput {
   title: string;
   description: string;
+  locale?: Locale;
   path?: string;
   keywords?: string[];
   type?: "website" | "article";
@@ -73,12 +74,12 @@ function buildSocialImageUrl(input: {
 export function buildPageMetadata({
   title,
   description,
+  locale = getRequestLocale(),
   path,
   keywords,
   type = "website",
   socialEyebrow,
 }: PageMetadataInput): Metadata {
-  const locale = getRequestLocale();
   const url = buildLocalizedAbsoluteUrl(path, locale);
   const socialImageUrl = buildSocialImageUrl({ title, description, socialEyebrow });
   const languageAlternates = Object.fromEntries(
@@ -137,20 +138,28 @@ const CATEGORY_LABELS: Record<string, string> = {
   calculators: "Calculator Tools",
 };
 
-export function buildToolMetadata(tool: ToolMeta, content: ToolContent): Metadata {
+export function buildToolMetadata(
+  tool: ToolMeta,
+  content: ToolContent,
+  locale = getRequestLocale()
+): Metadata {
   const title = `${content.title} - Free Online Tool`;
 
   return buildPageMetadata({
     title,
     description: content.description,
+    locale,
     path: tool.href,
     keywords: tool.keywords,
     socialEyebrow: CATEGORY_LABELS[tool.category] ?? tool.category,
   });
 }
 
-export function buildToolJsonLd(tool: ToolMeta, content: ToolContent) {
-  const locale = getRequestLocale();
+export function buildToolJsonLd(
+  tool: ToolMeta,
+  content: ToolContent,
+  locale = getRequestLocale()
+) {
   const applicationCategory =
     tool.category === "developer"
       ? "DeveloperApplication"
@@ -235,9 +244,10 @@ export function buildOrganizationJsonLd() {
   };
 }
 
-export function buildWebsiteJsonLd(description: string) {
-  const locale = getRequestLocale();
-
+export function buildWebsiteJsonLd(
+  description: string,
+  locale = getRequestLocale()
+) {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -265,8 +275,9 @@ export function buildContactPageJsonLd(input: {
   title: string;
   description: string;
   email?: string;
+  locale?: Locale;
 }) {
-  const locale = getRequestLocale();
+  const locale = input.locale ?? getRequestLocale();
 
   return {
     "@context": "https://schema.org",

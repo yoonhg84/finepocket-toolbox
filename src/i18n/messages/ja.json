@@ -20,14 +20,18 @@
     "switchToLightMode": "ライトモードに切り替える",
     "language": "言語",
     "selectLanguage": "言語を選択",
-    "home": "ホーム"
+    "home": "ホーム",
+    "lastUpdated": "最終更新",
+    "skipToContent": "本文へスキップ"
   },
   "nav": {
     "developerTools": "開発ツール",
     "textTools": "テキストツール",
     "financeTools": "金融ツール",
     "calculatorTools": "計算・変換ツール",
-    "toggleMenu": "メニューを切り替える"
+    "toggleMenu": "メニューを切り替える",
+    "browseCategory": "{category} を見る",
+    "openCategoryMenu": "{category} メニューを開く"
   },
   "home": {
     "title": "FinePocket Toolbox",
@@ -42,6 +46,7 @@
     "privacy": "プライバシーポリシー",
     "terms": "利用規約",
     "contact": "お問い合わせ",
+    "privacyChoices": "プライバシーとCookie設定",
     "copyright": "© {year} FinePocket. 無断転載を禁じます。",
     "browserOnly": "多くのツールはブラウザ内で動作します。外部データを使うページはその旨を明確に案内します。"
   },
@@ -54,7 +59,16 @@
     "relatedTools": "関連ツール"
   },
   "toolPage": {
-    "browserBased": "無料、ブラウザ完結、登録不要。"
+    "browserBased": "無料、ブラウザ完結、登録不要。",
+    "financeNoticeTitle": "金融結果は参考用の概算です",
+    "financeNoticeBody": "金利、手数料、税金、提供元ごとの条件によって実際の結果は変わることがあります。比較や計画の目安として使い、最終条件は各機関で確認してください。",
+    "healthNoticeTitle": "参考情報としてご利用ください",
+    "healthNoticeBody": "BMI は一般的な目安であり、筋肉量、骨密度、年齢、性別は反映しません。医療上の診断ではないため、個別の健康判断は医療専門家にご相談ください。",
+    "adDisclosure": "このサイトは広告によって支えられる場合があります。主要な操作領域と広告は分離して表示します。"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "description": "お探しのページは存在しないか、移動された可能性があります。"
   },
   "tools": {
     "json-formatter": {

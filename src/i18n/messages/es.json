@@ -20,14 +20,18 @@
     "switchToLightMode": "Cambiar al modo claro",
     "language": "Idioma",
     "selectLanguage": "Seleccionar idioma",
-    "home": "Inicio"
+    "home": "Inicio",
+    "lastUpdated": "Última actualización",
+    "skipToContent": "Ir al contenido"
   },
   "nav": {
     "developerTools": "Herramientas para desarrolladores",
     "textTools": "Herramientas de texto",
     "financeTools": "Herramientas financieras",
     "calculatorTools": "Calculadoras y conversores",
-    "toggleMenu": "Alternar menú"
+    "toggleMenu": "Alternar menú",
+    "browseCategory": "Ver {category}",
+    "openCategoryMenu": "Abrir el menú de {category}"
   },
   "home": {
     "title": "FinePocket Toolbox",
@@ -42,6 +46,7 @@
     "privacy": "Política de privacidad",
     "terms": "Términos del servicio",
     "contact": "Contacto",
+    "privacyChoices": "Privacidad y ajustes de cookies",
     "copyright": "© {year} FinePocket. Todos los derechos reservados.",
     "browserOnly": "La mayoría de las herramientas funcionan en tu navegador. Las páginas que usan datos externos lo explican claramente."
   },
@@ -54,7 +59,16 @@
     "relatedTools": "Herramientas relacionadas"
   },
   "toolPage": {
-    "browserBased": "Gratis, basado en navegador y sin registro."
+    "browserBased": "Gratis, basado en navegador y sin registro.",
+    "financeNoticeTitle": "Estimaciones financieras solo de referencia",
+    "financeNoticeBody": "Las tasas, comisiones, impuestos y reglas específicas de cada proveedor pueden cambiar el resultado real. Usa estas herramientas para planificar y comparar, y confirma las condiciones finales con la institución correspondiente.",
+    "healthNoticeTitle": "Solo con fines informativos",
+    "healthNoticeBody": "El IMC es una herramienta general de referencia y no tiene en cuenta la masa muscular, la densidad ósea, la edad ni el sexo. No es un diagnóstico médico. Consulta a un profesional sanitario cualificado para una evaluación personalizada.",
+    "adDisclosure": "La publicidad puede ayudar a sostener este sitio. Los controles principales se mantienen separados de los anuncios."
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o ha sido movida."
   },
   "tools": {
     "json-formatter": {

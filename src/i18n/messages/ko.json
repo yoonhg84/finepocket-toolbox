@@ -20,14 +20,18 @@
     "switchToLightMode": "라이트 모드로 전환",
     "language": "언어",
     "selectLanguage": "언어 선택",
-    "home": "홈"
+    "home": "홈",
+    "lastUpdated": "마지막 업데이트",
+    "skipToContent": "본문으로 건너뛰기"
   },
   "nav": {
     "developerTools": "개발 도구",
     "textTools": "텍스트 도구",
     "financeTools": "금융 도구",
     "calculatorTools": "계산기 및 변환 도구",
-    "toggleMenu": "메뉴 토글"
+    "toggleMenu": "메뉴 토글",
+    "browseCategory": "{category} 보기",
+    "openCategoryMenu": "{category} 메뉴 열기"
   },
   "home": {
     "title": "FinePocket Toolbox",
@@ -66,7 +70,13 @@
     "browserBased": "무료, 브라우저 기반, 회원가입 불필요.",
     "financeNoticeTitle": "금융 결과는 참고용 추정치입니다",
     "financeNoticeBody": "실제 결과는 금리, 수수료, 세금, 금융기관별 조건에 따라 달라질 수 있습니다. 비교와 계획 용도로 활용하고, 최종 조건은 해당 기관에서 확인하세요.",
+    "healthNoticeTitle": "참고용 정보입니다",
+    "healthNoticeBody": "BMI는 근육량, 골밀도, 연령, 성별을 반영하지 않는 일반적인 선별 지표입니다. 의료 진단이 아니므로, 개인별 건강 판단은 의료 전문가와 상담하세요.",
     "adDisclosure": "이 사이트는 광고로 운영될 수 있으며, 주요 입력·결과 영역과 광고는 분리해 배치합니다."
+  },
+  "notFound": {
+    "title": "페이지를 찾을 수 없습니다",
+    "description": "찾으시는 페이지가 없거나 이동되었습니다."
   },
   "tools": {
     "json-formatter": {

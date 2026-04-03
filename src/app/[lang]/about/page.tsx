@@ -1,20 +1,21 @@
 import { ContentPage } from "@/components/site/ContentPage";
 import { getSitePageContent } from "@/content/site-pages";
-import { getRequestLocale } from "@/i18n/server";
+import type { Locale } from "@/i18n";
 import { buildOrganizationJsonLd, buildPageMetadata } from "@/lib/seo";
 
-export function generateMetadata() {
-  const content = getSitePageContent("about", getRequestLocale());
+export function generateMetadata({ params }: { params: { lang: Locale } }) {
+  const content = getSitePageContent("about", params.lang);
 
   return buildPageMetadata({
     title: content.metaTitle,
     description: content.description,
+    locale: params.lang,
     path: "/about",
   });
 }
 
-export default function AboutPage() {
-  const content = getSitePageContent("about", getRequestLocale());
+export default function AboutPage({ params }: { params: { lang: Locale } }) {
+  const content = getSitePageContent("about", params.lang);
 
   return (
     <>
@@ -24,7 +25,7 @@ export default function AboutPage() {
           __html: JSON.stringify(buildOrganizationJsonLd()),
         }}
       />
-      <ContentPage content={content} path="/about" />
+      <ContentPage content={content} path="/about" locale={params.lang} />
     </>
   );
 }
