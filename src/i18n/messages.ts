@@ -7,7 +7,15 @@ import fr from "./messages/fr.json";
 import pt from "./messages/pt.json";
 import ko from "./messages/ko.json";
 
-export type Messages = typeof en;
+type DeepPartial<T> = {
+  [K in keyof T]?: T[K] extends Array<infer U>
+    ? Array<DeepPartial<U>>
+    : T[K] extends object
+      ? DeepPartial<T[K]>
+      : T[K];
+};
+
+export type Messages = DeepPartial<typeof en>;
 
 export const EN_MESSAGES: Messages = en;
 
@@ -24,4 +32,3 @@ const MESSAGES: Record<Locale, Messages> = {
 export function getMessages(locale: Locale): Messages {
   return MESSAGES[locale] ?? EN_MESSAGES;
 }
-

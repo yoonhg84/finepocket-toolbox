@@ -158,7 +158,7 @@ function WheelSpinner({ ui }: { ui: (s: string) => string }) {
               <button
                 onClick={() => removeItem(i)}
                 className="ml-0.5 hover:text-gray-200 transition-colors"
-                aria-label={`Remove ${item}`}
+                aria-label={`${ui("Remove")} ${item}`}
               >
                 &times;
               </button>

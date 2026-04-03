@@ -70,6 +70,11 @@
     "title": "ページが見つかりません",
     "description": "お探しのページは存在しないか、移動された可能性があります。"
   },
+  "errorPage": {
+    "title": "問題が発生しました",
+    "description": "予期しないエラーが発生しました。もう一度お試しください。",
+    "retry": "再試行"
+  },
   "tools": {
     "json-formatter": {
       "name": "JSONフォーマッター / バリデーター",
@@ -95,6 +100,10 @@
       "name": "ハッシュジェネレーター",
       "shortDescription": "MD5、SHA-1、SHA-256 などのハッシュを生成"
     },
+    "password-generator": {
+      "name": "パスワード生成ツール",
+      "shortDescription": "強力なランダムパスワードと覚えやすいパスフレーズを生成"
+    },
     "diff-checker": {
       "name": "テキスト差分チェッカー",
       "shortDescription": "2つのテキストを比較して差分を確認"
@@ -102,6 +111,14 @@
     "color-picker": {
       "name": "カラーピッカー / コンバーター",
       "shortDescription": "色を選択し、HEX・RGB・HSL 間で変換"
+    },
+    "timestamp-converter": {
+      "name": "タイムスタンプ変換",
+      "shortDescription": "Unixタイムスタンプと日付を相互変換"
+    },
+    "qr-code": {
+      "name": "QRコード生成",
+      "shortDescription": "テキストやURLからQRコードを作成しPNGで保存"
     },
     "word-counter": {
       "name": "単語 / 文字カウンター",
@@ -118,6 +135,14 @@
     "markdown-preview": {
       "name": "Markdown プレビュー",
       "shortDescription": "Markdown を書いてレンダリングされた HTML をリアルタイム表示"
+    },
+    "ascii-art": {
+      "name": "ASCIIアート生成",
+      "shortDescription": "テキストを複数のFIGlet風ASCIIアートに変換"
+    },
+    "emoji-picker": {
+      "name": "絵文字ピッカー",
+      "shortDescription": "絵文字を検索してワンクリックでコピー"
     },
     "percentage-calculator": {
       "name": "パーセンテージ計算機",
@@ -154,6 +179,10 @@
     "date-calculator": {
       "name": "日付計算機",
       "shortDescription": "日付間の日数や日付への加算・減算を計算"
+    },
+    "random-picker": {
+      "name": "ランダム選択ツール",
+      "shortDescription": "ルーレット、コイントス、サイコロで無作為に選択"
     },
     "currency-converter": {
       "name": "通貨換算",

@@ -154,7 +154,7 @@ export function EmojiPickerTool() {
                       ? "bg-blue-100 dark:bg-blue-900/40 ring-2 ring-blue-400 dark:ring-blue-500"
                       : ""
                   }`}
-                  title={tone.label}
+                  title={ui(tone.label)}
                 >
                   {i === 0 ? "\u{270B}" : applySkinTone("\u{270B}", tone.modifier)}
                 </button>

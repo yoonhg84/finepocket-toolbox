@@ -78,6 +78,11 @@
     "title": "페이지를 찾을 수 없습니다",
     "description": "찾으시는 페이지가 없거나 이동되었습니다."
   },
+  "errorPage": {
+    "title": "문제가 발생했습니다",
+    "description": "예기치 않은 오류가 발생했습니다. 다시 시도해 주세요.",
+    "retry": "다시 시도"
+  },
   "tools": {
     "json-formatter": {
       "name": "JSON 포맷터 / 검증기",
@@ -103,6 +108,10 @@
       "name": "해시 생성기",
       "shortDescription": "MD5, SHA-1, SHA-256 등 다양한 해시를 생성합니다"
     },
+    "password-generator": {
+      "name": "비밀번호 생성기",
+      "shortDescription": "강력한 랜덤 비밀번호와 패스프레이즈를 생성합니다"
+    },
     "diff-checker": {
       "name": "텍스트 차이 비교기",
       "shortDescription": "두 텍스트를 비교해 차이점을 찾습니다"
@@ -110,6 +119,14 @@
     "color-picker": {
       "name": "색상 선택기 / 변환기",
       "shortDescription": "색상을 선택하고 HEX, RGB, HSL 형식으로 변환합니다"
+    },
+    "timestamp-converter": {
+      "name": "타임스탬프 변환기",
+      "shortDescription": "유닉스 타임스탬프와 날짜를 서로 변환합니다"
+    },
+    "qr-code": {
+      "name": "QR 코드 생성기",
+      "shortDescription": "텍스트와 URL로 QR 코드를 만들고 PNG로 저장합니다"
     },
     "word-counter": {
       "name": "단어 / 글자 수 카운터",
@@ -126,6 +143,14 @@
     "markdown-preview": {
       "name": "Markdown 미리보기",
       "shortDescription": "Markdown을 작성하고 렌더링된 HTML을 실시간으로 확인합니다"
+    },
+    "ascii-art": {
+      "name": "ASCII 아트 생성기",
+      "shortDescription": "텍스트를 다양한 FIGlet 스타일 ASCII 아트로 변환합니다"
+    },
+    "emoji-picker": {
+      "name": "이모지 선택기",
+      "shortDescription": "이모지를 검색하고 한 번에 복사합니다"
     },
     "percentage-calculator": {
       "name": "백분율 계산기",
@@ -162,6 +187,10 @@
     "date-calculator": {
       "name": "날짜 계산기",
       "shortDescription": "날짜 사이의 일수를 계산하거나 날짜에 일수를 더하고 뺍니다"
+    },
+    "random-picker": {
+      "name": "랜덤 선택기",
+      "shortDescription": "룰렛, 동전 던지기, 주사위로 무작위 선택을 도와줍니다"
     },
     "currency-converter": {
       "name": "환율 변환기",

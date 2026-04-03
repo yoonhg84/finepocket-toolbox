@@ -63,7 +63,7 @@ export function QrCodeTool() {
         ctx.fillRect(0, 0, size, size);
       }
     }
-  }, [text, size, fgColor, bgColor, ecLevel]);
+  }, [text, size, fgColor, bgColor, ecLevel, ui]);
 
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
@@ -247,7 +247,11 @@ export function QrCodeTool() {
             width={size}
             height={size}
             role="img"
-            aria-label={text.trim() ? `QR code: ${text.trim().slice(0, 100)}` : "QR code"}
+            aria-label={
+              text.trim()
+                ? `${ui("QR code")}: ${text.trim().slice(0, 100)}`
+                : ui("QR code")
+            }
             className="block max-w-full h-auto rounded"
             style={{ imageRendering: "pixelated" }}
           />

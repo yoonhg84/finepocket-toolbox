@@ -35,7 +35,7 @@ export function TimestampConverterTool() {
       setNow(getCurrentTimestamp());
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [ui]);
 
   // Timestamp to date conversion
   const handleTsConvert = useCallback((value: string) => {
@@ -66,7 +66,7 @@ export function TimestampConverterTool() {
       setTsFormats(null);
       setTsDateInfo(null);
     }
-  }, []);
+  }, [ui]);
 
   // Date to timestamp conversion
   const handleDateConvert = useCallback((value: string) => {
@@ -84,7 +84,7 @@ export function TimestampConverterTool() {
       setDateError(ui("Invalid date format"));
       setDateResult(null);
     }
-  }, []);
+  }, [ui]);
 
   // Snap to now
   const handleNow = () => {
